@@ -250,21 +250,19 @@
 })();
 
 /* ==========================================
-   NOTAS PARA TU COMPAÑERO:
-   ==========================================
-   
+    Documentación de Navegación y Menú Móvil:
+
    FUNCIONALIDADES IMPLEMENTADAS:
-   ✓ Menú hamburguesa funcional
-   ✓ Cierra al clickear fuera
-   ✓ Cierra con tecla ESC
-   ✓ Scroll suave entre secciones
-   ✓ Sombra en header al scroll
-   ✓ Marca link activo según sección
-   ✓ Trap focus para accesibilidad
-   ✓ Cierra menú al redimensionar
-   
-   PRUEBAS:
-   1. Abrir en móvil y probar menú hamburguesa
+   Cierra al clickear fuera
+   Cierra con tecla ESC
+   Scroll suave entre secciones
+   Sombra en header al scroll
+   Marca link activo según sección
+   Trap focus para accesibilidad
+   Cierra menú al redimensionar
+
+   FALTA PROBAR:
+   1. Abrir en móvil y probar menú hamburguesa ( aun no funciona)
    2. Clickear links internos (#mundiales)
    3. Hacer scroll y ver sombra del header
    4. Presionar ESC para cerrar menú

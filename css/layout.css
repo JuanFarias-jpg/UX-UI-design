@@ -43,7 +43,7 @@
               box-shadow var(--transition-base) var(--ease-out);
 }
 
-/* Efecto cuando se hace scroll (tu compañero lo activará con JS) */
+/* Efecto cuando se hace scroll (revissar) */
 .header--scrolled {
   box-shadow: var(--shadow-md);
 }

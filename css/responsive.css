@@ -1,7 +1,7 @@
 /* ==========================================
    RESPONSIVE.CSS - Diseño Mobile-First
    ==========================================
-   FILOSOFÍA MOBILE-FIRST:
+  MOBILE-FIRST:
    - Los estilos base son para móviles (320px - 639px)
    - Agregamos complejidad conforme la pantalla crece
    - Usamos min-width en media queries (no max-width)

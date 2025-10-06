@@ -7,22 +7,22 @@
    - Espaciados
    - Sombras y efectos
    
-   IMPORTANTE: Nunca uses valores directos en otros archivos CSS.
+   IMPORTANTE: Nunca usar valores directos en otros archivos CSS.
    Siempre usa var(--nombre-variable) para mantener consistencia.
 ========================================== */
 
 :root {
   /* ===== COLORES PRINCIPALES ===== */
   /* Tu paleta de colores del documento */
-  --color-primary: #1B998B;        /* Verde esmeralda - energía, vitalidad */
+  --color-primary: #1B998B;        /* Verde esmeralda  */
   --color-primary-dark: #147a6f;   /* Verde más oscuro para hover */
   --color-primary-light: #2dbba8;  /* Verde más claro para estados activos */
   
-  --color-secondary: #1B6899;      /* Azul profundo - confianza */
+  --color-secondary: #1B6899;      /* Azul profundo */
   --color-secondary-dark: #14527a;
   --color-secondary-light: #2280b8;
   
-  --color-accent: #1B994C;         /* Verde intenso - frescura */
+  --color-accent: #1B994C;         /* Verde intenso */
   --color-accent-dark: #157a3d;
   --color-accent-light: #22b85c;
 
@@ -148,7 +148,6 @@
 }
 
 /* Clase manual para forzar modo oscuro */
-/* Tu compañero usará esta clase con JavaScript */
 .dark-mode {
   --color-bg: #121212;
   --color-surface: #1E1E1E;
@@ -173,7 +172,7 @@
 ========================================== */
 
 .accessible-colors {
-  /* Paleta adaptada que mantiene buen contraste */
+  /* Paleta adaptada para mantenerbuen contraste */
   --color-primary: #648FFF;      /* Azul claro */
   --color-secondary: #785EF0;    /* Azul violeta */
   --color-accent: #38F11C;       /* Verde brillante */

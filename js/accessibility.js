@@ -422,26 +422,20 @@
 })();
 
 /* ==========================================
-   NOTAS PARA TU COMPAÑERO:
-   ==========================================
+Documentación de Accesibilidad
    
-   FUNCIONALIDADES IMPLEMENTADAS:
-   ✓ Skip link para ir al contenido
-   ✓ Outline visible solo con teclado
-   ✓ Panel de accesibilidad flotante
-   ✓ Tamaño de fuente ajustable (3 niveles)
-   ✓ Paleta de colores para daltonismo
-   ✓ Anuncios para lectores de pantalla
+   FUNCIONALIDADES INCLUIDAS:
+   Skip link para ir al contenido
+   Outline visible solo con teclado
+   Panel de accesibilidad flotante
+   Tamaño de fuente ajustable (3 niveles)
+   Paleta de colores para daltonismo
+   Anuncios para lectores de pantalla
    
-   PRUEBAS DE ACCESIBILIDAD:
-   1. Navegar con Tab y ver outline
-   2. Usar lector de pantalla (NVDA/JAWS)
-   3. Ajustar tamaño de fuente
-   4. Activar paleta para daltonismo
-   5. Probar skip link con Tab
-   
+   FALTA:
+   -Probar funcinalidades( No todas estan agregadas aun )
+
    LIGHTHOUSE:
-   - Debería alcanzar 90%+ en accesibilidad
    - Todos los botones tienen aria-label
    - Navegación con roles ARIA correctos
    

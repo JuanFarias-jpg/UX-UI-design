@@ -182,18 +182,21 @@
 })();
 
 /* ==========================================
-   NOTAS PARA TU COMPAÑERO:
-   ==========================================
-   
+   DOCUMENTACION DE THEME.JS:
+    FUNCIONALIDADES:  
+    - Detección automática del tema del sistema
+    - Toggle manual entre temas
+    - Guardado de preferencia del usuario
+    - Animación suave al cambiar
+
    CÓMO PROBAR:
    1. Abrir la página en el navegador
    2. Clickear el botón de tema (luna/sol)
    3. Recargar la página - debe mantener el tema elegido
    4. Abrir DevTools > Application > Local Storage para ver el valor guardado
    
-   MEJORAS FUTURAS:
-   - Agregar transición de "flash" al cambiar tema
-   - Precargar el tema antes de que se renderice la página (evitar flash)
+  FALTA PROBAR:
    - Agregar más opciones (auto, claro, oscuro)
+   - Cambiar colores de tema claro/oscuro
    
 ========================================== */
