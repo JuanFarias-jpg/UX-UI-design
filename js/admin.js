@@ -391,17 +391,16 @@
 })();
 
 /* ==========================================
-   NOTAS PARA TU COMPAÑERO:
-   ==========================================
-   
+    Documentación del Panel de Administración:
+
    FUNCIONALIDADES:
-   ✓ Verificación de acceso (solo admin)
-   ✓ Navegación entre secciones
-   ✓ Aprobar publicaciones con animación
-   ✓ Rechazar con motivo opcional
-   ✓ Notificaciones temporales
-   ✓ Actualización de contadores
-   ✓ Estado vacío cuando no hay pendientes
+   Verificación de acceso (solo admin)
+   Navegación entre secciones
+   Aprobar publicaciones con animación
+   Rechazar con motivo opcional
+   Notificaciones temporales
+   Actualización de contadores
+   Estado vacío cuando no hay pendientes
    
    FLUJO DE SEGURIDAD:
    1. Verifica que usuario sea 'admin'
@@ -412,29 +411,7 @@
    Usuario: admin
    Contraseña: admin123
    
-   PARA BACKEND REAL:
-   
-   async function approvePost(postId) {
-     const response = await fetch(`/api/admin/posts/${postId}/approve`, {
-       method: 'POST',
-       headers: {
-         'Authorization': `Bearer ${getToken()}`,
-         'Content-Type': 'application/json'
-       }
-     });
-     return response.json();
-   }
-   
-   async function rejectPost(postId, reason) {
-     const response = await fetch(`/api/admin/posts/${postId}/reject`, {
-       method: 'POST',
-       headers: {
-         'Authorization': `Bearer ${getToken()}`,
-         'Content-Type': 'application/json'
-       },
-       body: JSON.stringify({ reason })
-     });
-     return response.json();
-   }
+   Bugs a arreglar:
+   - Toma la ultima sesion siempre y piensa que el perfil siempre es usuario aunque cierre sesion
    
 ========================================== */

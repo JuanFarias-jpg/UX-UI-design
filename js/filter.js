@@ -326,7 +326,7 @@
 
       setTimeout(() => {
         // Aquí iría la lógica para cargar más desde el servidor
-        // Por ahora solo mostramos un mensaje
+        // Solo se muestra el mensaje
         if (window.WCAAccessibility) {
           window.WCAAccessibility.announce('No hay más publicaciones disponibles');
         }
@@ -387,29 +387,24 @@
 })();
 
 /* ==========================================
-   NOTAS PARA TU COMPAÑERO:
+    Documentación de Filtros (filter.js):
    ==========================================
-   
    FUNCIONALIDADES:
-   ✓ Filtros por categoría (botones rápidos)
-   ✓ Filtros por mundial/selección (dropdowns)
-   ✓ Búsqueda en tiempo real (debounce 300ms)
-   ✓ Ordenamiento (popular, reciente, vistas)
-   ✓ Tags de filtros activos removibles
-   ✓ Mensaje cuando no hay resultados
-   ✓ Botón "Cargar más" con estado de carga
+   Filtros por categoría (botones rápidos)
+   Filtros por mundial/selección (dropdowns)
+   Búsqueda en tiempo real (debounce 300ms)
+   Ordenamiento (popular, reciente, vistas)
+   Tags de filtros activos removibles
+   Mensaje cuando no hay resultados
+   Botón "Cargar más" con estado de carga
    
    MEJORAS FUTURAS:
-   - Conectar con API real para cargar datos
    - Guardar filtros en URL (query params)
    - Persistir filtros en localStorage
    - Agregar más criterios de ordenamiento
    
-   PRUEBAS:
-   1. Filtrar por categoría y verificar resultados
-   2. Buscar texto y ver filtrado en tiempo real
-   3. Combinar múltiples filtros
-   4. Remover filtros con la X
-   5. Ordenar por diferentes criterios
+   PRUEBAS FALTANTES:
+  - No están implementados los filtros en todas las páginas
+  -Checar funcionalidad completa
    
 ========================================== */

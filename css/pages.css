@@ -341,8 +341,6 @@
   padding: var(--space-8) 0;
 }
 
-/* ===== PÁGINA DE ADMIN - LAYOUT CORREGIDO ===== */
-
 /* Layout principal del admin */
 .admin-layout {
   display: flex;

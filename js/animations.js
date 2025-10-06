@@ -268,7 +268,7 @@
   // ===== SMOOTH SCROLL PARA TODA LA PÁGINA =====
   function initSmoothScroll() {
     // Ya está implementado en CSS con scroll-behavior: smooth
-    // Pero aquí podemos agregar efectos adicionales
+    // aquí podemos agregar efectos adicionales
 
     let scrolling = false;
 
@@ -400,24 +400,23 @@
 })();
 
 /* ==========================================
-   NOTAS PARA TU COMPAÑERO:
-   ==========================================
-   
+    Documentación de Animaciones y Microinteracciones:
+
    FUNCIONALIDADES IMPLEMENTADAS:
-   ✓ Carrusel automático con controles
-   ✓ Scroll reveal (elementos aparecen al scroll)
-   ✓ Ripple effect en botones
-   ✓ Parallax suave en hero
-   ✓ Loading states con skeleton
-   ✓ Respeta prefers-reduced-motion
+   Carrusel automático con controles
+   Scroll reveal (elementos aparecen al scroll)
+   Ripple effect en botones
+   Parallax suave en hero
+   Loading states con skeleton
+   Respeta prefers-reduced-motion
    
-   PRUEBAS:
-   1. Ver carrusel cambiar automáticamente
-   2. Hacer scroll y ver cards aparecer
-   3. Clickear botones para ver ripple effect
-   4. Usar flechas del teclado en carrusel
-   5. Hacer hover en carrusel (pausa autoplay)
-   
+  FALTA:
+   -No todas las funcionalidades estan implementadas
+   -Animaciones adicionales (hover, focus)
+    -Más efectos de carga
+    -Transiciones entre páginas (si aplica)
+    -Probar que funcionen las animaciones implementadas
+
    PERFORMANCE:
    - Usa requestAnimationFrame para animaciones
    - Usa Intersection Observer (eficiente)

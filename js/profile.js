@@ -175,7 +175,7 @@
   if (newPostBtn) {
     newPostBtn.addEventListener('click', () => {
       // Por ahora solo mostrar alerta
-      // En el futuro abrirá un modal o redirigirá a un formulario
+      // Redirigirá a un formulario
       alert('Funcionalidad de crear publicación en desarrollo.\nPor ahora es solo un prototipo visual.');
     });
   }
@@ -195,7 +195,7 @@
         return;
       }
 
-      // Simular datos del usuario (en producción vendría de una API)
+      // Simular datos del usuario 
       const userData = {
         name: username === 'admin' ? 'Administrador' : 'Juan López',
         username: username,
@@ -295,16 +295,15 @@
 })();
 
 /* ==========================================
-   NOTAS PARA TU COMPAÑERO:
-   ==========================================
-   
+  DOCUMENTACION DE PROFILE.JS:
+
    FUNCIONALIDADES:
-   ✓ Sistema de tabs con animación
-   ✓ Filtros por estado de publicación
-   ✓ Verificación de autenticación
-   ✓ Cerrar sesión funcional
-   ✓ Navegación por URL hash (#publicaciones)
-   ✓ Carga datos del usuario desde localStorage
+   Sistema de tabs con animación
+   Filtros por estado de publicación
+   Verificación de autenticación
+   Cerrar sesión funcional
+   Navegación por URL hash (#publicaciones)
+   Carga datos del usuario desde localStorage
    
    FLUJO:
    1. Al cargar la página verifica si hay sesión
@@ -313,19 +312,8 @@
    4. Usuario puede navegar entre tabs
    5. Al cerrar sesión → limpia datos y redirige
    
-   PARA CONECTAR CON BACKEND REAL:
    
-   async function loadUserData() {
-     const response = await fetch('/api/user/profile', {
-       headers: {
-         'Authorization': `Bearer ${getToken()}`
-       }
-     });
-     const data = await response.json();
-     updateProfileUI(data);
-   }
-   
-   MEJORAS FUTURAS:
+   FALTA PROBAR:
    - Editar información del perfil
    - Subir/cambiar foto de avatar
    - Modal para crear nueva publicación

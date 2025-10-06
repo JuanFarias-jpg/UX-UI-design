@@ -5,7 +5,7 @@
    - Validación en tiempo real del formulario
    - Mensajes de error accesibles
    - Prevención de envío con errores
-   - Simulación de login (para el prototipo)
+   - Simulación de login
 ========================================== */
 
 (function() {
@@ -140,7 +140,7 @@
   }
 
   /**
-   * Simular proceso de login (para el prototipo)
+   * Simular proceso de login 
    */
   function simulateLogin(username, password, remember) {
     return new Promise((resolve, reject) => {
@@ -374,32 +374,23 @@
 })();
 
 /* ==========================================
-   NOTAS PARA TU COMPAÑERO:
-   ==========================================
-   
+    Documentación de Validación de Login:
+
+
    CREDENCIALES DE PRUEBA:
    - admin / admin123 (redirige a admin.html)
    - usuario@test.com / test123 (redirige a perfil.html)
    - demo / demo123 (redirige a perfil.html)
    
    FUNCIONALIDADES:
-   ✓ Validación en tiempo real
-   ✓ Mensajes de error accesibles
-   ✓ Estado de carga en botón
-   ✓ "Recordarme" funcional
-   ✓ Simula delay de red realista
-   ✓ Anuncios para lectores de pantalla
+   Validación en tiempo real
+   Mensajes de error accesibles
+   Estado de carga en botón
+   Simula delay de red realista
+   Anuncios para lectores de pantalla
    
-   PARA CONECTAR CON BACKEND REAL:
-   Reemplazar la función simulateLogin() con:
-   
-   async function login(username, password) {
-     const response = await fetch('/api/login', {
-       method: 'POST',
-       headers: { 'Content-Type': 'application/json' },
-       body: JSON.stringify({ username, password })
-     });
-     return response.json();
-   }
-   
+  FALTA:
+  - Validación más robusta (mayúsculas, caracteres especiales)
+  - Boton de Recordarme no funciona 
+  - Probar todas las funcionalidades
 ========================================== */
