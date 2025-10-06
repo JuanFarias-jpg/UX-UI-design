@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"> <!-- UTF-8 para caracteres especiales en español-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive behavior para móviles que se adepten al layout de su pantalla -->
+    <meta name="description" content="World Cup Archive - Historia completa de los mundiales de fútbol">
+    <title>World Cup Archive - Inicio</title>
+    
+    <!-- CSS en orden: primero variables, luego reset, luego layout, etc. -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+</head>
+<body>
+    <!-- HEADER STICKY: Se queda fijo al hacer scroll -->
+    <header class="header" role="banner">
+        <div class="container">
+            <nav class="navbar" role="navigation" aria-label="Navegación principal">
+                <!-- Logo -->
+                <div class="navbar__brand">
+                    <a href="index.html" class="logo" aria-label="Inicio">
+                        <span class="logo__text">WCA</span>
+                    </a>
+                </div>
+
+                <!-- Menú hamburguesa para móvil -->
+                <button class="navbar__toggle" 
+                        aria-label="Abrir menú de navegación" 
+                        aria-expanded="false"
+                        aria-controls="navbar-menu">
+                    <span class="hamburger"></span>
+                </button>
+
+                <!-- Menú de navegación -->
+                <ul class="navbar__menu" id="navbar-menu">
+                    <li><a href="index.html" class="navbar__link navbar__link--active">Inicio</a></li>
+                    <li><a href="#mundiales" class="navbar__link">Mundiales</a></li>
+                    <li><a href="#estadisticas" class="navbar__link">Estadísticas</a></li>
+                    <li><a href="publicaciones.html" class="navbar__link">Publicaciones</a></li>
+                    <li><a href="perfil.html" class="navbar__link">Mi Perfil</a></li>
+                </ul>
+
+                <!-- Controles de accesibilidad -->
+                <div class="navbar__controls">
+                    <!-- Toggle modo oscuro -->
+                    <button class="theme-toggle" 
+                            aria-label="Cambiar tema claro/oscuro"
+                            title="Cambiar tema">
+                        <span class="theme-toggle__icon">🌙</span>
+                    </button>
+
+                    <!-- Botón de login -->
+                    <a href="login.html" class="btn btn--primary">Iniciar Sesión</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+        <!-- HERO SECTION: Noticias destacadas en carrusel -->
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="container">
+                <h1 id="hero-title" class="sr-only">Noticias Destacadas</h1>
+                
+                <!-- Carrusel de noticias -->
+                <div class="carousel" role="region" aria-label="Carrusel de noticias destacadas">
+                    <div class="carousel__track">
+                        <!-- Noticia 1 -->
+                        <article class="carousel__item carousel__item--active">
+                            <div class="carousel__image">
+                                <img src="assets/images/news-1.jpg" 
+                                     alt="Mundial 2026 en México, Estados Unidos y Canadá">
+                            </div>
+                            <div class="carousel__content">
+                                <span class="badge">Próximo Mundial</span>
+                                <h2 class="carousel__title">Mundial 2026: Tres países anfitriones</h2>
+                                <p class="carousel__description">
+                                    Por primera vez en la historia, el Mundial de Fútbol se celebrará 
+                                    en tres países simultáneamente: México, Estados Unidos y Canadá.
+                                </p>
+                                <a href="#" class="btn btn--secondary">Leer más</a>
+                            </div>
+                        </article>
+
+                        <!-- Noticia 2 -->
+                        <article class="carousel__item">
+                            <div class="carousel__image">
+                                <img src="assets/images/news-2.jpg" 
+                                     alt="Estadísticas históricas de los mundiales">
+                            </div>
+                            <div class="carousel__content">
+                                <span class="badge">Estadísticas</span>
+                                <h2 class="carousel__title">Los récords más impresionantes</h2>
+                                <p class="carousel__description">
+                                    Descubre los récords que han marcado la historia de los mundiales 
+                                    desde 1930 hasta la actualidad.
+                                </p>
+                                <a href="#" class="btn btn--secondary">Ver estadísticas</a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Controles del carrusel -->
+                    <button class="carousel__control carousel__control--prev" 
+                            aria-label="Noticia anterior">
+                        ‹
+                    </button>
+                    <button class="carousel__control carousel__control--next" 
+                            aria-label="Siguiente noticia">
+                        ›
+                    </button>
+
+                    <!-- Indicadores -->
+                    <div class="carousel__indicators" role="tablist" aria-label="Indicadores de noticias">
+                        <button role="tab" aria-selected="true" aria-label="Noticia 1"></button>
+                        <button role="tab" aria-selected="false" aria-label="Noticia 2"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PUBLICACIONES POPULARES -->
+        <section class="section" aria-labelledby="popular-title">
+            <div class="container">
+                <div class="section__header">
+                    <h2 id="popular-title" class="section__title">Publicaciones Populares</h2>
+                    <p class="section__subtitle">Las publicaciones más vistas de la comunidad</p>
+                </div>
+
+                <!-- Grid de cards -->
+                <div class="card-grid">
+                    <!-- Card 1 -->
+                    <article class="card" tabindex="0">
+                        <div class="card__image">
+                            <img src="assets/images/post-1.jpg" 
+                                 alt="Gol de Maradona contra Inglaterra 1986">
+                            <span class="card__badge">Jugadas</span>
+                        </div>
+                        <div class="card__content">
+                            <h3 class="card__title">El gol del siglo de Maradona</h3>
+                            <p class="card__description">
+                                Revive la jugada más icónica del Mundial México 86, 
+                                donde Maradona dejó atrás a medio equipo inglés.
+                            </p>
+                            <div class="card__meta">
+                                <span class="card__category">México 1986</span>
+                                <time datetime="2025-09-10">10 Sep 2025</time>
+                            </div>
+                        </div>
+                        <div class="card__stats">
+                            <span class="stat" aria-label="Me gusta">
+                                <span class="stat__icon">❤️</span>
+                                <span class="stat__count">1.2k</span>
+                            </span>
+                            <span class="stat" aria-label="Comentarios">
+                                <span class="stat__icon">💬</span>
+                                <span class="stat__count">150</span>
+                            </span>
+                            <span class="stat" aria-label="Vistas">
+                                <span class="stat__icon">👁️</span>
+                                <span class="stat__count">3.5k</span>
+                            </span>
+                        </div>
+                    </article>
+
+                    <!-- Card 2 -->
+                    <article class="card" tabindex="0">
+                        <div class="card__image">
+                            <img src="assets/images/post-2.jpg" 
+                                 alt="Final Brasil vs Italia 1994">
+                            <span class="card__badge">Partidos</span>
+                        </div>
+                        <div class="card__content">
+                            <h3 class="card__title">USA 94: La final definida por penales</h3>
+                            <p class="card__description">
+                                La final más tensa de la historia, donde Brasil se coronó 
+                                campeón tras una dramática tanda de penales.
+                            </p>
+                            <div class="card__meta">
+                                <span class="card__category">Estados Unidos 1994</span>
+                                <time datetime="2025-09-08">08 Sep 2025</time>
+                            </div>
+                        </div>
+                        <div class="card__stats">
+                            <span class="stat">
+                                <span class="stat__icon">❤️</span>
+                                <span class="stat__count">980</span>
+                            </span>
+                            <span class="stat">
+                                <span class="stat__icon">💬</span>
+                                <span class="stat__count">203</span>
+                            </span>
+                            <span class="stat">
+                                <span class="stat__icon">👁️</span>
+                                <span class="stat__count">2.8k</span>
+                            </span>
+                        </div>
+                    </article>
+
+                    <!-- Card 3 -->
+                    <article class="card" tabindex="0">
+                        <div class="card__image">
+                            <img src="assets/images/post-3.jpg" 
+                                 alt="Estadio Azteca lleno de aficionados">
+                            <span class="card__badge">Sedes</span>
+                        </div>
+                        <div class="card__content">
+                            <h3 class="card__title">El Estadio Azteca y su historia mundialista</h3>
+                            <p class="card__description">
+                                El único estadio en albergar dos finales de Copa del Mundo 
+                                se prepara para recibir el Mundial 2026.
+                            </p>
+                            <div class="card__meta">
+                                <span class="card__category">Cultura</span>
+                                <time datetime="2025-09-05">05 Sep 2025</time>
+                            </div>
+                        </div>
+                        <div class="card__stats">
+                            <span class="stat">
+                                <span class="stat__icon">❤️</span>
+                                <span class="stat__count">756</span>
+                            </span>
+                            <span class="stat">
+                                <span class="stat__icon">💬</span>
+                                <span class="stat__count">89</span>
+                            </span>
+                            <span class="stat">
+                                <span class="stat__icon">👁️</span>
+                                <span class="stat__count">1.9k</span>
+                            </span>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Botón ver más -->
+                <div class="section__footer">
+                    <a href="publicaciones.html" class="btn btn--outline">Ver todas las publicaciones</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE MUNDIALES -->
+        <section class="section section--alt" id="mundiales" aria-labelledby="mundiales-title">
+            <div class="container">
+                <div class="section__header">
+                    <h2 id="mundiales-title" class="section__title">Explora los Mundiales</h2>
+                    <p class="section__subtitle">Descubre la historia completa de cada Copa del Mundo</p>
+                </div>
+
+                <!-- Filtro rápido -->
+                <div class="filter-bar">
+                    <button class="filter-btn filter-btn--active">Todos</button>
+                    <button class="filter-btn">América</button>
+                    <button class="filter-btn">Europa</button>
+                    <button class="filter-btn">Asia</button>
+                    <button class="filter-btn">África</button>
+                </div>
+
+                <!-- Grid de mundiales -->
+                <div class="world-cup-grid">
+                    <a href="#" class="world-cup-card">
+                        <div class="world-cup-card__year">2026</div>
+                        <div class="world-cup-card__name">México, USA, Canadá</div>
+                        <div class="world-cup-card__status">Próximo</div>
+                    </a>
+
+                    <a href="#" class="world-cup-card">
+                        <div class="world-cup-card__year">2022</div>
+                        <div class="world-cup-card__name">Qatar</div>
+                        <div class="world-cup-card__champion">🏆 Argentina</div>
+                    </a>
+
+                    <a href="#" class="world-cup-card">
+                        <div class="world-cup-card__year">2018</div>
+                        <div class="world-cup-card__name">Rusia</div>
+                        <div class="world-cup-card__champion">🏆 Francia</div>
+                    </a>
+
+                    <a href="#" class="world-cup-card">
+                        <div class="world-cup-card__year">2014</div>
+                        <div class="world-cup-card__name">Brasil</div>
+                        <div class="world-cup-card__champion">🏆 Alemania</div>
+                    </a>
+                </div>
+
+                <div class="section__footer">
+                    <a href="#" class="btn btn--outline">Ver todos los mundiales</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer__content">
+                <!-- Columna 1: Info -->
+                <div class="footer__column">
+                    <h3 class="footer__title">World Cup Archive</h3>
+                    <p class="footer__text">
+                        La historia completa de los mundiales de fútbol al alcance de todos.
+                    </p>
+                </div>
+
+                <!-- Columna 2: Enlaces rápidos -->
+                <div class="footer__column">
+                    <h4 class="footer__subtitle">Enlaces</h4>
+                    <ul class="footer__links">
+                        <li><a href="#">Acerca de</a></li>
+                        <li><a href="#">Contacto</a></li>
+                        <li><a href="#">Términos de uso</a></li>
+                        <li><a href="#">Privacidad</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3: FAQ -->
+                <div class="footer__column">
+                    <h4 class="footer__subtitle">Ayuda</h4>
+                    <ul class="footer__links">
+                        <li><a href="#">Preguntas frecuentes</a></li>
+                        <li><a href="#">Guía de uso</a></li>
+                        <li><a href="#">Accesibilidad</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 4: Redes sociales -->
+                <div class="footer__column">
+                    <h4 class="footer__subtitle">Síguenos</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook" class="social-link">FB</a>
+                        <a href="#" aria-label="Twitter" class="social-link">TW</a>
+                        <a href="#" aria-label="Instagram" class="social-link">IG</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p>&copy; 2025 World Cup Archive. Proyecto educativo UANL.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS: Se cargan al final para mejor performance -->
+    <script src="js/theme.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/accessibility.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+# =========================
+# GENERAL
+# =========================
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# =========================
+# DEPENDENCIES / BUILD
+# =========================
+
+# Node modules
+node_modules/
+
+# Build output (Webpack, Parcel, Vite, etc.)
+dist/
+build/
+out/
+
+# Cache folders
+.cache/
+.parcel-cache/
+.vscode-test/
+.tmp/
+.temp/
+
+# =========================
+# EDITOR / IDE
+# =========================
+
+# VS Code settings
+.vscode/
+
+# JetBrains IDEs (WebStorm, IntelliJ, etc.)
+.idea/
+
+# =========================
+# OTHER
+# =========================
+
+# Compiled Sass / Less files
+*.css.map
+*.sass-cache
+.sass-cache/
+
+# Backup or temporary files
+*.bak
+*.tmp
+
+# =========================
+# OS SPECIFIC
+# =========================
+
+# macOS
+.AppleDouble
+.LSOverride
+Icon?
+._*
+
+# Windows
+ehthumbs.db
+Desktop.ini

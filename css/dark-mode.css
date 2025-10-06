@@ -1,0 +1,195 @@
+/* ==========================================
+   DARK-MODE.CSS - Tema Oscuro
+   ==========================================
+   Este archivo contiene ajustes específicos para el modo oscuro
+   que no se pueden resolver solo con variables.
+   
+   CÓMO FUNCIONA:
+   1. Las variables ya cambian automáticamente (ver variables.css)
+   2. Aquí agregamos ajustes finos de opacidad, sombras, etc.
+========================================== */
+
+/* ===== AJUSTES GENERALES MODO OSCURO ===== */
+.dark-mode {
+  /* Theme tokens for dark mode — keep values minimal and overrideable */
+  --color-bg: #0b1220;
+  --color-surface: #071025;
+  --color-text: #e6eef8;
+  --color-text-secondary: #bcd0e6;
+  --color-border: rgba(255, 255, 255, 0.06);
+  --color-primary: #4fb0ff;
+
+  /* Hint to the browser for form controls, scrollbars, etc. */
+  color-scheme: dark;
+}
+
+/* ===== IMÁGENES EN MODO OSCURO ===== */
+.dark-mode img {
+  /* Reducir brillo de imágenes un poco */
+  opacity: 0.9;
+}
+
+.dark-mode img:hover {
+  opacity: 1;
+}
+
+/* ===== CARDS EN MODO OSCURO ===== */
+.dark-mode .card {
+  /* Borde sutil para separar del fondo */
+  border: var(--border-width) solid var(--color-border);
+}
+
+.dark-mode .card:hover {
+  /* Sombra más pronunciada en modo oscuro */
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6);
+}
+
+/* ===== CARRUSEL EN MODO OSCURO ===== */
+.dark-mode .carousel__control {
+  background-color: rgba(30, 30, 30, 0.95);
+  color: white;
+}
+
+.dark-mode .hero {
+  /* Gradiente ajustado para modo oscuro */
+  background: linear-gradient(135deg, 
+    rgba(27, 153, 139, 0.2) 0%, 
+    rgba(27, 104, 153, 0.2) 100%);
+}
+
+/* ===== BOTONES EN MODO OSCURO ===== */
+.dark-mode .btn--outline {
+  background-color: transparent;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.dark-mode .btn--outline:hover {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+}
+
+/* ===== INPUTS Y FORMS EN MODO OSCURO ===== */
+/* (Para cuando agregues formularios más adelante) */
+.dark-mode input,
+.dark-mode textarea,
+.dark-mode select {
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+.dark-mode input:focus,
+.dark-mode textarea:focus,
+.dark-mode select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(27, 153, 139, 0.1);
+}
+
+/* ===== SCROLLBAR EN MODO OSCURO ===== */
+.dark-mode ::-webkit-scrollbar-track {
+  background: var(--color-surface);
+}
+
+.dark-mode ::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+}
+
+.dark-mode ::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-secondary);
+}
+
+/* ===== CODE BLOCKS EN MODO OSCURO ===== */
+.dark-mode pre,
+.dark-mode code {
+  background-color: rgba(0, 0, 0, 0.3);
+  border: var(--border-width) solid var(--color-border);
+}
+
+/* ===== TOOLTIPS EN MODO OSCURO ===== */
+/* (Para implementar después) */
+.dark-mode [data-tooltip]::after {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border: var(--border-width) solid var(--color-border);
+}
+
+/* ===== TRANSICIONES SUAVES AL CAMBIAR TEMA ===== */
+/* Animar el cambio de colores cuando se activa/desactiva modo oscuro */
+body,
+.header,
+.card,
+.btn,
+.footer,
+.navbar__link {
+  transition: background-color var(--transition-base) var(--ease-out),
+              color var(--transition-base) var(--ease-out),
+              border-color var(--transition-base) var(--ease-out);
+}
+
+/* ===== ICONO DEL TOGGLE TEMA ===== */
+/* Cambiar el icono dependiendo del tema activo */
+.dark-mode .theme-toggle__icon::before {
+  content: '☀️'; /* Sol en modo oscuro */
+}
+
+.theme-toggle__icon::before {
+  content: '🌙'; /* Luna en modo claro (default) */
+}
+
+/* Animación de rotación al cambiar */
+.theme-toggle--changing .theme-toggle__icon {
+  animation: rotate-icon 0.5s var(--ease-out);
+}
+
+@keyframes rotate-icon {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===== AJUSTES PARA ACCESIBILIDAD ===== */
+/* Asegurar contraste suficiente en modo oscuro */
+.dark-mode .card__description,
+.dark-mode .footer__text,
+.dark-mode .card__meta {
+  color: var(--color-text-secondary);
+  /* El contraste ya está garantizado por las variables */
+}
+
+/* ===== WORLD CUP CARDS EN MODO OSCURO ===== */
+.dark-mode .world-cup-card {
+  border: var(--border-width) solid var(--color-border);
+  background-color: rgba(30, 30, 30, 0.5);
+}
+
+.dark-mode .world-cup-card:hover {
+  background-color: var(--color-surface);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
+}
+
+/* ===== BADGES EN MODO OSCURO ===== */
+.dark-mode .badge,
+.dark-mode .card__badge {
+  /* Mantener colores vibrantes incluso en modo oscuro */
+  background-color: var(--color-primary);
+  color: white;
+}
+
+/* ===== FILTER BAR EN MODO OSCURO ===== */
+.dark-mode .filter-btn {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: var(--color-border);
+}
+
+.dark-mode .filter-btn:hover {
+  background-color: rgba(27, 153, 139, 0.1);
+}
+
+.dark-mode .filter-btn--active {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}

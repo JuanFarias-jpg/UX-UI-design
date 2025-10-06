@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Inicia sesión en World Cup Archive">
+    <title>Iniciar Sesión - World Cup Archive</title>
+    
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+</head>
+<body>
+    <!-- HEADER SIMPLIFICADO (sin menú completo en login) -->
+    <header class="header" role="banner">
+        <div class="container">
+            <nav class="navbar" role="navigation">
+                <div class="navbar__brand">
+                    <a href="index.html" class="logo" aria-label="Volver al inicio">
+                        <span class="logo__text">WCA</span>
+                    </a>
+                </div>
+
+                <div class="navbar__controls">
+                    <button class="theme-toggle" 
+                            aria-label="Cambiar tema claro/oscuro"
+                            title="Cambiar tema">
+                        <span class="theme-toggle__icon">🌙</span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="main login-page">
+        <div class="login-container">
+            <!-- Header del formulario -->
+            <div class="login-header">
+                <div class="login-logo">WCA</div>
+                <h1 class="login-title">Bienvenido de vuelta</h1>
+                <p class="login-subtitle">Inicia sesión para continuar</p>
+            </div>
+
+            <!-- Formulario de login -->
+            <form class="login-form" id="login-form" novalidate>
+                <!-- Campo de usuario/email -->
+                <div class="form-group">
+                    <label for="username" class="form-label">
+                        Usuario o correo electrónico
+                    </label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username"
+                        class="form-input"
+                        placeholder="tu@email.com"
+                        required
+                        autocomplete="username"
+                        aria-required="true">
+                    <span class="form-error" id="username-error" hidden></span>
+                </div>
+
+                <!-- Campo de contraseña -->
+                <div class="form-group">
+                    <label for="password" class="form-label">
+                        Contraseña
+                    </label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password"
+                        class="form-input"
+                        placeholder="••••••••"
+                        required
+                        autocomplete="current-password"
+                        aria-required="true">
+                    <span class="form-error" id="password-error" hidden></span>
+                </div>
+
+                <!-- Recordar usuario y olvidé contraseña -->
+                <div class="form-checkbox-group">
+                    <input 
+                        type="checkbox" 
+                        id="remember" 
+                        name="remember"
+                        class="form-checkbox">
+                    <label for="remember">Recordarme</label>
+                </div>
+
+                <!-- Botones de acción -->
+                <div class="form-actions">
+                    <button type="submit" class="btn btn--primary" style="width: 100%;">
+                        Iniciar Sesión
+                    </button>
+                    <a href="#" class="btn btn--outline" style="width: 100%; text-align: center;">
+                        ¿Olvidaste tu contraseña?
+                    </a>
+                </div>
+            </form>
+
+            <!-- Divider -->
+            <div class="login-divider">
+                <span>O continúa con</span>
+            </div>
+
+            <!-- Botones de login social -->
+            <div class="form-actions">
+                <button class="btn btn--outline" style="width: 100%;">
+                    <span>🌐</span> Continuar con Google
+                </button>
+                <button class="btn btn--outline" style="width: 100%;">
+                    <span>📘</span> Continuar con Facebook
+                </button>
+            </div>
+
+            <!-- Footer del formulario -->
+            <div class="login-footer">
+                <p>
+                    ¿No tienes cuenta? 
+                    <a href="registro.html">Regístrate aquí</a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER SIMPLIFICADO -->
+    <footer class="footer" role="contentinfo" style="margin-top: 0;">
+        <div class="container">
+            <div class="footer__bottom">
+                <p>&copy; 2025 World Cup Archive. Proyecto educativo UANL.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="js/theme.js"></script>
+    <script src="js/accessibility.js"></script>
+    <script src="js/login-validation.js"></script>
+</body>
+</html>

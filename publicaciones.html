@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explora publicaciones de la comunidad sobre los mundiales de fútbol">
+    <title>Publicaciones - World Cup Archive</title>
+    
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+</head>
+<body>
+    <!-- HEADER STICKY -->
+    <header class="header" role="banner">
+        <div class="container">
+            <nav class="navbar" role="navigation" aria-label="Navegación principal">
+                <div class="navbar__brand">
+                    <a href="index.html" class="logo" aria-label="Inicio">
+                        <span class="logo__text">WCA</span>
+                    </a>
+                </div>
+
+                <button class="navbar__toggle" 
+                        aria-label="Abrir menú de navegación" 
+                        aria-expanded="false"
+                        aria-controls="navbar-menu">
+                    <span class="hamburger"></span>
+                </button>
+
+                <ul class="navbar__menu" id="navbar-menu">
+                    <li><a href="index.html" class="navbar__link">Inicio</a></li>
+                    <li><a href="#mundiales" class="navbar__link">Mundiales</a></li>
+                    <li><a href="#estadisticas" class="navbar__link">Estadísticas</a></li>
+                    <li><a href="publicaciones.html" class="navbar__link navbar__link--active">Publicaciones</a></li>
+                    <li><a href="perfil.html" class="navbar__link">Mi Perfil</a></li>
+                </ul>
+
+                <div class="navbar__controls">
+                    <button class="theme-toggle" 
+                            aria-label="Cambiar tema claro/oscuro"
+                            title="Cambiar tema">
+                        <span class="theme-toggle__icon">🌙</span>
+                    </button>
+                    <a href="login.html" class="btn btn--primary">Iniciar Sesión</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="main publications-page">
+        <div class="container">
+            <!-- Header de la página -->
+            <header class="publications-header">
+                <h1 class="section__title">Publicaciones de la Comunidad</h1>
+                <p class="section__subtitle">
+                    Descubre historias, análisis y contenido creado por fanáticos del fútbol
+                </p>
+
+                <!-- Barra de búsqueda -->
+                <div class="search-bar">
+                    <span class="search-icon" aria-hidden="true">🔍</span>
+                    <input 
+                        type="search" 
+                        class="search-input" 
+                        placeholder="Buscar publicaciones, equipos, jugadores..."
+                        aria-label="Buscar publicaciones">
+                </div>
+            </header>
+
+            <!-- Sección de filtros -->
+            <section class="filters-section" aria-labelledby="filters-title">
+                <h2 id="filters-title" class="sr-only">Filtros de búsqueda</h2>
+                
+                <!-- Botones de filtro rápido -->
+                <div class="filter-bar">
+                    <button class="filter-btn filter-btn--active" data-filter="all">
+                        Todas
+                    </button>
+                    <button class="filter-btn" data-filter="jugadas">
+                        Jugadas
+                    </button>
+                    <button class="filter-btn" data-filter="entrevistas">
+                        Entrevistas
+                    </button>
+                    <button class="filter-btn" data-filter="partidos">
+                        Partidos
+                    </button>
+                    <button class="filter-btn" data-filter="estadisticas">
+                        Estadísticas
+                    </button>
+                    <button class="filter-btn" data-filter="sedes">
+                        Sedes
+                    </button>
+                    <button class="filter-btn" data-filter="cultura">
+                        Cultura
+                    </button>
+                </div>
+
+                <!-- Filtros avanzados -->
+                <div class="filters-grid">
+                    <select class="filter-dropdown" aria-label="Filtrar por mundial">
+                        <option value="">Todos los mundiales</option>
+                        <option value="2026">Mundial 2026</option>
+                        <option value="2022">Qatar 2022</option>
+                        <option value="2018">Rusia 2018</option>
+                        <option value="2014">Brasil 2014</option>
+                        <option value="2010">Sudáfrica 2010</option>
+                        <option value="2006">Alemania 2006</option>
+                        <option value="otros">Mundiales anteriores</option>
+                    </select>
+
+                    <select class="filter-dropdown" aria-label="Filtrar por selección">
+                        <option value="">Todas las selecciones</option>
+                        <option value="argentina">Argentina</option>
+                        <option value="brasil">Brasil</option>
+                        <option value="alemania">Alemania</option>
+                        <option value="francia">Francia</option>
+                        <option value="españa">España</option>
+                        <option value="mexico">México</option>
+                        <option value="otros">Otras selecciones</option>
+                    </select>
+
+                    <select class="filter-dropdown" aria-label="Ordenar por">
+                        <option value="recent">Más recientes</option>
+                        <option value="popular">Más populares</option>
+                        <option value="views">Más vistas</option>
+                        <option value="comments">Más comentadas</option>
+                    </select>
+                </div>
+
+                <!-- Filtros activos -->
+                <div class="active-filters" id="active-filters" hidden>
+                    <!-- Se llenan dinámicamente con JavaScript -->
+                </div>
+            </section>
+
+            <!-- Grid de publicaciones -->
+            <section class="section" aria-labelledby="posts-title">
+                <h2 id="posts-title" class="sr-only">Resultados de publicaciones</h2>
+
+                <div class="card-grid" id="publications-grid">
+                    <!-- Publicación 1 -->
+                    <article class="card" tabindex="0">
+                        <div class="card__image">
+                            <img src="assets/images/post-maradona.jpg" 
+                                 alt="Diego Maradona celebrando el gol contra Inglaterra en México 86">
+                            <span class="card__badge">Jugadas</span>
+                        </div>
+                        <div class="card__content">
+                            <h3 class="card__title">El gol del siglo de Maradona</h3>
+                            <p class="card__description">
+                                Revive la jugada más icónica del Mundial México 86, donde Maradona 
+                                dejó atrás a medio equipo inglés en una jugada que quedó grabada 
+                                en la historia del fútbol mundial.
+                            </p>
+                            <div class="card__meta">
+                                <span class="card__category">México 1986</span>
+                                <time datetime="2025-09-10">10 Sep 2025</time>
+                            </div>
+                        </div>
+                        <div class="card__stats">
+                            <span class="stat" aria-label="1200 me gusta">
+                                <span class="stat__icon">❤️</span>
+                                <span class="stat__count">1.2k</span>
+                            </span>
+                            <span class="stat" aria-label="150 comentarios">
+                                <span class="stat__icon">💬</span>
+                                <span class="stat__count">150</span>
+                            </span>
+                            <span class="stat" aria-label="3500 vistas">
+                                <span class="stat__icon">👁️</span>
+                                <span class="stat__count">3.5k</span>
+                            </span>
+                        </div>
+                    </article>
+
+                    <!-- Publicación 2 -->
+                    <article class="card" tabindex="0">
+                        <div class="card__image">
+                            <img src="assets/images/post-brasil-italia.jpg" 
+                                 alt="Roberto Baggio fallando el penal en la final de USA 94">
+                            <span class="card__badge">Partidos</span>
+                        </div>
+                        <div class="card__content">
+                            <h3 class="card__title">USA 94: La final definida por penales</h3>
+                            <p class="card__description">
+                                La final más tensa de la historia, donde Brasil se coronó campeón 
+                                tras una dramática tanda de penales. El error de Baggio marcó 
+                                una de las imágenes más tristes del fútbol.
+                            </p>
+                            <div class="card__meta">
+                                <span class="card__category">Estados Unidos 1994</span>
+                                <time datetime="2025-09-08">08 Sep 2025</time>
+                            </div>
+                        </div>
+                        <div class="card__stats">
+                            <span class="stat">
+                                <span class="stat__icon">❤️</span>
+                                <span class="stat__count">980</span>
+                            </span>
+                            <span class="stat">
+                                <span class="stat__icon">💬</span>
+                                <span class="stat__count">203</span>
+                            </span>
+                            <span class="stat">
+                                <span class="stat__icon">👁️</span>
+                                <span class="stat__count">2.8k</span>
+                            </span>
+                        </div>
+                    </article>
+
+                    <!-- Publicación 3 -->
+                    <article class="card" tabindex="0">
+                        <div class="card__image">
+                            <img src="assets/images/post-azteca.jpg" 
+                                 alt="Vista panorámica del Estadio Azteca lleno">
+                            <span class="card__badge">Sedes</span>
+                        </div>
+                        <div class="card__content">
+                            <h3 class="card__title">El Estadio Azteca y su historia mundialista</h3>
+                            <p class="card__description">
+                                El único estadio en albergar dos finales de Copa del Mundo 
+                                se prepara para recibir el Mundial 2026. Un recorrido por 
+                                su legendaria historia.
+                            </p>
+                            <div class="card__meta">
+                                <span class="card__category">México 1986, 1970</span>
+                                <time datetime="2025-09-05">05 Sep 2025</time>
+                            </div>
+                        </div>
+                        <div class="card__stats">
+                            <span class="stat">
+                                <span class="stat__icon">❤️</span>
+                                <span class="stat__count">756</span>
+                            </span>
+                            <span class="stat">
+                                <span class="stat__icon">💬</span>
+                                <span class="stat__count">89</span>
+                            </span>
+                            <span class="stat">
+                                <span class="stat__icon">👁️</span>
+                                <span class="stat__count">1.9k</span>
+                            </span>
+                        </div>
+                    </article>
+
+                    <!-- Publicación 4 -->
+                    <article class="card" tabindex="0">
+                        <div class="card__image">
+                            <img src="assets/images/post-zidane.jpg" 
+                                 alt="Zinedine Zidane siendo expulsado en la final de 2006">
+                            <span class="card__badge">Polémicas</span>
+                        </div>
+                        <div class="card__content">
+                            <h3 class="card__title">El cabezazo de Zidane: El final inesperado</h3>
+                            <p class="card__description">
+                                La despedida más controversial de una leyenda. El cabezazo 
+                                de Zidane a Materazzi en la final de Alemania 2006 sigue 
+                                siendo uno de los momentos más impactantes.
+                            </p>
+                            <div class="card__meta">
+                                <span class="card__category">Alemania 2006</span>
+                                <time datetime="2025-09-03">03 Sep 2025</time>
+                            </div>
+                        </div>
+                        <div class="card__stats">
+                            <span class="stat">
+                                <span class="stat__icon">❤️</span>
+                                <span class="stat__count">1.5k</span>
+                            </span>
+                            <span class="stat">
+                                <span class="stat__icon">💬</span>
+                                <span class="stat__count">340</span>
+                            </span>
+                            <span class="stat">
+                                <span class="stat__icon">👁️</span>
+                                <span class="stat__count">4.2k</span>
+                            </span>
+                        </div>
+                    </article>
+
+                    <!-- Publicación 5 -->
+                    <article class="card" tabindex="0">
+                        <div class="card__image">
+                            <img src="assets/images/post-pele.jpg" 
+                                 alt="Pelé levantando la Copa del Mundo en México 1970">
+                            <span class="card__badge">Estadísticas</span>
+                        </div>
+                        <div class="card__content">
+                            <h3 class="card__title">Pelé: El único tricampeón mundial</h3>
+                            <p class="card__description">
+                                Un análisis estadístico del jugador que ganó tres Copas del 
+                                Mundo (1958, 1962, 1970). Números que demuestran por qué 
+                                es considerado uno de los más grandes.
+                            </p>
+                            <div class="card__meta">
+                                <span class="card__category">Brasil 1958-1970</span>
+                                <time datetime="2025-09-01">01 Sep 2025</time>
+                            </div>
+                        </div>
+                        <div class="card__stats">
+                            <span class="stat">
+                                <span class="stat__icon">❤️</span>
+                                <span class="stat__count">2.1k</span>
+                            </span>
+                            <span class="stat">
+                                <span class="stat__icon">💬</span>
+                                <span class="stat__count">178</span>
+                            </span>
+                            <span class="stat">
+                                <span class="stat__icon">👁️</span>
+                                <span class="stat__count">5.3k</span>
+                            </span>
+                        </div>
+                    </article>
+
+                    <!-- Publicación 6 -->
+                    <article class="card" tabindex="0">
+                        <div class="card__image">
+                            <img src="assets/images/post-messi.jpg" 
+                                 alt="Lionel Messi levantando la Copa del Mundo en Qatar 2022">
+                            <span class="card__badge">Entrevistas</span>
+                        </div>
+                        <div class="card__content">
+                            <h3 class="card__title">Messi: "Era esto o era esto"</h3>
+                            <p class="card__description">
+                                Las palabras de Messi después de conquistar Qatar 2022, 
+                                el título que le faltaba para completar su carrera. 
+                                Una entrevista emotiva e histórica.
+                            </p>
+                            <div class="card__meta">
+                                <span class="card__category">Qatar 2022</span>
+                                <time datetime="2025-08-28">28 Ago 2025</time>
+                            </div>
+                        </div>
+                        <div class="card__stats">
+                            <span class="stat">
+                                <span class="stat__icon">❤️</span>
+                                <span class="stat__count">3.8k</span>
+                            </span>
+                            <span class="stat">
+                                <span class="stat__icon">💬</span>
+                                <span class="stat__count">567</span>
+                            </span>
+                            <span class="stat">
+                                <span class="stat__icon">👁️</span>
+                                <span class="stat__count">8.9k</span>
+                            </span>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Botón cargar más -->
+                <div class="section__footer">
+                    <button class="btn btn--outline" id="load-more">
+                        Cargar más publicaciones
+                    </button>
+                </div>
+            </section>
+
+            <!-- CTA para usuarios no registrados -->
+            <section class="section section--alt">
+                <div class="container" style="text-align: center;">
+                    <h2 class="section__title">¿Tienes una historia que contar?</h2>
+                    <p class="section__subtitle" style="max-width: 600px; margin: 0 auto var(--space-6);">
+                        Únete a nuestra comunidad y comparte tus análisis, recuerdos y 
+                        contenido sobre los mundiales de fútbol.
+                    </p>
+                    <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
+                        <a href="login.html" class="btn btn--primary">Crear cuenta</a>
+                        <a href="login.html" class="btn btn--outline">Iniciar sesión</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__column">
+                    <h3 class="footer__title">World Cup Archive</h3>
+                    <p class="footer__text">
+                        La historia completa de los mundiales de fútbol al alcance de todos.
+                    </p>
+                </div>
+
+                <div class="footer__column">
+                    <h4 class="footer__subtitle">Enlaces</h4>
+                    <ul class="footer__links">
+                        <li><a href="#">Acerca de</a></li>
+                        <li><a href="#">Contacto</a></li>
+                        <li><a href="#">Términos de uso</a></li>
+                        <li><a href="#">Privacidad</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__column">
+                    <h4 class="footer__subtitle">Ayuda</h4>
+                    <ul class="footer__links">
+                        <li><a href="#">Preguntas frecuentes</a></li>
+                        <li><a href="#">Guía de uso</a></li>
+                        <li><a href="#">Accesibilidad</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__column">
+                    <h4 class="footer__subtitle">Síguenos</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook" class="social-link">FB</a>
+                        <a href="#" aria-label="Twitter" class="social-link">TW</a>
+                        <a href="#" aria-label="Instagram" class="social-link">IG</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p>&copy; 2025 World Cup Archive. Proyecto educativo UANL.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="js/theme.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/accessibility.js"></script>
+    <script src="js/filters.js"></script>
+</body>
+</html>

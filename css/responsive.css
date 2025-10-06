@@ -1,0 +1,339 @@
+/* ==========================================
+   RESPONSIVE.CSS - Diseño Mobile-First
+   ==========================================
+   FILOSOFÍA MOBILE-FIRST:
+   - Los estilos base son para móviles (320px - 639px)
+   - Agregamos complejidad conforme la pantalla crece
+   - Usamos min-width en media queries (no max-width)
+   
+   BREAKPOINTS:
+   - Mobile:  Base (hasta 639px)
+   - Tablet:  640px (sm)
+   - Desktop: 1024px (md)
+   - Large:   1280px (lg)
+========================================== */
+
+/* ===== ESTILOS MOBILE (base) ===== */
+/* Ya están definidos en los otros archivos CSS */
+/* Aquí solo agregamos lo que cambia en pantallas más grandes */
+
+/* ===== TABLET: 640px ===== */
+@media (min-width: 640px) {
+  /* Contenedor con más padding */
+  .container {
+    --container-padding: var(--space-6);
+  }
+
+  /* Tipografía más grande */
+  :root {
+    --font-size-3xl: 2.125rem;  /* 34px */
+    --font-size-4xl: 2.75rem;   /* 44px */
+  }
+
+  /* Grid de cards: 2 columnas */
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Grid de mundiales: 3 columnas */
+  .world-cup-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Footer: 2 columnas */
+  .footer__content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Carrusel en horizontal */
+  .carousel__item {
+    flex-direction: row;
+  }
+
+  .carousel__image {
+    width: 50%;
+    aspect-ratio: 4 / 3;
+  }
+
+  .carousel__content {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* Secciones con más espacio */
+  .section {
+    padding: var(--space-20) 0;
+  }
+}
+
+/* ===== DESKTOP: 1024px ===== */
+@media (min-width: 1024px) {
+  /* Contenedor aún más grande */
+  .container {
+    --container-padding: var(--space-8);
+  }
+
+  /* ===== NAVBAR DESKTOP ===== */
+  /* Mostrar menú completo en desktop */
+  .navbar__menu {
+    display: flex; /* Ya está en flex por defecto */
+  }
+
+  /* Ocultar hamburguesa en desktop */
+  .navbar__toggle {
+    display: none;
+  }
+
+  /* ===== GRID: 3 COLUMNAS ===== */
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
+  }
+
+  .world-cup-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* Footer: 4 columnas */
+  .footer__content {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* ===== HOVER EFFECTS MÁS PRONUNCIADOS ===== */
+  /* En desktop tenemos mouse, podemos hacer efectos más llamativos */
+  .card:hover {
+    transform: translateY(-8px);
+  }
+
+  .world-cup-card:hover {
+    transform: translateY(-6px) scale(1.02);
+  }
+
+  /* ===== CARRUSEL MÁS GRANDE ===== */
+  .carousel__title {
+    font-size: var(--font-size-4xl);
+  }
+
+  .carousel__description {
+    font-size: var(--font-size-xl);
+  }
+}
+
+/* ===== PANTALLAS GRANDES: 1280px+ ===== */
+@media (min-width: 1280px) {
+  /* Tipografía aún más grande */
+  :root {
+    --font-size-3xl: 2.5rem;    /* 40px */
+    --font-size-4xl: 3rem;      /* 48px */
+  }
+
+  /* Secciones con más espacio vertical */
+  .section {
+    padding: var(--space-24) 0;
+  }
+
+  /* Grid gap más amplio */
+  .card-grid {
+    gap: var(--space-10);
+  }
+}
+
+/* ==========================================
+   MENÚ MÓVIL (hamburguesa)
+   ========================================== */
+
+/* Mobile: Menú oculto por defecto */
+@media (max-width: 1023px) {
+  /* Mostrar hamburguesa solo en móvil */
+  .navbar__toggle {
+    display: flex;
+  }
+
+  /* Menú inicialmente oculto */
+  .navbar__menu {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: var(--space-6);
+    background-color: var(--color-surface);
+    border-top: var(--border-width) solid var(--color-border);
+    box-shadow: var(--shadow-lg);
+    
+    /* Animación de entrada */
+    transform: translateX(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform var(--transition-base) var(--ease-out),
+                opacity var(--transition-base) var(--ease-out),
+                visibility var(--transition-base);
+    
+    /* Sobreponer otros elementos */
+    z-index: var(--z-dropdown);
+  }
+
+  /* Menú abierto */
+  .navbar__menu--open {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Links del menú móvil */
+  .navbar__menu li {
+    width: 100%;
+  }
+
+  .navbar__link {
+    display: block;
+    width: 100%;
+    padding: var(--space-4);
+    font-size: var(--font-size-lg);
+    border-bottom: var(--border-width) solid var(--color-border);
+  }
+
+  .navbar__link::after {
+    display: none; /* Quitar indicador en móvil */
+  }
+
+  /* Controles en móvil */
+  .navbar__controls {
+    position: absolute;
+    top: 50%;
+    right: var(--space-4);
+    transform: translateY(-50%);
+  }
+
+  /* Backdrop oscuro cuando menú está abierto */
+  .navbar__menu--open::before {
+    content: '';
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+  }
+}
+
+/* ==========================================
+   AJUSTES PARA TABLETS EN LANDSCAPE
+   ========================================== */
+@media (min-width: 768px) and (max-width: 1023px) and (orientation: landscape) {
+  /* Reducir altura del header en landscape */
+  :root {
+    --header-height: 56px;
+  }
+
+  /* Reducir padding vertical en secciones */
+  .section {
+    padding: var(--space-12) 0;
+  }
+
+  /* Hero más compacto */
+  .hero {
+    padding: var(--space-6) 0;
+  }
+}
+
+/* ==========================================
+   PRINT STYLES (para imprimir)
+   ========================================== */
+@media print {
+  /* Ocultar elementos innecesarios al imprimir */
+  .navbar__toggle,
+  .navbar__controls,
+  .theme-toggle,
+  .carousel__control,
+  .carousel__indicators,
+  .filter-bar,
+  .footer__column:last-child {
+    display: none !important;
+  }
+
+  /* Fondo blanco para ahorrar tinta */
+  body {
+    background-color: white;
+    color: black;
+  }
+
+  /* Quitar sombras */
+  .card,
+  .carousel,
+  .header {
+    box-shadow: none !important;
+  }
+
+  /* Quitar bordes de color */
+  .header {
+    border-bottom: 1px solid black;
+  }
+
+  /* Links con URL visible */
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666;
+  }
+}
+
+/* ==========================================
+   UTILIDADES RESPONSIVE
+   ========================================== */
+
+/* Ocultar en móvil, mostrar en tablet+ */
+.hidden-mobile {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .hidden-mobile {
+    display: block;
+  }
+}
+
+/* Mostrar solo en móvil */
+.visible-mobile {
+  display: block;
+}
+
+@media (min-width: 640px) {
+  .visible-mobile {
+    display: none;
+  }
+}
+
+/* Ocultar en desktop */
+@media (min-width: 1024px) {
+  .hidden-desktop {
+    display: none;
+  }
+}
+
+/* ==========================================
+   ORIENTACIÓN
+   ========================================== */
+
+/* Ajustes específicos para landscape en móvil */
+@media (max-width: 639px) and (orientation: landscape) {
+  /* Reducir espaciado vertical */
+  .section {
+    padding: var(--space-8) 0;
+  }
+
+  .hero {
+    padding: var(--space-4) 0;
+  }
+
+  /* Cards en 2 columnas aunque sea móvil */
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

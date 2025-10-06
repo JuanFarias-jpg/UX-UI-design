@@ -1,0 +1,440 @@
+/* ==========================================
+   COMPONENTS.CSS - Componentes Reutilizables
+   ==========================================
+   Componentes que se usan en múltiples páginas:
+   - Botones
+   - Cards
+   - Badges
+   - Carrusel
+   - Filtros
+========================================== */
+
+/* ===== BOTONES ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+  text-align: center;
+  border-radius: var(--border-radius-md);
+  border: var(--border-width) solid transparent;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  
+  /* Transiciones suaves */
+  transition: all var(--transition-fast) var(--ease-out);
+}
+
+/* Botón primario (acción principal) */
+.btn--primary {
+  background-color: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+.btn--primary:hover {
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn--primary:active {
+  transform: translateY(0);
+}
+
+/* Botón secundario */
+.btn--secondary {
+  background-color: var(--color-secondary);
+  color: white;
+  border-color: var(--color-secondary);
+}
+
+.btn--secondary:hover {
+  background-color: var(--color-secondary-dark);
+  border-color: var(--color-secondary-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Botón outline (solo borde) */
+.btn--outline {
+  background-color: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.btn--outline:hover {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+/* Botón deshabilitado */
+.btn:disabled,
+.btn--disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ===== CARDS ===== */
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  
+  /* Transiciones para microinteracciones */
+  transition: transform var(--transition-base) var(--ease-out),
+              box-shadow var(--transition-base) var(--ease-out);
+}
+
+/* Efecto hover en cards */
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Focus para accesibilidad con teclado */
+.card:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Imagen de la card */
+.card__image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9; /* Proporción 16:9 */
+  overflow: hidden;
+  background-color: var(--color-border);
+}
+
+.card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow) var(--ease-out);
+}
+
+.card:hover .card__image img {
+  transform: scale(1.05); /* Zoom suave al hacer hover */
+}
+
+/* Badge sobre la imagen */
+.card__badge {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  padding: var(--space-1) var(--space-3);
+  background-color: var(--color-primary);
+  color: white;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--border-radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Contenido de la card */
+.card__content {
+  padding: var(--space-5);
+  flex: 1;
+}
+
+.card__title {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--space-3);
+  color: var(--color-text);
+  
+
+}
+
+.card__description {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--space-4);
+  
+  /* Limitar a 3 líneas */
+  display: -webkit-box;               /* required for -webkit-line-clamp */
+  -webkit-box-orient: vertical;       /* required for -webkit-line-clamp */
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  line-clamp: 3;                      /* standard property (newer spec) */
+  -webkit-line-clamp: 3;              /* WebKit/Blink fallback */
+}
+
+.card__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.card__category {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Estadísticas de la card (likes, comentarios, vistas) */
+.card__stats {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.stat__icon {
+  font-size: var(--font-size-base);
+}
+
+.stat__count {
+  font-weight: var(--font-weight-medium);
+}
+
+/* ===== BADGES ===== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--border-radius-full);
+  background-color: var(--color-primary);
+  color: white;
+}
+
+/* ===== CARRUSEL ===== */
+.hero {
+  padding: var(--space-8) 0;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+}
+
+.carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--border-radius-xl);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-xl);
+}
+
+.carousel__track {
+  display: flex;
+  transition: transform var(--transition-slow) var(--ease-in-out);
+}
+
+.carousel__item {
+  min-width: 100%;
+  display: none; /* Ocultar items inactivos */
+  flex-direction: column;
+}
+
+.carousel__item--active {
+  display: flex; /* Mostrar solo el item activo */
+}
+
+.carousel__image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: var(--color-border);
+}
+
+.carousel__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel__content {
+  padding: var(--space-8);
+}
+
+.carousel__title {
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--space-4);
+}
+
+.carousel__description {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--space-6);
+}
+
+/* Controles del carrusel (flechas) */
+.carousel__control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: var(--border-radius-full);
+  font-size: var(--font-size-2xl);
+  color: var(--color-text);
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.carousel:hover .carousel__control {
+  opacity: 1;
+}
+
+.carousel__control:hover {
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel__control--prev {
+  left: var(--space-4);
+}
+
+.carousel__control--next {
+  right: var(--space-4);
+}
+
+/* Indicadores (puntos) */
+.carousel__indicators {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-4);
+}
+
+.carousel__indicators button {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--border-radius-full);
+  background-color: var(--color-border);
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.carousel__indicators button[aria-selected="true"] {
+  background-color: var(--color-primary);
+  transform: scale(1.2);
+}
+
+/* ===== FILTROS ===== */
+.filter-bar {
+  display: flex;
+  gap: var(--space-3);
+  margin-bottom: var(--space-8);
+  overflow-x: auto;
+  padding-bottom: var(--space-2);
+  
+  /* Ocultar scrollbar pero mantener funcionalidad */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.filter-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-btn {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  background-color: var(--color-bg);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--border-radius-full);
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+.filter-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.filter-btn--active {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+}
+
+/* ===== CARDS DE MUNDIALES ===== */
+.world-cup-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6);
+  background-color: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  text-align: center;
+  transition: all var(--transition-base) var(--ease-out);
+}
+
+.world-cup-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-primary);
+}
+
+.world-cup-card__year {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin-bottom: var(--space-2);
+}
+
+.world-cup-card__name {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-2);
+}
+
+.world-cup-card__champion {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-accent);
+}
+
+.world-cup-card__status {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-warning);
+  padding: var(--space-1) var(--space-3);
+  background-color: rgba(255, 193, 7, 0.1);
+  border-radius: var(--border-radius-full);
+}
+
+/* Utility to clamp text to N lines (example: 3 lines) */
+.text--clamp-3 {
+  display: -webkit-box;               /* required for -webkit-line-clamp */
+  -webkit-box-orient: vertical;       /* required for -webkit-line-clamp */
+  overflow: hidden;                   /* hide overflowed text */
+  text-overflow: ellipsis;            /* show ellipsis when clipped */
+
+  /* Standard (newer spec) then vendor fallback for broadest compatibility */
+  line-clamp: 3;                      /* standard property (when supported) */
+  -webkit-line-clamp: 3;              /* WebKit/Blink fallback */
+}

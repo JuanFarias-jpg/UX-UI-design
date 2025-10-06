@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Panel de administración - World Cup Archive">
+    <title>Panel de Admin - World Cup Archive</title>
+    
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header" role="banner">
+        <div class="container">
+            <nav class="navbar" role="navigation">
+                <div class="navbar__brand">
+                    <a href="index.html" class="logo">
+                        <span class="logo__text">WCA</span>
+                    </a>
+                    <span class="badge" style="margin-left: var(--space-2); background: var(--color-error);">
+                        Admin
+                    </span>
+                </div>
+
+                <button class="navbar__toggle" 
+                        aria-label="Abrir menú de navegación" 
+                        aria-expanded="false"
+                        aria-controls="navbar-menu">
+                    <span class="hamburger"></span>
+                </button>
+
+                <ul class="navbar__menu" id="navbar-menu">
+                    <li><a href="index.html" class="navbar__link">Ver sitio</a></li>
+                    <li><a href="admin.html" class="navbar__link navbar__link--active">Panel Admin</a></li>
+                </ul>
+
+                <div class="navbar__controls">
+                    <button class="theme-toggle" 
+                            aria-label="Cambiar tema claro/oscuro"
+                            title="Cambiar tema">
+                        <span class="theme-toggle__icon">🌙</span>
+                    </button>
+                    <button class="btn btn--outline" id="logout-btn">
+                        Cerrar Sesión
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="main admin-page">
+        <div class="container">
+            <!-- Header del admin -->
+            <div class="admin-header">
+                <div>
+                    <h1 class="admin-title">Panel de Administración</h1>
+                    <p style="color: var(--color-text-secondary); margin-top: var(--space-2);">
+                        Gestiona publicaciones, categorías y contenido del sitio
+                    </p>
+                </div>
+                <div class="admin-actions">
+                    <button class="btn btn--primary" id="new-category-btn">
+                        + Nueva Categoría
+                    </button>
+                    <button class="btn btn--secondary" id="new-mundial-btn">
+                        + Nuevo Mundial
+                    </button>
+                </div>
+            </div>
+
+            <!-- Grid: Sidebar + Content -->
+            <div class="admin-layout">
+                <!-- Sidebar -->
+                <aside class="admin-sidebar">
+                    <nav class="admin-menu" aria-label="Menú de administración">
+                        <a href="#pendientes" class="admin-menu__item admin-menu__item--active" data-section="pendientes">
+                            📋 Publicaciones Pendientes
+                            <span class="badge" style="margin-left: auto; background: var(--color-warning);">4</span>
+                        </a>
+                        <a href="#todas" class="admin-menu__item" data-section="todas">
+                            📄 Todas las Publicaciones
+                        </a>
+                        <a href="#categorias" class="admin-menu__item" data-section="categorias">
+                            🏷️ Categorías
+                        </a>
+                        <a href="#mundiales" class="admin-menu__item" data-section="mundiales">
+                            🏆 Mundiales
+                        </a>
+                        <a href="#usuarios" class="admin-menu__item" data-section="usuarios">
+                            👥 Usuarios
+                        </a>
+                        <a href="#estadisticas" class="admin-menu__item" data-section="estadisticas">
+                            📊 Estadísticas
+                        </a>
+                    </nav>
+                </aside>
+
+                <!-- Content Area -->
+                <div class="admin-content">
+                    <!-- Sección: Publicaciones Pendientes -->
+                    <section id="section-pendientes" class="admin-section">
+                        <h2 class="section__title">Publicaciones Pendientes de Aprobación</h2>
+                        <p class="section__subtitle" style="margin-bottom: var(--space-8);">
+                            Revisa y aprueba el contenido enviado por los usuarios
+                        </p>
+
+                        <div class="pending-posts">
+                            <!-- Publicación pendiente 1 -->
+                            <article class="pending-post">
+                                <div class="pending-post__header">
+                                    <div class="pending-post__meta">
+                                        <span class="pending-post__author">Por: @juanlopez</span>
+                                        <time class="pending-post__date" datetime="2025-09-10">
+                                            Enviada: 10 Sep 2025, 14:32
+                                        </time>
+                                    </div>
+                                    <span class="badge" style="background: var(--color-warning);">
+                                        Pendiente
+                                    </span>
+                                </div>
+
+                                <div class="pending-post__content">
+                                    <div style="display: grid; grid-template-columns: 200px 1fr; gap: var(--space-4);">
+                                        <img src="assets/images/user-post-2.jpg" 
+                                             alt="Cuauhtémoc Blanco"
+                                             style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: var(--border-radius-md);">
+                                        <div>
+                                            <div style="display: flex; gap: var(--space-2); margin-bottom: var(--space-2);">
+                                                <span class="badge" style="background: var(--color-secondary);">
+                                                    Entrevistas
+                                                </span>
+                                                <span class="badge" style="background: var(--color-accent);">
+                                                    Francia 1998
+                                                </span>
+                                            </div>
+                                            <h3 style="font-size: var(--font-size-xl); margin-bottom: var(--space-2);">
+                                                Cuauhtémoc Blanco: Memorias del 98
+                                            </h3>
+                                            <p style="color: var(--color-text-secondary); line-height: var(--line-height-relaxed);">
+                                                Entrevista exclusiva donde el Cuau recuerda su experiencia en 
+                                                Francia 1998 y ese memorable gol a Corea del Sur con su 
+                                                característico movimiento "Cuauhtemiña".
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="pending-post__actions">
+                                    <button class="btn btn--primary" data-action="approve" data-post-id="1">
+                                        ✓ Aprobar
+                                    </button>
+                                    <button class="btn btn--outline" data-action="reject" data-post-id="1">
+                                        ✕ Rechazar
+                                    </button>
+                                    <button class="btn btn--outline">
+                                        👁️ Vista previa
+                                    </button>
+                                </div>
+                            </article>
+
+                            <!-- Publicación pendiente 2 -->
+                            <article class="pending-post">
+                                <div class="pending-post__header">
+                                    <div class="pending-post__meta">
+                                        <span class="pending-post__author">Por: @mariafutbol</span>
+                                        <time class="pending-post__date" datetime="2025-09-09">
+                                            Enviada: 09 Sep 2025, 09:15
+                                        </time>
+                                    </div>
+                                    <span class="badge" style="background: var(--color-warning);">
+                                        Pendiente
+                                    </span>
+                                </div>
+
+                                <div class="pending-post__content">
+                                    <div style="display: grid; grid-template-columns: 200px 1fr; gap: var(--space-4);">
+                                        <img src="assets/images/user-post-4.jpg" 
+                                             alt="Estadio Maracaná"
+                                             style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: var(--border-radius-md);">
+                                        <div>
+                                            <div style="display: flex; gap: var(--space-2); margin-bottom: var(--space-2);">
+                                                <span class="badge" style="background: var(--color-secondary);">
+                                                    Sedes
+                                                </span>
+                                                <span class="badge" style="background: var(--color-accent);">
+                                                    Brasil 2014
+                                                </span>
+                                            </div>
+                                            <h3 style="font-size: var(--font-size-xl); margin-bottom: var(--space-2);">
+                                                El Maracaná: Templo del fútbol mundial
+                                            </h3>
+                                            <p style="color: var(--color-text-secondary); line-height: var(--line-height-relaxed);">
+                                                Un recorrido por la historia del estadio más emblemático de Brasil, 
+                                                desde el Maracanazo de 1950 hasta la final de 2014.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="pending-post__actions">
+                                    <button class="btn btn--primary" data-action="approve" data-post-id="2">
+                                        ✓ Aprobar
+                                    </button>
+                                    <button class="btn btn--outline" data-action="reject" data-post-id="2">
+                                        ✕ Rechazar
+                                    </button>
+                                    <button class="btn btn--outline">
+                                        👁️ Vista previa
+                                    </button>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+
+                    <!-- Sección: Todas las Publicaciones -->
+                    <section id="section-todas" class="admin-section" hidden>
+                        <h2 class="section__title">Todas las Publicaciones</h2>
+                        
+                        <div class="filter-bar" style="margin-bottom: var(--space-6);">
+                            <button class="filter-btn filter-btn--active">Todas</button>
+                            <button class="filter-btn">Aprobadas</button>
+                            <button class="filter-btn">Pendientes</button>
+                            <button class="filter-btn">Rechazadas</button>
+                        </div>
+
+                        <div class="card-grid">
+                            <article class="card">
+                                <div class="card__image">
+                                    <img src="assets/images/post-1.jpg" alt="Publicación">
+                                    <span class="card__badge">Jugadas</span>
+                                </div>
+                                <div class="card__content">
+                                    <h3 class="card__title">El gol del siglo de Maradona</h3>
+                                    <p class="card__description">
+                                        Por @historiadorfutbol
+                                    </p>
+                                </div>
+                                <div style="padding: var(--space-3); display: flex; gap: var(--space-2);">
+                                    <button class="btn btn--outline" style="flex: 1;">Editar</button>
+                                    <button class="btn btn--outline" style="flex: 1; color: var(--color-error);">Eliminar</button>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+
+                    <!-- Sección: Categorías -->
+                    <section id="section-categorias" class="admin-section" hidden>
+                        <h2 class="section__title">Gestión de Categorías</h2>
+                        
+                        <div class="stats-grid" style="margin-bottom: var(--space-8);">
+                            <div class="stat-card">
+                                <div class="stat-card__icon">📋</div>
+                                <div class="stat-card__value">7</div>
+                                <div class="stat-card__label">Categorías Activas</div>
+                            </div>
+                        </div>
+
+                        <div style="background: var(--color-surface); border-radius: var(--border-radius-lg); padding: var(--space-6);">
+                            <h3 style="margin-bottom: var(--space-4);">Categorías existentes:</h3>
+                            <ul style="display: flex; flex-direction: column; gap: var(--space-3);">
+                                <li style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-3); border: 1px solid var(--color-border); border-radius: var(--border-radius-md);">
+                                    <span>Jugadas (156 publicaciones)</span>
+                                    <div style="display: flex; gap: var(--space-2);">
+                                        <button class="btn btn--outline">Editar</button>
+                                        <button class="btn btn--outline" style="color: var(--color-error);">Eliminar</button>
+                                    </div>
+                                </li>
+                                <li style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-3); border: 1px solid var(--color-border); border-radius: var(--border-radius-md);">
+                                    <span>Entrevistas (89 publicaciones)</span>
+                                    <div style="display: flex; gap: var(--space-2);">
+                                        <button class="btn btn--outline">Editar</button>
+                                        <button class="btn btn--outline" style="color: var(--color-error);">Eliminar</button>
+                                    </div>
+                                </li>
+                                <li style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-3); border: 1px solid var(--color-border); border-radius: var(--border-radius-md);">
+                                    <span>Partidos (234 publicaciones)</span>
+                                    <div style="display: flex; gap: var(--space-2);">
+                                        <button class="btn btn--outline">Editar</button>
+                                        <button class="btn btn--outline" style="color: var(--color-error);">Eliminar</button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Sección: Estadísticas -->
+                    <section id="section-estadisticas" class="admin-section" hidden>
+                        <h2 class="section__title">Estadísticas del Sitio</h2>
+                        
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-card__icon">👥</div>
+                                <div class="stat-card__value">1,247</div>
+                                <div class="stat-card__label">Usuarios Registrados</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-card__icon">📄</div>
+                                <div class="stat-card__value">523</div>
+                                <div class="stat-card__label">Publicaciones Totales</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-card__icon">❤️</div>
+                                <div class="stat-card__value">12.4k</div>
+                                <div class="stat-card__label">Me gusta totales</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-card__icon">💬</div>
+                                <div class="stat-card__value">3.2k</div>
+                                <div class="stat-card__label">Comentarios</div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer__bottom">
+                <p>&copy; 2025 World Cup Archive. Panel de Administración.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="js/theme.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/accessibility.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

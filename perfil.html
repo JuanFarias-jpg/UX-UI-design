@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Perfil de usuario - World Cup Archive">
+    <title>Mi Perfil - World Cup Archive</title>
+    
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header" role="banner">
+        <div class="container">
+            <nav class="navbar" role="navigation" aria-label="Navegación principal">
+                <div class="navbar__brand">
+                    <a href="index.html" class="logo" aria-label="Inicio">
+                        <span class="logo__text">WCA</span>
+                    </a>
+                </div>
+
+                <button class="navbar__toggle" 
+                        aria-label="Abrir menú de navegación" 
+                        aria-expanded="false"
+                        aria-controls="navbar-menu">
+                    <span class="hamburger"></span>
+                </button>
+
+                <ul class="navbar__menu" id="navbar-menu">
+                    <li><a href="index.html" class="navbar__link">Inicio</a></li>
+                    <li><a href="#mundiales" class="navbar__link">Mundiales</a></li>
+                    <li><a href="#estadisticas" class="navbar__link">Estadísticas</a></li>
+                    <li><a href="publicaciones.html" class="navbar__link">Publicaciones</a></li>
+                    <li><a href="perfil.html" class="navbar__link navbar__link--active">Mi Perfil</a></li>
+                </ul>
+
+                <div class="navbar__controls">
+                    <button class="theme-toggle" 
+                            aria-label="Cambiar tema claro/oscuro"
+                            title="Cambiar tema">
+                        <span class="theme-toggle__icon">🌙</span>
+                    </button>
+                    <button class="btn btn--outline" id="logout-btn">
+                        Cerrar Sesión
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="main profile-page">
+        <!-- Header del perfil -->
+        <section class="profile-header">
+            <div class="container">
+                <div class="profile-info">
+                    <div class="profile-avatar">
+                        <img src="assets/images/avatar-placeholder.jpg" 
+                             alt="Foto de perfil de Juan López">
+                    </div>
+                    <div>
+                        <h1 class="profile-name" id="profile-name">Juan López</h1>
+                        <p class="profile-username">@juanlopez</p>
+                        <div class="profile-stats">
+                            <div class="profile-stat">
+                                <span class="profile-stat__number">24</span>
+                                <span class="profile-stat__label">Publicaciones</span>
+                            </div>
+                            <div class="profile-stat">
+                                <span class="profile-stat__number">1.2k</span>
+                                <span class="profile-stat__label">Me gusta</span>
+                            </div>
+                            <div class="profile-stat">
+                                <span class="profile-stat__number">156</span>
+                                <span class="profile-stat__label">Seguidores</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <!-- Navegación del perfil -->
+            <nav class="profile-nav" aria-label="Navegación del perfil">
+                <a href="#publicaciones" class="profile-nav__link profile-nav__link--active" data-tab="publicaciones">
+                    Mis Publicaciones
+                </a>
+                <a href="#favoritas" class="profile-nav__link" data-tab="favoritas">
+                    Favoritas
+                </a>
+                <a href="#borradores" class="profile-nav__link" data-tab="borradores">
+                    Borradores
+                </a>
+                <a href="#configuracion" class="profile-nav__link" data-tab="configuracion">
+                    Configuración
+                </a>
+            </nav>
+
+            <!-- Sección: Mis Publicaciones -->
+            <section class="profile-content" id="tab-publicaciones">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-6);">
+                    <h2 class="section__title" style="margin: 0;">Mis Publicaciones</h2>
+                    <button class="btn btn--primary" id="new-post-btn">
+                        + Nueva Publicación
+                    </button>
+                </div>
+
+                <!-- Filtros de estado -->
+                <div class="filter-bar" style="margin-bottom: var(--space-8);">
+                    <button class="filter-btn filter-btn--active" data-status="all">
+                        Todas (24)
+                    </button>
+                    <button class="filter-btn" data-status="published">
+                        Publicadas (18)
+                    </button>
+                    <button class="filter-btn" data-status="pending">
+                        En revisión (4)
+                    </button>
+                    <button class="filter-btn" data-status="rejected">
+                        Rechazadas (2)
+                    </button>
+                </div>
+
+                <!-- Grid de publicaciones -->
+                <div class="card-grid">
+                    <!-- Publicación aprobada -->
+                    <article class="card" tabindex="0">
+                        <div class="card__image">
+                            <img src="assets/images/user-post-1.jpg" 
+                                 alt="Análisis táctico del 4-3-3 de España 2010">
+                            <span class="card__badge">Estadísticas</span>
+                            <span class="badge" style="position: absolute; top: var(--space-3); right: var(--space-3); background: var(--color-success);">
+                                Publicada
+                            </span>
+                        </div>
+                        <div class="card__content">
+                            <h3 class="card__title">El 4-3-3 de España: Análisis táctico</h3>
+                            <p class="card__description">
+                                Un análisis profundo del sistema táctico que llevó a España a ganar 
+                                su primer Mundial en Sudáfrica 2010.
+                            </p>
+                            <div class="card__meta">
+                                <span class="card__category">Sudáfrica 2010</span>
+                                <time datetime="2025-09-12">12 Sep 2025</time>
+                            </div>
+                        </div>
+                        <div class="card__stats">
+                            <span class="stat">
+                                <span class="stat__icon">❤️</span>
+                                <span class="stat__count">342</span>
+                            </span>
+                            <span class="stat">
+                                <span class="stat__icon">💬</span>
+                                <span class="stat__count">45</span>
+                            </span>
+                            <span class="stat">
+                                <span class="stat__icon">👁️</span>
+                                <span class="stat__count">1.2k</span>
+                            </span>
+                        </div>
+                        <div style="display: flex; gap: var(--space-2); padding: var(--space-3);">
+                            <button class="btn btn--outline" style="flex: 1;">Editar</button>
+                            <button class="btn btn--outline" style="flex: 1;">Ver</button>
+                        </div>
+                    </article>
+
+                    <!-- Publicación en revisión -->
+                    <article class="card" tabindex="0">
+                        <div class="card__image">
+                            <img src="assets/images/user-post-2.jpg" 
+                                 alt="Entrevista exclusiva con Cuauhtémoc Blanco">
+                            <span class="card__badge">Entrevistas</span>
+                            <span class="badge" style="position: absolute; top: var(--space-3); right: var(--space-3); background: var(--color-warning);">
+                                En revisión
+                            </span>
+                        </div>
+                        <div class="card__content">
+                            <h3 class="card__title">Cuauhtémoc Blanco: Memorias del 98</h3>
+                            <p class="card__description">
+                                Entrevista exclusiva donde el Cuau recuerda su experiencia en 
+                                Francia 1998 y ese memorable gol a Corea del Sur.
+                            </p>
+                            <div class="card__meta">
+                                <span class="card__category">Francia 1998</span>
+                                <time datetime="2025-09-10">10 Sep 2025</time>
+                            </div>
+                        </div>
+                        <div class="card__stats">
+                            <span class="stat">
+                                <span class="stat__icon">⏳</span>
+                                <span class="stat__count">Pendiente</span>
+                            </span>
+                        </div>
+                        <div style="display: flex; gap: var(--space-2); padding: var(--space-3);">
+                            <button class="btn btn--outline" style="flex: 1;">Editar</button>
+                            <button class="btn btn--outline" style="flex: 1; color: var(--color-error);">Cancelar</button>
+                        </div>
+                    </article>
+
+                    <!-- Publicación rechazada -->
+                    <article class="card" tabindex="0" style="opacity: 0.7;">
+                        <div class="card__image">
+                            <img src="assets/images/user-post-3.jpg" 
+                                 alt="Top 10 goles del Mundial">
+                            <span class="card__badge">Jugadas</span>
+                            <span class="badge" style="position: absolute; top: var(--space-3); right: var(--space-3); background: var(--color-error);">
+                                Rechazada
+                            </span>
+                        </div>
+                        <div class="card__content">
+                            <h3 class="card__title">Top 10 mejores goles de la historia</h3>
+                            <p class="card__description">
+                                Una compilación de los goles más espectaculares en la historia 
+                                de los mundiales de fútbol.
+                            </p>
+                            <div class="card__meta">
+                                <span class="card__category">Varios mundiales</span>
+                                <time datetime="2025-09-08">08 Sep 2025</time>
+                            </div>
+                        </div>
+                        <div style="padding: var(--space-3); background: rgba(220, 53, 69, 0.1); border-top: 1px solid var(--color-error);">
+                            <p style="font-size: var(--font-size-sm); color: var(--color-error); margin-bottom: var(--space-2);">
+                                <strong>Motivo del rechazo:</strong>
+                            </p>
+                            <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary);">
+                                El contenido es muy similar a una publicación existente. 
+                                Por favor, proporciona un enfoque más original.
+                            </p>
+                        </div>
+                        <div style="display: flex; gap: var(--space-2); padding: var(--space-3);">
+                            <button class="btn btn--outline" style="flex: 1;">Revisar</button>
+                            <button class="btn btn--outline" style="flex: 1;">Eliminar</button>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Sección: Favoritas -->
+            <section class="profile-content" id="tab-favoritas" hidden>
+                <h2 class="section__title">Publicaciones Favoritas</h2>
+                <p class="section__subtitle" style="margin-bottom: var(--space-8);">
+                    Publicaciones que has marcado como favoritas
+                </p>
+
+                <div class="card-grid">
+                    <article class="card" tabindex="0">
+                        <div class="card__image">
+                            <img src="assets/images/post-maradona.jpg" 
+                                 alt="Gol de Maradona contra Inglaterra">
+                            <span class="card__badge">Jugadas</span>
+                        </div>
+                        <div class="card__content">
+                            <h3 class="card__title">El gol del siglo de Maradona</h3>
+                            <p class="card__description">
+                                Revive la jugada más icónica del Mundial México 86.
+                            </p>
+                            <div class="card__meta">
+                                <span class="card__category">México 1986</span>
+                                <span style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">
+                                    Por @historiadorfutbol
+                                </span>
+                            </div>
+                        </div>
+                        <div class="card__stats">
+                            <span class="stat">
+                                <span class="stat__icon">❤️</span>
+                                <span class="stat__count">1.2k</span>
+                            </span>
+                            <span class="stat">
+                                <span class="stat__icon">💬</span>
+                                <span class="stat__count">150</span>
+                            </span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Sección: Borradores -->
+            <section class="profile-content" id="tab-borradores" hidden>
+                <h2 class="section__title">Borradores</h2>
+                <p class="section__subtitle" style="margin-bottom: var(--space-8);">
+                    Publicaciones que aún no has enviado
+                </p>
+
+                <div style="text-align: center; padding: var(--space-16) var(--space-6);">
+                    <p style="font-size: var(--font-size-xl); color: var(--color-text-secondary); margin-bottom: var(--space-4);">
+                        No tienes borradores guardados
+                    </p>
+                    <button class="btn btn--primary">
+                        Crear nueva publicación
+                    </button>
+                </div>
+            </section>
+
+            <!-- Sección: Configuración -->
+            <section class="profile-content" id="tab-configuracion" hidden>
+                <h2 class="section__title">Configuración de la Cuenta</h2>
+                
+                <div style="max-width: 600px; margin: var(--space-8) 0;">
+                    <!-- Información personal -->
+                    <div style="background: var(--color-surface); padding: var(--space-6); border-radius: var(--border-radius-lg); margin-bottom: var(--space-6);">
+                        <h3 style="font-size: var(--font-size-xl); margin-bottom: var(--space-4);">
+                            Información Personal
+                        </h3>
+                        
+                        <div class="form-group" style="margin-bottom: var(--space-4);">
+                            <label class="form-label">Nombre completo</label>
+                            <input type="text" class="form-input" value="Juan López" readonly>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: var(--space-4);">
+                            <label class="form-label">Nombre de usuario</label>
+                            <input type="text" class="form-input" value="juanlopez" readonly>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: var(--space-4);">
+                            <label class="form-label">Correo electrónico</label>
+                            <input type="email" class="form-input" value="juan@email.com" readonly>
+                        </div>
+
+                        <button class="btn btn--outline">
+                            Editar información
+                        </button>
+                    </div>
+
+                    <!-- Cambiar contraseña -->
+                    <div style="background: var(--color-surface); padding: var(--space-6); border-radius: var(--border-radius-lg); margin-bottom: var(--space-6);">
+                        <h3 style="font-size: var(--font-size-xl); margin-bottom: var(--space-4);">
+                            Seguridad
+                        </h3>
+                        
+                        <button class="btn btn--outline">
+                            Cambiar contraseña
+                        </button>
+                    </div>
+
+                    <!-- Eliminar cuenta -->
+                    <div style="background: var(--color-surface); padding: var(--space-6); border-radius: var(--border-radius-lg); border: 1px solid var(--color-error);">
+                        <h3 style="font-size: var(--font-size-xl); margin-bottom: var(--space-2); color: var(--color-error);">
+                            Zona de Peligro
+                        </h3>
+                        <p style="color: var(--color-text-secondary); margin-bottom: var(--space-4);">
+                            Una vez que elimines tu cuenta, no hay vuelta atrás. Por favor, está seguro.
+                        </p>
+                        <button class="btn btn--outline" style="color: var(--color-error); border-color: var(--color-error);">
+                            Eliminar cuenta
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__column">
+                    <h3 class="footer__title">World Cup Archive</h3>
+                    <p class="footer__text">
+                        La historia completa de los mundiales de fútbol al alcance de todos.
+                    </p>
+                </div>
+
+                <div class="footer__column">
+                    <h4 class="footer__subtitle">Enlaces</h4>
+                    <ul class="footer__links">
+                        <li><a href="#">Acerca de</a></li>
+                        <li><a href="#">Contacto</a></li>
+                        <li><a href="#">Términos de uso</a></li>
+                        <li><a href="#">Privacidad</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__column">
+                    <h4 class="footer__subtitle">Ayuda</h4>
+                    <ul class="footer__links">
+                        <li><a href="#">Preguntas frecuentes</a></li>
+                        <li><a href="#">Guía de uso</a></li>
+                        <li><a href="#">Accesibilidad</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__column">
+                    <h4 class="footer__subtitle">Síguenos</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook" class="social-link">FB</a>
+                        <a href="#" aria-label="Twitter" class="social-link">TW</a>
+                        <a href="#" aria-label="Instagram" class="social-link">IG</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p>&copy; 2025 World Cup Archive. Proyecto educativo UANL.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="js/theme.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/accessibility.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+</html>

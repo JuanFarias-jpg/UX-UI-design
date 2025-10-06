@@ -1,0 +1,223 @@
+/* ==========================================
+   VARIABLES.CSS - Sistema de Diseño
+   ==========================================
+   Este archivo contiene todas las variables globales:
+   - Colores (modo claro y oscuro)
+   - Tipografía
+   - Espaciados
+   - Sombras y efectos
+   
+   IMPORTANTE: Nunca uses valores directos en otros archivos CSS.
+   Siempre usa var(--nombre-variable) para mantener consistencia.
+========================================== */
+
+:root {
+  /* ===== COLORES PRINCIPALES ===== */
+  /* Tu paleta de colores del documento */
+  --color-primary: #1B998B;        /* Verde esmeralda - energía, vitalidad */
+  --color-primary-dark: #147a6f;   /* Verde más oscuro para hover */
+  --color-primary-light: #2dbba8;  /* Verde más claro para estados activos */
+  
+  --color-secondary: #1B6899;      /* Azul profundo - confianza */
+  --color-secondary-dark: #14527a;
+  --color-secondary-light: #2280b8;
+  
+  --color-accent: #1B994C;         /* Verde intenso - frescura */
+  --color-accent-dark: #157a3d;
+  --color-accent-light: #22b85c;
+
+  /* ===== COLORES NEUTROS (MODO CLARO) ===== */
+  --color-bg: #F8F9FA;             /* Fondo principal */
+  --color-surface: #FFFFFF;        /* Tarjetas y elementos elevados */
+  --color-text: #212529;           /* Texto principal */
+  --color-text-secondary: #6C757D; /* Texto secundario */
+  --color-border: #DEE2E6;         /* Bordes y divisores */
+
+  /* ===== COLORES DE ESTADO ===== */
+  --color-success: #1B994C;        /* Éxitos/confirmaciones */
+  --color-error: #DC3545;          /* Errores */
+  --color-warning: #FFC107;        /* Advertencias */
+  --color-info: #1B6899;           /* Información */
+
+  /* ===== TIPOGRAFÍA ===== */
+  /* Familias de fuentes */
+  --font-primary: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-heading: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'Courier New', monospace;
+
+  /* Tamaños de fuente - Sistema escalable */
+  /* Mobile-first: empezamos con tamaños para móvil */
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-base: 1rem;     /* 16px - base para lectura */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.25rem;    /* 20px */
+  --font-size-2xl: 1.5rem;    /* 24px */
+  --font-size-3xl: 1.875rem;  /* 30px */
+  --font-size-4xl: 2.25rem;   /* 36px */
+
+  /* Pesos de fuente */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Altura de línea (line-height) */
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* ===== ESPACIADOS ===== */
+  /* Sistema de espaciado consistente basado en 8px */
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+  --space-20: 5rem;     /* 80px */
+
+  /* ===== BORDES ===== */
+  --border-radius-sm: 0.25rem;  /* 4px - botones pequeños */
+  --border-radius-md: 0.5rem;   /* 8px - cards, inputs */
+  --border-radius-lg: 1rem;     /* 16px - elementos grandes */
+  --border-radius-xl: 1.5rem;   /* 24px - modales */
+  --border-radius-full: 9999px; /* Circular */
+
+  --border-width: 1px;
+  --border-width-thick: 2px;
+
+  /* ===== SOMBRAS ===== */
+  /* Sombras para dar profundidad a elementos */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+               0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+               0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+               0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  /* ===== TRANSICIONES ===== */
+  /* Duración de animaciones */
+  --transition-fast: 150ms;
+  --transition-base: 250ms;
+  --transition-slow: 350ms;
+  
+  /* Curvas de animación (easing) */
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ===== Z-INDEX ===== */
+  /* Capas de profundidad para elementos superpuestos */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+
+  /* ===== CONTENEDOR MÁXIMO ===== */
+  --container-max-width: 1200px;
+  --container-padding: var(--space-4);
+
+  /* ===== HEADER HEIGHT ===== */
+  --header-height: 64px;
+}
+
+/* ==========================================
+   MODO OSCURO
+   ==========================================
+   Variables que se sobrescriben automáticamente
+   cuando el usuario tiene modo oscuro activo
+========================================== */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #121212;
+    --color-surface: #1E1E1E;
+    --color-text: #FFFFFF;
+    --color-text-secondary: #B0B0B0;
+    --color-border: #2C2C2C;
+  }
+}
+
+/* Clase manual para forzar modo oscuro */
+/* Tu compañero usará esta clase con JavaScript */
+.dark-mode {
+  --color-bg: #121212;
+  --color-surface: #1E1E1E;
+  --color-text: #FFFFFF;
+  --color-text-secondary: #B0B0B0;
+  --color-border: #2C2C2C;
+  
+  /* Ajustar sombras para modo oscuro */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4),
+               0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4),
+               0 4px 6px -2px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5),
+               0 10px 10px -5px rgba(0, 0, 0, 0.4);
+}
+
+/* ==========================================
+   PALETA ACCESIBLE PARA DALTONISMO
+   ==========================================
+   Clase opcional para usuarios con daltonismo
+========================================== */
+
+.accessible-colors {
+  /* Paleta adaptada que mantiene buen contraste */
+  --color-primary: #648FFF;      /* Azul claro */
+  --color-secondary: #785EF0;    /* Azul violeta */
+  --color-accent: #38F11C;       /* Verde brillante */
+  
+  --color-primary-dark: #4a6fd9;
+  --color-primary-light: #8aadff;
+  --color-secondary-dark: #5e42cc;
+  --color-secondary-light: #9478f4;
+  --color-accent-dark: #2acc14;
+  --color-accent-light: #5ef444;
+}
+
+/* ==========================================
+   AJUSTES DE TAMAÑO DE FUENTE
+   ==========================================
+   Clases para usuarios que necesitan texto más grande
+========================================== */
+
+.font-size-large {
+  --font-size-base: 1.125rem;  /* 18px */
+  --font-size-lg: 1.25rem;     /* 20px */
+  --font-size-xl: 1.5rem;      /* 24px */
+  --font-size-2xl: 1.75rem;    /* 28px */
+  --font-size-3xl: 2.125rem;   /* 34px */
+  --font-size-4xl: 2.5rem;     /* 40px */
+}
+
+.font-size-xlarge {
+  --font-size-base: 1.25rem;   /* 20px */
+  --font-size-lg: 1.5rem;      /* 24px */
+  --font-size-xl: 1.75rem;     /* 28px */
+  --font-size-2xl: 2rem;       /* 32px */
+  --font-size-3xl: 2.5rem;     /* 40px */
+  --font-size-4xl: 3rem;       /* 48px */
+}
+
+/* ==========================================
+   BREAKPOINTS
+   ==========================================
+   Puntos de quiebre para diseño responsive
+   Estos NO son variables CSS, son valores de referencia
+   para usar en media queries en otros archivos
+   
+   Mobile:  hasta 639px  (default)
+   Tablet:  640px - 1023px
+   Desktop: 1024px en adelante
+========================================== */

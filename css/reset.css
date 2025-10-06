@@ -1,0 +1,244 @@
+/* ==========================================
+   RESET.CSS - Normalización de Estilos
+   ==========================================
+   Este archivo elimina las inconsistencias entre navegadores
+   y establece una base limpia para construir.
+========================================== */
+
+/* ===== BOX-SIZING ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== HTML Y BODY ===== */
+html {
+  font-size: 100%; /* 1rem = 16px */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  min-height: 100%;
+  text-rendering: optimizeSpeed;
+  overflow-x: hidden;
+}
+
+/* ===== TÍTULOS ===== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text);
+  margin: 0;
+}
+
+/* ===== PÁRRAFOS Y LISTAS ===== */
+p, ul, ol, dl {
+  margin: 0;
+}
+
+ul, ol {
+  list-style: none;
+  padding: 0;
+}
+
+/* ===== ENLACES ===== */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-base) var(--ease-out);
+}
+
+a:hover,
+a:focus {
+  color: var(--color-primary-dark);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--border-radius-sm);
+}
+
+/* ===== IMÁGENES Y MEDIA ===== */
+img, picture, video, canvas, svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ===== BOTONES E INPUTS ===== */
+button, input, textarea, select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+button, a, input[type="submit"], input[type="button"] {
+  cursor: pointer;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* ===== TABLAS ===== */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+/* ===== ELEMENTOS DE FORMULARIO ===== */
+input, textarea, select {
+  -webkit-appearance: none; /* Safari / iOS */
+  -moz-appearance: none;    /* Firefox */
+  appearance: none;         /* Estándar */
+}
+
+/* Inputs numéricos */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* ===== ACCESIBILIDAD ===== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ===== REDUCIR MOVIMIENTO ===== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ===== SELECCIÓN DE TEXTO ===== */
+::selection {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+::-moz-selection {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+/* ===== SCROLLBAR (solo Chrome/Edge) ===== */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--border-radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-secondary);
+}
+
+/* ===== LOADING STATE ===== */
+img[loading="lazy"] {
+  background: var(--color-border);
+}
+
+/* ===== ABREVIACIONES ===== */
+abbr[title] {
+  text-decoration: underline dotted;
+  cursor: help;
+}
+
+/* ===== CÓDIGO ===== */
+code, kbd, samp, pre {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+pre {
+  overflow-x: auto;
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border-radius: var(--border-radius-md);
+}
+
+/* ===== ELEMENTOS OCULTOS ===== */
+[hidden] {
+  display: none !important;
+}
+
+/* ===== STRONG Y EMPHASIS ===== */
+strong, b {
+  font-weight: var(--font-weight-bold);
+}
+
+em, i {
+  font-style: italic;
+}
+
+/* ===== HORIZONTAL RULE ===== */
+hr {
+  border: 0;
+  border-top: var(--border-width) solid var(--color-border);
+  margin: var(--space-6) 0;
+}
+
+/* ===== FIELDSET ===== */
+fieldset {
+  border: var(--border-width) solid var(--color-border);
+  padding: var(--space-4);
+  margin: 0;
+  border-radius: var(--border-radius-md);
+}
+
+legend {
+  padding: 0 var(--space-2);
+  font-weight: var(--font-weight-semibold);
+}

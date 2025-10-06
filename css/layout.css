@@ -1,0 +1,384 @@
+/* ==========================================
+   LAYOUT.CSS - Estructura General
+   ==========================================
+   Define la estructura principal de la página:
+   - Contenedor
+   - Header (sticky)
+   - Navbar
+   - Footer
+   - Sistema de Grid
+========================================== */
+
+/* ===== CONTENEDOR PRINCIPAL ===== */
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+/* ===== MAIN CONTENT ===== */
+.main {
+  /* Espacio superior para compensar el header fijo */
+  padding-top: var(--header-height);
+  min-height: calc(100vh - var(--header-height));
+}
+
+/* ===== HEADER STICKY ===== */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+  background-color: var(--color-surface);
+  border-bottom: var(--border-width) solid var(--color-border);
+  z-index: var(--z-sticky);
+  
+  /* Sombra sutil para dar profundidad */
+  box-shadow: var(--shadow-sm);
+  
+  /* Transición suave cuando aparece */
+  transition: transform var(--transition-base) var(--ease-out),
+              box-shadow var(--transition-base) var(--ease-out);
+}
+
+/* Efecto cuando se hace scroll (tu compañero lo activará con JS) */
+.header--scrolled {
+  box-shadow: var(--shadow-md);
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height);
+  gap: var(--space-4);
+}
+
+/* Logo */
+.navbar__brand {
+  flex-shrink: 0;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-xl);
+  color: var(--color-primary);
+}
+
+.logo__text {
+  letter-spacing: -0.02em;
+}
+
+/* Menú hamburguesa (solo visible en móvil) */
+.navbar__toggle {
+  display: none; /* Lo mostraremos en responsive.css */
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius-sm);
+  transition: background-color var(--transition-fast);
+}
+
+.navbar__toggle:hover {
+  background-color: var(--color-border);
+}
+
+.navbar__toggle:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Icono hamburguesa (tres líneas) */
+.hamburger {
+  position: relative;
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-text);
+  transition: background-color var(--transition-fast);
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-text);
+  transition: transform var(--transition-base) var(--ease-out);
+}
+
+.hamburger::before {
+  top: -8px;
+}
+
+.hamburger::after {
+  bottom: -8px;
+}
+
+/* Animación cuando el menú está abierto */
+.navbar__toggle[aria-expanded="true"] .hamburger {
+  background-color: transparent;
+}
+
+.navbar__toggle[aria-expanded="true"] .hamburger::before {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.navbar__toggle[aria-expanded="true"] .hamburger::after {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Menú de navegación */
+.navbar__menu {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  list-style: none;
+}
+
+.navbar__link {
+  position: relative;
+  padding: var(--space-2) 0;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+  transition: color var(--transition-fast);
+}
+
+.navbar__link:hover {
+  color: var(--color-primary);
+}
+
+/* Indicador de página activa */
+.navbar__link--active {
+  color: var(--color-primary);
+}
+
+.navbar__link--active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--color-primary);
+  border-radius: var(--border-radius-full);
+}
+
+/* Controles del navbar (tema y login) */
+.navbar__controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* Toggle de tema (claro/oscuro) */
+.theme-toggle {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius-full);
+  background-color: var(--color-bg);
+  border: var(--border-width) solid var(--color-border);
+  transition: all var(--transition-fast);
+}
+
+.theme-toggle:hover {
+  background-color: var(--color-border);
+  transform: scale(1.05);
+}
+
+.theme-toggle__icon {
+  font-size: var(--font-size-lg);
+  transition: transform var(--transition-base);
+}
+
+.theme-toggle:active .theme-toggle__icon {
+  transform: rotate(20deg);
+}
+
+/* ===== SECCIONES ===== */
+.section {
+  padding: var(--space-16) 0;
+}
+
+/* Sección con fondo alternativo */
+.section--alt {
+  background-color: var(--color-surface);
+}
+
+.section__header {
+  text-align: center;
+  margin-bottom: var(--space-12);
+}
+
+.section__title {
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--space-3);
+}
+
+.section__subtitle {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+}
+
+.section__footer {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-12);
+}
+
+/* ===== SISTEMA DE GRID ===== */
+/* Grid flexible para cards y contenido */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); /* Mobile-first: 1 columna */
+  gap: var(--space-6);
+}
+
+/* Grid para mundiales (más compacto) */
+.world-cup-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columnas en móvil */
+  gap: var(--space-4);
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background-color: var(--color-surface);
+  border-top: var(--border-width) solid var(--color-border);
+  padding: var(--space-16) 0 var(--space-8);
+  margin-top: var(--space-20);
+}
+
+.footer__content {
+  display: grid;
+  grid-template-columns: 1fr; /* Mobile-first: 1 columna */
+  gap: var(--space-8);
+  margin-bottom: var(--space-8);
+}
+
+
+.footer__column {
+  padding-bottom: var(--space-4); /* vertical spacing between stacked columns on mobile */
+  min-width: 0; /* prevents overflow in flex/grid children (text truncation issues) */
+}
+
+
+.footer__title {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--space-3);
+}
+
+.footer__subtitle {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-3);
+  color: var(--color-text);
+}
+
+.footer__text {
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+}
+
+.footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.footer__links a {
+  color: var(--color-text-secondary);
+  transition: color var(--transition-fast);
+}
+
+.footer__links a:hover {
+  color: var(--color-primary);
+}
+
+.footer__bottom {
+  text-align: center;
+  padding-top: var(--space-6);
+  border-top: var(--border-width) solid var(--color-border);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+/* ===== SOCIAL LINKS ===== */
+.social-links {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--border-radius-full);
+  background-color: var(--color-bg);
+  border: var(--border-width) solid var(--color-border);
+  transition: all var(--transition-fast);
+}
+
+.social-link:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* ===== UTILIDADES DE LAYOUT ===== */
+/* Clases auxiliares para alineación y espaciado */
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* Flex utilities */
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Gap utilities */
+.gap-2 { gap: var(--space-2); }
+.gap-4 { gap: var(--space-4); }
+.gap-6 { gap: var(--space-6); }
+.gap-8 { gap: var(--space-8); }
