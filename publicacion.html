@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explora publicaciones de la comunidad sobre los mundiales de fútbol">
-    <title>Publicaciones - World Cup Archive</title>
+    <meta charset="UTF-8"> <!-- UTF-8 para caracteres especiales en español-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive behavior para móviles que se adepten al layout de su pantalla -->
+    <meta name="description" content="World Cup Archive - Historia completa de los mundiales de fútbol">
+    <title>World Cup Archive - Inicio</title>
     
+    <!-- CSS en orden: primero variables, luego reset, luego layout, etc. -->
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/layout.css">
@@ -15,16 +16,18 @@
     <link rel="stylesheet" href="css/dark-mode.css">
 </head>
 <body>
-    <!-- HEADER STICKY -->
+    <!-- HEADER STICKY: Se queda fijo al hacer scroll -->
     <header class="header" role="banner">
         <div class="container">
             <nav class="navbar" role="navigation" aria-label="Navegación principal">
+                <!-- Logo -->
                 <div class="navbar__brand">
                     <a href="index.html" class="logo" aria-label="Inicio">
                         <span class="logo__text">WCA</span>
                     </a>
                 </div>
 
+                <!-- Menú hamburguesa para móvil -->
                 <button class="navbar__toggle" 
                         aria-label="Abrir menú de navegación" 
                         aria-expanded="false"
@@ -32,20 +35,25 @@
                     <span class="hamburger"></span>
                 </button>
 
+                <!-- Menú de navegación -->
                 <ul class="navbar__menu" id="navbar-menu">
                     <li><a href="index.html" class="navbar__link">Inicio</a></li>
                     <li><a href="mundiales.html" class="navbar__link">Mundiales</a></li>
-                    <li><a href="estadisticas.html" class="navbar__link">Estadísticas</a></li>
-                    <li><a href="publicaciones.html" class="navbar__link navbar__link--active">Publicaciones</a></li>
+                    <li><a href="#estadisticas" class="navbar__link navbar__link--active">Estadísticas</a></li>
+                    <li><a href="publicaciones.html" class="navbar__link">Publicaciones</a></li>
                     <li><a href="perfil.html" class="navbar__link">Mi Perfil</a></li>
                 </ul>
 
+                <!-- Controles de accesibilidad -->
                 <div class="navbar__controls">
+                    <!-- Toggle modo oscuro -->
                     <button class="theme-toggle" 
                             aria-label="Cambiar tema claro/oscuro"
                             title="Cambiar tema">
                         <span class="theme-toggle__icon">🌙</span>
                     </button>
+
+                    <!-- Botón de login -->
                     <a href="login.html" class="btn btn--primary">Iniciar Sesión</a>
                 </div>
             </nav>
@@ -53,96 +61,13 @@
     </header>
 
     <!-- MAIN CONTENT -->
-    <main class="main publications-page">
+    <main class="main">
+
         <div class="container">
-            <!-- Header de la página -->
-            <header class="publications-header">
-                <h1 class="section__title">Publicaciones de la Comunidad</h1>
-                <p class="section__subtitle">
-                    Descubre historias, análisis y contenido creado por fanáticos del fútbol
-                </p>
-
-                <!-- Barra de búsqueda -->
-                <div class="search-bar">
-                    <span class="search-icon" aria-hidden="true">🔍</span>
-                    <input 
-                        type="search" 
-                        class="search-input" 
-                        placeholder="Buscar publicaciones, equipos, jugadores..."
-                        aria-label="Buscar publicaciones">
-                </div>
-            </header>
-
-            <!-- Sección de filtros -->
-            <section class="filters-section" aria-labelledby="filters-title">
-                <h2 id="filters-title" class="sr-only">Filtros de búsqueda</h2>
-                
-                <!-- Botones de filtro rápido -->
-                <div class="filter-bar">
-                    <button class="filter-btn filter-btn--active" data-filter="all">
-                        Todas
-                    </button>
-                    <button class="filter-btn" data-filter="jugadas">
-                        Jugadas
-                    </button>
-                    <button class="filter-btn" data-filter="entrevistas">
-                        Entrevistas
-                    </button>
-                    <button class="filter-btn" data-filter="partidos">
-                        Partidos
-                    </button>
-                    <button class="filter-btn" data-filter="estadisticas">
-                        Estadísticas
-                    </button>
-                    <button class="filter-btn" data-filter="sedes">
-                        Sedes
-                    </button>
-                    <button class="filter-btn" data-filter="cultura">
-                        Cultura
-                    </button>
-                </div>
-
-                <!-- Filtros avanzados -->
-                <div class="filters-grid">
-                    <select class="filter-dropdown" aria-label="Filtrar por mundial">
-                        <option value="">Todos los mundiales</option>
-                        <option value="2026">Mundial 2026</option>
-                        <option value="2022">Qatar 2022</option>
-                        <option value="2018">Rusia 2018</option>
-                        <option value="2014">Brasil 2014</option>
-                        <option value="2010">Sudáfrica 2010</option>
-                        <option value="2006">Alemania 2006</option>
-                        <option value="otros">Mundiales anteriores</option>
-                    </select>
-
-                    <select class="filter-dropdown" aria-label="Filtrar por selección">
-                        <option value="">Todas las selecciones</option>
-                        <option value="argentina">Argentina</option>
-                        <option value="brasil">Brasil</option>
-                        <option value="alemania">Alemania</option>
-                        <option value="francia">Francia</option>
-                        <option value="españa">España</option>
-                        <option value="mexico">México</option>
-                        <option value="otros">Otras selecciones</option>
-                    </select>
-
-                    <select class="filter-dropdown" aria-label="Ordenar por">
-                        <option value="recent">Más recientes</option>
-                        <option value="popular">Más populares</option>
-                        <option value="views">Más vistas</option>
-                        <option value="comments">Más comentadas</option>
-                    </select>
-                </div>
-
-                <!-- Filtros activos -->
-                <div class="active-filters" id="active-filters" hidden>
-                    <!-- Se llenan dinámicamente con JavaScript -->
-                </div>
-            </section>
 
             <!-- Grid de publicaciones -->
             <section class="section" aria-labelledby="posts-title">
-                <h2 id="posts-title" class="sr-only">Resultados de publicaciones</h2>
+                <h2 id="posts-title" class="sr-only">Recomendados</h2>
 
                 <div class="card-grid" id="publications-grid">
                     <!-- Publicación 1 -->
@@ -364,27 +289,15 @@
                 </div>
             </section>
 
-            <!-- CTA para usuarios no registrados -->
-            <section class="section section--alt">
-                <div class="container" style="text-align: center;">
-                    <h2 class="section__title">¿Tienes una historia que contar?</h2>
-                    <p class="section__subtitle" style="max-width: 600px; margin: 0 auto var(--space-6);">
-                        Únete a nuestra comunidad y comparte tus análisis, recuerdos y 
-                        contenido sobre los mundiales de fútbol.
-                    </p>
-                    <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
-                        <a href="login.html" class="btn btn--primary">Crear cuenta</a>
-                        <a href="login.html" class="btn btn--outline">Iniciar sesión</a>
-                    </div>
-                </div>
-            </section>
         </div>
+
     </main>
 
     <!-- FOOTER -->
     <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer__content">
+                <!-- Columna 1: Info -->
                 <div class="footer__column">
                     <h3 class="footer__title">World Cup Archive</h3>
                     <p class="footer__text">
@@ -392,6 +305,7 @@
                     </p>
                 </div>
 
+                <!-- Columna 2: Enlaces rápidos -->
                 <div class="footer__column">
                     <h4 class="footer__subtitle">Enlaces</h4>
                     <ul class="footer__links">
@@ -402,6 +316,7 @@
                     </ul>
                 </div>
 
+                <!-- Columna 3: FAQ -->
                 <div class="footer__column">
                     <h4 class="footer__subtitle">Ayuda</h4>
                     <ul class="footer__links">
@@ -411,6 +326,7 @@
                     </ul>
                 </div>
 
+                <!-- Columna 4: Redes sociales -->
                 <div class="footer__column">
                     <h4 class="footer__subtitle">Síguenos</h4>
                     <div class="social-links">
@@ -427,11 +343,10 @@
         </div>
     </footer>
 
-    <!-- SCRIPTS -->
+    <!-- SCRIPTS: Se cargan al final para mejor performance -->
     <script src="js/theme.js"></script>
     <script src="js/navigation.js"></script>
     <script src="js/animations.js"></script>
     <script src="js/accessibility.js"></script>
-    <script src="js/filters.js"></script>
 </body>
 </html>
