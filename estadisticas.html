@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"> <!-- UTF-8 para caracteres especiales en español-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive behavior para móviles que se adepten al layout de su pantalla -->
+    <meta name="description" content="World Cup Archive - Historia completa de los mundiales de fútbol">
+    <title>World Cup Archive - Inicio</title>
+    
+    <!-- CSS en orden: primero variables, luego reset, luego layout, etc. -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="css/mundiales.css">
+    <link rel="stylesheet" href="css/estadisticas.css">
+</head>
+<body>
+
+    <!-- HEADER STICKY: Se queda fijo al hacer scroll -->
+    <header class="header" role="banner">
+        <div class="container">
+            <nav class="navbar" role="navigation" aria-label="Navegación principal">
+                <!-- Logo -->
+                <div class="navbar__brand">
+                    <a href="index.html" class="logo" aria-label="Inicio">
+                        <span class="logo__text">WCA</span>
+                    </a>
+                </div>
+
+                <!-- Menú hamburguesa para móvil -->
+                <button class="navbar__toggle" 
+                        aria-label="Abrir menú de navegación" 
+                        aria-expanded="false"
+                        aria-controls="navbar-menu">
+                    <span class="hamburger"></span>
+                </button>
+
+                <!-- Menú de navegación -->
+                <ul class="navbar__menu" id="navbar-menu">
+                    <li><a href="index.html" class="navbar__link ">Inicio</a></li>
+                    <li><a href="mundiales.html" class="navbar__link ">Mundiales</a></li>
+                    <li><a href="estadisticas.html" class="navbar__link navbar__link--active">Estadísticas</a></li>
+                    <li><a href="publicaciones.html" class="navbar__link">Publicaciones</a></li>
+                    <li><a href="perfil.html" class="navbar__link">Mi Perfil</a></li>
+                </ul>
+
+                <!-- Controles de accesibilidad -->
+                <div class="navbar__controls">
+                    <!-- Toggle modo oscuro -->
+                    <button class="theme-toggle" 
+                            aria-label="Cambiar tema claro/oscuro"
+                            title="Cambiar tema">
+                        <span class="theme-toggle__icon">🌙</span>
+                    </button>
+
+                    <!-- Botón de login -->
+                    <a href="login.html" class="btn btn--primary">Iniciar Sesión</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!-- MAIN CONTENT -->
+    <main class="main">
+  <div class="container">
+
+    <!-- ====================== FILTROS ====================== -->
+    <form class="filters-grid">
+        <div class="filters-section">
+
+
+        <!-- Barra de búsqueda -->
+            <div class="search-bar">
+                <span class="search-icon" aria-hidden="true">🔍</span>
+                    <input 
+                        id="filtro-search"
+                        type="search" 
+                        class="search-input" 
+                        placeholder="Buscar publicaciones, equipos, jugadores..."
+                        aria-label="Buscar publicaciones">
+            </div>
+
+        <select class="filter-dropdown" id="filtro-categoria">
+          <option value="">Selecciona filtro</option>
+          <option value="sede">Sede</option>
+          <option value="seleccion">Selección</option>
+          <option value="anio">Año</option>
+        </select>
+
+
+        </div>
+    </form>
+
+    <!-- ====================== RESUMEN GENERAL ====================== -->
+    <section id="resumen-general">
+      <h2>Resumen General</h2>
+      <div class="tabla-mundiales">
+        <table id="tbMundialesResumen">
+          <thead>
+            <tr>
+              <th>Año</th>
+              <th>Sede</th>
+              <th>Campeón</th>
+              <th>Subcampeón</th>
+              <th>Goleador</th>
+              <th>Partidos</th>
+              <th>Goles</th>
+              <th>Mejor Jugador</th>
+              <th>Observaciones</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ====================== BRACKETS ====================== -->
+    <section id="brackets" class="oculto">
+      <h2>Bracket</h2>
+      <div id="bracketContainer" class="bracket"></div>
+    </section>
+
+    <!-- ====================== PARTIDOS POR MUNDIAL ====================== -->
+    <section id="partidos-mundial">
+      <h2>Partidos por Mundial</h2>
+      <div class="tabla-mundiales">
+        <table id="tbPartidos">
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Fase</th>
+              <th>Equipo A</th>
+              <th>Resultado</th>
+              <th>Equipo B</th>
+              <th>Goleadores A</th>
+              <th>Goleadores B</th>
+              <th>Estadio</th>
+              <th>Ciudad</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+
+    
+    <!-- FOOTER -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer__content">
+                <!-- Columna 1: Info -->
+                <div class="footer__column">
+                    <h3 class="footer__title">World Cup Archive</h3>
+                    <p class="footer__text">
+                        La historia completa de los mundiales de fútbol al alcance de todos.
+                    </p>
+                </div>
+
+                <!-- Columna 2: Enlaces rápidos -->
+                <div class="footer__column">
+                    <h4 class="footer__subtitle">Enlaces</h4>
+                    <ul class="footer__links">
+                        <li><a href="#">Acerca de</a></li>
+                        <li><a href="#">Contacto</a></li>
+                        <li><a href="#">Términos de uso</a></li>
+                        <li><a href="#">Privacidad</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3: FAQ -->
+                <div class="footer__column">
+                    <h4 class="footer__subtitle">Ayuda</h4>
+                    <ul class="footer__links">
+                        <li><a href="#">Preguntas frecuentes</a></li>
+                        <li><a href="#">Guía de uso</a></li>
+                        <li><a href="#">Accesibilidad</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 4: Redes sociales -->
+                <div class="footer__column">
+                    <h4 class="footer__subtitle">Síguenos</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook" class="social-link">FB</a>
+                        <a href="#" aria-label="Twitter" class="social-link">TW</a>
+                        <a href="#" aria-label="Instagram" class="social-link">IG</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p>&copy; 2025 World Cup Archive. Proyecto educativo UANL.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS: Se cargan al final para mejor performance -->
+    <script src="js/estadisticas.js"></script>    
+    <script src="js/theme.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/accessibility.js"></script>
+    <script src="js/mundiales.js"></script>
+
+</body>
+</html>
+

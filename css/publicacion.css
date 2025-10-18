@@ -1,0 +1,243 @@
+/* ====================== PUBLICACIÓN DETALLE ====================== */
+.detalle-publicacion {
+  margin-top: 100px;
+  max-width: 800px;
+  background: var(--color-fondo-claro);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.publicacion-titulo {
+  font-size: 2rem;
+  text-align: center;
+  color: var(--color-texto-principal);
+  margin-bottom: 20px;
+}
+
+/* Carrusel Swiper */
+.publicacion-carrusel {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.publicacion-carrusel img,
+.publicacion-carrusel video {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+}
+
+/* Texto */
+.publicacion-texto {
+  color: var(--color-texto-principal);
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+/* Estadísticas centradas */
+.publicacion-estadisticas {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  background: var(--color-surface);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 15px 0;
+  font-weight: bold;
+  color: var(--color-texto-principal);
+}
+
+/* ====================== ANIMACIONES DE ICONOS ====================== */
+
+/* ====================== ESTADÍSTICAS ====================== */
+.publicacion-estadisticas {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  background: var(--color-surface);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 15px 0;
+  font-weight: bold;
+  color: var(--color-texto-principal);
+}
+
+.publicacion-estadisticas .estadistica {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.publicacion-estadisticas .icon {
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.publicacion-estadisticas .icon:hover {
+  transform: scale(1.3);
+}
+
+/* Estado del corazón al hacer clic */
+.icon-like.liked {
+  color: #e0245e;
+  animation: iconPop 0.35s ease;
+}
+
+/* Estado del comentario al hacer clic */
+.icon-comment.clicked {
+  color: var(--color-primario);
+  animation: iconPop 0.35s ease;
+}
+
+@keyframes iconPop {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.6); }
+  50% { transform: scale(0.85); }
+  100% { transform: scale(1); }
+}
+
+
+/* Línea divisora */
+.publicacion-divider {
+  margin: 40px 0 20px 0;
+  border: 0;
+  border-top: 1px solid var(--color-borde);
+}
+
+
+/* ====================== COMENTARIOS====================== */
+
+.publicacion-comentarios {
+  margin-top: 30px;
+}
+
+.publicacion-comentarios h2 {
+  margin-bottom: 15px;
+  color: var(--color-texto-principal);
+  font-size: 1.5rem;
+}
+
+/* Comentario principal */
+.comentario {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid rgba(var(--color-borde-rgb, 0,0,0), 0.15); /* Línea separadora suave */
+  position: relative;
+}
+
+.comentario:last-child {
+  border-bottom: none;
+}
+
+/* Avatar del usuario */
+.comentario-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* Cuerpo del comentario */
+.comentario-body {
+  flex: 1;
+}
+
+.comentario-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.comentario-usuario {
+  font-weight: 600;
+  color: var(--color-texto-principal);
+}
+
+.comentario-tiempo {
+  font-size: 0.85rem;
+  color: var(--color-texto-secundario);
+}
+
+.comentario-texto {
+  margin: 5px 0;
+  color: var(--color-texto-principal);
+  line-height: 1.5;
+}
+
+.comentario-footer {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.comentario-like,
+.comentario-reply {
+  background: transparent;
+  border: none;
+  color: var(--color-texto-secundario);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+.comentario-like:hover,
+.comentario-reply:hover {
+  color: var(--color-primario);
+}
+
+/* ====================== REPLIES (RESPUESTAS ANIDADAS) ====================== */
+.comentario.respuesta {
+  margin-left: 55px;
+  margin-top: 10px;
+  border: none;
+  padding-left: 20px;
+  position: relative;
+}
+
+/* Línea vertical que conecta comentarios con sus respuestas */
+.comentario.respuesta::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: rgba(var(--color-borde-rgb, 0,0,0), 0.15);
+  border-radius: 2px;
+}
+
+/* Pequeña conexión horizontal entre la línea y el avatar */
+.comentario.respuesta::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 14px;
+  height: 2px;
+  background-color: rgba(var(--color-borde-rgb, 0,0,0), 0.15);
+  border-radius: 2px;
+}
+
+/* "Ver más comentarios" */
+.ver-mas {
+  text-align: center;
+  margin-top: 20px;
+  color: var(--color-primario);
+  cursor: pointer;
+  font-weight: 600;
+  transition: opacity 0.3s ease;
+}
+.ver-mas:hover {
+  text-decoration: underline;
+  opacity: 0.8;
+}

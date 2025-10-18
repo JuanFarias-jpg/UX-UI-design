@@ -7,6 +7,7 @@
     <title>World Cup Archive - Inicio</title>
     
     <!-- CSS en orden: primero variables, luego reset, luego layout, etc. -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/layout.css">
@@ -14,6 +15,12 @@
     <link rel="stylesheet" href="css/pages.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="css/publicacion.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
 </head>
 <body>
     <!-- HEADER STICKY: Se queda fijo al hacer scroll -->
@@ -37,9 +44,9 @@
 
                 <!-- Menú de navegación -->
                 <ul class="navbar__menu" id="navbar-menu">
-                    <li><a href="index.html" class="navbar__link navbar__link--active">Inicio</a></li>
+                    <li><a href="index.html" class="navbar__link">Inicio</a></li>
                     <li><a href="mundiales.html" class="navbar__link">Mundiales</a></li>
-                    <li><a href="estadisticas.html" class="navbar__link">Estadísticas</a></li>
+                    <li><a href="#estadisticas" class="navbar__link navbar__link--active">Estadísticas</a></li>
                     <li><a href="publicaciones.html" class="navbar__link">Publicaciones</a></li>
                     <li><a href="perfil.html" class="navbar__link">Mi Perfil</a></li>
                 </ul>
@@ -61,85 +68,132 @@
     </header>
 
     <!-- MAIN CONTENT -->
-    <main class="main">
-        <!-- HERO SECTION: Noticias destacadas en carrusel -->
-        <section class="hero" aria-labelledby="hero-title">
-            <div class="container">
-                <h1 id="hero-title" class="sr-only">Noticias Destacadas</h1>
-                
-                <!-- Carrusel de noticias -->
-                <div class="carousel" role="region" aria-label="Carrusel de noticias destacadas">
-                    <div class="carousel__track">
-                        <!-- Noticia 1 -->
-                        <article class="carousel__item carousel__item--active">
-                            <div class="carousel__image">
-                                <img src="assets/images/news-1.jpg" 
-                                     alt="Mundial 2026 en México, Estados Unidos y Canadá">
-                            </div>
-                            <div class="carousel__content">
-                                <span class="badge">Próximo Mundial</span>
-                                <h2 class="carousel__title">Mundial 2026: Tres países anfitriones</h2>
-                                <p class="carousel__description">
-                                    Por primera vez en la historia, el Mundial de Fútbol se celebrará 
-                                    en tres países simultáneamente: México, Estados Unidos y Canadá.
-                                </p>
-                                <a href="#" class="btn btn--secondary">Leer más</a>
-                            </div>
-                        </article>
+<!-- ====================== PUBLICACIÓN DETALLE ====================== -->
+    <main class="detalle-publicacion container">
+        <!-- Título -->
+        <h1 class="publicacion-titulo">El Mundial más emocionante de la historia</h1>
 
-                        <!-- Noticia 2 -->
-                        <article class="carousel__item">
-                            <div class="carousel__image">
-                                <img src="assets/images/news-2.jpg" 
-                                     alt="Estadísticas históricas de los mundiales">
-                            </div>
-                            <div class="carousel__content">
-                                <span class="badge">Estadísticas</span>
-                                <h2 class="carousel__title">Los récords más impresionantes</h2>
-                                <p class="carousel__description">
-                                    Descubre los récords que han marcado la historia de los mundiales 
-                                    desde 1930 hasta la actualidad.
-                                </p>
-                                <a href="#" class="btn btn--secondary">Ver estadísticas</a>
-                            </div>
-                        </article>
-                    </div>
+        <!-- Carrusel Swiper -->
+        <div class="publicacion-carrusel swiper">
+            <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="img/mundial1.jpg" alt="Imagen del mundial">
+            </div>
+            <div class="swiper-slide">
+                <img src="img/mundial2.jpg" alt="Celebración del equipo campeón">
+            </div>
+            <div class="swiper-slide">
+                <video controls>
+                <source src="videos/final.mp4" type="video/mp4">
+                Tu navegador no soporta videos.
+                </video>
+            </div>
+            </div>
+            <!-- Controles -->
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
 
-                    <!-- Controles del carrusel -->
-                    <button class="carousel__control carousel__control--prev" 
-                            aria-label="Noticia anterior">
-                        ‹
-                    </button>
-                    <button class="carousel__control carousel__control--next" 
-                            aria-label="Siguiente noticia">
-                        ›
-                    </button>
+        <!-- Texto de la publicación -->
+        <div class="publicacion-texto">
+            <p>
+            El Mundial de 2022 en Qatar fue un torneo inolvidable, lleno de sorpresas, emoción y momentos que quedarán en la historia. 
+            Desde la actuación heroica de Marruecos hasta la consagración final de Argentina con Messi levantando la copa, 
+            cada partido dejó huella.
+            </p>
+        </div>
 
-                    <!-- Indicadores -->
-                    <div class="carousel__indicators" role="tablist" aria-label="Indicadores de noticias">
-                        <button role="tab" aria-selected="true" aria-label="Noticia 1"></button>
-                        <button role="tab" aria-selected="false" aria-label="Noticia 2"></button>
-                    </div>
+        <!-- Bloque de estadísticas -->
+        <div class="publicacion-estadisticas">
+        <div class="estadistica">
+            <i class="fa-regular fa-heart icon icon-like"></i> 
+            <span class="contador">1.2k</span>
+        </div>
+        <div class="estadistica">
+            <i class="fa-regular fa-comment icon icon-comment"></i> 
+            <span class="contador">345</span>
+        </div>
+        <div class="estadistica">
+            <i class="fa-regular fa-eye icon"></i> 
+            <span class="contador">7.8k</span>
+        </div>
+        </div>
+
+
+        <!-- Línea divisora -->
+        <hr class="publicacion-divider">
+
+        <!-- Sección de comentarios -->
+        <section id="comentarios" class="publicacion-comentarios">
+        <h2>Comentarios</h2>
+
+        <div class="comentario">
+            <img src="img/users/lucia.jpg" alt="Lucía" class="comentario-avatar">
+            <div class="comentario-body">
+            <div class="comentario-header">
+                <span class="comentario-usuario">Lucía</span>
+                <span class="comentario-tiempo">hace 2 horas</span>
+            </div>
+            <p class="comentario-texto">Qué torneo tan increíble, el mejor final que he visto ❤️</p>
+            <div class="comentario-footer">
+                <button class="comentario-like">👍 154</button>
+                <button class="comentario-reply">Responder</button>
+            </div>
+            </div>
+        </div>
+
+        <div class="comentario">
+            <img src="img/users/marco.jpg" alt="Marco" class="comentario-avatar">
+            <div class="comentario-body">
+            <div class="comentario-header">
+                <span class="comentario-usuario">Marco</span>
+                <span class="comentario-tiempo">hace 5 horas</span>
+            </div>
+            <p class="comentario-texto">Marruecos fue la gran sorpresa, me encantó su desempeño.</p>
+            <div class="comentario-footer">
+                <button class="comentario-like">👍 87</button>
+                <button class="comentario-reply">Responder</button>
+            </div>
+
+            <!-- Respuesta anidada -->
+            <div class="comentario respuesta">
+                <img src="img/users/elena.jpg" alt="Elena" class="comentario-avatar">
+                <div class="comentario-body">
+                <div class="comentario-header">
+                    <span class="comentario-usuario">Elena</span>
+                    <span class="comentario-tiempo">hace 3 horas</span>
+                </div>
+                <p class="comentario-texto">Totalmente de acuerdo, fue un mundial histórico 🔥</p>
+                <div class="comentario-footer">
+                    <button class="comentario-like">👍 22</button>
+                    <button class="comentario-reply">Responder</button>
+                </div>
                 </div>
             </div>
+            </div>
+        </div>
+
+        <p class="ver-mas">Ver más comentarios ↓</p>
         </section>
 
+        <br>
+        
         <!-- PUBLICACIONES POPULARES -->
         <section class="section" aria-labelledby="popular-title">
             <div class="container">
                 <div class="section__header">
-                    <h2 id="popular-title" class="section__title">Publicaciones Populares</h2>
+                    <h3 id="popular-title" class="section__title">Recomendados</h3>
                     <p class="section__subtitle">Las publicaciones más vistas de la comunidad</p>
                 </div>
 
                 <!-- Grid de cards -->
                 <div class="card-grid">
                     <!-- Card 1 -->
-                    <a href="publicacion.html" class="card-link">
                     <article class="card" tabindex="0">
                         <div class="card__image">
                             <img src="assets/images/post-1.jpg" 
-                                 alt="Gol de Maradona contra Inglaterra 1986">
+                                alt="Gol de Maradona contra Inglaterra 1986">
                             <span class="card__badge">Jugadas</span>
                         </div>
                         <div class="card__content">
@@ -168,14 +222,12 @@
                             </span>
                         </div>
                     </article>
-                    </a>
 
                     <!-- Card 2 -->
-                    <a href="publicacion.html" class="card-link">
                     <article class="card" tabindex="0">
                         <div class="card__image">
                             <img src="assets/images/post-2.jpg" 
-                                 alt="Final Brasil vs Italia 1994">
+                                alt="Final Brasil vs Italia 1994">
                             <span class="card__badge">Partidos</span>
                         </div>
                         <div class="card__content">
@@ -204,14 +256,12 @@
                             </span>
                         </div>
                     </article>
-                    </a>
 
                     <!-- Card 3 -->
-                    <a href="publicacion.html" class="card-link">
                     <article class="card" tabindex="0">
                         <div class="card__image">
                             <img src="assets/images/post-3.jpg" 
-                                 alt="Estadio Azteca lleno de aficionados">
+                                alt="Estadio Azteca lleno de aficionados">
                             <span class="card__badge">Sedes</span>
                         </div>
                         <div class="card__content">
@@ -240,65 +290,26 @@
                             </span>
                         </div>
                     </article>
-                    </a>
-                </div>
-
-                <!-- Botón ver más -->
-                <div class="section__footer">
-                    <a href="publicaciones.html" class="btn btn--outline">Ver todas las publicaciones</a>
                 </div>
             </div>
         </section>
-
-        <!-- SECCIÓN DE MUNDIALES -->
-        <section class="section section--alt" id="mundiales" aria-labelledby="mundiales-title">
-            <div class="container">
-                <div class="section__header">
-                    <h2 id="mundiales-title" class="section__title">Explora los Mundiales</h2>
-                    <p class="section__subtitle">Descubre la historia completa de cada Copa del Mundo</p>
+        <br>
+        <div class="container">
+            <!-- CTA para usuarios no registrados -->
+            <section class="section section--alt">
+                <div class="container" style="text-align: center;">
+                    <h2 class="section__title">¿Tienes una historia que contar?</h2>
+                    <p class="section__subtitle" style="max-width: 600px; margin: 0 auto var(--space-6);">
+                        Únete a nuestra comunidad y comparte tus análisis, recuerdos y 
+                        contenido sobre los mundiales de fútbol.
+                    </p>
+                    <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
+                        <a href="login.html" class="btn btn--primary">Crear cuenta</a>
+                        <a href="login.html" class="btn btn--outline">Iniciar sesión</a>
+                    </div>
                 </div>
-
-                <!-- Filtro rápido -->
-                <div class="filter-bar">
-                    <button class="filter-btn filter-btn--active">Todos</button>
-                    <button class="filter-btn">América</button>
-                    <button class="filter-btn">Europa</button>
-                    <button class="filter-btn">Asia</button>
-                    <button class="filter-btn">África</button>
-                </div>
-
-                <!-- Grid de mundiales -->
-                <div class="world-cup-grid">
-                    <a href="#" class="world-cup-card">
-                        <div class="world-cup-card__year">2026</div>
-                        <div class="world-cup-card__name">México, USA, Canadá</div>
-                        <div class="world-cup-card__status">Próximo</div>
-                    </a>
-
-                    <a href="#" class="world-cup-card">
-                        <div class="world-cup-card__year">2022</div>
-                        <div class="world-cup-card__name">Qatar</div>
-                        <div class="world-cup-card__champion">🏆 Argentina</div>
-                    </a>
-
-                    <a href="#" class="world-cup-card">
-                        <div class="world-cup-card__year">2018</div>
-                        <div class="world-cup-card__name">Rusia</div>
-                        <div class="world-cup-card__champion">🏆 Francia</div>
-                    </a>
-
-                    <a href="#" class="world-cup-card">
-                        <div class="world-cup-card__year">2014</div>
-                        <div class="world-cup-card__name">Brasil</div>
-                        <div class="world-cup-card__champion">🏆 Alemania</div>
-                    </a>
-                </div>
-
-                <div class="section__footer">
-                    <a href="mundiales.html" class="btn btn--outline">Ver todos los mundiales</a>
-                </div>
-            </div>
-        </section>
+            </section>
+        </div>
     </main>
 
     <!-- FOOTER -->
@@ -356,5 +367,6 @@
     <script src="js/navigation.js"></script>
     <script src="js/animations.js"></script>
     <script src="js/accessibility.js"></script>
+    <script src="js/publicacion.js"></script>
 </body>
 </html>
