@@ -563,6 +563,23 @@
   color: var(--color-text-secondary);
 }
 
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.card-link .card {
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card-link .card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+
 .chart-container {
   background-color: var(--color-surface);
   padding: var(--space-6);

@@ -7,6 +7,7 @@
     <title>World Cup Archive - Inicio</title>
     
     <!-- CSS en orden: primero variables, luego reset, luego layout, etc. -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/layout.css">
@@ -14,6 +15,12 @@
     <link rel="stylesheet" href="css/pages.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="css/publicacion.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
 </head>
 <body>
     <!-- HEADER STICKY: Se queda fijo al hacer scroll -->
@@ -61,28 +68,139 @@
     </header>
 
     <!-- MAIN CONTENT -->
-    <main class="main">
+<!-- ====================== PUBLICACIÓN DETALLE ====================== -->
+    <main class="detalle-publicacion container">
+        <!-- Título -->
+        <h1 class="publicacion-titulo">El Mundial más emocionante de la historia</h1>
 
-        <div class="container">
+        <!-- Carrusel Swiper -->
+        <div class="publicacion-carrusel swiper">
+            <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="img/mundial1.jpg" alt="Imagen del mundial">
+            </div>
+            <div class="swiper-slide">
+                <img src="img/mundial2.jpg" alt="Celebración del equipo campeón">
+            </div>
+            <div class="swiper-slide">
+                <video controls>
+                <source src="videos/final.mp4" type="video/mp4">
+                Tu navegador no soporta videos.
+                </video>
+            </div>
+            </div>
+            <!-- Controles -->
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
 
-            <!-- Grid de publicaciones -->
-            <section class="section" aria-labelledby="posts-title">
-                <h2 id="posts-title" class="sr-only">Recomendados</h2>
+        <!-- Texto de la publicación -->
+        <div class="publicacion-texto">
+            <p>
+            El Mundial de 2022 en Qatar fue un torneo inolvidable, lleno de sorpresas, emoción y momentos que quedarán en la historia. 
+            Desde la actuación heroica de Marruecos hasta la consagración final de Argentina con Messi levantando la copa, 
+            cada partido dejó huella.
+            </p>
+        </div>
 
-                <div class="card-grid" id="publications-grid">
-                    <!-- Publicación 1 -->
+        <!-- Bloque de estadísticas -->
+        <div class="publicacion-estadisticas">
+        <div class="estadistica">
+            <i class="fa-regular fa-heart icon icon-like"></i> 
+            <span class="contador">1.2k</span>
+        </div>
+        <div class="estadistica">
+            <i class="fa-regular fa-comment icon icon-comment"></i> 
+            <span class="contador">345</span>
+        </div>
+        <div class="estadistica">
+            <i class="fa-regular fa-eye icon"></i> 
+            <span class="contador">7.8k</span>
+        </div>
+        </div>
+
+
+        <!-- Línea divisora -->
+        <hr class="publicacion-divider">
+
+        <!-- Sección de comentarios -->
+        <section id="comentarios" class="publicacion-comentarios">
+        <h2>Comentarios</h2>
+
+        <div class="comentario">
+            <img src="img/users/lucia.jpg" alt="Lucía" class="comentario-avatar">
+            <div class="comentario-body">
+            <div class="comentario-header">
+                <span class="comentario-usuario">Lucía</span>
+                <span class="comentario-tiempo">hace 2 horas</span>
+            </div>
+            <p class="comentario-texto">Qué torneo tan increíble, el mejor final que he visto ❤️</p>
+            <div class="comentario-footer">
+                <button class="comentario-like">👍 154</button>
+                <button class="comentario-reply">Responder</button>
+            </div>
+            </div>
+        </div>
+
+        <div class="comentario">
+            <img src="img/users/marco.jpg" alt="Marco" class="comentario-avatar">
+            <div class="comentario-body">
+            <div class="comentario-header">
+                <span class="comentario-usuario">Marco</span>
+                <span class="comentario-tiempo">hace 5 horas</span>
+            </div>
+            <p class="comentario-texto">Marruecos fue la gran sorpresa, me encantó su desempeño.</p>
+            <div class="comentario-footer">
+                <button class="comentario-like">👍 87</button>
+                <button class="comentario-reply">Responder</button>
+            </div>
+
+            <!-- Respuesta anidada -->
+            <div class="comentario respuesta">
+                <img src="img/users/elena.jpg" alt="Elena" class="comentario-avatar">
+                <div class="comentario-body">
+                <div class="comentario-header">
+                    <span class="comentario-usuario">Elena</span>
+                    <span class="comentario-tiempo">hace 3 horas</span>
+                </div>
+                <p class="comentario-texto">Totalmente de acuerdo, fue un mundial histórico 🔥</p>
+                <div class="comentario-footer">
+                    <button class="comentario-like">👍 22</button>
+                    <button class="comentario-reply">Responder</button>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <p class="ver-mas">Ver más comentarios ↓</p>
+        </section>
+
+        <br>
+        
+        <!-- PUBLICACIONES POPULARES -->
+        <section class="section" aria-labelledby="popular-title">
+            <div class="container">
+                <div class="section__header">
+                    <h3 id="popular-title" class="section__title">Recomendados</h3>
+                    <p class="section__subtitle">Las publicaciones más vistas de la comunidad</p>
+                </div>
+
+                <!-- Grid de cards -->
+                <div class="card-grid">
+                    <!-- Card 1 -->
                     <article class="card" tabindex="0">
                         <div class="card__image">
-                            <img src="assets/images/post-maradona.jpg" 
-                                 alt="Diego Maradona celebrando el gol contra Inglaterra en México 86">
+                            <img src="assets/images/post-1.jpg" 
+                                alt="Gol de Maradona contra Inglaterra 1986">
                             <span class="card__badge">Jugadas</span>
                         </div>
                         <div class="card__content">
                             <h3 class="card__title">El gol del siglo de Maradona</h3>
                             <p class="card__description">
-                                Revive la jugada más icónica del Mundial México 86, donde Maradona 
-                                dejó atrás a medio equipo inglés en una jugada que quedó grabada 
-                                en la historia del fútbol mundial.
+                                Revive la jugada más icónica del Mundial México 86, 
+                                donde Maradona dejó atrás a medio equipo inglés.
                             </p>
                             <div class="card__meta">
                                 <span class="card__category">México 1986</span>
@@ -90,34 +208,33 @@
                             </div>
                         </div>
                         <div class="card__stats">
-                            <span class="stat" aria-label="1200 me gusta">
+                            <span class="stat" aria-label="Me gusta">
                                 <span class="stat__icon">❤️</span>
                                 <span class="stat__count">1.2k</span>
                             </span>
-                            <span class="stat" aria-label="150 comentarios">
+                            <span class="stat" aria-label="Comentarios">
                                 <span class="stat__icon">💬</span>
                                 <span class="stat__count">150</span>
                             </span>
-                            <span class="stat" aria-label="3500 vistas">
+                            <span class="stat" aria-label="Vistas">
                                 <span class="stat__icon">👁️</span>
                                 <span class="stat__count">3.5k</span>
                             </span>
                         </div>
                     </article>
 
-                    <!-- Publicación 2 -->
+                    <!-- Card 2 -->
                     <article class="card" tabindex="0">
                         <div class="card__image">
-                            <img src="assets/images/post-brasil-italia.jpg" 
-                                 alt="Roberto Baggio fallando el penal en la final de USA 94">
+                            <img src="assets/images/post-2.jpg" 
+                                alt="Final Brasil vs Italia 1994">
                             <span class="card__badge">Partidos</span>
                         </div>
                         <div class="card__content">
                             <h3 class="card__title">USA 94: La final definida por penales</h3>
                             <p class="card__description">
-                                La final más tensa de la historia, donde Brasil se coronó campeón 
-                                tras una dramática tanda de penales. El error de Baggio marcó 
-                                una de las imágenes más tristes del fútbol.
+                                La final más tensa de la historia, donde Brasil se coronó 
+                                campeón tras una dramática tanda de penales.
                             </p>
                             <div class="card__meta">
                                 <span class="card__category">Estados Unidos 1994</span>
@@ -140,22 +257,21 @@
                         </div>
                     </article>
 
-                    <!-- Publicación 3 -->
+                    <!-- Card 3 -->
                     <article class="card" tabindex="0">
                         <div class="card__image">
-                            <img src="assets/images/post-azteca.jpg" 
-                                 alt="Vista panorámica del Estadio Azteca lleno">
+                            <img src="assets/images/post-3.jpg" 
+                                alt="Estadio Azteca lleno de aficionados">
                             <span class="card__badge">Sedes</span>
                         </div>
                         <div class="card__content">
                             <h3 class="card__title">El Estadio Azteca y su historia mundialista</h3>
                             <p class="card__description">
                                 El único estadio en albergar dos finales de Copa del Mundo 
-                                se prepara para recibir el Mundial 2026. Un recorrido por 
-                                su legendaria historia.
+                                se prepara para recibir el Mundial 2026.
                             </p>
                             <div class="card__meta">
-                                <span class="card__category">México 1986, 1970</span>
+                                <span class="card__category">Cultura</span>
                                 <time datetime="2025-09-05">05 Sep 2025</time>
                             </div>
                         </div>
@@ -174,123 +290,26 @@
                             </span>
                         </div>
                     </article>
-
-                    <!-- Publicación 4 -->
-                    <article class="card" tabindex="0">
-                        <div class="card__image">
-                            <img src="assets/images/post-zidane.jpg" 
-                                 alt="Zinedine Zidane siendo expulsado en la final de 2006">
-                            <span class="card__badge">Polémicas</span>
-                        </div>
-                        <div class="card__content">
-                            <h3 class="card__title">El cabezazo de Zidane: El final inesperado</h3>
-                            <p class="card__description">
-                                La despedida más controversial de una leyenda. El cabezazo 
-                                de Zidane a Materazzi en la final de Alemania 2006 sigue 
-                                siendo uno de los momentos más impactantes.
-                            </p>
-                            <div class="card__meta">
-                                <span class="card__category">Alemania 2006</span>
-                                <time datetime="2025-09-03">03 Sep 2025</time>
-                            </div>
-                        </div>
-                        <div class="card__stats">
-                            <span class="stat">
-                                <span class="stat__icon">❤️</span>
-                                <span class="stat__count">1.5k</span>
-                            </span>
-                            <span class="stat">
-                                <span class="stat__icon">💬</span>
-                                <span class="stat__count">340</span>
-                            </span>
-                            <span class="stat">
-                                <span class="stat__icon">👁️</span>
-                                <span class="stat__count">4.2k</span>
-                            </span>
-                        </div>
-                    </article>
-
-                    <!-- Publicación 5 -->
-                    <article class="card" tabindex="0">
-                        <div class="card__image">
-                            <img src="assets/images/post-pele.jpg" 
-                                 alt="Pelé levantando la Copa del Mundo en México 1970">
-                            <span class="card__badge">Estadísticas</span>
-                        </div>
-                        <div class="card__content">
-                            <h3 class="card__title">Pelé: El único tricampeón mundial</h3>
-                            <p class="card__description">
-                                Un análisis estadístico del jugador que ganó tres Copas del 
-                                Mundo (1958, 1962, 1970). Números que demuestran por qué 
-                                es considerado uno de los más grandes.
-                            </p>
-                            <div class="card__meta">
-                                <span class="card__category">Brasil 1958-1970</span>
-                                <time datetime="2025-09-01">01 Sep 2025</time>
-                            </div>
-                        </div>
-                        <div class="card__stats">
-                            <span class="stat">
-                                <span class="stat__icon">❤️</span>
-                                <span class="stat__count">2.1k</span>
-                            </span>
-                            <span class="stat">
-                                <span class="stat__icon">💬</span>
-                                <span class="stat__count">178</span>
-                            </span>
-                            <span class="stat">
-                                <span class="stat__icon">👁️</span>
-                                <span class="stat__count">5.3k</span>
-                            </span>
-                        </div>
-                    </article>
-
-                    <!-- Publicación 6 -->
-                    <article class="card" tabindex="0">
-                        <div class="card__image">
-                            <img src="assets/images/post-messi.jpg" 
-                                 alt="Lionel Messi levantando la Copa del Mundo en Qatar 2022">
-                            <span class="card__badge">Entrevistas</span>
-                        </div>
-                        <div class="card__content">
-                            <h3 class="card__title">Messi: "Era esto o era esto"</h3>
-                            <p class="card__description">
-                                Las palabras de Messi después de conquistar Qatar 2022, 
-                                el título que le faltaba para completar su carrera. 
-                                Una entrevista emotiva e histórica.
-                            </p>
-                            <div class="card__meta">
-                                <span class="card__category">Qatar 2022</span>
-                                <time datetime="2025-08-28">28 Ago 2025</time>
-                            </div>
-                        </div>
-                        <div class="card__stats">
-                            <span class="stat">
-                                <span class="stat__icon">❤️</span>
-                                <span class="stat__count">3.8k</span>
-                            </span>
-                            <span class="stat">
-                                <span class="stat__icon">💬</span>
-                                <span class="stat__count">567</span>
-                            </span>
-                            <span class="stat">
-                                <span class="stat__icon">👁️</span>
-                                <span class="stat__count">8.9k</span>
-                            </span>
-                        </div>
-                    </article>
                 </div>
-
-                <!-- Botón cargar más -->
-                <div class="section__footer">
-                    <button class="btn btn--outline" id="load-more">
-                        Cargar más publicaciones
-                    </button>
+            </div>
+        </section>
+        <br>
+        <div class="container">
+            <!-- CTA para usuarios no registrados -->
+            <section class="section section--alt">
+                <div class="container" style="text-align: center;">
+                    <h2 class="section__title">¿Tienes una historia que contar?</h2>
+                    <p class="section__subtitle" style="max-width: 600px; margin: 0 auto var(--space-6);">
+                        Únete a nuestra comunidad y comparte tus análisis, recuerdos y 
+                        contenido sobre los mundiales de fútbol.
+                    </p>
+                    <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
+                        <a href="login.html" class="btn btn--primary">Crear cuenta</a>
+                        <a href="login.html" class="btn btn--outline">Iniciar sesión</a>
+                    </div>
                 </div>
             </section>
-
         </div>
-
     </main>
 
     <!-- FOOTER -->
@@ -348,5 +367,6 @@
     <script src="js/navigation.js"></script>
     <script src="js/animations.js"></script>
     <script src="js/accessibility.js"></script>
+    <script src="js/publicacion.js"></script>
 </body>
 </html>
