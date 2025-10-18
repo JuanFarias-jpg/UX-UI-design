@@ -1,0 +1,31 @@
+.filtros-form {
+  display: flex;
+  justify-content: center;
+  margin: 30px auto;
+  padding: 15px;
+  background: var(--filter-bg, #f5f5f5);
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 80px; /* justo debajo del header */
+  z-index: 1000;
+}
+
+.filtros-container {
+  display: flex;
+  gap: 12px;
+}
+
+.filtros-container select,
+.filtros-container input {
+  background: var(--color-error, #fff);
+  color: var(--color-error, #000);
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 15px;
+}
+
+.filtros-container input::placeholder {
+  color: #888;
+}

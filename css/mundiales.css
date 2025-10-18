@@ -1,0 +1,285 @@
+/* ========================================================= */
+/* ===== MUNDIALES.CSS – TABLA, BRACKET Y DETALLE ===== */
+/* ========================================================= */
+
+/* --- Variables locales de la tabla --- */
+.tabla-mundiales {
+  font-family: var(--font-primary);
+  padding: 20px;
+  color: var(--color-text);
+  background: transparent;
+}
+
+/* --- Tabla principal --- */
+.tabla-mundiales table {
+  border-collapse: collapse;
+  width: 100%;
+  background: transparent;
+  box-shadow: 0 2px 10px var(--color-sombra);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.tabla-mundiales thead {
+  background: var(--color-encabezado);
+  color: var(--color-texto-encabezado);
+}
+
+.tabla-mundiales th,
+.tabla-mundiales td {
+  border: 1px solid var(--color-border);
+  padding: 10px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.tabla-mundiales th {
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+}
+
+/* Enlaces en los años */
+.tabla-mundiales a {
+  color: var(--color-link, #0077ff);
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.tabla-mundiales a:hover {
+  color: var(--color-link-hover, #0053aa);
+  transform: scale(1.05);
+}
+
+/* --- Bracket general --- */
+.bracket {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.stage {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.match {
+  background: var(--color-match-fondo);
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 1px 3px var(--color-sombra);
+  width: 180px;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.match:hover {
+  transform: scale(1.03);
+  background: var(--color-match-hover);
+}
+
+.stage.semifinal::after {
+  content: "";
+  position: absolute;
+  right: -20px;
+  top: 25%;
+  width: 20px;
+  height: 50%;
+  border-right: 2px solid var(--color-bracket-linea);
+  border-top: 2px solid var(--color-bracket-linea);
+  border-bottom: 2px solid var(--color-bracket-linea);
+}
+
+.stage.final {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.winner {
+  background: var(--color-winner-fondo);
+  font-weight: bold;
+  border: 2px solid var(--color-winner-borde);
+}
+
+/* ========================================================= */
+/* ===== FILTROS ===== */
+/* ========================================================= */
+
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(15px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.filtros-form {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-5);
+}
+
+.filtros-container {
+  display: flex;
+  gap: var(--filter-gap);
+  flex-wrap: wrap;
+  max-width: 500px;
+  width: 100%;
+  animation: fadeUp 0.6s ease-out forwards;
+}
+
+#searchbar,
+#categoria {
+  flex: 1;
+  padding: var(--filter-padding);
+  border-radius: var(--filter-border-radius);
+  border: 1px solid var(--filter-border);
+  box-shadow: 0 2px 6px var(--filter-shadow);
+  font-size: var(--filter-font-size);
+  color: var(--filter-text);
+  background-color: var(--filter-bg);
+  transition: all var(--transition-base) var(--ease-in-out);
+  appearance: none;
+  cursor: pointer;
+}
+
+#categoria {
+  background-image: url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'><polygon points='0,0 10,0 5,5' fill='%23999'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 10px;
+}
+
+#searchbar:hover,
+#categoria:hover {
+  border-color: var(--filter-focus-border);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+#searchbar:focus,
+#categoria:focus {
+  outline: none;
+  border-color: var(--filter-focus-border);
+  box-shadow: 0 4px 14px var(--filter-focus-shadow);
+  transform: scale(1.03);
+}
+
+.filtros-container > * {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.filtros-container.start-animation > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================================================= */
+/* ===== DETALLE DE MUNDIAL ===== */
+/* ========================================================= */
+
+.detalle-mundial {
+  margin-top: 50px;
+  padding: 30px;
+  background: var(--color-fondo-claro);
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.detalle-mundial h2 {
+  font-size: 2rem;
+  color: var(--color-texto-encabezado);
+  margin-bottom: 5px;
+}
+
+.detalle-mundial h3 {
+  color: var(--color-texto-secundario);
+  margin-bottom: 15px;
+}
+
+.detalle-mundial .resumen {
+  line-height: 1.6;
+  color: var(--color-texto);
+  margin-bottom: 20px;
+}
+
+.bracket-section {
+  background: var(--color-accent-results);
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+/* --- Tabla de estadísticas --- */
+.tabla-estadisticas {
+  border-collapse: collapse;
+  width: 100%;
+  box-shadow: 0 2px 10px var(--color-sombra);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.tabla-estadisticas th,
+.tabla-estadisticas td {
+  border: 1px solid var(--color-border);
+  padding: 10px;
+  text-align: center;
+}
+
+.tabla-estadisticas th {
+  background: var(--color-encabezado);
+  color: var(--color-texto-encabezado);
+}
+
+/* --- Galería --- */
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.galeria img {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.galeria img:hover {
+  transform: scale(1.05);
+}
+
+/* --- Estados --- */
+.oculto { display: none; }
+
+/* --- Animaciones --- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========================================================= */
+/* ===== RESPONSIVE ===== */
+/* ========================================================= */
+
+@media (max-width: 700px) {
+  .tabla-mundiales .bracket {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .tabla-mundiales .stage.semifinal::after {
+    display: none;
+  }
+
+  .tabla-mundiales .detalle-mundial {
+    padding: 20px;
+  }
+}
+

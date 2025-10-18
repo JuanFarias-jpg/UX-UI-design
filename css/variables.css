@@ -25,10 +25,11 @@
   --color-accent: #1B994C;         /* Verde intenso */
   --color-accent-dark: #157a3d;
   --color-accent-light: #22b85c;
+  --color-accent-results: #1a3350;
 
   /* ===== COLORES NEUTROS (MODO CLARO) ===== */
-  --color-bg: #F8F9FA;             /* Fondo principal */
-  --color-surface: #FFFFFF;        /* Tarjetas y elementos elevados */
+  --color-bg: #c5c5c5;             /* Fondo principal */
+  --color-surface: #ffffffc8;        /* Tarjetas y elementos elevados */
   --color-text: #212529;           /* Texto principal */
   --color-text-secondary: #6C757D; /* Texto secundario */
   --color-border: #DEE2E6;         /* Bordes y divisores */
@@ -38,6 +39,29 @@
   --color-error: #DC3545;          /* Errores */
   --color-warning: #FFC107;        /* Advertencias */
   --color-info: #1B6899;           /* Información */
+
+  /* ===== COLORES TABLAS ===== */
+  --color-sombra: rgba(0, 0, 0, 0.1);      /* Sombras suaves */
+  --color-encabezado: #2C3E50;             /* Fondo del encabezado */
+  --color-texto-encabezado: #FFFFFF;       /* Texto del encabezado */
+  --color-match-fondo: #817e7e;            /* Fondo de cada partido */
+  --color-match-hover: #5a6977;            /* Fondo al pasar el cursor */
+  --color-bracket-linea: #7c7a7a;          /* Líneas de conexión entre etapas */
+  --color-winner-fondo: #93aa92;           /* Fondo del ganador */
+  --color-winner-borde: #4d7e4e;           /* Borde del recuadro del ganador */
+
+  /* FILTRO TABLAS*/
+  --filter-bg: var(--color-surface);
+  --filter-text: var(--color-text);
+  --filter-border: var(--color-border);
+  --filter-border-radius: var(--border-radius-md);
+  --filter-padding: var(--space-3);
+  --filter-shadow: var(--color-sombra);
+  --filter-focus-border: var(--color-primary);
+  --filter-focus-shadow: rgba(27, 153, 139, 0.3); 
+  --filter-gap: var(--space-2);
+  --filter-font-size: var(--font-size-base);
+  --filter-arrow-color: #999;
 
   /* ===== TIPOGRAFÍA ===== */
   /* Familias de fuentes */
@@ -137,23 +161,37 @@
    cuando el usuario tiene modo oscuro activo
 ========================================== */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: #121212;
-    --color-surface: #1E1E1E;
-    --color-text: #FFFFFF;
-    --color-text-secondary: #B0B0B0;
-    --color-border: #2C2C2C;
-  }
-}
-
 /* Clase manual para forzar modo oscuro */
 .dark-mode {
   --color-bg: #121212;
   --color-surface: #1E1E1E;
+  --color--accent-results: #10263f;
+
+
+  /* ===== Tablas ======= */
+  --color-fondo-tabla: #1E1E1E;
+  --color-sombra: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+
+  --color-encabezado: #1B2631;
+  --color-texto-encabezado: #FFFFFF;
+
+  --color-match-fondo: #2A2A2A;
+  --color-match-hover: #333333;
+  --color-bracket-linea: #777777;
+  --color-winner-fondo: #224D2E;
+  --color-winner-borde: #3DDC84;
+
+/*=======================================*/
   --color-text: #FFFFFF;
   --color-text-secondary: #B0B0B0;
   --color-border: #2C2C2C;
+
+  /* Colores de bracket para tabla de mundiales*/
+  --color-match-fondo: #2A2A2A;                   /* Fondo de partidos */
+  --color-match-hover: #333333;                   /* Hover más claro */
+  --color-bracket-linea: #777777;                 /* Líneas del bracket */
+  --color-winner-fondo: #224D2E;                  /* Fondo del ganador (tono verde oscuro) */
+  --color-winner-borde: #3DDC84;                  /* Verde brillante para resaltar */
   
   /* Ajustar sombras para modo oscuro */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
