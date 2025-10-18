@@ -13,7 +13,7 @@
 .dark-mode {
   /* Theme tokens for dark mode — keep values minimal and overrideable */
   --color-bg: #0b1220;
-  --color-surface: #071025;
+  
   --color-text: #e6eef8;
   --color-text-secondary: #bcd0e6;
   --color-border: rgba(255, 255, 255, 0.06);
