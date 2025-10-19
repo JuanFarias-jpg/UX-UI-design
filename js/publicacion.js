@@ -42,3 +42,11 @@ document.querySelectorAll('.icon-comment').forEach(icon => {
   });
 });
 
+// Auto-ajuste del alto del textarea
+document.addEventListener('input', (e) => {
+  if (e.target.classList.contains('comentario-input')) {
+    const textarea = e.target;
+    textarea.style.height = 'auto'; // resetea
+    textarea.style.height = textarea.scrollHeight + 'px'; // ajusta según texto
+  }
+});
