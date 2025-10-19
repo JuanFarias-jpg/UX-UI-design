@@ -3,216 +3,445 @@
 const mundiales = [
   {
     anio: 2022,
-    sede: "Qatar",
+    sede: "Catar",
     campeon: "Argentina",
     subcampeon: "Francia",
-    resumen:
-      "Argentina se consagró campeona del mundo tras vencer a Francia en una final épica. Lionel Messi brilló con goles y liderazgo, consiguiendo su primer Mundial.",
+    goleador: "Kylian Mbappé (8 goles)",
     partidos: 64,
     goles: 172,
-    asistencias: 110,
-    promedio: 2.69,
-    bracket: [
-      ["Argentina 3 - 0 Croacia", "Francia 2 - 0 Marruecos"],
-      ["Argentina 3 (4) - (2) 3 Francia"],
-    ],
+    mejorJugador: "Lionel Messi",
+    observaciones: "Primera Copa Mundial realizada en Medio Oriente. Argentina se consagra campeona después de 36 años.",
     imagenes: [
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Lionel_Messi_WC2022_Final.jpg/400px-Lionel_Messi_WC2022_Final.jpg",
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Lusail_Stadium_World_Cup_Final_2022.jpg/400px-Lusail_Stadium_World_Cup_Final_2022.jpg",
+      "assets/imagenes/mesiCopa.jpg",
+      "assets/imagenes/promocional.jpg",
+      "assets/imagenes/mexico-1.jpg",
+      "assets/imagenes/trofeo.jpg",
+      "assets/imagenes/seleccionCatar.jpg",
+      "assets/imagenes/estadio-final.jpg",
+      "assets/imagenes/al_wakrah_stadium0.jpg"
     ],
     partidosDetalles: [
-      { fecha: "20/11/2022", fase: "Grupo A", equipoA: "Qatar", resultado: "0-2", equipoB: "Ecuador", goleadoresA: "-", goleadoresB: "Enner Valencia", estadio: "Al Bayt", ciudad: "Al Khor" },
-      { fecha: "18/12/2022", fase: "Final", equipoA: "Argentina", resultado: "3-3 (4-2 penales)", equipoB: "Francia", goleadoresA: "Messi, Di María, Messi", goleadoresB: "Mbappé x3", estadio: "Lusail Stadium", ciudad: "Lusail" },
+      {
+        fecha: "18/12/2022",
+        fase: "Final",
+        equipoA: "Argentina",
+        resultado: "3 - 3 (4-2 pen.)",
+        equipoB: "Francia",
+        goleadoresA: "Messi (2), Di María",
+        goleadoresB: "Mbappé (3)",
+        estadio: "Lusail",
+        ciudad: "Lusail",
+        analisisTecnico: {
+        estadisticas: {
+          posesion: { equipoA: 54, equipoB: 46 },
+          tiros: { equipoA: 10, equipoB: 9 },
+          tirosPuerta: { equipoA: 7, equipoB: 5 },
+          pasesCompletados: { equipoA: 520, equipoB: 480 },
+          faltas: { equipoA: 14, equipoB: 18 },
+          tarjetas: { equipoA: 2, equipoB: 3 },
+          tirosEsquina: { equipoA: 6, equipoB: 5 },
+        },
+        formacion: {
+          equipoA: "4-3-3",
+          equipoB: "4-2-3-1",
+          jugadoresA: [
+            { nombre: "Martínez", posicion: "GK", x: 50, y: 95 },
+            { nombre: "Molina", posicion: "RB", x: 75, y: 80 },
+            { nombre: "Otamendi", posicion: "CB", x: 60, y: 80 },
+            { nombre: "Romero", posicion: "CB", x: 40, y: 80 },
+            { nombre: "Tagliafico", posicion: "LB", x: 25, y: 80 },
+            { nombre: "De Paul", posicion: "CM", x: 65, y: 65 },
+            { nombre: "Fernández", posicion: "CM", x: 50, y: 60 },
+            { nombre: "Mac Allister", posicion: "CM", x: 35, y: 65 },
+            { nombre: "Messi", posicion: "RW", x: 75, y: 45 },
+            { nombre: "Álvarez", posicion: "ST", x: 50, y: 40 },
+            { nombre: "Di María", posicion: "LW", x: 25, y: 45 },
+          ],
+          jugadoresB: [
+            { nombre: "Lloris", posicion: "GK", x: 50, y: 95 },
+            { nombre: "Koundé", posicion: "RB", x: 75, y: 80 },
+            { nombre: "Varane", posicion: "CB", x: 60, y: 80 },
+            { nombre: "Upamecano", posicion: "CB", x: 40, y: 80 },
+            { nombre: "Hernández", posicion: "LB", x: 25, y: 80 },
+            { nombre: "Tchouaméni", posicion: "CM", x: 60, y: 65 },
+            { nombre: "Rabiot", posicion: "CM", x: 40, y: 65 },
+            { nombre: "Griezmann", posicion: "CAM", x: 50, y: 55 },
+            { nombre: "Dembélé", posicion: "RW", x: 75, y: 45 },
+            { nombre: "Mbappé", posicion: "LW", x: 25, y: 45 },
+            { nombre: "Giroud", posicion: "ST", x: 50, y: 40 },
+          ],
+        },
+      }
+
+      },
+     {
+        fecha: "17/12/2022",
+        fase: "Tercer lugar",
+        equipoA: "Croacia",
+        resultado: "2 - 1",
+        equipoB: "Marruecos",
+        goleadoresA: "Gvardiol, Oršić",
+        goleadoresB: "Dari",
+        estadio: "Khalifa",
+        ciudad: "Al Rayyan"
+      }
     ]
   },
+
   {
     anio: 2018,
     sede: "Rusia",
     campeon: "Francia",
     subcampeon: "Croacia",
-    resumen:
-      "Francia se coronó campeona en Rusia con una generación joven y talentosa liderada por Mbappé y Griezmann. Venció 4-2 a Croacia en la final.",
+    goleador: "Harry Kane (6 goles)",
     partidos: 64,
     goles: 169,
-    asistencias: 105,
-    promedio: 2.64,
-    bracket: [
-      ["Francia 1 - 0 Bélgica", "Croacia 2 - 1 Inglaterra"],
-      ["Francia 4 - 2 Croacia"],
-    ],
+    mejorJugador: "Luka Modrić",
+    observaciones: "Francia gana su segundo título mundial. Croacia logra su mejor desempeño histórico.",
     imagenes: [
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/France_team_World_Cup_2018.jpg/400px-France_team_World_Cup_2018.jpg",
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Luzhniki_Stadium_2018_WC_Final.jpg/400px-Luzhniki_Stadium_2018_WC_Final.jpg",
+      "assets/imagenes/rusia-final.jpg",
+      "assets/imagenes/rusia-campeon.jpg",
+      "assets/imagenes/rusia-trofeo.jpg"
     ],
     partidosDetalles: [
-      { fecha: "14/06/2018", fase: "Grupo C", equipoA: "Francia", resultado: "2-1", equipoB: "Australia", goleadoresA: "Giroud, Griezmann", goleadoresB: "Behich", estadio: "Kazan Arena", ciudad: "Kazan" },
-      { fecha: "15/07/2018", fase: "Final", equipoA: "Francia", resultado: "4-2", equipoB: "Croacia", goleadoresA: "Mandzukic OG, Griezmann, Pogba, Mbappé", goleadoresB: "Perisic, Mandzukic", estadio: "Luzhniki Stadium", ciudad: "Moscú" },
-    ]
-  },
-  {
-    anio: 2014,
-    sede: "Brasil",
-    campeon: "Alemania",
-    subcampeon: "Argentina",
-    resumen:
-      "Alemania ganó su cuarto título mundial tras vencer 1-0 a Argentina en la prórroga, con un gol histórico de Mario Götze en el Maracaná.",
-    partidos: 64,
-    goles: 171,
-    asistencias: 118,
-    promedio: 2.67,
-    bracket: [
-      ["Alemania 7 - 1 Brasil", "Argentina 0 (4) - (2) 0 Países Bajos"],
-      ["Alemania 1 - 0 Argentina"],
-    ],
-    imagenes: [
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/German_team_WC2014_final.jpg/400px-German_team_WC2014_final.jpg",
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Maracana_Stadium_2014_World_Cup_Final.jpg/400px-Maracana_Stadium_2014_World_Cup_Final.jpg",
-    ],
-    partidosDetalles: [
-      { fecha: "12/06/2014", fase: "Grupo G", equipoA: "Alemania", resultado: "4-0", equipoB: "Portugal", goleadoresA: "Müller x2, Klose, Schürrle", goleadoresB: "-", estadio: "Arena Fonte Nova", ciudad: "Salvador" },
-      { fecha: "13/07/2014", fase: "Final", equipoA: "Alemania", resultado: "1-0", equipoB: "Argentina", goleadoresA: "Götze", goleadoresB: "-", estadio: "Maracaná", ciudad: "Río de Janeiro" },
-    ]
-  },
-  {
-    anio: 2010,
-    sede: "Sudáfrica",
-    campeon: "España",
-    subcampeon: "Países Bajos",
-    resumen:
-      "España conquistó su primer Mundial con un estilo de posesión total liderado por Xavi, Iniesta y Casillas. Venció 1-0 a Países Bajos con gol de Iniesta.",
-    partidos: 64,
-    goles: 145,
-    asistencias: 101,
-    promedio: 2.26,
-    bracket: [
-      ["Países Bajos 3 - 2 Uruguay", "España 1 - 0 Alemania"],
-      ["España 1 - 0 Países Bajos"],
-    ],
-    imagenes: [
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Spain_World_Cup_2010_team.jpg/400px-Spain_World_Cup_2010_team.jpg",
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Soccer_City_Stadium_2010_World_Cup.jpg/400px-Soccer_City_Stadium_2010_World_Cup.jpg",
-    ],
-    partidosDetalles: [
-      { fecha: "11/06/2010", fase: "Grupo A", equipoA: "Sudáfrica", resultado: "1-1", equipoB: "México", goleadoresA: "S. Mphela", goleadoresB: "H. Herrera", estadio: "Soccer City", ciudad: "Johannesburgo" },
-      { fecha: "11/07/2010", fase: "Final", equipoA: "España", resultado: "1-0", equipoB: "Países Bajos", goleadoresA: "Iniesta", goleadoresB: "-", estadio: "Soccer City", ciudad: "Johannesburgo" },
-    ]
-  },
-  {
-    anio: 2006,
-    sede: "Alemania",
-    campeon: "Italia",
-    subcampeon: "Francia",
-    resumen:
-      "Italia se coronó campeona del mundo tras vencer a Francia en penales. El torneo fue recordado por la expulsión de Zidane en la final.",
-    partidos: 64,
-    goles: 147,
-    asistencias: 98,
-    promedio: 2.30,
-    bracket: [
-      ["Italia 2 - 0 Alemania", "Francia 1 - 0 Portugal"],
-      ["Italia 1 (5) - (3) 1 Francia"],
-    ],
-    imagenes: [
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Italy_World_Cup_2006_team.jpg/400px-Italy_World_Cup_2006_team.jpg",
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Berlin_Olympiastadion_2006_final.jpg/400px-Berlin_Olympiastadion_2006_final.jpg",
-    ],
-    partidosDetalles: [
-      { fecha: "09/06/2006", fase: "Grupo A", equipoA: "Alemania", resultado: "4-2", equipoB: "Costa Rica", goleadoresA: "Frings x2, Podolski, Klose", goleadoresB: "Gonzalez, Ruiz", estadio: "Fritz-Walter-Stadion", ciudad: "Kaiserslautern" },
-      { fecha: "09/07/2006", fase: "Final", equipoA: "Italia", resultado: "1-1 (5-3 penales)", equipoB: "Francia", goleadoresA: "Motta", goleadoresB: "Zidane", estadio: "Olympiastadion", ciudad: "Berlín" },
+      {
+        fecha: "15/07/2018",
+        fase: "Final",
+        equipoA: "Francia",
+        resultado: "4 - 2",
+        equipoB: "Croacia",
+        goleadoresA: "Mandžukić (autogol), Griezmann, Pogba, Mbappé",
+        goleadoresB: "Perišić, Mandžukić",
+        estadio: "Luzhnikí",
+        ciudad: "Moscú"
+      }
     ]
   }
 ];
 
-// ======================================================
-// ===== FUNCIONES DE RENDERIZADO =====
+
+// =========================================================
+// ===== FUNCIONES PARA MOSTRAR LOS DATOS =====
+// =========================================================
+
+// ----- Renderiza el resumen general -----
 function renderResumen(data) {
   const tbody = document.querySelector("#tbMundialesResumen tbody");
   tbody.innerHTML = "";
+
   data.forEach(m => {
-    const row = document.createElement("tr");
-    row.innerHTML = `
-      <td class="link-mundial">${m.anio}</td>
+    const fila = document.createElement("tr");
+    fila.innerHTML = `
+      <td><span class="link-mundial" style="color:#007bff;cursor:pointer;text-decoration:underline;">${m.anio}</span></td>
       <td>${m.sede}</td>
       <td>${m.campeon}</td>
       <td>${m.subcampeon}</td>
-      <td>${m.goleador || "-"}</td>
+      <td>${m.goleador}</td>
       <td>${m.partidos}</td>
       <td>${m.goles}</td>
-      <td>${m.mejorJugador || "-"}</td>
-      <td>${m.resumen}</td>
+      <td>${m.mejorJugador}</td>
+      <td>${m.observaciones}</td>
     `;
-    tbody.appendChild(row);
+    tbody.appendChild(fila);
   });
 }
 
-function renderPartidos(data) {
+
+// ----- Renderiza los partidos del mundial seleccionado -----
+function renderPartidos(partidos) {
   const tbody = document.querySelector("#tbPartidos tbody");
   tbody.innerHTML = "";
-  data.forEach(p => {
-    const row = document.createElement("tr");
-    row.innerHTML = `
-      <td>${p.fecha || "-"}</td>
-      <td>${p.fase || "-"}</td>
+
+  partidos.forEach(p => {
+    const fila = document.createElement("tr");
+    fila.innerHTML = `
+      <td><a href="#analisis-partido">${p.fecha}</a></td>
+      <td>${p.fase}</td>
       <td>${p.equipoA}</td>
       <td>${p.resultado}</td>
       <td>${p.equipoB}</td>
-      <td>${p.goleadoresA || "-"}</td>
-      <td>${p.goleadoresB || "-"}</td>
-      <td>${p.estadio || "-"}</td>
-      <td>${p.ciudad || "-"}</td>
+      <td>${p.goleadoresA}</td>
+      <td>${p.goleadoresB}</td>
+      <td>${p.estadio}</td>
+      <td>${p.ciudad}</td>
     `;
-    tbody.appendChild(row);
+    tbody.appendChild(fila);
   });
 }
 
-function renderBracket(mundial) {
-  const bracketContainer = document.getElementById("bracketContainer");
-  const bracketsSection = document.getElementById("brackets");
 
-  if(!mundial) {
-    bracketsSection.classList.add("oculto");
-    bracketContainer.innerHTML = "";
-    return;
+// =========================================================
+// ===== INICIALIZACIÓN AL CARGAR LA PÁGINA =====
+// =========================================================
+document.addEventListener("DOMContentLoaded", () => {
+  // Cargar resumen general
+  renderResumen(mundiales);
+
+  // Mostrar los partidos del mundial más reciente (el primero del array)
+  renderPartidos(mundiales[0].partidosDetalles);
+});
+
+
+// =========================================================
+// ===== INTERACCIÓN: CAMBIAR PARTIDOS SEGÚN EL AÑO =====
+// =========================================================
+document.querySelector("#tbMundialesResumen").addEventListener("click", e => {
+  if (e.target.classList.contains("link-mundial")) {
+    const anio = parseInt(e.target.textContent);
+    const mundial = mundiales.find(m => m.anio === anio);
+    renderPartidos(mundial.partidosDetalles);
   }
-
-  bracketsSection.classList.remove("oculto");
-  bracketContainer.innerHTML = mundial.bracket.map(stage => {
-    return `<div class="stage">${stage.map(match => `<div class="match">${match}</div>`).join("")}</div>`;
-  }).join("");
-}
+});
 
 // ======================================================
 // ===== FILTROS =====
-const filtros = document.getElementById("filtro-categoria");
-const search = document.getElementById("filtro-search");
+// ======================================================
 
-function aplicarFiltro() {
-  const cat = filtros.value;
-  const text = search.value.toLowerCase();
+const searchInput = document.querySelector(".search-input");
+const selects = document.querySelectorAll(".filter-dropdown");
+const tablaPartidos = document.querySelector("#tbPartidos");
+const tbodyPartidos = tablaPartidos.querySelector("tbody");
+const seccionAnalisis = document.querySelector("#analisis-partido");
 
-  let filtered = mundiales;
+// ---- Función para aplicar filtros ----
+function aplicarFiltros() {
+  const mundialFiltro = selects[0].value;   // Mundial
+  const continenteFiltro = selects[1].value; // Continente
+  const ordenFiltro = selects[2].value;     // Orden
+  const texto = searchInput.value.toLowerCase();
 
-  if(cat && text.length > 0) {
-    filtered = mundiales.filter(m => {
-      if(cat === "sede") return m.sede.toLowerCase().includes(text);
-      if(cat === "anio") return m.anio.toString().includes(text);
-      if(cat === "seleccion") return m.campeon.toLowerCase().includes(text) || m.subcampeon.toLowerCase().includes(text);
-      return true;
-    });
+  let filtrados = [...mundiales];
+
+  // Filtrar por mundial
+  if (mundialFiltro) {
+    if (mundialFiltro === "otros") {
+      filtrados = filtrados.filter(m => m.anio < 2006);
+    } else {
+      filtrados = filtrados.filter(m => m.anio.toString() === mundialFiltro);
+    }
   }
 
-  renderResumen(filtered);
-  renderPartidos(filtered.length ? filtered[0].partidosDetalles || [] : []);
-  renderBracket(filtered.length === 1 ? filtered[0] : null);
+  // Filtrar por texto
+  if (texto) {
+    filtrados = filtrados.filter(m =>
+      m.sede.toLowerCase().includes(texto) ||
+      m.campeon.toLowerCase().includes(texto) ||
+      m.subcampeon.toLowerCase().includes(texto) ||
+      (m.mejorJugador && m.mejorJugador.toLowerCase().includes(texto))
+    );
+  }
+
+  // Filtrar por continente (ejemplo genérico)
+  if (continenteFiltro) {
+    filtrados = filtrados.filter(m =>
+      m.sede.toLowerCase().includes(continenteFiltro)
+    );
+  }
+
+  // Ordenar
+  if (ordenFiltro === "recent") filtrados.sort((a, b) => b.anio - a.anio);
+  if (ordenFiltro === "popular") filtrados.sort((a, b) => b.goles - a.goles);
+  if (ordenFiltro === "views") filtrados.sort((a, b) => b.partidos - a.partidos);
+
+  // Mostrar en tablas
+  renderResumen(filtrados);
+
+  if (filtrados.length > 0) {
+    renderPartidos(filtrados[0].partidosDetalles);
+    tablaPartidos.classList.remove("bloqueada");
+  } else {
+    tbodyPartidos.innerHTML = "";
+    tablaPartidos.classList.add("bloqueada");
+  }
+
+  // Ocultar análisis si se cambia el filtro
+  seccionAnalisis.style.display = "none";
 }
 
-filtros.addEventListener("change", aplicarFiltro);
-search.addEventListener("input", aplicarFiltro);
+// Escuchar cambios
+selects.forEach(sel => sel.addEventListener("change", aplicarFiltros));
+searchInput.addEventListener("input", aplicarFiltros);
+
 
 // ======================================================
-// ===== CARGA INICIAL =====
+// ===== INTERACCIÓN: MOSTRAR PARTIDOS POR MUNDIAL =====
+// ======================================================
+document.querySelector("#tbMundialesResumen").addEventListener("click", e => {
+  if (e.target.classList.contains("link-mundial")) {
+    const anio = parseInt(e.target.textContent);
+    const mundial = mundiales.find(m => m.anio === anio);
+    renderPartidos(mundial.partidosDetalles);
+    tablaPartidos.classList.remove("bloqueada");
+    seccionAnalisis.style.display = "none";
+  }
+});
+
+
+// ======================================================
+// ===== INTERACCIÓN: MOSTRAR ANÁLISIS DE PARTIDO =====
+// ======================================================
+tablaPartidos.addEventListener("click", e => {
+  const fila = e.target.closest("tr");
+  if (!fila) return;
+
+  const celdas = fila.querySelectorAll("td");
+  const equipoA = celdas[2].textContent;
+  const equipoB = celdas[4].textContent;
+
+  let partidoConAnalisis = null;
+
+  // Buscar el partido dentro de los mundiales
+  for (const mundial of mundiales) {
+    const partido = mundial.partidosDetalles.find(
+      p => p.equipoA === equipoA && p.equipoB === equipoB && p.analisisTecnico
+    );
+    if (partido) {
+      partidoConAnalisis = partido;
+      break;
+    }
+  }
+
+  if (partidoConAnalisis) {
+    mostrarAnalisis(partidoConAnalisis);
+  } else {
+    alert("Este partido no tiene análisis técnico disponible.");
+  }
+});
+
+
+// ======================================================
+// ===== RENDER DE ANÁLISIS TÉCNICO =====
+// ======================================================
+function mostrarAnalisis(partido) {
+  const contenedor = document.querySelector("#analisis-partido");
+  const tabla = document.querySelector("#tabla-analisis");
+  const canvas = document.querySelector("#grafico-analisis");
+  const cancha = document.querySelector("#cancha");
+
+  // Asegurarnos que la sección se muestre
+  contenedor.style.display = "block";
+
+  // ----- Tabla de estadísticas -----
+  const { estadisticas, formacion } = partido.analisisTecnico;
+  tabla.innerHTML = `
+    <tr><th>Estadística</th><th>${partido.equipoA}</th><th>${partido.equipoB}</th></tr>
+    <tr><td>Posesión (%)</td><td>${estadisticas.posesion.equipoA}</td><td>${estadisticas.posesion.equipoB}</td></tr>
+    <tr><td>Tiros</td><td>${estadisticas.tiros.equipoA}</td><td>${estadisticas.tiros.equipoB}</td></tr>
+    <tr><td>Tiros al arco</td><td>${estadisticas.tirosPuerta.equipoA}</td><td>${estadisticas.tirosPuerta.equipoB}</td></tr>
+    <tr><td>Pases completados</td><td>${estadisticas.pasesCompletados.equipoA}</td><td>${estadisticas.pasesCompletados.equipoB}</td></tr>
+    <tr><td>Faltas</td><td>${estadisticas.faltas.equipoA}</td><td>${estadisticas.faltas.equipoB}</td></tr>
+    <tr><td>Tarjetas</td><td>${estadisticas.tarjetas.equipoA}</td><td>${estadisticas.tarjetas.equipoB}</td></tr>
+    <tr><td>Tiros de esquina</td><td>${estadisticas.tirosEsquina.equipoA}</td><td>${estadisticas.tirosEsquina.equipoB}</td></tr>
+  `;
+
+  // ----- Limpiar controles dinámicos previos (si existen) -----
+  const prevControls = document.querySelector(".formacion-controles");
+  if (prevControls) prevControls.remove();
+
+  // ----- Gráfico -----
+  // destruir instancia previa SI existe (usa UNA variable consistente)
+  if (window.graficoAnalisis) {
+    try { window.graficoAnalisis.destroy(); } catch(e) {}
+    window.graficoAnalisis = null;
+  }
+
+  const ctx = canvas.getContext("2d");
+  window.graficoAnalisis = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: ["Posesión", "Tiros", "Tiros al arco", "Pases", "Faltas", "Tarjetas", "Tiros esquina"],
+      datasets: [
+        {
+          label: partido.equipoA,
+          data: [
+            estadisticas.posesion.equipoA,
+            estadisticas.tiros.equipoA,
+            estadisticas.tirosPuerta.equipoA,
+            estadisticas.pasesCompletados.equipoA,
+            estadisticas.faltas.equipoA,
+            estadisticas.tarjetas.equipoA,
+            estadisticas.tirosEsquina.equipoA
+          ],
+          backgroundColor: "rgba(52, 152, 219, 0.7)"
+        },
+        {
+          label: partido.equipoB,
+          data: [
+            estadisticas.posesion.equipoB,
+            estadisticas.tiros.equipoB,
+            estadisticas.tirosPuerta.equipoB,
+            estadisticas.pasesCompletados.equipoB,
+            estadisticas.faltas.equipoB,
+            estadisticas.tarjetas.equipoB,
+            estadisticas.tirosEsquina.equipoB
+          ],
+          backgroundColor: "rgba(231, 76, 60, 0.7)"
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { position: "bottom" } },
+      scales: { y: { beginAtZero: true } }
+    }
+  });
+
+  // ----- Formaciones: limpiar cancha -----
+  // eliminar jugadores previos (todos)
+  cancha.querySelectorAll(".jugador").forEach(el => el.remove());
+
+  // insertar CONTROLES de formacion UNA sola vez
+  const controles = document.createElement("div");
+  controles.className = "opciones-formacion";
+  controles.innerHTML = `
+    <label style="margin-right:12px;"><input type="checkbox" id="chkA" checked> ${partido.equipoA}</label>
+    <label><input type="checkbox" id="chkB" checked> ${partido.equipoB}</label>
+  `;
+  // insertar justo antes de la cancha (si ya existe, lo hemos quitado arriba)
+  cancha.parentNode.insertBefore(controles, cancha);
+  // ----- Bind a checkboxes-----
+  const chkA = document.getElementById("chkA");
+  const chkB = document.getElementById("chkB");
+
+  // ----- Dibujar jugadores (usa renderFormacionEquipo que limpia por clase) -----
+  renderFormacionEquipo(formacion.jugadoresA, "equipoA");
+  renderFormacionEquipo(formacion.jugadoresB, "equipoB");
+
+
+
+  const actualizarVisibilidad = () => {
+    document.querySelectorAll(".jugador.equipoA").forEach(j => j.style.display = chkA.checked ? "block" : "none");
+    document.querySelectorAll(".jugador.equipoB").forEach(j => j.style.display = chkB.checked ? "block" : "none");
+  };
+
+  chkA.addEventListener("change", actualizarVisibilidad);
+  chkB.addEventListener("change", actualizarVisibilidad);
+
+  // estado inicial
+  actualizarVisibilidad();
+}
+
+
+function renderFormacionEquipo(jugadores, clase) {
+  const cancha = document.getElementById("cancha");
+  // limpiar previos del mismo equipo
+  cancha.querySelectorAll(`.jugador.${clase}`).forEach(el => el.remove());
+
+  jugadores.forEach(jugador => {
+    const div = document.createElement("div");
+    div.classList.add("jugador", clase);
+    div.textContent = jugador.nombre;
+    div.style.left = `${jugador.x}%`;
+    div.style.top = `${jugador.y}%`;
+    cancha.appendChild(div);
+  });
+}
+
+
+// ======================================================
+// ===== INICIALIZACIÓN =====
+// ======================================================
 document.addEventListener("DOMContentLoaded", () => {
-  renderResumen([mundiales[0]]);
+  renderResumen(mundiales);
   renderPartidos(mundiales[0].partidosDetalles);
-  renderBracket(null);
 });

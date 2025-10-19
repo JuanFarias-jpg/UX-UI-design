@@ -28,11 +28,11 @@
   --color-accent-results: #1a3350;
 
   /* ===== COLORES NEUTROS (MODO CLARO) ===== */
-  --color-bg: #c5c5c5;             /* Fondo principal */
+  --color-bg: #dddddd;             /* Fondo principal */
   --color-surface: #ffffffc8;        /* Tarjetas y elementos elevados */
   --color-text: #212529;           /* Texto principal */
   --color-text-secondary: #6C757D; /* Texto secundario */
-  --color-border: #DEE2E6;         /* Bordes y divisores */
+  --color-border: #a2b3c4;         /* Bordes y divisores */
 
   /* ===== COLORES DE ESTADO ===== */
   --color-success: #1B994C;        /* Éxitos/confirmaciones */
@@ -42,13 +42,13 @@
 
   /* ===== COLORES TABLAS ===== */
   --color-sombra: rgba(0, 0, 0, 0.1);      /* Sombras suaves */
-  --color-encabezado: #2C3E50;             /* Fondo del encabezado */
+  --color-encabezado: #2d7ecf;             /* Fondo del encabezado */
   --color-texto-encabezado: #FFFFFF;       /* Texto del encabezado */
-  --color-match-fondo: #817e7e;            /* Fondo de cada partido */
-  --color-match-hover: #5a6977;            /* Fondo al pasar el cursor */
+  --color-match-fondo: #b1c3cc;            /* Fondo de cada partido */
+  --color-match-hover: #85a9cc;            /* Fondo al pasar el cursor */
   --color-bracket-linea: #7c7a7a;          /* Líneas de conexión entre etapas */
-  --color-winner-fondo: #93aa92;           /* Fondo del ganador */
-  --color-winner-borde: #4d7e4e;           /* Borde del recuadro del ganador */
+  --color-winner-fondo: #95e992;           /* Fondo del ganador */
+  --color-winner-borde: #6ad16c;           /* Borde del recuadro del ganador */
 
   /* FILTRO TABLAS*/
   --filter-bg: var(--color-surface);

@@ -5,7 +5,7 @@
 /* --- Variables locales de la tabla --- */
 .tabla-mundiales {
   font-family: var(--font-primary);
-  padding: 20px;
+  padding: 20px 30px 0 30px; 
   color: var(--color-text);
   background: transparent;
 }
@@ -185,7 +185,7 @@
 .detalle-mundial {
   margin-top: 50px;
   padding: 30px;
-  background: var(--color-fondo-claro);
+  background: var(--color-surface);
   border-radius: 12px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   animation: fadeIn 0.6s ease-out forwards;
@@ -193,23 +193,27 @@
 
 .detalle-mundial h2 {
   font-size: 2rem;
-  color: var(--color-texto-encabezado);
+  color: var(--color-texto);
   margin-bottom: 5px;
+  padding: 0 60px 0 60px; 
 }
 
 .detalle-mundial h3 {
   color: var(--color-texto-secundario);
   margin-bottom: 15px;
+  padding: 0 60px 0 60px; 
 }
 
 .detalle-mundial .resumen {
   line-height: 1.6;
   color: var(--color-texto);
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+  padding: 0 60px 0 60px; 
+  text-align: justify;
 }
 
 .bracket-section {
-  background: var(--color-accent-results);
+  background: var(--color-bg);
   padding: 20px;
   border-radius: 8px;
   margin-bottom: 25px;
@@ -240,15 +244,18 @@
 /* --- Galería --- */
 .galeria {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
 }
 
 .galeria img {
   width: 100%;
+  height: auto;
   border-radius: 8px;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  cursor: pointer;
+  transition: transform 0.3s;
 }
 
 .galeria img:hover {
@@ -263,6 +270,20 @@
   from { opacity: 0; transform: translateY(15px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+.ver-mas {
+  text-align: center;
+  margin-top: 20px;
+  color: var(--color-link);
+  cursor: pointer;
+  font-weight: 600;
+  transition: opacity 0.3s ease;
+}
+.ver-mas:hover {
+  text-decoration: underline;
+  opacity: 0.8;
+}
+
 
 /* ========================================================= */
 /* ===== RESPONSIVE ===== */

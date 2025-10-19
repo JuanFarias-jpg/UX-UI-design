@@ -14,8 +14,9 @@
     <link rel="stylesheet" href="css/pages.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/dark-mode.css">
-    <link rel="stylesheet" href="css/mundiales.css">
     <link rel="stylesheet" href="css/estadisticas.css">
+    <link rel="stylesheet" href="css/mundiales.css">
+
 </head>
 <body>
 
@@ -64,34 +65,60 @@
     </header>
     <!-- MAIN CONTENT -->
     <main class="main">
-  <div class="container">
+      <div class="container">
 
-    <!-- ====================== FILTROS ====================== -->
-    <form class="filters-grid">
-        <div class="filters-section">
+        <!-- Header de la página -->
+          <header class="publications-header">
+            <h1 class="section__title">Estadísticas</h1>
+            <p class="section__subtitle">
+                Records y estadisticas de los mundiales
+            </p>
 
-
-        <!-- Barra de búsqueda -->
+            <!-- Barra de búsqueda -->
             <div class="search-bar">
                 <span class="search-icon" aria-hidden="true">🔍</span>
-                    <input 
-                        id="filtro-search"
-                        type="search" 
-                        class="search-input" 
-                        placeholder="Buscar publicaciones, equipos, jugadores..."
-                        aria-label="Buscar publicaciones">
+                <input 
+                  type="search" 
+                  class="search-input" 
+                  placeholder="Buscar publicaciones, equipos, jugadores..."
+                  aria-label="Buscar publicaciones">
             </div>
+          </header>
 
-        <select class="filter-dropdown" id="filtro-categoria">
-          <option value="">Selecciona filtro</option>
-          <option value="sede">Sede</option>
-          <option value="seleccion">Selección</option>
-          <option value="anio">Año</option>
-        </select>
+        <!-- Sección de filtros -->
+        <section class="filters-section" aria-labelledby="filters-title">
+          <h2 id="filters-title" class="sr-only">Filtros de búsqueda</h2>
 
+        <!-- Filtros avanzados -->
+          <div class="filters-grid">
+            <select class="filter-dropdown" aria-label="Filtrar por mundial">
+              <option value="">Todos los mundiales</option>
+              <option value="2026">Mundial 2026</option>
+              <option value="2022">Qatar 2022</option>
+              <option value="2018">Rusia 2018</option>
+              <option value="2014">Brasil 2014</option>
+              <option value="2010">Sudáfrica 2010</option>
+              <option value="2006">Alemania 2006</option>
+              <option value="otros">Mundiales anteriores</option>
+            </select>
 
-        </div>
-    </form>
+            <select class="filter-dropdown" aria-label="Filtrar por selección">
+              <option value="">Todas los continentes</option>
+              <option value="argentina">Asia</option>
+              <option value="brasil">America</option>
+              <option value="alemania">Europa</option>
+              <option value="francia">Oceania</option>
+              <option value="españa">Africa</option>
+            </select>
+
+            <select class="filter-dropdown" aria-label="Ordenar por">
+              <option value="recent">Año</option>
+              <option value="popular">Goles</option>
+              <option value="views">Cantidad de espectadores</option>
+              <option value="comments">Otras opciones</option>
+            </select>
+          </div>
+      </section>
 
     <!-- ====================== RESUMEN GENERAL ====================== -->
     <section id="resumen-general">
@@ -116,14 +143,10 @@
       </div>
     </section>
 
-    <!-- ====================== BRACKETS ====================== -->
-    <section id="brackets" class="oculto">
-      <h2>Bracket</h2>
-      <div id="bracketContainer" class="bracket"></div>
-    </section>
 
     <!-- ====================== PARTIDOS POR MUNDIAL ====================== -->
     <section id="partidos-mundial">
+      <br>
       <h2>Partidos por Mundial</h2>
       <div class="tabla-mundiales">
         <table id="tbPartidos">
@@ -131,9 +154,9 @@
             <tr>
               <th>Fecha</th>
               <th>Fase</th>
-              <th>Equipo A</th>
+              <th>Seleccion A</th>
               <th>Resultado</th>
-              <th>Equipo B</th>
+              <th>Seleccion B</th>
               <th>Goleadores A</th>
               <th>Goleadores B</th>
               <th>Estadio</th>
@@ -144,6 +167,23 @@
         </table>
       </div>
     </section>
+
+    <section id="analisis-partido" class="analisis" style="display:none;">
+    <h2>Estadísticas</h2>
+
+    <div class="contenedor-analisis">
+      <div class="columna">
+        <h3>Análisis Técnico</h3>
+        <table id="tabla-analisis" class="tabla-analisis"></table>
+        <canvas id="grafico-analisis"></canvas>
+      </div>
+      <div class="columna">
+        <h3>Formaciones</h3>
+        <div id="cancha" class="cancha"></div>
+      </div>
+    </div>
+  </section>
+
 
   </div>
 </main>
@@ -206,6 +246,7 @@
     <script src="js/navigation.js"></script>
     <script src="js/animations.js"></script>
     <script src="js/accessibility.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/mundiales.js"></script>
 
 </body>
