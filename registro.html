@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Regístrate en World Cup Archive">
+    <title>Registro - World Cup Archive</title>
+    
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+</head>
+<body>
+    <!-- HEADER SIMPLIFICADO -->
+    <header class="header" role="banner">
+        <div class="container">
+            <nav class="navbar" role="navigation">
+                <div class="navbar__brand">
+                    <a href="index.html" class="logo" aria-label="Volver al inicio">
+                        <span class="logo__text">WCA</span>
+                    </a>
+                </div>
+
+                <div class="navbar__controls">
+                    <button class="theme-toggle" 
+                            aria-label="Cambiar tema claro/oscuro"
+                            title="Cambiar tema">
+                        <span class="theme-toggle__icon">🌙</span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="main login-page">
+        <div class="login-container">
+            <!-- Header del formulario -->
+            <div class="login-header">
+                <div class="login-logo">WCA</div>
+                <h1 class="login-title">Únete a la comunidad</h1>
+                <p class="login-subtitle">Crea tu cuenta para compartir tus historias</p>
+            </div>
+
+            <!-- Formulario de registro -->
+            <form class="login-form" id="registro-form" novalidate>
+                <!-- Campo de nombre completo -->
+                <div class="form-group">
+                    <label for="fullname" class="form-label">
+                        Nombre completo
+                    </label>
+                    <input 
+                        type="text" 
+                        id="fullname" 
+                        name="fullname"
+                        class="form-input"
+                        placeholder="Juan López García"
+                        required
+                        aria-required="true">
+                    <span class="form-error" id="fullname-error" hidden></span>
+                </div>
+
+                <!-- Campo de usuario -->
+                <div class="form-group">
+                    <label for="username" class="form-label">
+                        Nombre de usuario
+                    </label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username"
+                        class="form-input"
+                        placeholder="juanlopez"
+                        required
+                        aria-required="true">
+                    <span class="form-error" id="username-error" hidden></span>
+                </div>
+
+                <!-- Campo de email -->
+                <div class="form-group">
+                    <label for="email" class="form-label">
+                        Correo electrónico
+                    </label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email"
+                        class="form-input"
+                        placeholder="tu@email.com"
+                        required
+                        autocomplete="email"
+                        aria-required="true">
+                    <span class="form-error" id="email-error" hidden></span>
+                </div>
+
+                <!-- Campo de fecha de nacimiento -->
+                <div class="form-group">
+                    <label for="birthdate" class="form-label">
+                        Fecha de nacimiento (mínimo 12 años)
+                    </label>
+                    <input 
+                        type="date" 
+                        id="birthdate" 
+                        name="birthdate"
+                        class="form-input"
+                        required
+                        aria-required="true">
+                    <span class="form-error" id="birthdate-error" hidden></span>
+                </div>
+
+                <!-- Campo de país -->
+                <div class="form-group">
+                    <label for="country" class="form-label">
+                        País de nacimiento
+                    </label>
+                    <select id="country" name="country" class="form-input" required aria-required="true">
+                        <option value="">Selecciona tu país</option>
+                        <option value="mexico">México</option>
+                        <option value="argentina">Argentina</option>
+                        <option value="brasil">Brasil</option>
+                        <option value="españa">España</option>
+                        <option value="estados-unidos">Estados Unidos</option>
+                        <option value="francia">Francia</option>
+                        <option value="italia">Italia</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                    <span class="form-error" id="country-error" hidden></span>
+                </div>
+
+                <!-- Campo de contraseña -->
+                <div class="form-group">
+                    <label for="password" class="form-label">
+                        Contraseña
+                    </label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password"
+                        class="form-input"
+                        placeholder="••••••••"
+                        required
+                        autocomplete="new-password"
+                        aria-required="true">
+                    <span class="form-error" id="password-error" hidden></span>
+                    <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-top: var(--space-2);">
+                        Mínimo 8 caracteres
+                    </p>
+                </div>
+
+                <!-- Campo confirmar contraseña -->
+                <div class="form-group">
+                    <label for="password-confirm" class="form-label">
+                        Confirmar contraseña
+                    </label>
+                    <input 
+                        type="password" 
+                        id="password-confirm" 
+                        name="password-confirm"
+                        class="form-input"
+                        placeholder="••••••••"
+                        required
+                        autocomplete="new-password"
+                        aria-required="true">
+                    <span class="form-error" id="password-confirm-error" hidden></span>
+                </div>
+
+                <!-- Términos y condiciones -->
+                <div class="form-checkbox-group">
+                    <input 
+                        type="checkbox" 
+                        id="terms" 
+                        name="terms"
+                        class="form-checkbox"
+                        required
+                        aria-required="true">
+                    <label for="terms" style="font-size: var(--font-size-sm);">
+                        Acepto los términos y condiciones y la política de privacidad
+                    </label>
+                </div>
+                <span class="form-error" id="terms-error" hidden></span>
+
+                <!-- Recibir newsletter -->
+                <div class="form-checkbox-group">
+                    <input 
+                        type="checkbox" 
+                        id="newsletter" 
+                        name="newsletter"
+                        class="form-checkbox">
+                    <label for="newsletter" style="font-size: var(--font-size-sm);">
+                        Deseo recibir información sobre nuevas publicaciones y eventos
+                    </label>
+                </div>
+
+                <!-- Botones de acción -->
+                <div class="form-actions">
+                    <button type="submit" class="btn btn--primary" style="width: 100%;">
+                        Crear cuenta
+                    </button>
+                </div>
+            </form>
+
+            <!-- Footer del formulario -->
+            <div class="login-footer">
+                <p>
+                    ¿Ya tienes cuenta? 
+                    <a href="login.html">Inicia sesión aquí</a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER SIMPLIFICADO -->
+    <footer class="footer" role="contentinfo" style="margin-top: 0;">
+        <div class="container">
+            <div class="footer__bottom">
+                <p>&copy; 2025 World Cup Archive. Proyecto educativo UANL.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="js/theme.js"></script>
+    <script src="js/accessibility.js"></script>
+    <script src="js/registro-validation.js"></script>
+</body>
+</html>

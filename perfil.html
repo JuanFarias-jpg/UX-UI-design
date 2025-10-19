@@ -55,7 +55,7 @@
     </header>
 
     <!-- MAIN CONTENT -->
-    <main class="main profile-page" style="display: none;">
+    <main class="main profile-page" style="display: block;">
         <!-- Header del perfil -->
         <section class="profile-header">
             <div class="container">
@@ -86,7 +86,75 @@
             </div>
         </section>
 
-        <div class="container">
+                    <!-- MODAL: Crear o Editar Publicación con Galería -->
+            <div class="modal" id="post-modal" hidden>
+            <div class="modal__overlay"></div>
+            <div class="modal__content" role="dialog" aria-modal="true" aria-labelledby="post-modal-title">
+                <header class="modal__header">
+                <h2 id="post-modal-title">Nueva Publicación</h2>
+                <button class="modal__close" id="close-post-modal" aria-label="Cerrar">✕</button>
+                </header>
+
+                <form id="post-form" class="modal__form">
+                <!-- Galería -->
+                <div class="form-group">
+                    <label class="form-label">Galería de medios (imágenes o videos)</label>
+                    <input type="file" id="post-media" class="form-input" accept="image/*,video/*" multiple>
+                    <div id="media-preview" style="display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-3);"></div>
+                </div>
+
+                <!-- Título -->
+                <div class="form-group">
+                    <label for="post-title" class="form-label">Título</label>
+                    <input type="text" id="post-title" class="form-input" placeholder="Ejemplo: El Mundial más emocionante" required>
+                </div>
+
+                <!-- Categoría -->
+                <div class="form-group">
+                    <label for="post-category" class="form-label">Categoría</label>
+                    <select id="post-category" class="form-input" required>
+                    <option value="">Selecciona una categoría</option>
+                    <option value="jugadas">Jugadas</option>
+                    <option value="entrevistas">Entrevistas</option>
+                    <option value="partidos">Partidos</option>
+                    <option value="estadisticas">Estadísticas</option>
+                    <option value="sedes">Sedes</option>
+                    <option value="cultura">Cultura</option>
+                    </select>
+                </div>
+
+                <!-- Descripción -->
+                <div class="form-group">
+                    <label for="post-description" class="form-label">Descripción breve</label>
+                    <textarea id="post-description" class="form-input" rows="3" required></textarea>
+                </div>
+
+                <!-- Contenido -->
+                <div class="form-group">
+                    <label for="post-content" class="form-label">Contenido completo</label>
+                    <textarea id="post-content" class="form-input" rows="6" required></textarea>
+                </div>
+
+                <!-- Estado -->
+                <div class="form-group">
+                    <label for="post-status" class="form-label">Estado</label>
+                    <select id="post-status" class="form-input">
+                    <option value="publicada">Publicada</option>
+                    <option value="revision">En revisión</option>
+                    <option value="rechazada">Rechazada</option>
+                    </select>
+                </div>
+
+                <!-- Acciones -->
+                <div class="form-actions" style="display:flex;gap:var(--space-3);margin-top:var(--space-6);">
+                    <button type="submit" class="btn btn--primary" id="save-post-btn">Publicar</button>
+                    <button type="button" class="btn btn--outline" id="cancel-post-btn">Cancelar</button>
+                </div>
+                </form>
+            </div>
+            </div>
+
+
             <!-- Navegación del perfil -->
             <nav class="profile-nav" aria-label="Navegación del perfil">
                 <a href="#publicaciones" class="profile-nav__link profile-nav__link--active" data-tab="publicaciones">
@@ -199,7 +267,7 @@
                             </span>
                         </div>
                         <div style="display: flex; gap: var(--space-2); padding: var(--space-3);">
-                            <button class="btn btn--outline" style="flex: 1;">Editar</button>
+                            <button class="btn btn--outline edit-post" style="flex: 1;">Editar</button>
                             <button class="btn btn--outline" style="flex: 1; color: var(--color-error);">Cancelar</button>
                         </div>
                     </article>
