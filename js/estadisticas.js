@@ -335,7 +335,7 @@ function mostrarAnalisis(partido) {
   `;
 
   // ----- Limpiar controles dinámicos previos (si existen) -----
-  const prevControls = document.querySelector(".formacion-controles");
+  const prevControls = document.querySelector(".opciones-formacion");
   if (prevControls) prevControls.remove();
 
   // ----- Gráfico -----
@@ -389,6 +389,7 @@ function mostrarAnalisis(partido) {
   // ----- Formaciones: limpiar cancha -----
   // eliminar jugadores previos (todos)
   cancha.querySelectorAll(".jugador").forEach(el => el.remove());
+
 
   // insertar CONTROLES de formacion UNA sola vez
   const controles = document.createElement("div");
