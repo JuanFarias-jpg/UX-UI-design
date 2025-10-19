@@ -307,3 +307,12 @@
   transform: scale(1.15);
   color: var(--color-primario);
 }
+
+  .comentario-like:hover,
+  .comentario-reply:hover {
+    color: #007BFF;
+  }
+
+  .comentario-like i {
+    margin-right: 6px;
+  }
