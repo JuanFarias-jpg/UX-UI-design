@@ -173,12 +173,178 @@
   // ===== NUEVA PUBLICACIÓN =====
 
   if (newPostBtn) {
-    newPostBtn.addEventListener('click', () => {
-      // Por ahora solo mostrar alerta
-      // Redirigirá a un formulario
-      alert('Funcionalidad de crear publicación en desarrollo.\nPor ahora es solo un prototipo visual.');
-    });
+  const modal = document.querySelector('#post-modal');
+  const closeModal = document.querySelector('#close-post-modal');
+  const cancelBtn = document.querySelector('#cancel-post-btn');
+  const form = document.querySelector('#post-form');
+  const mediaInput = document.querySelector('#post-media');
+  const previewContainer = document.querySelector('#media-preview');
+  let mediaFiles = [];
+  let editingCard = null;
+
+  function openModal(editMode = false, data = null) {
+    modal.removeAttribute('hidden');
+    document.body.classList.add('modal-open');
+    document.querySelector('#post-modal-title').textContent = editMode ? 'Editar Publicación' : 'Nueva Publicación';
+    document.querySelector('#save-post-btn').textContent = editMode ? 'Guardar cambios' : 'Publicar';
+    form.reset();
+    previewContainer.innerHTML = '';
+    mediaFiles = [];
+
+    if (editMode && data) {
+      document.querySelector('#post-title').value = data.title;
+      document.querySelector('#post-category').value = data.category;
+      document.querySelector('#post-description').value = data.description;
+      document.querySelector('#post-content').value = data.content;
+      document.querySelector('#post-status').value = data.status;
+
+      if (data.media && data.media.length > 0) {
+        data.media.forEach(src => addMediaPreview(src));
+      }
+    }
   }
+
+  function closeModalFunc() {
+    modal.setAttribute('hidden', '');
+    document.body.classList.remove('modal-open');
+
+  }
+
+  closeModal.addEventListener('click', closeModalFunc);
+  cancelBtn.addEventListener('click', closeModalFunc);
+  newPostBtn.addEventListener('click', () => openModal());
+
+  // Mostrar previsualización de múltiples imágenes o videos
+  function addMediaPreview(src, type = 'image') {
+    const wrapper = document.createElement('div');
+    wrapper.style.position = 'relative';
+    wrapper.style.width = '120px';
+    wrapper.style.height = '120px';
+    wrapper.style.overflow = 'hidden';
+    wrapper.style.borderRadius = 'var(--border-radius-md)';
+
+    const removeBtn = document.createElement('button');
+    removeBtn.textContent = '×';
+    removeBtn.style.position = 'absolute';
+    removeBtn.style.top = '4px';
+    removeBtn.style.right = '4px';
+    removeBtn.style.background = 'rgba(0,0,0,0.5)';
+    removeBtn.style.color = '#fff';
+    removeBtn.style.border = 'none';
+    removeBtn.style.borderRadius = '50%';
+    removeBtn.style.width = '20px';
+    removeBtn.style.height = '20px';
+    removeBtn.style.cursor = 'pointer';
+    removeBtn.addEventListener('click', () => wrapper.remove());
+
+    if (type === 'video') {
+      const vid = document.createElement('video');
+      vid.src = src;
+      vid.controls = true;
+      vid.style.width = '100%';
+      vid.style.height = '100%';
+      wrapper.appendChild(vid);
+    } else {
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = 'media preview';
+      img.style.width = '100%';
+      img.style.height = '100%';
+      img.style.objectFit = 'cover';
+      wrapper.appendChild(img);
+    }
+    wrapper.appendChild(removeBtn);
+    previewContainer.appendChild(wrapper);
+  }
+
+  mediaInput.addEventListener('change', (e) => {
+    const files = Array.from(e.target.files);
+    files.forEach(file => {
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        const type = file.type.startsWith('video') ? 'video' : 'image';
+        addMediaPreview(ev.target.result, type);
+        mediaFiles.push(ev.target.result);
+      };
+      reader.readAsDataURL(file);
+    });
+  });
+
+  // Guardar publicación
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const title = document.querySelector('#post-title').value;
+    const desc = document.querySelector('#post-description').value;
+    const category = document.querySelector('#post-category').value;
+    const content = document.querySelector('#post-content').value;
+    const status = document.querySelector('#post-status').value;
+    const firstMedia = mediaFiles[0] || 'assets/images/user-post-placeholder.jpg';
+
+    const grid = document.querySelector('.card-grid');
+    const article = document.createElement('article');
+    article.className = 'card';
+    article.innerHTML = `
+      <div class="card__image">
+        <img src="${firstMedia}" alt="${title}">
+        <span class="card__badge">${category}</span>
+        <span class="badge" style="position:absolute;top:var(--space-3);right:var(--space-3);background:var(--color-success);">
+          ${status}
+        </span>
+      </div>
+      <div class="card__content">
+        <h3 class="card__title">${title}</h3>
+        <p class="card__description">${desc}</p>
+        <div class="card__meta">
+          <span class="card__category">${category}</span>
+          <time>${new Date().toLocaleDateString()}</time>
+        </div>
+      </div>
+      <div style="display:flex;gap:var(--space-2);padding:var(--space-3);">
+        <button class="btn btn--outline edit-post" style="flex:1;">Editar</button>
+        <button class="btn btn--outline view-post" style="flex:1;">Ver</button>
+      </div>
+    `;
+    grid.prepend(article);
+
+    // Enlazar editar y ver
+    article.querySelector('.edit-post').addEventListener('click', () => {
+      openModal(true, { title, description: desc, category, content, status, media: mediaFiles });
+    });
+    article.querySelector('.view-post').addEventListener('click', () => {
+      // Simular guardar datos para la vista de detalle
+      localStorage.setItem('currentPost', JSON.stringify({ title, content, media: mediaFiles }));
+      window.location.href = 'publicacion.html';
+    });
+
+    closeModalFunc();
+  });
+}
+
+// ===== ACTIVAR BOTONES DE EDICIÓN EN CARDS EXISTENTES =====
+document.querySelectorAll('.card .edit-post').forEach((btn) => {
+  btn.addEventListener('click', (e) => {
+    const card = e.target.closest('.card');
+    if (!card) return;
+
+    // Extraer datos del card
+    const title = card.querySelector('.card__title')?.textContent.trim() || '';
+    const description = card.querySelector('.card__description')?.textContent.trim() || '';
+    const category = card.querySelector('.card__badge')?.textContent.trim() || '';
+    const status = card.querySelector('.badge')?.textContent.trim() || '';
+    const imageSrc = card.querySelector('.card__image img')?.src || '';
+    const content = card.querySelector('.card__description')?.textContent.trim() || '';
+
+    // Abrir el modal en modo edición
+    openModal(true, {
+      title,
+      description,
+      category,
+      content,
+      status,
+      media: [imageSrc] // por ahora solo la imagen principal
+    });
+  });
+});
 
   // ===== CARGAR DATOS DEL USUARIO =====
 
@@ -281,7 +447,12 @@
   document.head.appendChild(style);
 
   // ===== INICIALIZACIÓN =====
-  checkAuthentication();
+  if (checkAuthentication()) {
+  const mainProfile = document.querySelector('.main.profile-page');
+  if (mainProfile) mainProfile.style.display = 'block'; // ← mostrar contenido
+  loadUserData();
+  loadTabFromURL();
+}
   loadUserData();
   loadTabFromURL();
 

@@ -28,8 +28,8 @@
   --color-accent-results: #1a3350;
 
   /* ===== COLORES NEUTROS (MODO CLARO) ===== */
-  --color-bg: #c5c5c5;             /* Fondo principal */
-  --color-surface: #ffffffc8;        /* Tarjetas y elementos elevados */
+  --color-bg: #F8F9FA;             /* Fondo principal */
+  --color-surface: #FFFFFF;        /* Tarjetas y elementos elevados */
   --color-text: #212529;           /* Texto principal */
   --color-text-secondary: #6C757D; /* Texto secundario */
   --color-border: #DEE2E6;         /* Bordes y divisores */
@@ -160,6 +160,7 @@
    Variables que se sobrescriben automáticamente
    cuando el usuario tiene modo oscuro activo
 ========================================== */
+
 
 /* Clase manual para forzar modo oscuro */
 .dark-mode {

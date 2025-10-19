@@ -368,5 +368,27 @@
     <script src="js/animations.js"></script>
     <script src="js/accessibility.js"></script>
     <script src="js/publicacion.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+        const postData = JSON.parse(localStorage.getItem('currentPost'));
+        if (!postData) return;
+
+        document.querySelector('.publicacion-titulo').textContent = postData.title;
+        document.querySelector('.publicacion-texto p').textContent = postData.content;
+
+        const swiperWrapper = document.querySelector('.swiper-wrapper');
+        swiperWrapper.innerHTML = '';
+
+        postData.media.forEach(src => {
+            const isVideo = src.startsWith('data:video');
+            const slide = document.createElement('div');
+            slide.classList.add('swiper-slide');
+            slide.innerHTML = isVideo
+            ? `<video controls><source src="${src}" type="video/mp4"></video>`
+            : `<img src="${src}" alt="media">`;
+            swiperWrapper.appendChild(slide);
+        });
+        });
+</script>
 </body>
 </html>
