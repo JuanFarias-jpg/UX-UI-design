@@ -620,6 +620,11 @@ main.publications-page,
   margin-bottom: var(--space-6);
 }
 
+.section--alt {
+    margin-top: 25px;
+}
+
+
 /* ===== PÁGINA 404 / ERROR ===== */
 .error-page {
   min-height: calc(100vh - var(--header-height) - 200px);
