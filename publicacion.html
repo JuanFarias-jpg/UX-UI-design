@@ -7,7 +7,6 @@
     <title>World Cup Archive - Inicio</title>
     
     <!-- CSS en orden: primero variables, luego reset, luego layout, etc. -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/layout.css">
@@ -16,6 +15,8 @@
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/dark-mode.css">
     <link rel="stylesheet" href="css/publicacion.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+   
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <!-- Swiper JS -->
@@ -46,8 +47,8 @@
                 <ul class="navbar__menu" id="navbar-menu">
                     <li><a href="index.html" class="navbar__link">Inicio</a></li>
                     <li><a href="mundiales.html" class="navbar__link">Mundiales</a></li>
-                    <li><a href="#estadisticas" class="navbar__link navbar__link--active">Estadísticas</a></li>
-                    <li><a href="publicaciones.html" class="navbar__link">Publicaciones</a></li>
+                    <li><a href="estadisticas.html" class="navbar__link">Estadísticas</a></li>
+                    <li><a href="publicaciones.html" class="navbar__link navbar__link--activ">Publicaciones</a></li>
                     <li><a href="perfil.html" class="navbar__link">Mi Perfil</a></li>
                 </ul>
 
@@ -77,14 +78,14 @@
         <div class="publicacion-carrusel swiper">
             <div class="swiper-wrapper">
             <div class="swiper-slide">
-                <img src="img/mundial1.jpg" alt="Imagen del mundial">
+                <img src="assets/images/post-1.jpg" alt="Imagen del mundial">
             </div>
             <div class="swiper-slide">
-                <img src="img/mundial2.jpg" alt="Celebración del equipo campeón">
+                <img src="assets/images/gol-maradona.jpg" alt="Celebración del equipo campeón">
             </div>
             <div class="swiper-slide">
                 <video controls>
-                <source src="videos/final.mp4" type="video/mp4">
+                <source src="assets/videos/gol-maradona.mp4" type="video/mp4">
                 Tu navegador no soporta videos.
                 </video>
             </div>
@@ -129,7 +130,7 @@
         <h2>Comentarios</h2>
 
         <div class="comentario">
-            <img src="img/users/lucia.jpg" alt="Lucía" class="comentario-avatar">
+            <img src="assets/images/profile-2.png" alt="Lucía" class="comentario-avatar">
             <div class="comentario-body">
             <div class="comentario-header">
                 <span class="comentario-usuario">Lucía</span>
@@ -137,14 +138,16 @@
             </div>
             <p class="comentario-texto">Qué torneo tan increíble, el mejor final que he visto ❤️</p>
             <div class="comentario-footer">
-                <button class="comentario-like">👍 154</button>
+                <button class="comentario-like">
+                <i class="fa-regular fa-thumbs-up"></i> <span class="like-count">154</span>
+                </button>
                 <button class="comentario-reply">Responder</button>
             </div>
             </div>
         </div>
 
         <div class="comentario">
-            <img src="img/users/marco.jpg" alt="Marco" class="comentario-avatar">
+            <img src="assets/images/profile-3.jpg" alt="Marco" class="comentario-avatar">
             <div class="comentario-body">
             <div class="comentario-header">
                 <span class="comentario-usuario">Marco</span>
@@ -152,13 +155,14 @@
             </div>
             <p class="comentario-texto">Marruecos fue la gran sorpresa, me encantó su desempeño.</p>
             <div class="comentario-footer">
-                <button class="comentario-like">👍 87</button>
+                <button class="comentario-like">
+                <i class="fa-regular fa-thumbs-up"></i> <span class="like-count">87</span>
+                </button>
                 <button class="comentario-reply">Responder</button>
             </div>
 
-            <!-- Respuesta anidada -->
             <div class="comentario respuesta">
-                <img src="img/users/elena.jpg" alt="Elena" class="comentario-avatar">
+                <img src="assets/images/profile-4.png" alt="Elena" class="comentario-avatar">
                 <div class="comentario-body">
                 <div class="comentario-header">
                     <span class="comentario-usuario">Elena</span>
@@ -166,16 +170,41 @@
                 </div>
                 <p class="comentario-texto">Totalmente de acuerdo, fue un mundial histórico 🔥</p>
                 <div class="comentario-footer">
-                    <button class="comentario-like">👍 22</button>
+                    <button class="comentario-like">
+                    <i class="fa-regular fa-thumbs-up"></i> <span class="like-count">22</span>
+                    </button>
                     <button class="comentario-reply">Responder</button>
                 </div>
                 </div>
             </div>
             </div>
         </div>
+        </section>
 
         <p class="ver-mas">Ver más comentarios ↓</p>
         </section>
+        <!-- Caja para dejar un nuevo comentario -->
+        <div class="comentario-nuevo">
+        <img src="assets/images/default-avatar.jpg" alt="Tu avatar" class="comentario-avatar">
+
+        <div class="comentario-input-box">
+            <textarea 
+            placeholder="Deja un comentario..." 
+            class="comentario-input" 
+            rows="1"
+            ></textarea>
+
+            <div class="comentario-actions">
+            <button class="comentario-clip" title="Adjuntar archivo">
+                <i class="fa-solid fa-paperclip"></i>
+            </button>
+            <button class="comentario-enviar" title="Enviar comentario">
+                <i class="fa-solid fa-paper-plane"></i>
+            </button>
+            </div>
+        </div>
+        </div>
+
 
         <br>
         
@@ -190,10 +219,11 @@
                 <!-- Grid de cards -->
                 <div class="card-grid">
                     <!-- Card 1 -->
+                    <a href="publicacion.html" class="card-link">
                     <article class="card" tabindex="0">
                         <div class="card__image">
                             <img src="assets/images/post-1.jpg" 
-                                alt="Gol de Maradona contra Inglaterra 1986">
+                                 alt="Gol de Maradona contra Inglaterra 1986">
                             <span class="card__badge">Jugadas</span>
                         </div>
                         <div class="card__content">
@@ -222,12 +252,14 @@
                             </span>
                         </div>
                     </article>
+                    </a>
 
                     <!-- Card 2 -->
+                    <a href="publicacion.html" class="card-link">
                     <article class="card" tabindex="0">
                         <div class="card__image">
                             <img src="assets/images/post-2.jpg" 
-                                alt="Final Brasil vs Italia 1994">
+                                 alt="Final Brasil vs Italia 1994">
                             <span class="card__badge">Partidos</span>
                         </div>
                         <div class="card__content">
@@ -256,12 +288,14 @@
                             </span>
                         </div>
                     </article>
+                    </a>
 
                     <!-- Card 3 -->
+                    <a href="publicacion.html" class="card-link">
                     <article class="card" tabindex="0">
                         <div class="card__image">
                             <img src="assets/images/post-3.jpg" 
-                                alt="Estadio Azteca lleno de aficionados">
+                                 alt="Estadio Azteca lleno de aficionados">
                             <span class="card__badge">Sedes</span>
                         </div>
                         <div class="card__content">
@@ -290,13 +324,14 @@
                             </span>
                         </div>
                     </article>
+                    </a>
                 </div>
             </div>
         </section>
         <br>
         <div class="container">
             <!-- CTA para usuarios no registrados -->
-            <section class="section section--alt">
+            <section>
                 <div class="container" style="text-align: center;">
                     <h2 class="section__title">¿Tienes una historia que contar?</h2>
                     <p class="section__subtitle" style="max-width: 600px; margin: 0 auto var(--space-6);">

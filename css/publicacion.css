@@ -2,7 +2,7 @@
 .detalle-publicacion {
   margin-top: 100px;
   max-width: 800px;
-  background: var(--color-fondo-claro);
+  background: var(--color-surface);
   padding: 30px;
   border-radius: 16px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -241,3 +241,78 @@
   text-decoration: underline;
   opacity: 0.8;
 }
+
+/* ====================== NUEVO COMENTARIO  ====================== */
+.comentario-nuevo {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 25px;
+  padding: 10px 0 20px 0;
+  border-bottom: 1px solid rgba(var(--color-borde-rgb, 0,0,0), 0.15);
+}
+
+/* Contenedor general del input */
+.comentario-input-box {
+  display: flex;
+  align-items: flex-end;
+  flex: 1;
+  background: var(--color-surface);
+  border-radius: 20px;
+  padding: 10px 14px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: box-shadow 0.2s ease, border 0.2s ease;
+  position: relative;
+}
+
+.comentario-input-box:focus-within {
+  box-shadow: 0 0 0 2px var(--color-primario);
+}
+
+/* Textarea que se expande */
+.comentario-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  color: var(--color-texto-principal);
+  font-size: 0.95rem;
+  resize: none; /* evita que el usuario la estire manualmente */
+  overflow: hidden; /* oculta scroll vertical */
+  line-height: 1.4;
+  max-height: 160px; /* límite de expansión */
+}
+
+/* Contenedor de iconos a la derecha */
+.comentario-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 8px;
+}
+
+/* Botones de acción */
+.comentario-clip,
+.comentario-enviar {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: var(--color-texto-secundario);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.comentario-clip:hover,
+.comentario-enviar:hover {
+  transform: scale(1.15);
+  color: var(--color-primario);
+}
+
+  .comentario-like:hover,
+  .comentario-reply:hover {
+    color: #007BFF;
+  }
+
+  .comentario-like i {
+    margin-right: 6px;
+  }

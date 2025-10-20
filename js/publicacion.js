@@ -42,3 +42,33 @@ document.querySelectorAll('.icon-comment').forEach(icon => {
   });
 });
 
+// Auto-ajuste del alto del textarea
+document.addEventListener('input', (e) => {
+  if (e.target.classList.contains('comentario-input')) {
+    const textarea = e.target;
+    textarea.style.height = 'auto'; // resetea
+    textarea.style.height = textarea.scrollHeight + 'px'; // ajusta según texto
+  }
+});
+
+  document.querySelectorAll(".comentario-like").forEach(button => {
+    button.addEventListener("click", () => {
+      const icon = button.querySelector("i");
+      const count = button.querySelector(".like-count");
+      let currentLikes = parseInt(count.textContent);
+
+      if (icon.classList.contains("fa-regular")) {
+        // Dar like
+        icon.classList.remove("fa-regular");
+        icon.classList.add("fa-solid");
+        icon.style.color = "#007BFF"; // color azul al hacer like
+        count.textContent = currentLikes + 1;
+      } else {
+        // Quitar like
+        icon.classList.remove("fa-solid");
+        icon.classList.add("fa-regular");
+        icon.style.color = "";
+        count.textContent = currentLikes - 1;
+      }
+    });
+  });

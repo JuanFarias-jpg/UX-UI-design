@@ -28,11 +28,11 @@
   --color-accent-results: #1a3350;
 
   /* ===== COLORES NEUTROS (MODO CLARO) ===== */
-  --color-bg: #F8F9FA;             /* Fondo principal */
-  --color-surface: #FFFFFF;        /* Tarjetas y elementos elevados */
+  --color-bg: #dddddd;             /* Fondo principal */
+  --color-surface: #ffffffc8;        /* Tarjetas y elementos elevados */
   --color-text: #212529;           /* Texto principal */
   --color-text-secondary: #6C757D; /* Texto secundario */
-  --color-border: #DEE2E6;         /* Bordes y divisores */
+  --color-border: #a2b3c4;         /* Bordes y divisores */
 
   /* ===== COLORES DE ESTADO ===== */
   --color-success: #1B994C;        /* Éxitos/confirmaciones */
@@ -42,13 +42,54 @@
 
   /* ===== COLORES TABLAS ===== */
   --color-sombra: rgba(0, 0, 0, 0.1);      /* Sombras suaves */
-  --color-encabezado: #2C3E50;             /* Fondo del encabezado */
+  --color-encabezado: #2d7ecf;             /* Fondo del encabezado */
   --color-texto-encabezado: #FFFFFF;       /* Texto del encabezado */
-  --color-match-fondo: #817e7e;            /* Fondo de cada partido */
-  --color-match-hover: #5a6977;            /* Fondo al pasar el cursor */
+  --color-match-fondo: #b1c3cc;            /* Fondo de cada partido */
+  --color-match-hover: #85a9cc;            /* Fondo al pasar el cursor */
   --color-bracket-linea: #7c7a7a;          /* Líneas de conexión entre etapas */
-  --color-winner-fondo: #93aa92;           /* Fondo del ganador */
-  --color-winner-borde: #4d7e4e;           /* Borde del recuadro del ganador */
+  --color-winner-fondo: #95e992;           /* Fondo del ganador */
+  --color-winner-borde: #6ad16c;           /* Borde del recuadro del ganador */
+
+  /* ==== COLORES ANALISIS ==== */
+    /* ===== ANALISIS PARTIDO ===== */
+  --analisis-fondo: #f9f9f9;                 /* Fondo del contenedor #analisis-partido */
+  --analisis-texto-titulo: #222;            /* Color h2 dentro de #analisis-partido */
+  --analisis-sombra: rgba(0, 0, 0, 0.1);    /* Sombra del contenedor */
+
+  /* ===== COLUMNAS DE ANALISIS ===== */
+  --analisis-columna-fondo: #ffffff;        /* Fondo de cada columna */
+  --analisis-columna-sombra: rgba(0, 0, 0, 0.08);  /* Sombra de columna */
+  --analisis-columna-titulo: #0077cc;       /* Color h3 de columna (acento) */
+
+  /* ===== TABLA ESTADISTICAS ===== */
+  --tabla-fondo-header: #0077cc;            /* Fondo de th */
+  --tabla-texto-header: #ffffff;            /* Color de texto en th */
+  --tabla-borde: #ddd;                       /* Borde inferior de celdas */
+  --tabla-fondo-par: #f5f7fa;               /* Fondo de filas pares */
+  --tabla-texto: #212529;                   /* Color de texto general */
+  --tabla-fondo: #ffffff;                    /* Fondo general de tabla */
+
+  /* ===== CANCHA ===== */
+  --cancha-fondoA: #4ac76f;                 /* Gradiente equipo A */
+  --cancha-fondoB: #b5ac49;                 /* Gradiente equipo B */
+  --cancha-borde: #ffffff;                   /* Borde cancha */
+  --cancha-sombra-inset: rgba(0,0,0,0.15);  /* Sombra interna cancha */
+  --cancha-linea: rgba(255,255,255,0.7);    /* Líneas y círculo central */
+
+  /* ===== JUGADORES ===== */
+  --jugador-fondoA: rgba(41, 128, 185, 0.9);
+  --jugador-sombraA: rgba(41, 128, 185, 0.6);
+  --jugador-fondoB: rgba(192, 57, 43, 0.9);
+  --jugador-sombraB: rgba(192, 57, 43, 0.6);
+  --jugador-texto: #ffffff;
+  --jugador-hover-fondo: rgba(255,255,255,0.85);
+  --jugador-hover-texto: #222;
+
+  /* ===== CHECKBOX FORMACION ===== */
+  --checkbox-borde: #0077cc;
+  --checkbox-fondo: #0077cc;
+  --checkbox-check: #ffffff;
+  --checkbox-hover-shadow: rgba(0, 119, 204, 0.2);
 
   /* FILTRO TABLAS*/
   --filter-bg: var(--color-surface);
@@ -194,6 +235,46 @@
   --color-winner-fondo: #224D2E;                  /* Fondo del ganador (tono verde oscuro) */
   --color-winner-borde: #3DDC84;                  /* Verde brillante para resaltar */
   
+    /* ===== ANALISIS PARTIDO ===== */
+  --analisis-fondo: #1E1E1E;                /* Fondo del contenedor */
+  --analisis-texto-titulo: #FFFFFF;         /* Color h2 */
+  --analisis-sombra: rgba(0, 0, 0, 0.5);    /* Sombra del contenedor */
+
+  /* ===== COLUMNAS DE ANALISIS ===== */
+  --analisis-columna-fondo: #2A2A2A;        /* Fondo de cada columna */
+  --analisis-columna-sombra: rgba(0, 0, 0, 0.4); /* Sombra de columna */
+  --analisis-columna-titulo: #22b85c;       /* Color h3 de columna */
+
+  /* ===== TABLA ESTADISTICAS ===== */
+  --tabla-fondo-header: #14527a;            /* Fondo de th */
+  --tabla-texto-header: #FFFFFF;            /* Texto de th */
+  --tabla-borde: #444444;                   /* Borde inferior de celdas */
+  --tabla-fondo-par: #333333;               /* Fondo de filas pares */
+  --tabla-texto: #FFFFFF;                   /* Color de texto general */
+  --tabla-fondo: #2A2A2A;                   /* Fondo general de tabla */
+
+  /* ===== CANCHA ===== */
+  --cancha-fondoA: #30d89a;                 /* Gradiente equipo A */
+  --cancha-fondoB: #978d3d;                 /* Gradiente equipo B */
+  --cancha-borde: #FFFFFF;                  /* Borde cancha */
+  --cancha-sombra-inset: rgba(0,0,0,0.4);   /* Sombra interna cancha */
+  --cancha-linea: rgba(255,255,255,0.7);    /* Líneas y círculo central */
+
+  /* ===== JUGADORES ===== */
+  --jugador-fondoA: rgba(41, 128, 185, 0.7);
+  --jugador-sombraA: rgba(41, 128, 185, 0.4);
+  --jugador-fondoB: rgba(192, 57, 43, 0.7);
+  --jugador-sombraB: rgba(192, 57, 43, 0.4);
+  --jugador-texto: #FFFFFF;
+  --jugador-hover-fondo: rgba(255,255,255,0.85);
+  --jugador-hover-texto: #222;
+
+  /* ===== CHECKBOX FORMACION ===== */
+  --checkbox-borde: #22b85c;
+  --checkbox-fondo: #22b85c;
+  --checkbox-check: #FFFFFF;
+  --checkbox-hover-shadow: rgba(34, 184, 92, 0.2);
+
   /* Ajustar sombras para modo oscuro */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4),
