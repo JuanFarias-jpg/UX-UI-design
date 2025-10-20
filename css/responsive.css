@@ -447,3 +447,216 @@
     gap: var(--space-10);
   }
 }
+
+/* ========================================================= */
+/* ===== MUNDIALES RESPONSIVE ADICIONAL ===== */
+/* ========================================================= */
+
+/* Para pantallas pequeñas */
+@media (max-width: 1024px) {
+  /* Ajuste general de padding y márgenes en detalle */
+  .detalle-mundial {
+    padding: 20px;
+  }
+
+  .detalle-mundial h2 {
+    font-size: 1.7rem;
+    padding: 0 20px;
+  }
+
+  .detalle-mundial h3 {
+    font-size: 1.2rem;
+    padding: 0 20px;
+  }
+
+  .detalle-mundial .resumen {
+    padding: 0 20px;
+    font-size: 0.95rem;
+  }
+
+  /* Ajustes de la tabla de estadisticas */
+  .tabla-estadisticas th,
+  .tabla-estadisticas td {
+    padding: 6px 8px;
+    font-size: 0.85rem;
+  }
+
+  /* Galería adaptable */
+  .galeria {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+  }
+}
+
+/* Para pantallas muy pequeñas */
+@media (max-width: 700px) {
+  /* Bracket vertical en móviles */
+  .tabla-mundiales .bracket,
+  .bracket-section .bracket {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+
+  .tabla-mundiales .stage.semifinal::after {
+    display: none;
+  }
+
+  .stage.final {
+    flex-direction: column;
+  }
+
+  .match {
+    width: 90%;
+    font-size: 0.9rem;
+    padding: 5px 8px;
+  }
+
+  /* Filtros: ocupen 100% */
+  .filtros-container {
+    flex-direction: column;
+    gap: 10px;
+    max-width: 100%;
+  }
+
+  #searchbar,
+  #categoria {
+    width: 100%;
+    font-size: 0.9rem;
+    padding: 8px 10px;
+  }
+
+  /* Ajuste de la sección de detalle */
+  .detalle-mundial {
+    margin-top: 30px;
+  }
+
+  .detalle-mundial h2,
+  .detalle-mundial h3,
+  .detalle-mundial .resumen {
+    padding: 0 15px;
+  }
+}
+
+/* Para pantallas muy pequeñas tipo móvil extremo */
+@media (max-width: 480px) {
+  .detalle-mundial h2 {
+    font-size: 1.5rem;
+  }
+
+  .detalle-mundial h3 {
+    font-size: 1rem;
+  }
+
+  .detalle-mundial .resumen {
+    font-size: 0.85rem;
+  }
+
+  .tabla-estadisticas th,
+  .tabla-estadisticas td {
+    font-size: 0.75rem;
+    padding: 4px 6px;
+  }
+
+  .galeria {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .match {
+    width: 100%;
+    font-size: 0.85rem;
+  }
+}
+
+/* ==================== BARRA DE BÚSQUEDA Y FILTROS (Estadisticas) ==================== */
+@media (max-width: 768px) {
+
+  .filters-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .filter-dropdown {
+    width: 100%;
+  }
+}
+
+/* ==================== TABLAS SCROLLABLE ==================== */
+@media (max-width: 768px) {
+  .tabla-mundiales {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .tabla-mundiales table {
+    width: 100%;
+    min-width: 700px; /* Ajusta según columnas */
+    border-collapse: collapse;
+  }
+
+  /* Scrollbar opcional */
+  .tabla-mundiales::-webkit-scrollbar {
+    height: 6px;
+  }
+  .tabla-mundiales::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.2);
+    border-radius: 3px;
+  }
+}
+
+/* ==================== HINT PARA SCROLL DE TABLAS ==================== */
+@media (max-width: 768px) {
+  .tabla-mundiales {
+    position: relative; /* Para colocar el hint encima */
+  }
+
+  .tabla-mundiales::before {
+    content: "Desliza →";
+    position: absolute;
+    top: 0.25rem;
+    right: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--tabla-texto, #212529);
+    background: rgba(255,255,255,0.8);
+    padding: 0.1rem 0.3rem;
+    border-radius: 4px;
+    pointer-events: none;
+  }
+}
+
+
+/* ==================== ANALISIS TÉCNICO ==================== */
+@media (max-width: 768px) {
+  #analisis-partido {
+    padding: var(--space-5, 1.25rem);
+  }
+
+  .contenedor-analisis {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  #cancha {
+    height: 300px;
+  }
+
+  #grafico-analisis {
+    height: 250px;
+  }
+}
+
+
+/* ==================== FORMACIONES ==================== */
+@media (max-width: 768px) {
+  .opciones-formacion {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .opciones-formacion label {
+    font-size: 0.875rem;
+  }
+}
