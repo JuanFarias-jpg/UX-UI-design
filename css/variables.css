@@ -29,7 +29,7 @@
 
   /* ===== COLORES NEUTROS (MODO CLARO) ===== */
   --color-bg: #dddddd;             /* Fondo principal */
-  --color-surface: #ffffffc8;        /* Tarjetas y elementos elevados */
+  --color-surface: #ffffff;        /* Tarjetas y elementos elevados */
   --color-text: #212529;           /* Texto principal */
   --color-text-secondary: #6C757D; /* Texto secundario */
   --color-border: #a2b3c4;         /* Bordes y divisores */

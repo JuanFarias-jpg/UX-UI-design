@@ -151,6 +151,12 @@
     display: flex;
   }
 
+  /* Ocultar controles en la navbar en móvil
+     Los controles (tema + botón login) se moverán al menú */
+  .navbar__controls {
+    display: none;
+  }
+
   /* Menú inicialmente oculto */
   .navbar__menu {
     position: fixed;
@@ -202,27 +208,74 @@
     display: none; /* Quitar indicador en móvil */
   }
 
-  /* Controles en móvil */
-  .navbar__controls {
-    position: absolute;
-    top: 50%;
-    right: var(--space-4);
-    transform: translateY(-50%);
+  /* Controles dentro del menú móvil
+     Cuando el menú está abierto, los controles se muestran 
+     en la parte inferior del menú, separados con una línea */
+  .navbar__menu--open .navbar__controls {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-top: var(--space-4);
+    border-top: var(--border-width) solid var(--color-border);
+    margin-top: var(--space-4);
+    gap: var(--space-3);
   }
 
-  /* Backdrop oscuro cuando menú está abierto */
-  .navbar__menu--open::before {
-    content: '';
-    position: fixed;
-    top: var(--header-height);
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: -1;
+  /* Cambios en el botón de tema dentro del menú */
+  .navbar__menu--open .theme-toggle {
+    width: auto;                   
+    min-width: 40px;               /* Mínimo 40px */
+    min-height: 40px;              /* Mínimo 40px */
+    flex-shrink: 0;                /* No se comprime */
+    justify-content: center;        /* Centra el icono */
+    padding: var(--space-3);        /* Padding uniforme */
+    align-self: flex-start;         /* Se queda pegado a la izquierda */
   }
+
+  /* Cambios en el botón de login/cerrar sesión dentro del menú */
+  .navbar__menu--open .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
 }
 
+/* ==========================================
+   TABLET Y DESKTOP
+   ========================================== */
+
+@media (min-width: 1024px) {
+  /* Mostrar controles en desktop */
+  .navbar__controls {
+    display: flex !important;
+    position: static !important;
+    transform: none !important;
+  }
+
+  /* Hamburguesa oculta en desktop */
+  .navbar__toggle {
+    display: none;
+  }
+
+  /* Menú visible en desktop */
+  .navbar__menu {
+    display: flex !important;
+    position: static !important;
+    flex-direction: row;
+    width: auto;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    gap: var(--space-6);
+  }
+
+  /* Links sin bordes en desktop */
+  .navbar__link {
+    border-bottom: none;
+    padding: 0;
+  }
+}
 /* ==========================================
    AJUSTES PARA TABLETS EN LANDSCAPE
    ========================================== */
