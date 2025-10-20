@@ -337,3 +337,113 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+
+/* ==========================================
+   PUBLICACIÓN - RESPONSIVE
+   ========================================== */
+
+/* ===== MOBILE-FIRST (base) ===== */
+/* Ya definidos en publicacion.css */
+/* Ajustes se aplican desde 640px en adelante */
+
+/* ===== TABLET: 640px ===== */
+@media (min-width: 640px) {
+  main.detalle-publicacion {
+    padding: var(--space-8) 0;
+  }
+
+  /* Imagen principal y contenido lado a lado si hay espacio */
+  .detalle-publicacion .publicacion-contenido {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+    align-items: start;
+  }
+
+  /* Ajustar texto e imagen */
+  .detalle-publicacion .publicacion-contenido img {
+    width: 100%;
+    border-radius: var(--radius-lg);
+  }
+
+  /* Comentarios con más separación */
+  .detalle-publicacion .comentarios {
+    margin-top: var(--space-10);
+  }
+
+  /* Caja nuevo comentario */
+  .detalle-publicacion .nuevo-comentario {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--space-4);
+  }
+
+  .detalle-publicacion .nuevo-comentario textarea {
+    flex: 1;
+    font-size: var(--font-size-base);
+    min-height: 60px;
+    resize: vertical;
+  }
+
+  /* Botones */
+  .detalle-publicacion .nuevo-comentario .acciones {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  /* Cards recomendados: 2 columnas en tablet */
+  .detalle-publicacion .recomendados-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+  }
+}
+
+/* ===== DESKTOP: 1024px ===== */
+@media (min-width: 1024px) {
+  main.detalle-publicacion {
+    padding: var(--space-12) 0;
+  }
+
+  /* Contenido con ancho limitado para buena lectura */
+  .detalle-publicacion .publicacion-contenido {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  /* Comentarios centrados */
+  .detalle-publicacion .comentarios {
+    max-width: 900px;
+    margin-inline: auto;
+  }
+
+  /* Caja de nuevo comentario más amplia */
+  .detalle-publicacion .nuevo-comentario textarea {
+    font-size: var(--font-size-lg);
+    min-height: 80px;
+  }
+
+  /* Cards recomendados: 3 columnas en desktop */
+  .detalle-publicacion .recomendados-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
+  }
+}
+
+/* ===== LARGE SCREENS: 1280px ===== */
+@media (min-width: 1280px) {
+  main.detalle-publicacion {
+    padding: var(--space-16) 0;
+  }
+
+  .detalle-publicacion .publicacion-contenido {
+    grid-template-columns: 3fr 1fr;
+    gap: var(--space-10);
+  }
+
+  .detalle-publicacion .recomendados-grid {
+    gap: var(--space-10);
+  }
+}
