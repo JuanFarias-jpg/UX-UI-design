@@ -180,6 +180,13 @@
   gap: var(--space-3);
 }
 
+/* Ocultar controles en móvil (aparecerán en el menú) */
+@media (max-width: 1023px) {
+  .navbar__controls {
+    display: none;
+  }
+}
+
 /* Toggle de tema (claro/oscuro) */
 .theme-toggle {
   width: 40px;

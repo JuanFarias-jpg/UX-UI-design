@@ -151,6 +151,12 @@
     display: flex;
   }
 
+  /* Ocultar controles en la navbar en móvil
+     Los controles (tema + botón login) se moverán al menú */
+  .navbar__controls {
+    display: none;
+  }
+
   /* Menú inicialmente oculto */
   .navbar__menu {
     position: fixed;
@@ -202,27 +208,74 @@
     display: none; /* Quitar indicador en móvil */
   }
 
-  /* Controles en móvil */
-  .navbar__controls {
-    position: absolute;
-    top: 50%;
-    right: var(--space-4);
-    transform: translateY(-50%);
+  /* Controles dentro del menú móvil
+     Cuando el menú está abierto, los controles se muestran 
+     en la parte inferior del menú, separados con una línea */
+  .navbar__menu--open .navbar__controls {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-top: var(--space-4);
+    border-top: var(--border-width) solid var(--color-border);
+    margin-top: var(--space-4);
+    gap: var(--space-3);
   }
 
-  /* Backdrop oscuro cuando menú está abierto */
-  .navbar__menu--open::before {
-    content: '';
-    position: fixed;
-    top: var(--header-height);
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: -1;
+  /* Cambios en el botón de tema dentro del menú */
+  .navbar__menu--open .theme-toggle {
+    width: auto;                   
+    min-width: 40px;               /* Mínimo 40px */
+    min-height: 40px;              /* Mínimo 40px */
+    flex-shrink: 0;                /* No se comprime */
+    justify-content: center;        /* Centra el icono */
+    padding: var(--space-3);        /* Padding uniforme */
+    align-self: flex-start;         /* Se queda pegado a la izquierda */
   }
+
+  /* Cambios en el botón de login/cerrar sesión dentro del menú */
+  .navbar__menu--open .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
 }
 
+/* ==========================================
+   TABLET Y DESKTOP
+   ========================================== */
+
+@media (min-width: 1024px) {
+  /* Mostrar controles en desktop */
+  .navbar__controls {
+    display: flex !important;
+    position: static !important;
+    transform: none !important;
+  }
+
+  /* Hamburguesa oculta en desktop */
+  .navbar__toggle {
+    display: none;
+  }
+
+  /* Menú visible en desktop */
+  .navbar__menu {
+    display: flex !important;
+    position: static !important;
+    flex-direction: row;
+    width: auto;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    gap: var(--space-6);
+  }
+
+  /* Links sin bordes en desktop */
+  .navbar__link {
+    border-bottom: none;
+    padding: 0;
+  }
+}
 /* ==========================================
    AJUSTES PARA TABLETS EN LANDSCAPE
    ========================================== */
@@ -335,328 +388,5 @@
   /* Cards en 2 columnas aunque sea móvil */
   .card-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-
-/* ==========================================
-   PUBLICACIÓN - RESPONSIVE
-   ========================================== */
-
-/* ===== MOBILE-FIRST (base) ===== */
-/* Ya definidos en publicacion.css */
-/* Ajustes se aplican desde 640px en adelante */
-
-/* ===== TABLET: 640px ===== */
-@media (min-width: 640px) {
-  main.detalle-publicacion {
-    padding: var(--space-8) 0;
-  }
-
-  /* Imagen principal y contenido lado a lado si hay espacio */
-  .detalle-publicacion .publicacion-contenido {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-8);
-    align-items: start;
-  }
-
-  /* Ajustar texto e imagen */
-  .detalle-publicacion .publicacion-contenido img {
-    width: 100%;
-    border-radius: var(--radius-lg);
-  }
-
-  /* Comentarios con más separación */
-  .detalle-publicacion .comentarios {
-    margin-top: var(--space-10);
-  }
-
-  /* Caja nuevo comentario */
-  .detalle-publicacion .nuevo-comentario {
-    display: flex;
-    align-items: flex-end;
-    gap: var(--space-4);
-  }
-
-  .detalle-publicacion .nuevo-comentario textarea {
-    flex: 1;
-    font-size: var(--font-size-base);
-    min-height: 60px;
-    resize: vertical;
-  }
-
-  /* Botones */
-  .detalle-publicacion .nuevo-comentario .acciones {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: var(--space-3);
-  }
-
-  /* Cards recomendados: 2 columnas en tablet */
-  .detalle-publicacion .recomendados-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-6);
-  }
-}
-
-/* ===== DESKTOP: 1024px ===== */
-@media (min-width: 1024px) {
-  main.detalle-publicacion {
-    padding: var(--space-12) 0;
-  }
-
-  /* Contenido con ancho limitado para buena lectura */
-  .detalle-publicacion .publicacion-contenido {
-    grid-template-columns: 2fr 1fr;
-  }
-
-  /* Comentarios centrados */
-  .detalle-publicacion .comentarios {
-    max-width: 900px;
-    margin-inline: auto;
-  }
-
-  /* Caja de nuevo comentario más amplia */
-  .detalle-publicacion .nuevo-comentario textarea {
-    font-size: var(--font-size-lg);
-    min-height: 80px;
-  }
-
-  /* Cards recomendados: 3 columnas en desktop */
-  .detalle-publicacion .recomendados-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-8);
-  }
-}
-
-/* ===== LARGE SCREENS: 1280px ===== */
-@media (min-width: 1280px) {
-  main.detalle-publicacion {
-    padding: var(--space-16) 0;
-  }
-
-  .detalle-publicacion .publicacion-contenido {
-    grid-template-columns: 3fr 1fr;
-    gap: var(--space-10);
-  }
-
-  .detalle-publicacion .recomendados-grid {
-    gap: var(--space-10);
-  }
-}
-
-/* ========================================================= */
-/* ===== MUNDIALES RESPONSIVE ADICIONAL ===== */
-/* ========================================================= */
-
-/* Para pantallas pequeñas */
-@media (max-width: 1024px) {
-  /* Ajuste general de padding y márgenes en detalle */
-  .detalle-mundial {
-    padding: 20px;
-  }
-
-  .detalle-mundial h2 {
-    font-size: 1.7rem;
-    padding: 0 20px;
-  }
-
-  .detalle-mundial h3 {
-    font-size: 1.2rem;
-    padding: 0 20px;
-  }
-
-  .detalle-mundial .resumen {
-    padding: 0 20px;
-    font-size: 0.95rem;
-  }
-
-  /* Ajustes de la tabla de estadisticas */
-  .tabla-estadisticas th,
-  .tabla-estadisticas td {
-    padding: 6px 8px;
-    font-size: 0.85rem;
-  }
-
-  /* Galería adaptable */
-  .galeria {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 10px;
-  }
-}
-
-/* Para pantallas muy pequeñas */
-@media (max-width: 700px) {
-  /* Bracket vertical en móviles */
-  .tabla-mundiales .bracket,
-  .bracket-section .bracket {
-    flex-direction: column;
-    gap: 15px;
-    align-items: center;
-  }
-
-  .tabla-mundiales .stage.semifinal::after {
-    display: none;
-  }
-
-  .stage.final {
-    flex-direction: column;
-  }
-
-  .match {
-    width: 90%;
-    font-size: 0.9rem;
-    padding: 5px 8px;
-  }
-
-  /* Filtros: ocupen 100% */
-  .filtros-container {
-    flex-direction: column;
-    gap: 10px;
-    max-width: 100%;
-  }
-
-  #searchbar,
-  #categoria {
-    width: 100%;
-    font-size: 0.9rem;
-    padding: 8px 10px;
-  }
-
-  /* Ajuste de la sección de detalle */
-  .detalle-mundial {
-    margin-top: 30px;
-  }
-
-  .detalle-mundial h2,
-  .detalle-mundial h3,
-  .detalle-mundial .resumen {
-    padding: 0 15px;
-  }
-}
-
-/* Para pantallas muy pequeñas tipo móvil extremo */
-@media (max-width: 480px) {
-  .detalle-mundial h2 {
-    font-size: 1.5rem;
-  }
-
-  .detalle-mundial h3 {
-    font-size: 1rem;
-  }
-
-  .detalle-mundial .resumen {
-    font-size: 0.85rem;
-  }
-
-  .tabla-estadisticas th,
-  .tabla-estadisticas td {
-    font-size: 0.75rem;
-    padding: 4px 6px;
-  }
-
-  .galeria {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-
-  .match {
-    width: 100%;
-    font-size: 0.85rem;
-  }
-}
-
-/* ==================== BARRA DE BÚSQUEDA Y FILTROS (Estadisticas) ==================== */
-@media (max-width: 768px) {
-
-  .filters-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .filter-dropdown {
-    width: 100%;
-  }
-}
-
-/* ==================== TABLAS SCROLLABLE ==================== */
-@media (max-width: 768px) {
-  .tabla-mundiales {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .tabla-mundiales table {
-    width: 100%;
-    min-width: 700px; /* Ajusta según columnas */
-    border-collapse: collapse;
-  }
-
-  /* Scrollbar opcional */
-  .tabla-mundiales::-webkit-scrollbar {
-    height: 6px;
-  }
-  .tabla-mundiales::-webkit-scrollbar-thumb {
-    background: rgba(0,0,0,0.2);
-    border-radius: 3px;
-  }
-}
-
-/* ==================== HINT PARA SCROLL DE TABLAS ==================== */
-@media (max-width: 768px) {
-  .tabla-mundiales {
-    position: relative; /* Para colocar el hint encima */
-  }
-
-  .tabla-mundiales::before {
-    content: "Desliza →";
-    position: absolute;
-    top: 0.25rem;
-    right: 0.5rem;
-    font-size: 0.75rem;
-    color: var(--tabla-texto, #212529);
-    background: rgba(255,255,255,0.8);
-    padding: 0.1rem 0.3rem;
-    border-radius: 4px;
-    pointer-events: none;
-  }
-}
-
-
-/* ==================== ANALISIS TÉCNICO ==================== */
-@media (max-width: 768px) {
-  #analisis-partido {
-    padding: var(--space-5, 1.25rem);
-  }
-
-  .contenedor-analisis {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  #cancha {
-    height: 300px;
-  }
-
-  #grafico-analisis {
-    height: 250px;
-  }
-}
-
-
-/* ==================== FORMACIONES ==================== */
-@media (max-width: 768px) {
-  .opciones-formacion {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-
-  .opciones-formacion label {
-    font-size: 0.875rem;
   }
 }

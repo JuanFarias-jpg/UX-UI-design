@@ -23,25 +23,40 @@
 
   // ===== FUNCIONES DEL MENÚ =====
 
-  /**
-   * Abrir el menú móvil
-   */
-  function openMenu() {
-    navMenu?.classList.add('navbar__menu--open');
-    hamburger?.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden'; // Prevenir scroll del body
-    isMenuOpen = true;
+/**
+ * Abrir el menú móvil
+ */
+function openMenu() {
+  navMenu?.classList.add('navbar__menu--open');
+  
+  // Mover controles al menú
+  const controls = document.querySelector('.navbar__controls');
+  if (controls && window.innerWidth < 1024) {
+    navMenu?.appendChild(controls);
   }
+  
+  hamburger?.setAttribute('aria-expanded', 'true');
+  document.body.style.overflow = 'hidden';
+  isMenuOpen = true;
+}
 
-  /**
-   * Cerrar el menú móvil
-   */
-  function closeMenu() {
-    navMenu?.classList.remove('navbar__menu--open');
-    hamburger?.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = ''; // Restaurar scroll
-    isMenuOpen = false;
+ /**
+ * Cerrar el menú móvil
+ */
+function closeMenu() {
+  navMenu?.classList.remove('navbar__menu--open');
+  
+  // Devolver controles a su posición original
+  const controls = document.querySelector('.navbar__controls');
+  if (controls && !navMenu?.contains(controls)) {
+    const navbar = document.querySelector('.navbar');
+    navbar?.appendChild(controls);
   }
+  
+  hamburger?.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+  isMenuOpen = false;
+}
 
   /**
    * Alternar el menú (abrir/cerrar)
