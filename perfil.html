@@ -34,8 +34,8 @@
 
                 <ul class="navbar__menu" id="navbar-menu">
                     <li><a href="index.html" class="navbar__link">Inicio</a></li>
-                    <li><a href="#mundiales" class="navbar__link">Mundiales</a></li>
-                    <li><a href="#estadisticas" class="navbar__link">Estadísticas</a></li>
+                    <li><a href="mundiales.html" class="navbar__link">Mundiales</a></li>
+                    <li><a href="estadisticas.html" class="navbar__link">Estadísticas</a></li>
                     <li><a href="publicaciones.html" class="navbar__link">Publicaciones</a></li>
                     <li><a href="perfil.html" class="navbar__link navbar__link--active">Mi Perfil</a></li>
                 </ul>
@@ -69,7 +69,7 @@
                         <p class="profile-username">@juanlopez</p>
                         <div class="profile-stats">
                             <div class="profile-stat">
-                                <span class="profile-stat__number">24</span>
+                                <span class="profile-stat__number">3</span>
                                 <span class="profile-stat__label">Publicaciones</span>
                             </div>
                             <div class="profile-stat">
@@ -87,72 +87,122 @@
         </section>
 
                     <!-- MODAL: Crear o Editar Publicación con Galería -->
-            <div class="modal" id="post-modal" hidden>
-            <div class="modal__overlay"></div>
-            <div class="modal__content" role="dialog" aria-modal="true" aria-labelledby="post-modal-title">
-                <header class="modal__header">
-                <h2 id="post-modal-title">Nueva Publicación</h2>
-                <button class="modal__close" id="close-post-modal" aria-label="Cerrar">✕</button>
-                </header>
+                        <div class="modal" id="post-modal" hidden>
+                        <div class="modal__overlay"></div>
+                        
+                        <div class="modal__content" role="dialog" aria-modal="true" aria-labelledby="post-modal-title">
+                            <!-- Header mejorado -->
+                            <header class="modal__header">
+                            <h2 id="post-modal-title" class="modal__title">Nueva Publicación</h2>
+                            <button class="modal__close" id="close-post-modal" aria-label="Cerrar modal">
+                                <span class="modal__close-icon">✕</span>
+                            </button>
+                            </header>
 
-                <form id="post-form" class="modal__form">
-                <!-- Galería -->
-                <div class="form-group">
-                    <label class="form-label">Galería de medios (imágenes o videos)</label>
-                    <input type="file" id="post-media" class="form-input" accept="image/*,video/*" multiple>
-                    <div id="media-preview" style="display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-3);"></div>
-                </div>
+                            <form id="post-form" class="modal__form">
+                            <!-- Galería de medios -->
+                            <div class="form-group">
+                                <label for="post-media" class="form-label">
+                                📸 Galería de medios
+                                </label>
+                                <div class="media-upload">
+                                <input 
+                                    type="file" 
+                                    id="post-media" 
+                                    class="media-upload__input" 
+                                    accept="image/*,video/*" 
+                                    multiple
+                                    aria-label="Seleccionar imágenes o videos"
+                                >
+                                <label for="post-media" class="media-upload__label">
+                                    <span class="media-upload__icon">📁</span>
+                                    <span class="media-upload__text">Haz clic o arrastra archivos aquí</span>
+                                    <span class="media-upload__hint">PNG, JPG, MP4, WebM</span>
+                                </label>
+                                </div>
+                                <div id="media-preview" class="media-preview"></div>
+                            </div>
 
-                <!-- Título -->
-                <div class="form-group">
-                    <label for="post-title" class="form-label">Título</label>
-                    <input type="text" id="post-title" class="form-input" placeholder="Ejemplo: El Mundial más emocionante" required>
-                </div>
+                            <!-- Título -->
+                            <div class="form-group">
+                                <label for="post-title" class="form-label">
+                                Título
+                                <span class="form-required">*</span>
+                                </label>
+                                <input 
+                                type="text" 
+                                id="post-title" 
+                                class="form-input" 
+                                placeholder="Ej: El gol más memorable del Mundial 86"
+                                maxlength="100"
+                                required
+                                >
+                                <span class="form-hint">Máximo 100 caracteres</span>
+                            </div>
 
-                <!-- Categoría -->
-                <div class="form-group">
-                    <label for="post-category" class="form-label">Categoría</label>
-                    <select id="post-category" class="form-input" required>
-                    <option value="">Selecciona una categoría</option>
-                    <option value="jugadas">Jugadas</option>
-                    <option value="entrevistas">Entrevistas</option>
-                    <option value="partidos">Partidos</option>
-                    <option value="estadisticas">Estadísticas</option>
-                    <option value="sedes">Sedes</option>
-                    <option value="cultura">Cultura</option>
-                    </select>
-                </div>
+                            <!-- Categoría -->
+                            <div class="form-group">
+                                <label for="post-category" class="form-label">
+                                Categoría
+                                <span class="form-required">*</span>
+                                </label>
+                                <select id="post-category" class="form-input" required>
+                                <option value="">-- Selecciona una categoría --</option>
+                                <option value="jugadas">⚽ Jugadas</option>
+                                <option value="entrevistas">🎤 Entrevistas</option>
+                                <option value="partidos">🏆 Partidos</option>
+                                <option value="estadisticas">📊 Estadísticas</option>
+                                <option value="sedes">🏟️ Sedes</option>
+                                <option value="cultura">🎭 Cultura</option>
+                                </select>
+                            </div>
 
-                <!-- Descripción -->
-                <div class="form-group">
-                    <label for="post-description" class="form-label">Descripción breve</label>
-                    <textarea id="post-description" class="form-input" rows="3" required></textarea>
-                </div>
+                            <!-- Descripción breve -->
+                            <div class="form-group">
+                                <label for="post-description" class="form-label">
+                                Descripción breve
+                                <span class="form-required">*</span>
+                                </label>
+                                <textarea 
+                                id="post-description" 
+                                class="form-input" 
+                                rows="3" 
+                                placeholder="Cuenta brevemente de qué trata tu publicación..."
+                                maxlength="300"
+                                required
+                                ></textarea>
+                                <span class="form-hint">Máximo 300 caracteres</span>
+                            </div>
 
-                <!-- Contenido -->
-                <div class="form-group">
-                    <label for="post-content" class="form-label">Contenido completo</label>
-                    <textarea id="post-content" class="form-input" rows="6" required></textarea>
-                </div>
+                            <!-- Contenido completo -->
+                            <div class="form-group">
+                                <label for="post-content" class="form-label">
+                                Contenido completo
+                                <span class="form-required">*</span>
+                                </label>
+                                <textarea 
+                                id="post-content" 
+                                class="form-input" 
+                                rows="6" 
+                                placeholder="Desarrolla tu historia, análisis o comentario sobre este tema del mundial..."
+                                maxlength="2000"
+                                required
+                                ></textarea>
+                                <span class="form-hint">Máximo 2000 caracteres</span>
+                            </div>
 
-                <!-- Estado -->
-                <div class="form-group">
-                    <label for="post-status" class="form-label">Estado</label>
-                    <select id="post-status" class="form-input">
-                    <option value="publicada">Publicada</option>
-                    <option value="revision">En revisión</option>
-                    <option value="rechazada">Rechazada</option>
-                    </select>
-                </div>
-
-                <!-- Acciones -->
-                <div class="form-actions" style="display:flex;gap:var(--space-3);margin-top:var(--space-6);">
-                    <button type="submit" class="btn btn--primary" id="save-post-btn">Publicar</button>
-                    <button type="button" class="btn btn--outline" id="cancel-post-btn">Cancelar</button>
-                </div>
-                </form>
-            </div>
-            </div>
+                            <!-- Acciones del formulario -->
+                            <div class="modal__actions">
+                                <button type="submit" class="btn btn--primary" id="save-post-btn">
+                                ✓ Publicar
+                                </button>
+                                <button type="button" class="btn btn--outline" id="cancel-post-btn">
+                                Cancelar
+                                </button>
+                            </div>
+                            </form>
+                        </div>
+                        </div>
 
 
             <!-- Navegación del perfil -->
@@ -183,16 +233,16 @@
                 <!-- Filtros de estado -->
                 <div class="filter-bar" style="margin-bottom: var(--space-8);">
                     <button class="filter-btn filter-btn--active" data-status="all">
-                        Todas (24)
+                        Todas (3)
                     </button>
                     <button class="filter-btn" data-status="published">
-                        Publicadas (18)
+                        Publicadas (1)
                     </button>
                     <button class="filter-btn" data-status="pending">
-                        En revisión (4)
+                        En revisión (1)
                     </button>
                     <button class="filter-btn" data-status="rejected">
-                        Rechazadas (2)
+                        Rechazadas ()
                     </button>
                 </div>
 
@@ -361,12 +411,11 @@
                     <p style="font-size: var(--font-size-xl); color: var(--color-text-secondary); margin-bottom: var(--space-4);">
                         No tienes borradores guardados
                     </p>
-                    <button class="btn btn--primary">
+                    <button class="btn btn--primary open-post-modal">
                         Crear nueva publicación
                     </button>
                 </div>
             </section>
-
             <!-- Sección: Configuración -->
             <section class="profile-content" id="tab-configuracion" hidden>
                 <h2 class="section__title">Configuración de la Cuenta</h2>
