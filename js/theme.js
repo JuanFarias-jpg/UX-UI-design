@@ -188,15 +188,11 @@
     - Toggle manual entre temas
     - Guardado de preferencia del usuario
     - Animación suave al cambiar
-
-   CÓMO PROBAR:
-   1. Abrir la página en el navegador
-   2. Clickear el botón de tema (luna/sol)
-   3. Recargar la página - debe mantener el tema elegido
-   4. Abrir DevTools > Application > Local Storage para ver el valor guardado
    
-  FALTA PROBAR:
-   - Agregar más opciones (auto, claro, oscuro)
-   - Cambiar colores de tema claro/oscuro
+   CÓMO FUNCIONA:
+   1. Al cargar la página, detecta si el usuario prefiere modo oscuro
+   2. Si el usuario clickea el botón, cambia el tema
+   3. Guarda la preferencia para la próxima visita
+
    
 ========================================== */

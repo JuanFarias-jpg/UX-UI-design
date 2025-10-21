@@ -1,12 +1,4 @@
-/* ==========================================
-   NAVIGATION.JS - Menú Móvil y Navegación
-   ==========================================
-   Este archivo maneja:
-   - Apertura/cierre del menú hamburguesa
-   - Scroll suave entre secciones
-   - Sombra del header al hacer scroll
-   - Cerrar menú al hacer click fuera
-========================================== */
+
 
 (function() {
   'use strict';
@@ -276,11 +268,11 @@ function closeMenu() {
    Trap focus para accesibilidad
    Cierra menú al redimensionar
 
-   FALTA PROBAR:
-   1. Abrir en móvil y probar menú hamburguesa ( aun no funciona)
-   2. Clickear links internos (#mundiales)
-   3. Hacer scroll y ver sombra del header
-   4. Presionar ESC para cerrar menú
-   5. Redimensionar ventana de móvil a desktop
+    Este archivo maneja:
+   - Apertura/cierre del menú hamburguesa
+   - Scroll suave entre secciones
+   - Sombra del header al hacer scroll
+   - Cerrar menú al hacer click fuera
+
    
 ========================================== */

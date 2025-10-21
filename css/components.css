@@ -1,13 +1,13 @@
-/* ==========================================
+/* 
    COMPONENTS.CSS - Componentes Reutilizables
-   ==========================================
+ 
    Componentes que se usan en múltiples páginas:
    - Botones
    - Cards
    - Badges
    - Carrusel
    - Filtros
-========================================== */
+*/
 
 /* ===== BOTONES ===== */
 .btn {
@@ -152,14 +152,21 @@
   flex: 1;
 }
 
+/* Título de la card */
 .card__title {
   font-size: var(--font-size-xl);
   margin-bottom: var(--space-3);
   color: var(--color-text);
-  
-
 }
 
+/* Enlace del título */
+.card__title a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+/* Descripcion de la card */
 .card__description {
   font-size: var(--font-size-base);
   color: var(--color-text-secondary);
@@ -429,15 +436,13 @@
   border-radius: var(--border-radius-full);
 }
 
-/* Utility to clamp text to N lines (example: 3 lines) */
+/* Utilidad para limitar texto a N líneas (ejemplo: 3 líneas) */
 .text--clamp-3 {
-  display: -webkit-box;               /* required for -webkit-line-clamp */
-  -webkit-box-orient: vertical;       /* required for -webkit-line-clamp */
-  overflow: hidden;                   /* hide overflowed text */
-  text-overflow: ellipsis;            /* show ellipsis when clipped */
-
-  /* Standard (newer spec) then vendor fallback for broadest compatibility */
-  line-clamp: 3;                      /* standard property (when supported) */
-  -webkit-line-clamp: 3;              /* WebKit/Blink fallback */
+  display: -webkit-box;              
+  -webkit-box-orient: vertical;       
+  overflow: hidden;                   /* esconder texto desbordado */
+  text-overflow: ellipsis;            /* muestra elipsis cuando hay texto desbordado */
+  line-clamp: 3;                      
+  -webkit-line-clamp: 3;              
 }
 

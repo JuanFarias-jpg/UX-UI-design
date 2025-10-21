@@ -409,8 +409,14 @@
    Parallax suave en hero
    Loading states con skeleton
    Respeta prefers-reduced-motion
-   
-  FALTA:
+  
+   Este archivo maneja:
+   - Carrusel de noticias
+   - Animaciones al hacer scroll (scroll reveal)
+   - Efectos de carga (loading states)
+   - Transiciones suaves entre elementos
+
+    FALTA:
    -No todas las funcionalidades estan implementadas
    -Animaciones adicionales (hover, focus)
     -Más efectos de carga

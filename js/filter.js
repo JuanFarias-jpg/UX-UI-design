@@ -391,6 +391,13 @@
 /* ==========================================
     Documentación de Filtros (filter.js):
    ==========================================
+    Este archivo maneja:
+   - Filtros por categoría
+   - Filtros por mundial/selección
+   - Búsqueda en tiempo real
+   - Ordenamiento
+   - Cargar más publicaciones
+   
    FUNCIONALIDADES:
    Filtros por categoría (botones rápidos)
    Filtros por mundial/selección (dropdowns)
@@ -399,6 +406,7 @@
    Tags de filtros activos removibles
    Mensaje cuando no hay resultados
    Botón "Cargar más" con estado de carga
+   
    
    MEJORAS FUTURAS:
    - Guardar filtros en URL (query params)

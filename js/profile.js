@@ -614,11 +614,10 @@ loadDrafts();
    5. Al cerrar sesión → limpia datos y redirige
    
    
-   FALTA PROBAR:
-   - Editar información del perfil
-   - Subir/cambiar foto de avatar
-   - Modal para crear nueva publicación
-   - Confirmación antes de eliminar cuenta
-   - Paginación de publicaciones
+ Este archivo maneja:
+   - Navegación entre tabs del perfil
+   - Filtros de estado de publicaciones
+   - Cerrar sesión
+   - Cargar datos del usuario
    
 ========================================== */

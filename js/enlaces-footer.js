@@ -1,4 +1,4 @@
-<script>
+
   const preguntas = document.querySelectorAll('.pregunta');
   const respuestas = document.querySelectorAll('.respuesta');
   const arrows = document.querySelectorAll('.arrow');
@@ -18,4 +18,4 @@
       }
     });
   });
-</script>
+

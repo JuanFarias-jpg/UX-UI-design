@@ -4,14 +4,14 @@
    Este archivo contiene ajustes específicos para el modo oscuro
    que no se pueden resolver solo con variables.
    
-   CÓMO FUNCIONA:
+   FUNCION:
    1. Las variables ya cambian automáticamente (ver variables.css)
    2. Aquí agregamos ajustes finos de opacidad, sombras, etc.
 ========================================== */
 
 /* ===== AJUSTES GENERALES MODO OSCURO ===== */
 .dark-mode {
-  /* Theme tokens for dark mode — keep values minimal and overrideable */
+  /*Tema oscuro: Colores base*/
   --color-bg: #0b1220;
   --color-surface: #071025;
   --color-text: #e6eef8;
@@ -19,7 +19,7 @@
   --color-border: rgba(255, 255, 255, 0.06);
   --color-primary: #1B998B;
 
-  /* Hint to the browser for form controls, scrollbars, etc. */
+ /* Indicar al navegador que es modo oscuro */
   color-scheme: dark;
 }
 
@@ -70,7 +70,7 @@
 }
 
 /* ===== INPUTS Y FORMS EN MODO OSCURO ===== */
-/* (Para cuando agregues formularios más adelante) */
+/* Para formularios */
 .dark-mode input,
 .dark-mode textarea,
 .dark-mode select {
@@ -107,7 +107,7 @@
 }
 
 /* ===== TOOLTIPS EN MODO OSCURO ===== */
-/* (Para implementar después) */
+
 .dark-mode [data-tooltip]::after {
   background-color: var(--color-surface);
   color: var(--color-text);
@@ -192,4 +192,20 @@ body,
 .dark-mode .filter-btn--active {
   background-color: var(--color-primary);
   border-color: var(--color-primary);
+}
+
+/* ===== FAQ EN MODO OSCURO ===== */
+.dark-mode .faq-section .respuesta {
+  background-color: #111111;
+  color: #ffffff;
+  border-color: #111111;
+  border-radius: 8px;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+.dark-mode .faq-section .pregunta {
+  background-color: #111111;
+  color: #ffffff;
+  border-color: #111111;
+  border-radius: 8px;
+  border-radius: #111111;
 }

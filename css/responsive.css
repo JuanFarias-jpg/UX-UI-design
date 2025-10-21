@@ -3,8 +3,8 @@
    ==========================================
   MOBILE-FIRST:
    - Los estilos base son para móviles (320px - 639px)
-   - Agregamos complejidad conforme la pantalla crece
-   - Usamos min-width en media queries (no max-width)
+   - Complejidad conforme la pantalla crece
+   - Min-width en media queries 
    
    BREAKPOINTS:
    - Mobile:  Base (hasta 639px)
@@ -14,8 +14,7 @@
 ========================================== */
 
 /* ===== ESTILOS MOBILE (base) ===== */
-/* Ya están definidos en los otros archivos CSS */
-/* Aquí solo agregamos lo que cambia en pantallas más grandes */
+/* Solo cambios en pantallas más grandes */
 
 /* ===== TABLET: 640px ===== */
 @media (min-width: 640px) {
@@ -224,12 +223,12 @@
   /* Cambios en el botón de tema dentro del menú */
   .navbar__menu--open .theme-toggle {
     width: auto;                   
-    min-width: 40px;               /* Mínimo 40px */
-    min-height: 40px;              /* Mínimo 40px */
-    flex-shrink: 0;                /* No se comprime */
-    justify-content: center;        /* Centra el icono */
-    padding: var(--space-3);        /* Padding uniforme */
-    align-self: flex-start;         /* Se queda pegado a la izquierda */
+    min-width: 40px;               
+    min-height: 40px;             
+    flex-shrink: 0;                
+    justify-content: center;        
+    padding: var(--space-3);        
+    align-self: flex-start;        
   }
 
   /* Cambios en el botón de login/cerrar sesión dentro del menú */
