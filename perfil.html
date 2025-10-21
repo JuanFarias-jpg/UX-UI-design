@@ -284,7 +284,7 @@
                             </span>
                         </div>
                         <div style="display: flex; gap: var(--space-2); padding: var(--space-3);">
-                            <button class="btn btn--outline" style="flex: 1;">Editar</button>
+                            <button class="btn btn--outline edit-post" style="flex: 1;">Editar</button>
                             <button class="btn btn--outline" style="flex: 1;">Ver</button>
                         </div>
                     </article>
@@ -353,7 +353,7 @@
                             </p>
                         </div>
                         <div style="display: flex; gap: var(--space-2); padding: var(--space-3);">
-                            <button class="btn btn--outline" style="flex: 1;">Revisar</button>
+                            <button id="btn-revisar" class="btn btn--outline" style="flex: 1;">Revisar</button>
                             <button class="btn btn--outline" style="flex: 1;">Eliminar</button>
                         </div>
                     </article>
@@ -452,7 +452,10 @@
                         <h3 style="font-size: var(--font-size-xl); margin-bottom: var(--space-4);">
                             Seguridad
                         </h3>
-                        
+                        <div class="form-group" style="margin-bottom: var(--space-4);">
+                            <label class="form-label">Contraseña</label>
+                            <input type="texto" class="form-input" value="********" readonly>
+                        </div>
                         <button class="btn btn--outline">
                             Cambiar contraseña
                         </button>
@@ -486,31 +489,34 @@
                     </p>
                 </div>
 
+                <!-- Columna 2: Enlaces rápidos -->
                 <div class="footer__column">
                     <h4 class="footer__subtitle">Enlaces</h4>
                     <ul class="footer__links">
-                        <li><a href="#">Acerca de</a></li>
-                        <li><a href="#">Contacto</a></li>
-                        <li><a href="#">Términos de uso</a></li>
-                        <li><a href="#">Privacidad</a></li>
+                        <li><a href="enlaces.html#seccion-4">Acerca de</a></li>
+                        <li><a href="enlaces.html#seccion-5">Contacto</a></li>
+                        <li><a href="enlaces.html#seccion-6">Términos de uso</a></li>
+                        <li><a href="enlaces.html#seccion-7">Privacidad</a></li>
                     </ul>
                 </div>
 
+                <!-- Columna 3: FAQ -->
                 <div class="footer__column">
                     <h4 class="footer__subtitle">Ayuda</h4>
                     <ul class="footer__links">
-                        <li><a href="#">Preguntas frecuentes</a></li>
-                        <li><a href="#">Guía de uso</a></li>
-                        <li><a href="#">Accesibilidad</a></li>
+                        <li><a href="ayuda.html#seccion-1">Preguntas frecuentes</a></li>
+                        <li><a href="ayuda.html#seccion-2">Guía de uso</a></li>
+                        <li><a href="ayuda.html#seccion-3">Accesibilidad</a></li>
                     </ul>
                 </div>
 
+                <!-- Columna 4: Redes sociales -->
                 <div class="footer__column">
                     <h4 class="footer__subtitle">Síguenos</h4>
                     <div class="social-links">
-                        <a href="#" aria-label="Facebook" class="social-link">FB</a>
-                        <a href="#" aria-label="Twitter" class="social-link">TW</a>
-                        <a href="#" aria-label="Instagram" class="social-link">IG</a>
+                        <a href="https://www.facebook.com/?locale=es_LA" aria-label="Facebook" class="social-link">FB</a>
+                        <a href="https://x.com/i/flow/login?lang=es" aria-label="Twitter" class="social-link">TW</a>
+                        <a href="https://www.instagram.com/accounts/login/" aria-label="Instagram" class="social-link">IG</a>
                     </div>
                 </div>
             </div>
