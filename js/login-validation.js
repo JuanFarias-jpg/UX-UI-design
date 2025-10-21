@@ -375,7 +375,11 @@
 
 /* ==========================================
     Documentación de Validación de Login:
-
+    Este archivo maneja:
+   - Validación en tiempo real del formulario
+   - Mensajes de error accesibles
+   - Prevención de envío con errores
+   - Simulación de login
 
    CREDENCIALES DE PRUEBA:
    - admin / admin123 (redirige a admin.html)

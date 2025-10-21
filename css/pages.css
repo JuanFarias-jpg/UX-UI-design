@@ -99,8 +99,8 @@
   cursor: pointer;
 }
 
-/* Asegurar que el checkbox y su etiqueta sean interactuables
-   y que no queden bajo overlays accidentales (z-index defensivo) */
+/* El checkbox y su etiqueta sean interactuables
+   y que no queden bajo overlays accidentales */
 .form-checkbox-group {
   position: relative;
   z-index: 1;
@@ -109,7 +109,7 @@
 .form-checkbox {
   position: relative;
   z-index: 2;
-  pointer-events: auto; /* por si acaso algún overlay heredó pointer-events:none */
+  pointer-events: auto; 
 }
 
 .form-checkbox-group label {
@@ -763,7 +763,7 @@ main.publications-page,
   flex: 1;
 }
 
-/* Botón cerrar - ahora a la derecha */
+/* Botón cerrar modal*/
 .modal__close {
   width: 40px;
   height: 40px;

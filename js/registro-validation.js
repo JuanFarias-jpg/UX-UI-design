@@ -1,12 +1,3 @@
-/* ==========================================
-   REGISTRO-VALIDATION.JS - Validación de Registro
-   ==========================================
-   Funcionalidades:
-   - Validación de todos los campos
-   - Verificar edad mínima (12 años)
-   - Coincidir contraseñas
-   - Registrar usuario
-========================================== */
 
 (function() {
   'use strict';

@@ -1,19 +1,15 @@
 /* ==========================================
    VARIABLES.CSS - Sistema de Diseño
-   ==========================================
    Este archivo contiene todas las variables globales:
    - Colores (modo claro y oscuro)
    - Tipografía
    - Espaciados
    - Sombras y efectos
-   
-   IMPORTANTE: Nunca usar valores directos en otros archivos CSS.
-   Siempre usa var(--nombre-variable) para mantener consistencia.
-========================================== */
+   Siempre usar var(--nombre-variable) para mantener consistencia. */
 
 :root {
   /* ===== COLORES PRINCIPALES ===== */
-  /* Tu paleta de colores del documento */
+  /* Paleta de colores */
   --color-primary: #1B998B;        /* Verde esmeralda  */
   --color-primary-dark: #147a6f;   /* Verde más oscuro para hover */
   --color-primary-light: #2dbba8;  /* Verde más claro para estados activos */
@@ -50,8 +46,7 @@
   --color-winner-fondo: #95e992;           /* Fondo del ganador */
   --color-winner-borde: #6ad16c;           /* Borde del recuadro del ganador */
 
-  /* ==== COLORES ANALISIS ==== */
-    /* ===== ANALISIS PARTIDO ===== */
+  /* ===== ANALISIS PARTIDO ===== */
   --analisis-fondo: #f9f9f9;                 /* Fondo del contenedor #analisis-partido */
   --analisis-texto-titulo: #222;            /* Color h2 dentro de #analisis-partido */
   --analisis-sombra: rgba(0, 0, 0, 0.1);    /* Sombra del contenedor */
@@ -197,7 +192,6 @@
 
 /* ==========================================
    MODO OSCURO
-   ==========================================
    Variables que se sobrescriben automáticamente
    cuando el usuario tiene modo oscuro activo
 ========================================== */
@@ -285,11 +279,8 @@
                0 10px 10px -5px rgba(0, 0, 0, 0.4);
 }
 
-/* ==========================================
-   PALETA ACCESIBLE PARA DALTONISMO
-   ==========================================
-   Clase opcional para usuarios con daltonismo
-========================================== */
+/* PALETA ACCESIBLE PARA DALTONISMO
+   Clase opcional para usuarios con daltonismo */
 
 .accessible-colors {
   /* Paleta adaptada para mantenerbuen contraste */
@@ -305,11 +296,9 @@
   --color-accent-light: #5ef444;
 }
 
-/* ==========================================
+/*
    AJUSTES DE TAMAÑO DE FUENTE
-   ==========================================
-   Clases para usuarios que necesitan texto más grande
-========================================== */
+   Clases para usuarios que necesitan texto más grande  */
 
 .font-size-large {
   --font-size-base: 1.125rem;  /* 18px */
@@ -329,14 +318,13 @@
   --font-size-4xl: 3rem;       /* 48px */
 }
 
-/* ==========================================
+/* 
    BREAKPOINTS
-   ==========================================
+   
    Puntos de quiebre para diseño responsive
    Estos NO son variables CSS, son valores de referencia
    para usar en media queries en otros archivos
    
    Mobile:  hasta 639px  (default)
    Tablet:  640px - 1023px
-   Desktop: 1024px en adelante
-========================================== */
+   Desktop: 1024px en adelante  */

@@ -1,12 +1,3 @@
-/* ==========================================
-   ADMIN.JS - Panel de Administración
-   ==========================================
-   Este archivo maneja:
-   - Navegación entre secciones del admin
-   - Aprobar/rechazar publicaciones
-   - Protección de acceso (solo admin)
-   - Cerrar sesión
-========================================== */
 
 (function() {
   'use strict';
@@ -1564,6 +1555,12 @@ function updateAdminStats() {
 
 /* ==========================================
     Documentación del Panel de Administración:
+
+  Este archivo maneja:
+   - Navegación entre secciones del admin
+   - Aprobar/rechazar publicaciones
+   - Protección de acceso (solo admin)
+   - Cerrar sesión
 
    FUNCIONALIDADES:
    Verificación de acceso (solo admin)

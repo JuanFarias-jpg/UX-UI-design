@@ -1,15 +1,3 @@
-/* ==========================================
-   ACCESSIBILITY.JS - Accesibilidad Mejorada
-   ==========================================
-   Este archivo maneja:
-   - Navegación por teclado
-   - Skip links (saltar al contenido)
-   - Tamaño de fuente ajustable
-   - Múltiples modos de daltonismo
-   - Anuncios para lectores de pantalla
-   - Alto contraste
-   - Animaciones mejoradas
-========================================== */
 
 (function() {
   'use strict';
@@ -220,12 +208,16 @@
       const container = document.createElement('div');
       container.className = 'accessibility-panel';
       container.innerHTML = `
-        <button class="accessibility-btn" aria-label="Abrir panel de accesibilidad" aria-expanded="false">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="3"></circle>
-            <path d="M12 1v6m0 6v6m-6-6h6m6 0h-6"></path>
-            <path d="M19.778 4.222l-4.242 4.242m0 7.072l4.242 4.242M4.222 4.222l4.242 4.242m0 7.072l-4.242 4.242"></path>
-          </svg>
+          <button class="accessibility-btn" aria-label="Accesibilidad">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" 
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="16" cy="4" r="1"/>
+                  <path d="m18 19 1-7-6 1"/>
+                  <path d="m5 8 3-3 5.5 3-2.36 3.5"/>
+                  <path d="M4.24 14.5a5 5 0 0 0 6.88 6"/>
+                  <path d="M13.76 17.5a5 5 0 0 0-6.88-6"/>
+            </svg>
+          </button>
         </button>
         <div class="accessibility-menu" hidden>
           <div class="accessibility-menu__header">
@@ -784,22 +776,21 @@
 })();
 
 /* ==========================================
-   MEJORAS IMPLEMENTADAS:
-   
-   ✅ Animaciones suaves al abrir/cerrar
-   ✅ Diseño moderno con gradientes
-   ✅ 6 modos de daltonismo diferentes:
+
+  Animaciones suaves al abrir/cerrar
+  Diseño moderno con gradientes
+  6 modos de daltonismo diferentes:
       - Normal
       - Protanopia (rojo-verde)
       - Deuteranopia (verde-rojo)  
       - Tritanopia (azul-amarillo)
       - Alto Contraste
       - Monocromático
-   ✅ Previsualizaciones de colores
-   ✅ Botón de restaurar valores
-   ✅ Iconos visuales mejorados
-   ✅ Mejor UX con hover effects
-   ✅ Responsive design
-   ✅ Filtros SVG para daltonismo realista
-   ✅ Anuncios para screen readers
+  Previsualizaciones de colores
+  Botón de restaurar valores
+  Iconos visuales mejorados
+  Mejor UX con hover effects
+  Responsive design
+  Filtros SVG para daltonismo realista
+  Anuncios para screen readers
 ========================================== */

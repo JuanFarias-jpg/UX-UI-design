@@ -46,6 +46,8 @@ out/
 # JetBrains IDEs (WebStorm, IntelliJ, etc.)
 .idea/
 
+world_cup_archive.code-workspace
+
 # =========================
 # OTHER
 # =========================
