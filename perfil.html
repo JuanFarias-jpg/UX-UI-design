@@ -284,7 +284,7 @@
                             </span>
                         </div>
                         <div style="display: flex; gap: var(--space-2); padding: var(--space-3);">
-                            <button class="btn btn--outline" style="flex: 1;">Editar</button>
+                            <button class="btn btn--outline edit-post" style="flex: 1;">Editar</button>
                             <button class="btn btn--outline" style="flex: 1;">Ver</button>
                         </div>
                     </article>
@@ -353,7 +353,7 @@
                             </p>
                         </div>
                         <div style="display: flex; gap: var(--space-2); padding: var(--space-3);">
-                            <button class="btn btn--outline" style="flex: 1;">Revisar</button>
+                            <button id="btn-revisar" class="btn btn--outline" style="flex: 1;">Revisar</button>
                             <button class="btn btn--outline" style="flex: 1;">Eliminar</button>
                         </div>
                     </article>
@@ -452,7 +452,10 @@
                         <h3 style="font-size: var(--font-size-xl); margin-bottom: var(--space-4);">
                             Seguridad
                         </h3>
-                        
+                        <div class="form-group" style="margin-bottom: var(--space-4);">
+                            <label class="form-label">Contraseña</label>
+                            <input type="texto" class="form-input" value="********" readonly>
+                        </div>
                         <button class="btn btn--outline">
                             Cambiar contraseña
                         </button>
