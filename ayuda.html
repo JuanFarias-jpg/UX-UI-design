@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"> <!-- UTF-8 para caracteres especiales en español-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Responsive behavior para móviles que se adepten al layout de su pantalla -->
+    <meta name="description" content="World Cup Archive - Historia completa de los mundiales de fútbol">
+    <title>World Cup Archive - Ayuda</title>
+
+    <!-- CSS en orden: primero variables, luego reset, luego layout, etc. -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="css/enlaces-footer.css">
+
+</head>
+<body>
+    <!-- HEADER STICKY: Se queda fijo al hacer scroll -->
+    <header class="header" role="banner">
+        <div class="container">
+            <nav class="navbar" role="navigation" aria-label="Navegación principal">
+                <!-- Logo -->
+                <div class="navbar__brand">
+                    <a href="index.html" class="logo" aria-label="Inicio">
+                        <span class="logo__text">WCA</span>
+                    </a>
+                </div>
+
+                <!-- Menú hamburguesa para móvil -->
+                <button class="navbar__toggle" 
+                        aria-label="Abrir menú de navegación" 
+                        aria-expanded="false"
+                        aria-controls="navbar-menu">
+                    <span class="hamburger"></span>
+                </button>
+
+                <!-- Menú de navegación -->
+                <ul class="navbar__menu" id="navbar-menu">
+                    <li><a href="index.html" class="navbar__link ">Inicio</a></li>
+                    <li><a href="mundiales.html" class="navbar__link">Mundiales</a></li>
+                    <li><a href="estadisticas.html" class="navbar__link">Estadísticas</a></li>
+                    <li><a href="publicaciones.html" class="navbar__link">Publicaciones</a></li>
+                    <li><a href="perfil.html" class="navbar__link">Mi Perfil</a></li>
+                </ul>
+
+                <!-- Controles de accesibilidad -->
+                <div class="navbar__controls">
+                    <!-- Toggle modo oscuro -->
+                    <button class="theme-toggle" 
+                            aria-label="Cambiar tema claro/oscuro"
+                            title="Cambiar tema">
+                        <span class="theme-toggle__icon">🌙</span>
+                    </button>
+
+                    <!-- Botón de login -->
+                    <a href="login.html" class="btn btn--primary">Iniciar Sesión</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+        <div class="container">
+            <section class="faq-section">
+                <h1 id="seccion-1" class="title">Preguntas Frecuentes</h1>
+                <ul class="faq">
+                    <li>
+                    <div class="pregunta">
+                        <span class="arrow"></span>
+                        <span>¿Cómo crear una cuenta?</span>
+                    </div>
+                    <div class="respuesta">
+                        <p>
+                            En móvil: ingresa al menu de tres líneas ubicado 
+                            en la parte superior derecha de la pantalla, 
+                            luego da click en iniciar sesión > registrate aquí.
+                            En ordenador: da click al boton "Iniciar sesión" 
+                            que se ecnuentra ubicado en la esquina superior derecha, 
+                            seguido de esto da click en "Registrarse aquí."
+                        </p>
+                        <br>
+                        <p>
+                            En ordenador: da click al boton "Iniciar sesión" 
+                            que se ecnuentra ubicado en la esquina superior derecha, 
+                            seguido de esto da click en "Registrarse aquí."
+                        </p>
+                    </div>
+                    </li>
+
+                    <li>
+                    <div class="pregunta">
+                        <span class="arrow"></span>
+                        <span>¿Cómo iniciar sesión?</span>
+                    </div>
+                    <div class="respuesta">
+                        <p>
+                            En móvil: ingresa al menu de tres líneas ubicado 
+                            en la parte superior derecha de la pantalla, 
+                            luego da click en "Iniciar sesión".
+                        </p>
+                        <br>
+                        <p>
+                            En ordenador: da click al boton "Iniciar sesión" 
+                            que se ecnuentra ubicado en la esquina superior derecha.
+                        </p>
+                    </div>
+                    </li>
+
+                    <li>
+                    <div class="pregunta">
+                        <span class="arrow"></span>
+                        <span>¿Cómo puedo ver los datos de un mundial?</span>
+                    </div>
+                    <div class="respuesta">
+                        <p>shalalalal</p>
+                    </div>
+                    </li>
+                </ul>
+
+                <br>
+                <h1 id="seccion-2" class="title">Guía de uso</h1>
+                <ul class="faq">
+                    <li>
+                    <div class="pregunta">
+                        <span class="arrow"></span>
+                        <span>Iniciar sesión</span>
+                    </div>
+                    <div class="respuesta">
+                        <p>1. Ingresa tu correo y contraseña en la página de inicio.</p>
+                        <p>2. Si olvidaste tu contraseña, usa la opción “¿Olvidaste tu contraseña?”.</p>
+                    </div>
+                    </li>
+
+                    <li>
+                    <div class="pregunta">
+                        <span class="arrow"></span>
+                        <span>Consultar información de los mundiales</span>
+                    </div>
+                    <div class="respuesta">
+                        <p>1. En el menú principal, entra a Mundiales.</p>
+                        <p>2. Selecciona un año o país para ver los detalles del torneo.</p>
+                        <p>3. Puedes ver estadísticas, análisis técnico y resultados.</p>
+                    </div>
+                    </li>
+
+                    <li>
+                    <div class="pregunta">
+                        <span class="arrow"></span>
+                        <span>Editar tu perfil</span>
+                    </div>
+                    <div class="respuesta">
+                        <p>-> Para editar tu perfil asegúrate de haber iniciado sesión primero.</p>
+                        <p>1. Dirígete al ícono de tu cuenta en la parte superior derecha.</p>
+                        <p>2. Navega a la pestaña de "Configuración".</p>
+                        <p>2. Modifica tus datos y guarda los cambios.</p>
+                    </div>
+                    </li>
+                </ul>
+
+                <br>
+                <h1 id="seccion-3" class="title">Accesibilidad</h1>
+                <ul class="faq">
+                    <li>
+                    <div class="pregunta">
+                        <span class="arrow"></span>
+                        <span>Herramientas de Accesibilidad</span>
+                    </div>
+                    <div class="respuesta">
+                        <p>Nuestro sitio cuenta con las siguientes funcionalidades:</p>
+                        <p>- Navegación mediante teclado.</p>
+                        <p>- Texto alternativo en imagenes.</p>
+                        <p>- Diseño adaptable a distintos tamaños de pantalla.</p>
+                        <p>- Diversas paletas de colores accesibles para el usuario.</p>
+                        <p>- Ajuste del tamaño de texto.</p>
+                        <br>
+                        <p>
+                            Próximamente se planea implementar lector de pantalla.</p>
+                        <p>
+                            Si tiene alguna dificultad para acceder a nuestro contenido, contáctanos en soporte@wca.com
+                            y con gusto te ayudaremos.
+                        </p>
+                    </div>
+                    </li>
+
+                    <li>
+                    <div class="pregunta">
+                        <span class="arrow"></span>
+                        <span>¿Cómo ajustar el texto y cambiar la paleta de colores?</span>
+                    </div>
+                    <div class="respuesta">
+                        <p>
+                            En móvil y ordenador: da click en el engranaje en la 
+                            esquina inferior derecha y verás las diferentes opciones
+                            para configurar la apariencia de la página.
+                        </p>
+                    </div>
+                    </li>
+
+                </ul>
+            </section>
+        </div>
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer__content">
+                <!-- Columna 1: Info -->
+                <div class="footer__column">
+                    <h3 class="footer__title">World Cup Archive</h3>
+                    <p class="footer__text">
+                        La historia completa de los mundiales de fútbol al alcance de todos.
+                    </p>
+                </div>
+
+                <!-- Columna 2: Enlaces rápidos -->
+                <div class="footer__column">
+                    <h4 class="footer__subtitle">Enlaces</h4>
+                    <ul class="footer__links">
+                        <li><a href="enlaces.html#seccion-4">Acerca de</a></li>
+                        <li><a href="enlaces.html#seccion-5">Contacto</a></li>
+                        <li><a href="enlaces.html#seccion-6">Términos de uso</a></li>
+                        <li><a href="enlaces.html#seccion-7">Privacidad</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3: FAQ -->
+                <div class="footer__column">
+                    <h4 class="footer__subtitle">Ayuda</h4>
+                    <ul class="footer__links">
+                        <li><a href="ayuda.html#seccion-1">Preguntas frecuentes</a></li>
+                        <li><a href="ayuda.html#seccion-2">Guía de uso</a></li>
+                        <li><a href="ayuda.html#seccion-3">Accesibilidad</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 4: Redes sociales -->
+                <div class="footer__column">
+                    <h4 class="footer__subtitle">Síguenos</h4>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/?locale=es_LA" aria-label="Facebook" class="social-link">FB</a>
+                        <a href="https://x.com/i/flow/login?lang=es" aria-label="Twitter" class="social-link">TW</a>
+                        <a href="https://www.instagram.com/accounts/login/" aria-label="Instagram" class="social-link">IG</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p>&copy; 2025 World Cup Archive. Proyecto educativo UANL.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS: Se cargan al final para mejor performance -->
+    <script src="js/theme.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/accessibility.js"></script>
+    <!-- Script de esta página -->
+    <script>
+        const preguntas = document.querySelectorAll('.pregunta');
+        const respuestas = document.querySelectorAll('.respuesta');
+        const arrows = document.querySelectorAll('.arrow');
+
+        preguntas.forEach((pregunta, i) => {
+            pregunta.addEventListener('click', () => {
+            const isOpen = respuestas[i].classList.contains('respuesta-opened');
+
+            // Cierra todas las demás
+            respuestas.forEach(r => r.classList.remove('respuesta-opened'));
+            arrows.forEach(a => a.classList.remove('arrow-rotated'));
+
+            // Si no estaba abierta, la abrimos
+            if (!isOpen) {
+                respuestas[i].classList.add('respuesta-opened');
+                arrows[i].classList.add('arrow-rotated');
+            }
+            });
+        });
+    </script>
+
+
+</body>
+</html>
