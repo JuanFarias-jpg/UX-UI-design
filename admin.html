@@ -69,8 +69,7 @@
                     <button class="btn btn--primary" id="new-category-btn">
                         + Nueva Categoría
                     </button>
-                    <button class="btn btn--secondary" id="new-mundial-btn">
-                        + Nuevo Mundial
+                     <button class="btn btn--primary" id="new-worldcup-btn">+ Nuevo Mundial</button>
                     </button>
                 </div>
             </div>
@@ -289,34 +288,243 @@
                             </ul>
                         </div>
                     </section>
+                    <!-- Sección: Mundiales -->
+                     <section class="admin-section" id="section-mundiales" hidden>
+                        <h2 class="section__title">Gestión de Mundiales</h2>
+                        <ul style="display: flex; flex-direction: column; gap: var(--space-4); margin-top: var(--space-6);"></ul>
+                        <!-- Mundial 2026 -->
+                            <li style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-4); border: 1px solid var(--color-border); border-radius: var(--border-radius-md);">
+                            <div style="display: flex; align-items: center; gap: var(--space-4);">
+                                <img src="assets/images/eua_mex_can.jpg" 
+                                    alt="Mundial 2026" 
+                                    style="width: 48px; height: 48px; border-radius: 8px; object-fit: contain;">
+                                <div>
+                                <div style="font-weight: var(--font-weight-semibold);">2026 - México, Estados Unidos y Canadá</div>
+                                <div style="font-size: var(--font-size-sm); color: var(--color-text-secondary);">
+                                    🏟️ Estadio Azteca / MetLife Stadium / BMO Field
+                                </div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: var(--space-2);">
+                                <button class="btn btn--outline edit-worldcup" data-id="2026">Editar</button>
+                                <button class="btn btn--outline delete-worldcup" data-id="2026" style="color: var(--color-error);">Eliminar</button>
+                            </div>
+                            </li>   
+                        <!-- Mundial 2022 -->
+                            <li style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-4); border: 1px solid var(--color-border); border-radius: var(--border-radius-md);">
+                            <div style="display: flex; align-items: center; gap: var(--space-4);">
+                                <img src="assets/images/qatar.jpg" alt="Qatar 2022" style="width: 48px; height: 48px; border-radius: 8px; object-fit: contain;">
+                                <div>
+                                <div style="font-weight: var(--font-weight-semibold);">2022 - Qatar</div>
+                                <div style="font-size: var(--font-size-sm); color: var(--color-text-secondary);">🏟️ Lusail Stadium</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: var(--space-2);">
+                                 <button class="btn btn--outline edit-worldcup" data-id="2026">Editar</button>
+                                <button class="btn btn--outline delete-worldcup" data-id="2026" style="color: var(--color-error);">Eliminar</button>
+                            </div>
+                            </li>
+                         <!-- Mundial 2018 -->
+                            <li style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-4); border: 1px solid var(--color-border); border-radius: var(--border-radius-md);">
+                            <div style="display: flex; align-items: center; gap: var(--space-4);">
+                                <img src="assets/images/rusia.jpg" alt="Rusia 2018" style="width: 48px; height: 48px; border-radius: 8px; object-fit: contain;">
+                                <div>
+                                <div style="font-weight: var(--font-weight-semibold);">2018 - Rusia</div>
+                                <div style="font-size: var(--font-size-sm); color: var(--color-text-secondary);">🏟️ Luzhnikí Stadium</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: var(--space-2);">
+                                <button class="btn btn--outline edit-worldcup" data-id="2018">Editar</button>
+                                <button class="btn btn--outline delete-worldcup" data-id="2018" style="color: var(--color-error);">Eliminar</button>
+                            </div>
+                            </li>
+
+                        <!-- Mundial 2014 -->
+                            <li style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-4); border: 1px solid var(--color-border); border-radius: var(--border-radius-md);">
+                            <div style="display: flex; align-items: center; gap: var(--space-4);">
+                                <img src="assets/images/brazil.jpg" alt="Brasil 2014" style="width: 48px; height: 48px; border-radius: 8px; object-fit: contain;">
+                                <div>
+                                <div style="font-weight: var(--font-weight-semibold);">2014 - Brasil</div>
+                                <div style="font-size: var(--font-size-sm); color: var(--color-text-secondary);">🏟️ Maracaná</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: var(--space-2);">
+                                <button class="btn btn--outline edit-worldcup" data-id="2014">Editar</button>
+                                <button class="btn btn--outline delete-worldcup" data-id="2014" style="color: var(--color-error);">Eliminar</button>
+                            </div>
+                            </li>
+
+                        <!-- Mundial 2010 -->
+                            <li style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-4); border: 1px solid var(--color-border); border-radius: var(--border-radius-md);">
+                            <div style="display: flex; align-items: center; gap: var(--space-4);">
+                                <img src="assets/images/sudafrica.jpg" alt="Sudáfrica 2010" style="width: 48px; height: 48px; border-radius: 8px; object-fit: contain;">
+                                <div>
+                                <div style="font-weight: var(--font-weight-semibold);">2010 - Sudáfrica</div>
+                                <div style="font-size: var(--font-size-sm); color: var(--color-text-secondary);">🏟️ Soccer City</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: var(--space-2);">
+                                <button class="btn btn--outline edit-worldcup" data-id="2010">Editar</button>
+                                <button class="btn btn--outline delete-worldcup" data-id="2010" style="color: var(--color-error);">Eliminar</button>
+                            </div>
+                            </li>
+
+                        <!-- Mundial 2006 -->
+                            <li style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-4); border: 1px solid var(--color-border); border-radius: var(--border-radius-md);">
+                            <div style="display: flex; align-items: center; gap: var(--space-4);">
+                                <img src="assets/images/alemania.jpg" alt="Alemania 2006" style="width: 48px; height: 48px; border-radius: 8px; object-fit: contain;">
+                                <div>
+                                <div style="font-weight: var(--font-weight-semibold);">2006 - Alemania</div>
+                                <div style="font-size: var(--font-size-sm); color: var(--color-text-secondary);">🏟️ Olympiastadion</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: var(--space-2);">
+                                <button class="btn btn--outline edit-worldcup" data-id="2006">Editar</button>
+                                <button class="btn btn--outline delete-worldcup" data-id="2006" style="color: var(--color-error);">Eliminar</button>
+                            </div>
+                            </li>
+
+                        <!-- Mundial 2002 -->
+                            <li style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-4); border: 1px solid var(--color-border); border-radius: var(--border-radius-md);">
+                            <div style="display: flex; align-items: center; gap: var(--space-4);">
+                                <img src="assets/images/corea_japon.jpg" alt="Corea-Japón 2002" style="width: 48px; height: 48px; border-radius: 8px; object-fit: contain;">
+                                <div>
+                                <div style="font-weight: var(--font-weight-semibold);">2002 - Corea / Japón</div>
+                                <div style="font-size: var(--font-size-sm); color: var(--color-text-secondary);">🏟️ Yokohama Stadium</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: var(--space-2);">
+                                <button class="btn btn--outline edit-worldcup" data-id="2002">Editar</button>
+                                <button class="btn btn--outline delete-worldcup" data-id="2002" style="color: var(--color-error);">Eliminar</button>
+                            </div>
+                            </li>
+
+                        <!-- Mundial 1998 -->
+                            <li style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-4); border: 1px solid var(--color-border); border-radius: var(--border-radius-md);">
+                            <div style="display: flex; align-items: center; gap: var(--space-4);">
+                                <img src="assets/images/francia.jpg" alt="Francia 1998" style="width: 48px; height: 48px; border-radius: 8px; object-fit: contain;">
+                                <div>
+                                <div style="font-weight: var(--font-weight-semibold);">1998 - Francia</div>
+                                <div style="font-size: var(--font-size-sm); color: var(--color-text-secondary);">🏟️ Stade de France</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: var(--space-2);">
+                                <button class="btn btn--outline edit-worldcup" data-id="1998">Editar</button>
+                                <button class="btn btn--outline delete-worldcup" data-id="1998" style="color: var(--color-error);">Eliminar</button>
+                            </div>
+                            </li>
+
+                        <!-- Mundial 1994 -->
+                            <li style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-4); border: 1px solid var(--color-border); border-radius: var(--border-radius-md);">
+                            <div style="display: flex; align-items: center; gap: var(--space-4);">
+                                <img src="assets/images/eua.jpg" alt="EE.UU. 1994" style="width: 48px; height: 48px; border-radius: 8px; object-fit: contain;">
+                                <div>
+                                <div style="font-weight: var(--font-weight-semibold);">1994 - Estados Unidos</div>
+                                <div style="font-size: var(--font-size-sm); color: var(--color-text-secondary);">🏟️ Rose Bowl</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: var(--space-2);">
+                                <button class="btn btn--outline edit-worldcup" data-id="1994">Editar</button>
+                                <button class="btn btn--outline delete-worldcup" data-id="1994" style="color: var(--color-error);">Eliminar</button>
+                            </div>
+                            </li>
+                        </ul>
+                    </section>
 
                     <!-- Sección: Estadísticas -->
                     <section id="section-estadisticas" class="admin-section" hidden>
                         <h2 class="section__title">Estadísticas del Sitio</h2>
-                        
+
+                        <!-- ===== Resumen general ===== -->
                         <div class="stats-grid">
                             <div class="stat-card">
-                                <div class="stat-card__icon">👥</div>
-                                <div class="stat-card__value">1,247</div>
-                                <div class="stat-card__label">Usuarios Registrados</div>
+                            <div class="stat-card__icon">👥</div>
+                            <div class="stat-card__value" id="stat-users">0</div>
+                            <div class="stat-card__label">Usuarios registrados</div>
                             </div>
                             <div class="stat-card">
-                                <div class="stat-card__icon">📄</div>
-                                <div class="stat-card__value">523</div>
-                                <div class="stat-card__label">Publicaciones Totales</div>
+                            <div class="stat-card__icon">🚫</div>
+                            <div class="stat-card__value" id="stat-banned">0</div>
+                            <div class="stat-card__label">Usuarios baneados</div>
                             </div>
                             <div class="stat-card">
-                                <div class="stat-card__icon">❤️</div>
-                                <div class="stat-card__value">12.4k</div>
-                                <div class="stat-card__label">Me gusta totales</div>
+                            <div class="stat-card__icon">📄</div>
+                            <div class="stat-card__value" id="stat-posts">0</div>
+                            <div class="stat-card__label">Publicaciones totales</div>
                             </div>
                             <div class="stat-card">
-                                <div class="stat-card__icon">💬</div>
-                                <div class="stat-card__value">3.2k</div>
-                                <div class="stat-card__label">Comentarios</div>
+                            <div class="stat-card__icon">🌍</div>
+                            <div class="stat-card__value" id="stat-worldcups">0</div>
+                            <div class="stat-card__label">Mundiales registrados</div>
                             </div>
                         </div>
+
+                        <!-- ===== Gráficas ===== -->
+                        <div class="chart-container">
+                            <h3 class="chart-title">Crecimiento de usuarios (últimos 6 meses)</h3>
+                            <canvas id="chart-users-growth"></canvas>
+                        </div>
+
+                        <div class="chart-container">
+                            <h3 class="chart-title">Publicaciones por categoría</h3>
+                            <canvas id="chart-posts-categories"></canvas>
+                        </div>
+
+                        <!-- ===== Resumen de actividad ===== -->
+                        <div class="chart-container">
+                            <h3 class="chart-title">Actividad reciente</h3>
+                            <ul style="display: flex; flex-direction: column; gap: var(--space-3);">
+                            <li id="insight-new-users">👤 Nuevos usuarios esta semana: <strong>0</strong></li>
+                            <li id="insight-new-posts">📝 Nuevas publicaciones: <strong>0</strong></li>
+                            <li id="insight-most-active-category">🔥 Categoría más activa: <strong>-</strong></li>
+                            <li id="insight-most-active-user">🏅 Usuario más activo: <strong>-</strong></li>
+                            </ul>
+                        </div>
+
+                        <!-- ===== Gráfica de usuarios activos vs baneados ===== -->
+                        <div class="chart-container">
+                        <h3 class="chart-title">Usuarios activos vs. baneados</h3>
+                        <canvas id="chart-users-status"></canvas>
+                        </div>
                     </section>
+
+                    <!-- Sección: Usuarios -->
+                    <section class="admin-section" id="section-usuarios" hidden>
+                        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-3);">
+                            <h2 class="section__title">Gestión de Usuarios</h2>
+                            <button class="btn btn--primary" id="new-user-btn">+ Nuevo Usuario</button>
+                        </div>
+
+                        <!-- Filtros -->
+                        <div style="display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; margin-top: var(--space-6);">
+                            <input 
+                            type="text" 
+                            id="user-search" 
+                            class="form-input" 
+                            placeholder="Buscar por nombre o usuario..."
+                            style="width: 100%; max-width: 400px;"
+                            >
+                            <select id="user-status-filter" class="form-input" style="width: 200px;">
+                            <option value="all">Todos</option>
+                            <option value="active">Activos</option>
+                            <option value="banned">Baneados</option>
+                            </select>
+                        </div>
+
+                        <!-- Usuarios Activos -->
+                        <div style="margin-top: var(--space-8);">
+                            <h3 class="section__subtitle" style="margin-bottom: var(--space-3); color: var(--color-success);">Usuarios Activos</h3>
+                            <ul id="users-list-active" style="display: flex; flex-direction: column; gap: var(--space-4);"></ul>
+                        </div>
+
+                        <!-- Usuarios Baneados -->
+                        <div style="margin-top: var(--space-10);">
+                            <h3 class="section__subtitle" style="margin-bottom: var(--space-3); color: var(--color-error);">Usuarios Baneados</h3>
+                            <ul id="users-list-banned" style="display: flex; flex-direction: column; gap: var(--space-4);"></ul>
+                        </div>
+                    </section>
+
+
                 </div>
             </div>
         </div>
@@ -336,5 +544,6 @@
     <script src="js/navigation.js"></script>
     <script src="js/accessibility.js"></script>
     <script src="js/admin.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>
