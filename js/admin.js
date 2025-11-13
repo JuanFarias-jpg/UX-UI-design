@@ -370,6 +370,7 @@
   if (checkAdminAccess()) {
     loadSectionFromURL();
   }
+ loadSectionFromURL();
 
   // ===== API PÚBLICA =====
   window.WCAAdmin = {

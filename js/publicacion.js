@@ -27,6 +27,25 @@ document.querySelectorAll('.icon-like').forEach(icon => {
   });
 });
 
+// --- Lógica para el icono de Favoritos (Estrella) ---
+document.querySelectorAll('.icon-fav').forEach(icon => {
+    icon.addEventListener('click', e => {
+        const target = e.target;
+        
+        // 1. Alternar clase para el color azul y animación
+        target.classList.toggle('favorited');
+        
+        // 2. Alternar entre estrella vacía y estrella rellena (FontAwesome)
+        if (target.classList.contains('favorited')) {
+            target.classList.remove('fa-regular'); // Quita contorno
+            target.classList.add('fa-solid');    // Pone relleno
+        } else {
+            target.classList.remove('fa-solid'); // Quita relleno
+            target.classList.add('fa-regular');  // Pone contorno
+        }
+    });
+});
+
 // --- Animación y scroll del ícono de comentario ---
 document.querySelectorAll('.icon-comment').forEach(icon => {
   icon.addEventListener('click', e => {
