@@ -367,9 +367,9 @@
   document.head.appendChild(style);
 
   // ===== INICIALIZACIÓN =====
-  /*if (checkAdminAccess()) {
+  if (checkAdminAccess()) {
     loadSectionFromURL();
-  }*/
+  }
  loadSectionFromURL();
 
   // ===== API PÚBLICA =====
