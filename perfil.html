@@ -57,11 +57,11 @@
     <!-- MAIN CONTENT -->
     <main class="main profile-page" style="display: block;">
         <!-- Header del perfil -->
-        <section class="profile-header">
+        <section class="profile-header" id="profile-header-section">
             <div class="container">
                 <div class="profile-info">
                     <div class="profile-avatar">
-                        <img src="assets/images/pp.jpg" 
+                        <img id="profile-avatar-img" src="assets/images/pp.jpg" 
                              alt="Foto de perfil de Juan López">
                     </div>
                     <div>
@@ -421,6 +421,42 @@
                 <h2 class="section__title">Configuración de la Cuenta</h2>
                 
                 <div style="max-width: 600px; margin: var(--space-8) 0;">
+                    <!-- Foto de perfil -->
+                    <div style="background: var(--color-surface); padding: var(--space-6); border-radius: var(--border-radius-lg); margin-bottom: var(--space-6);">
+                        <h3 style="font-size: var(--font-size-xl); margin-bottom: var(--space-4);">
+                            Foto de Perfil
+                        </h3>
+                        
+                        <!-- Cambiar foto de perfil -->
+                        <div class="form-group" style="margin-bottom: var(--space-6);">
+                            <label class="form-label">Foto de perfil</label>
+                            <div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-3);">
+                                <div id="current-profile-picture" style="width: 80px; height: 80px; border-radius: 50%; overflow: hidden; border: 3px solid var(--color-primary); flex-shrink: 0;">
+                                    <img id="profile-picture-display" src="assets/images/pp.jpg" alt="Foto de perfil actual" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
+                                <div style="flex: 1;">
+                                    <input 
+                                        type="file" 
+                                        id="change-profile-picture" 
+                                        class="form-input"
+                                        accept="image/*"
+                                        style="margin-bottom: var(--space-2);">
+                                    <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary);">
+                                        Formatos: JPG, PNG, GIF. Máximo 5MB
+                                    </p>
+                                </div>
+                            </div>
+                            <div id="profile-picture-preview-config" style="display: none; margin-top: var(--space-2);">
+                                <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-bottom: var(--space-2);">Vista previa:</p>
+                                <img id="profile-preview-config-img" src="" alt="Vista previa" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid var(--color-primary);">
+                            </div>
+                            <button class="btn btn--primary" id="save-profile-picture" style="margin-top: var(--space-3);" disabled>
+                                Guardar foto de perfil
+                            </button>
+                        </div>
+
+                    </div>
+
                     <!-- Información personal -->
                     <div style="background: var(--color-surface); padding: var(--space-6); border-radius: var(--border-radius-lg); margin-bottom: var(--space-6);">
                         <h3 style="font-size: var(--font-size-xl); margin-bottom: var(--space-4);">

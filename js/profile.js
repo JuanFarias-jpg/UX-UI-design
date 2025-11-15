@@ -586,11 +586,165 @@ loadDrafts();
   loadUserData();
   loadTabFromURL();
 
+  // ===== GESTIÓN DE FOTO DE PERFIL Y HEADER =====
+  
+  /**
+   * Convertir imagen a base64
+   */
+  function imageToBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  /**
+   * Cargar datos del usuario y actualizar UI
+   */
+  function loadUserProfile() {
+    const username = localStorage.getItem('wca-user');
+    if (!username) return;
+
+    try {
+      const userData = JSON.parse(localStorage.getItem(`wca-profile-${username}`) || '{}');
+      
+      // Actualizar foto de perfil
+      const avatarImg = document.getElementById('profile-avatar-img');
+      const profileDisplay = document.getElementById('profile-picture-display');
+      
+      if (userData.profilePicture && userData.profilePicture !== 'assets/images/default-avatar.png') {
+        // Forzar actualización con timestamp para evitar caché
+        const timestamp = Date.now();
+        if (avatarImg) {
+          avatarImg.src = userData.profilePicture + (userData.profilePicture.includes('data:') ? '' : '?t=' + timestamp);
+        }
+        if (profileDisplay) {
+          profileDisplay.src = userData.profilePicture + (userData.profilePicture.includes('data:') ? '' : '?t=' + timestamp);
+        }
+      } else {
+        // Usar imagen por defecto
+        if (avatarImg) avatarImg.src = 'assets/images/pp.jpg';
+        if (profileDisplay) profileDisplay.src = 'assets/images/pp.jpg';
+      }
+
+    } catch (e) {
+      console.error('Error al cargar perfil:', e);
+    }
+  }
+
+  /**
+   * Guardar cambios en el perfil
+   */
+  function saveProfileChanges(field, value) {
+    const username = localStorage.getItem('wca-user');
+    if (!username) return false;
+
+    try {
+      const userData = JSON.parse(localStorage.getItem(`wca-profile-${username}`) || '{}');
+      userData[field] = value;
+      userData.updatedAt = new Date().toISOString();
+      localStorage.setItem(`wca-profile-${username}`, JSON.stringify(userData));
+      return true;
+    } catch (e) {
+      console.error('Error al guardar perfil:', e);
+      return false;
+    }
+  }
+
+  // Event listeners para cambiar foto de perfil
+  const changeProfilePicture = document.getElementById('change-profile-picture');
+  const saveProfilePictureBtn = document.getElementById('save-profile-picture');
+  
+  if (changeProfilePicture) {
+    changeProfilePicture.addEventListener('change', async (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        // Validar tamaño (5MB)
+        if (file.size > 5 * 1024 * 1024) {
+          alert('La imagen es demasiado grande. Máximo 5MB');
+          return;
+        }
+
+        try {
+          const base64 = await imageToBase64(file);
+          const preview = document.getElementById('profile-picture-preview-config');
+          const previewImg = document.getElementById('profile-preview-config-img');
+          if (preview && previewImg) {
+            previewImg.src = base64;
+            preview.style.display = 'block';
+            saveProfilePictureBtn.disabled = false;
+            saveProfilePictureBtn.dataset.newImage = base64;
+          }
+        } catch (e) {
+          console.error('Error al procesar imagen:', e);
+          alert('Error al procesar la imagen');
+        }
+      }
+    });
+  }
+
+  if (saveProfilePictureBtn) {
+    saveProfilePictureBtn.addEventListener('click', async () => {
+      const newImage = saveProfilePictureBtn.dataset.newImage;
+      if (newImage) {
+        // Guardar en localStorage
+        const username = localStorage.getItem('wca-user');
+        if (username) {
+          try {
+            const userData = JSON.parse(localStorage.getItem(`wca-profile-${username}`) || '{}');
+            userData.profilePicture = newImage;
+            userData.updatedAt = new Date().toISOString();
+            localStorage.setItem(`wca-profile-${username}`, JSON.stringify(userData));
+            
+            // Actualizar imágenes inmediatamente
+            const avatarImg = document.getElementById('profile-avatar-img');
+            const profileDisplay = document.getElementById('profile-picture-display');
+            
+            if (avatarImg) {
+              avatarImg.src = newImage;
+              // Forzar recarga si es necesario
+              avatarImg.onerror = function() {
+                this.src = newImage;
+              };
+            }
+            if (profileDisplay) {
+              profileDisplay.src = newImage;
+              profileDisplay.onerror = function() {
+                this.src = newImage;
+              };
+            }
+            
+            // Limpiar UI
+            saveProfilePictureBtn.disabled = true;
+            delete saveProfilePictureBtn.dataset.newImage;
+            const preview = document.getElementById('profile-picture-preview-config');
+            if (preview) preview.style.display = 'none';
+            if (changeProfilePicture) changeProfilePicture.value = '';
+            
+            if (window.WCAAccessibility) {
+              window.WCAAccessibility.announce('Foto de perfil actualizada');
+            }
+            alert('✓ Foto de perfil actualizada');
+          } catch (e) {
+            console.error('Error al guardar foto:', e);
+            alert('Error al guardar la foto de perfil');
+          }
+        }
+      }
+    });
+  }
+
+  // Cargar perfil al iniciar
+  loadUserProfile();
+
   // ===== API PÚBLICA =====
   window.WCAProfile = {
     switchTab,
     filterByStatus,
-    logout: handleLogout
+    logout: handleLogout,
+    loadUserProfile
   };
 
 })();

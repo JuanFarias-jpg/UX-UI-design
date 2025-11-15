@@ -131,6 +131,44 @@
                     <span class="form-error" id="country-error" hidden></span>
                 </div>
 
+                <!-- Campo de género -->
+                <div class="form-group">
+                    <label for="gender" class="form-label">
+                        Género
+                    </label>
+                    <select id="gender" name="gender" class="form-input" required aria-required="true">
+                        <option value="">Selecciona tu género</option>
+                        <option value="masculino">Masculino</option>
+                        <option value="femenino">Femenino</option>
+                        <option value="otro">Otro</option>
+                        <option value="prefiero-no-decir">Prefiero no decir</option>
+                    </select>
+                    <span class="form-error" id="gender-error" hidden></span>
+                </div>
+
+                <!-- Campo de foto de perfil -->
+                <div class="form-group">
+                    <label for="profile-picture" class="form-label">
+                        Foto de perfil (opcional)
+                    </label>
+                    <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+                        <input 
+                            type="file" 
+                            id="profile-picture" 
+                            name="profile-picture"
+                            class="form-input"
+                            accept="image/*"
+                            aria-describedby="profile-picture-hint">
+                        <span id="profile-picture-hint" style="font-size: var(--font-size-sm); color: var(--color-text-secondary);">
+                            Formatos aceptados: JPG, PNG, GIF. Tamaño máximo: 5MB
+                        </span>
+                        <div id="profile-picture-preview" style="display: none; margin-top: var(--space-2);">
+                            <img id="profile-preview-img" src="" alt="Vista previa" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid var(--color-primary);">
+                        </div>
+                    </div>
+                    <span class="form-error" id="profile-picture-error" hidden></span>
+                </div>
+
                 <!-- Campo de contraseña -->
                 <div class="form-group">
                     <label for="password" class="form-label">

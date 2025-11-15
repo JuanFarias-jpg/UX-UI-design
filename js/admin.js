@@ -131,7 +131,7 @@
           postCard.remove();
           
           // Actualizar contador de pendientes
-          updatePendingCount(-1);
+          updatePendingCount();
           
           // Mostrar notificación
           if (window.WCAAccessibility) {
@@ -170,7 +170,7 @@
           postCard.remove();
           
           // Actualizar contador
-          updatePendingCount(-1);
+          updatePendingCount();
           
           // Notificar
           if (window.WCAAccessibility) {
@@ -188,16 +188,15 @@
   /**
    * Actualizar contador de publicaciones pendientes
    */
-  function updatePendingCount(delta) {
-    const badge = document.querySelector('.admin-menu__item[data-section="pendientes"] .badge');
+  function updatePendingCount() {
+    const pendingSection = document.getElementById('section-pendientes');
+    const pendingPosts = pendingSection?.querySelectorAll('.pending-post');
+    const count = pendingPosts ? pendingPosts.length : 0;
+    const badge = document.getElementById('pending-count');
     if (badge) {
-      const currentCount = parseInt(badge.textContent) || 0;
-      const newCount = Math.max(0, currentCount + delta);
-      badge.textContent = newCount;
-      
-      if (newCount === 0) {
-        badge.style.display = 'none';
-      }
+      badge.textContent = count;
+      // Ocultar badge si no hay pendientes
+      badge.style.display = count > 0 ? 'inline-flex' : 'none';
     }
   }
 
@@ -370,7 +369,141 @@
   if (checkAdminAccess()) {
     loadSectionFromURL();
   }
- loadSectionFromURL();
+  loadSectionFromURL();
+  
+  // Inicializar contador de publicaciones pendientes
+  updatePendingCount();
+
+  // ===== FILTROS Y GESTIÓN DE PUBLICACIONES =====
+  
+  /**
+   * Filtrar publicaciones en "Todas las Publicaciones"
+   */
+  function filterAllPosts(filter) {
+    const grid = document.getElementById('all-posts-grid');
+    if (!grid) return;
+
+    const cards = grid.querySelectorAll('.card');
+    const filterButtons = document.querySelectorAll('#section-todas .filter-btn');
+
+    // Actualizar botones activos
+    filterButtons.forEach(btn => {
+      btn.classList.remove('filter-btn--active');
+      if (btn.getAttribute('data-filter') === filter) {
+        btn.classList.add('filter-btn--active');
+      }
+    });
+
+    // Filtrar cards con animación
+    let visibleCount = 0;
+    cards.forEach((card, index) => {
+      const status = card.getAttribute('data-status');
+      const shouldShow = filter === 'all' || status === filter;
+      
+      if (shouldShow) {
+        // Resetear estilos de animación
+        card.style.display = '';
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.4s ease-in, transform 0.4s ease-in';
+        
+        // Aplicar animación con delay escalonado
+        setTimeout(() => {
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, index * 50); // Delay escalonado para efecto cascada
+        
+        visibleCount++;
+      } else {
+        // Ocultar con animación
+        card.style.transition = 'opacity 0.3s ease-in, transform 0.3s ease-in';
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(-10px)';
+        
+        setTimeout(() => {
+          card.style.display = 'none';
+        }, 300);
+      }
+    });
+
+    // Mostrar mensaje si no hay resultados
+    let emptyMessage = grid.querySelector('.empty-message');
+    if (visibleCount === 0) {
+      if (!emptyMessage) {
+        emptyMessage = document.createElement('div');
+        emptyMessage.className = 'empty-message';
+        emptyMessage.style.cssText = `
+          grid-column: 1 / -1;
+          text-align: center;
+          padding: var(--space-8);
+          color: var(--color-text-secondary);
+        `;
+        grid.appendChild(emptyMessage);
+      }
+      const filterLabels = {
+        'approved': 'aprobadas',
+        'pending': 'pendientes',
+        'rejected': 'rechazadas'
+      };
+      emptyMessage.textContent = `No hay publicaciones ${filterLabels[filter] || ''} disponibles.`;
+    } else if (emptyMessage) {
+      emptyMessage.remove();
+    }
+  }
+
+  /**
+   * Editar publicación
+   */
+  function editPost(postId) {
+    // TODO: Implementar modal de edición
+    if (window.WCAAdmin) {
+      window.WCAAdmin.showNotification('Funcionalidad de edición en desarrollo', 'info');
+    } else {
+      alert(`Editar publicación ${postId}`);
+    }
+  }
+
+  /**
+   * Eliminar publicación
+   */
+  function deletePost(postId) {
+    if (!confirm('¿Estás seguro de que deseas eliminar esta publicación? Esta acción no se puede deshacer.')) {
+      return;
+    }
+
+    const card = document.querySelector(`#all-posts-grid .card [data-post-id="${postId}"]`)?.closest('.card');
+    if (card) {
+      card.style.animation = 'fadeOut 0.3s ease-out';
+      setTimeout(() => {
+        card.remove();
+        if (window.WCAAdmin) {
+          window.WCAAdmin.showNotification('✓ Publicación eliminada', 'success');
+        }
+      }, 300);
+    }
+  }
+
+  // Event listeners para filtros y botones
+  document.addEventListener('click', (e) => {
+    // Filtros
+    if (e.target.matches('#section-todas .filter-btn')) {
+      const filter = e.target.getAttribute('data-filter');
+      filterAllPosts(filter);
+    }
+
+    // Botones editar/eliminar
+    if (e.target.matches('.edit-post-btn') || e.target.closest('.edit-post-btn')) {
+      const btn = e.target.matches('.edit-post-btn') ? e.target : e.target.closest('.edit-post-btn');
+      const postId = btn.getAttribute('data-post-id');
+      editPost(postId);
+    }
+
+    if (e.target.matches('.delete-post-btn') || e.target.closest('.delete-post-btn')) {
+      const btn = e.target.matches('.delete-post-btn') ? e.target : e.target.closest('.delete-post-btn');
+      const postId = btn.getAttribute('data-post-id');
+      deletePost(postId);
+    }
+  });
 
   // ===== API PÚBLICA =====
   window.WCAAdmin = {
@@ -597,6 +730,40 @@ const categoryModal = {
       categories = JSON.parse(localStorage.getItem('wca-categories') || '[]');
     } catch (e) {
       console.error('Error al cargar categorías:', e);
+    }
+
+    // Validar duplicados (case-insensitive)
+    const nameLower = name.toLowerCase();
+    const duplicateCategory = categories.find(c => {
+      const existingNameLower = c.name.toLowerCase();
+      // Si estamos editando, excluir la categoría actual de la búsqueda
+      if (this.isEditing && c.id === this.editingId) {
+        return false;
+      }
+      return existingNameLower === nameLower;
+    });
+
+    if (duplicateCategory) {
+      // Mostrar mensaje de error
+      const errorMessage = `Ya existe una categoría con el nombre "${duplicateCategory.name}". Por favor, elige un nombre diferente.`;
+      
+      if (window.WCAAdmin) {
+        window.WCAAdmin.showNotification(errorMessage, 'error');
+      } else {
+        alert(errorMessage);
+      }
+      
+      // Resaltar el campo de nombre
+      const nameInput = document.getElementById('category-name');
+      nameInput.focus();
+      nameInput.style.borderColor = 'var(--color-error, #dc2626)';
+      
+      // Quitar el resaltado después de 3 segundos
+      setTimeout(() => {
+        nameInput.style.borderColor = '';
+      }, 3000);
+      
+      return;
     }
 
     if (this.isEditing) {
@@ -977,25 +1144,47 @@ const worldcupModal = {
       console.error('Error al cargar mundiales:', e);
     }
 
-    const container = document.querySelector('#section-mundiales ul');
+    // Si no hay mundiales en localStorage, inicializar con los hardcodeados
+    if (worldcups.length === 0) {
+      const defaultWorldcups = [
+        { id: 2026, year: 2026, host: 'México, Estados Unidos y Canadá', mainStadium: 'Estadio Azteca / MetLife Stadium / BMO Field', image: 'assets/images/eua_mex_can.jpg' },
+        { id: 2022, year: 2022, host: 'Qatar', mainStadium: 'Lusail Stadium', image: 'assets/images/qatar.jpg' },
+        { id: 2018, year: 2018, host: 'Rusia', mainStadium: 'Luzhnikí Stadium', image: 'assets/images/rusia.jpg' },
+        { id: 2014, year: 2014, host: 'Brasil', mainStadium: 'Maracaná', image: 'assets/images/brazil.jpg' },
+        { id: 2010, year: 2010, host: 'Sudáfrica', mainStadium: 'Soccer City', image: 'assets/images/sudafrica.jpg' },
+        { id: 2006, year: 2006, host: 'Alemania', mainStadium: 'Olympiastadion', image: 'assets/images/alemania.jpg' },
+        { id: 2002, year: 2002, host: 'Corea / Japón', mainStadium: 'Yokohama Stadium', image: 'assets/images/corea_japon.jpg' },
+        { id: 1998, year: 1998, host: 'Francia', mainStadium: 'Stade de France', image: 'assets/images/francia.jpg' },
+        { id: 1994, year: 1994, host: 'Estados Unidos', mainStadium: 'Rose Bowl', image: 'assets/images/eua.jpg' }
+      ];
+      localStorage.setItem('wca-worldcups', JSON.stringify(defaultWorldcups));
+      worldcups = defaultWorldcups;
+    }
+
+    const container = document.getElementById('worldcup-list');
     if (!container) return;
 
+    // Limpiar todo el contenido del contenedor
     container.innerHTML = '';
 
     worldcups.forEach(w => {
       const li = document.createElement('li');
+      li.className = 'worldcup-item';
+      li.setAttribute('data-dynamic', 'true');
       li.style.cssText = `
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: var(--space-4);
+        padding: var(--space-5);
         border: 1px solid var(--color-border);
         border-radius: var(--border-radius-md);
+        background: var(--color-surface, #ffffff);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
       `;
 
       li.innerHTML = `
         <div style="display: flex; align-items: center; gap: var(--space-4);">
-          ${w.image ? `<img src="${w.image}" alt="${w.host}" style="width: 48px; height: 48px; border-radius: 8px; object-fit: cover;">` : ''}
+          ${w.image ? `<img src="${w.image}" alt="${w.host}" style="width: 48px; height: 48px; border-radius: 8px; object-fit: contain;">` : ''}
           <div>
             <div style="font-weight: var(--font-weight-semibold);">
               ${w.year} - ${w.host}
@@ -1295,26 +1484,38 @@ const userModal = {
       const target = isBanned ? containerBanned : containerActive;
 
       const li = document.createElement('li');
+      li.className = 'user-item';
       li.style.cssText = `
         display: flex;
         justify-content: space-between;
-        align-items: center;
-        padding: var(--space-4);
+        align-items: flex-start;
+        padding: var(--space-5);
         border: 1px solid var(--color-border);
         border-radius: var(--border-radius-md);
-        background: ${isBanned ? 'rgba(255,0,0,0.05)' : 'transparent'};
+        background: var(--color-surface, #ffffff);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        transition: box-shadow var(--transition-fast);
       `;
+      
+      // Hover effect
+      li.addEventListener('mouseenter', () => {
+        li.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.15)';
+      });
+      li.addEventListener('mouseleave', () => {
+        li.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.1)';
+      });
 
       li.innerHTML = `
-        <div>
-          <div style="font-weight: var(--font-weight-semibold);">${u.name}</div>
-          <div style="font-size: var(--font-size-sm); color: var(--color-text-secondary);">
+        <div style="flex: 1;">
+          <div style="font-weight: var(--font-weight-semibold); margin-bottom: var(--space-1);">${u.name}</div>
+          <div style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-bottom: var(--space-1);">
             ${u.username} · ${u.role}
             ${isBanned ? `<span style="color: var(--color-error);"> · ⛔ Baneado hasta ${new Date(u.bannedUntil).toLocaleDateString()}</span>` : ''}
           </div>
-          ${u.email ? `<div style="font-size: var(--font-size-sm); color: var(--color-text-secondary);">${u.email}</div>` : ''}
+          ${u.email ? `<div style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-bottom: var(--space-1);">${u.email}</div>` : ''}
+          ${isBanned && u.banReason ? `<div style="font-size: var(--font-size-sm); color: var(--color-error); margin-top: var(--space-2); padding: var(--space-2); background: rgba(220, 38, 38, 0.1); border-radius: var(--border-radius-sm); border-left: 3px solid var(--color-error);"><strong>Motivo:</strong> ${u.banReason}</div>` : ''}
         </div>
-        <div style="display: flex; gap: var(--space-2);">
+        <div class="user-actions" style="display: flex; gap: var(--space-2); flex-wrap: wrap;">
           <button class="btn btn--outline edit-user" data-id="${u.id}">Editar</button>
           ${isBanned 
             ? `<button class="btn btn--outline unban-user" data-id="${u.id}" style="color: var(--color-success);">Desbanear</button>`
@@ -1373,24 +1574,134 @@ const userModal = {
   },
 
   banUser(id) {
-    const days = prompt('¿Cuántos días deseas banear al usuario?', '3');
-    if (!days || isNaN(days)) return alert('Debes ingresar un número válido.');
+    // Crear modal de baneo si no existe
+    let banModal = document.getElementById('ban-user-modal');
+    if (!banModal) {
+      const banModalHTML = `
+        <div class="modal" id="ban-user-modal" hidden>
+          <div class="modal__overlay"></div>
+          <div class="modal__content" role="dialog" aria-modal="true" aria-labelledby="ban-modal-title">
+            <header class="modal__header">
+              <h2 id="ban-modal-title" class="modal__title">Banear Usuario</h2>
+              <button class="modal__close" id="close-ban-modal" aria-label="Cerrar modal">
+                <span class="modal__close-icon">✕</span>
+              </button>
+            </header>
+            <form id="ban-form" class="modal__form">
+              <div class="form-group">
+                <label for="ban-days" class="form-label">
+                  Días de baneo
+                  <span class="form-required">*</span>
+                </label>
+                <input 
+                  type="number" 
+                  id="ban-days" 
+                  class="form-input" 
+                  placeholder="Ej: 3, 7, 30"
+                  min="1"
+                  max="365"
+                  value="3"
+                  required
+                >
+                <span class="form-hint">Número de días que estará baneado el usuario</span>
+              </div>
+              <div class="form-group">
+                <label for="ban-reason" class="form-label">
+                  Motivo del baneo
+                  <span class="form-required">*</span>
+                </label>
+                <textarea 
+                  id="ban-reason" 
+                  class="form-input" 
+                  rows="4" 
+                  placeholder="Ej: Publicación de contenido inapropiado, spam, comportamiento tóxico..."
+                  maxlength="500"
+                  required
+                ></textarea>
+                <span class="form-hint">Máximo 500 caracteres. Este motivo será visible para el usuario.</span>
+              </div>
+              <div class="modal__actions">
+                <button type="submit" class="btn btn--primary" id="confirm-ban-btn">⛔ Confirmar Baneo</button>
+                <button type="button" class="btn btn--outline" id="cancel-ban-btn">Cancelar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      `;
+      document.body.insertAdjacentHTML('beforeend', banModalHTML);
+      banModal = document.getElementById('ban-user-modal');
+      
+      // Event listeners del modal
+      document.getElementById('close-ban-modal').addEventListener('click', () => {
+        banModal.hidden = true;
+        document.body.classList.remove('modal-open');
+      });
+      
+      document.getElementById('cancel-ban-btn').addEventListener('click', () => {
+        banModal.hidden = true;
+        document.body.classList.remove('modal-open');
+      });
+      
+      document.getElementById('ban-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const days = parseInt(document.getElementById('ban-days').value);
+        const reason = document.getElementById('ban-reason').value.trim();
+        
+        if (!days || isNaN(days) || days < 1) {
+          alert('Debes ingresar un número válido de días (mínimo 1).');
+          return;
+        }
+        
+        if (!reason) {
+          alert('Debes ingresar un motivo para el baneo.');
+          return;
+        }
+        
+        const userId = parseInt(banModal.getAttribute('data-user-id'));
+        this.confirmBanUser(userId, days, reason);
+        
+        // Limpiar formulario y cerrar modal
+        document.getElementById('ban-form').reset();
+        document.getElementById('ban-days').value = '3';
+        banModal.hidden = true;
+        document.body.classList.remove('modal-open');
+      });
+    }
+    
+    // Abrir modal y guardar ID del usuario
+    banModal.setAttribute('data-user-id', id);
+    banModal.hidden = false;
+    document.body.classList.add('modal-open');
+    document.getElementById('ban-days').focus();
+  },
+
+  confirmBanUser(id, days, reason) {
     const until = new Date();
     until.setDate(until.getDate() + parseInt(days));
 
     let users = JSON.parse(localStorage.getItem('wca-users') || '[]');
     const user = users.find(u => u.id === id);
-    if (user) user.bannedUntil = until.toISOString();
+    if (user) {
+      user.bannedUntil = until.toISOString();
+      user.banReason = reason;
+      user.bannedAt = new Date().toISOString();
+    }
 
     localStorage.setItem('wca-users', JSON.stringify(users));
     this.renderFiltered();
-    if (window.WCAAdmin) window.WCAAdmin.showNotification(`⛔ Usuario baneado por ${days} días`, 'info');
+    if (window.WCAAdmin) {
+      window.WCAAdmin.showNotification(`⛔ Usuario baneado por ${days} días`, 'info');
+    }
   },
 
   unbanUser(id) {
     let users = JSON.parse(localStorage.getItem('wca-users') || '[]');
     const user = users.find(u => u.id === id);
-    if (user) user.bannedUntil = null;
+    if (user) {
+      user.bannedUntil = null;
+      user.banReason = null;
+      user.bannedAt = null;
+    }
     localStorage.setItem('wca-users', JSON.stringify(users));
     this.renderFiltered();
     if (window.WCAAdmin) window.WCAAdmin.showNotification('✅ Usuario desbaneado', 'success');

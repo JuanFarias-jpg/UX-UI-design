@@ -9,6 +9,8 @@
   const emailInput = document.querySelector('#email');
   const birthdateInput = document.querySelector('#birthdate');
   const countryInput = document.querySelector('#country');
+  const genderInput = document.querySelector('#gender');
+  const profilePictureInput = document.querySelector('#profile-picture');
   const passwordInput = document.querySelector('#password');
   const passwordConfirmInput = document.querySelector('#password-confirm');
   const termsCheckbox = document.querySelector('#terms');
@@ -200,6 +202,38 @@
   }
 
   /**
+   * Validar foto de perfil
+   */
+  function validateProfilePicture(file) {
+    if (!file) return { valid: true }; // Opcional
+    
+    const maxSize = 5 * 1024 * 1024; // 5MB
+    const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
+    
+    if (!allowedTypes.includes(file.type)) {
+      return { valid: false, message: 'Formato no válido. Usa JPG, PNG o GIF' };
+    }
+    
+    if (file.size > maxSize) {
+      return { valid: false, message: 'La imagen es demasiado grande. Máximo 5MB' };
+    }
+    
+    return { valid: true };
+  }
+
+  /**
+   * Convertir imagen a base64
+   */
+  function imageToBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  /**
    * Validar todo el formulario
    */
   function validateForm() {
@@ -208,7 +242,20 @@
     const emailValid = validateField(emailInput);
     const birthdateValid = validateField(birthdateInput);
     const countryValid = validateField(countryInput);
+    const genderValid = validateField(genderInput);
     const passwordValid = validateField(passwordInput);
+
+    // Validar foto de perfil si existe
+    let profilePictureValid = true;
+    if (profilePictureInput && profilePictureInput.files.length > 0) {
+      const pictureValidation = validateProfilePicture(profilePictureInput.files[0]);
+      if (!pictureValidation.valid) {
+        showError(profilePictureInput, pictureValidation.message);
+        profilePictureValid = false;
+      } else {
+        clearError(profilePictureInput);
+      }
+    }
 
     const passwordConfirmValidation = validatePasswordConfirm(
       passwordInput.value, 
@@ -236,7 +283,9 @@
       emailValid &&
       birthdateValid &&
       countryValid &&
+      genderValid &&
       passwordValid &&
+      profilePictureValid &&
       passwordConfirmValidation.valid &&
       termsValidation.valid
     );
@@ -245,13 +294,27 @@
   /**
    * Registrar usuario
    */
-  function registerUser() {
+  async function registerUser() {
+    let profilePicture = null;
+    
+    // Convertir foto de perfil a base64 si existe
+    if (profilePictureInput && profilePictureInput.files.length > 0) {
+      try {
+        profilePicture = await imageToBase64(profilePictureInput.files[0]);
+      } catch (e) {
+        console.error('Error al procesar la imagen:', e);
+      }
+    }
+
     const userData = {
       fullname: fullnameInput.value.trim(),
       username: usernameInput.value.trim(),
       email: emailInput.value.trim(),
       birthdate: birthdateInput.value,
       country: countryInput.value,
+      gender: genderInput.value,
+      profilePicture: profilePicture || 'assets/images/default-avatar.png', // Imagen por defecto
+      headerImage: null, // Se puede configurar después
       password: passwordInput.value, // En producción sería hasheada en el servidor
       newsletter: document.querySelector('#newsletter').checked,
       registeredAt: new Date().toISOString()
@@ -318,6 +381,36 @@
       notification.style.animation = 'slideOutRight 0.3s ease-out';
       setTimeout(() => notification.remove(), 300);
     }, 3000);
+  }
+
+  // ===== VISTA PREVIA DE FOTO DE PERFIL =====
+  if (profilePictureInput) {
+    profilePictureInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const validation = validateProfilePicture(file);
+        if (validation.valid) {
+          clearError(profilePictureInput);
+          const reader = new FileReader();
+          reader.onload = (event) => {
+            const preview = document.getElementById('profile-picture-preview');
+            const previewImg = document.getElementById('profile-preview-img');
+            if (preview && previewImg) {
+              previewImg.src = event.target.result;
+              preview.style.display = 'block';
+            }
+          };
+          reader.readAsDataURL(file);
+        } else {
+          showError(profilePictureInput, validation.message);
+          const preview = document.getElementById('profile-picture-preview');
+          if (preview) preview.style.display = 'none';
+        }
+      } else {
+        const preview = document.getElementById('profile-picture-preview');
+        if (preview) preview.style.display = 'none';
+      }
+    });
   }
 
   // ===== EVENT LISTENERS =====
@@ -387,7 +480,7 @@
         await new Promise(resolve => setTimeout(resolve, 1500));
 
         // Registrar usuario
-        const userData = registerUser();
+        const userData = await registerUser();
 
         if (window.WCAAccessibility) {
           window.WCAAccessibility.announce('Cuenta creada exitosamente. Redirigiendo...');

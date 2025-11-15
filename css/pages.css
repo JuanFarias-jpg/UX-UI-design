@@ -148,10 +148,12 @@
 }
 
 .profile-header {
+  position: relative;
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
   padding: var(--space-12) 0;
   margin-bottom: var(--space-8);
   border-radius: var(--border-radius-xl);
+  overflow: hidden;
 }
 
 .profile-info {
@@ -275,6 +277,15 @@ main.publications-page,
   max-width: 600px;
   margin: 0 auto var(--space-6);
   position: relative;
+  width: 100%;
+  padding: 0 var(--space-4);
+}
+
+/* Ajustes para móvil */
+@media (max-width: 639px) {
+  .search-bar {
+    padding: 0;
+  }
 }
 
 .search-input {
@@ -308,9 +319,23 @@ main.publications-page,
 
 .filters-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: 1fr; /* Una columna en móvil */
   gap: var(--space-4);
   margin-top: var(--space-4);
+}
+
+/* Tablet: 2 columnas */
+@media (min-width: 640px) {
+  .filters-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop: 3 columnas */
+@media (min-width: 1024px) {
+  .filters-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .filter-dropdown {
@@ -321,6 +346,16 @@ main.publications-page,
   font-size: var(--font-size-base);
   cursor: pointer;
   transition: all var(--transition-fast);
+  width: 100%;
+  min-height: 44px; /* Tamaño mínimo táctil para móvil */
+}
+
+/* Asegurar que los selects sean fáciles de usar en móvil */
+@media (max-width: 639px) {
+  .filter-dropdown {
+    font-size: var(--font-size-base, 1rem);
+    padding: var(--space-4, 1rem) var(--space-5, 1.25rem);
+  }
 }
 
 .filter-dropdown:hover {
@@ -464,6 +499,46 @@ main.publications-page,
   display: grid;
   grid-template-columns: 1fr; /* Una columna en móvil */
   gap: var(--space-4);
+}
+
+/* Móvil: Publicaciones pendientes responsive */
+@media (max-width: 639px) {
+  .pending-post {
+    padding: var(--space-4) !important;
+  }
+
+  .pending-post__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+
+  .pending-post__meta {
+    width: 100%;
+  }
+
+  .pending-post__content > div {
+    grid-template-columns: 1fr !important;
+  }
+
+  .pending-post__content img {
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 16/9;
+  }
+
+  .pending-post__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .pending-post__actions .btn {
+    width: 100%;
+    padding: var(--space-3, 0.75rem) var(--space-4, 1rem);
+    font-size: var(--font-size-sm, 0.875rem);
+    min-height: 44px;
+    justify-content: center;
+  }
 }
 
 @media (min-width: 640px) {
@@ -804,6 +879,422 @@ main.publications-page,
   margin-top: var(--space-6);
   padding-top: var(--space-6);
   border-top: var(--border-width) solid var(--color-border);
+}
+
+/* Botón de guardar categoría responsive */
+#save-category-btn {
+  min-width: auto;
+  width: auto;
+  transition: all var(--transition-fast);
+}
+
+/* Móvil: Botones en columna y tamaño completo */
+@media (max-width: 639px) {
+  .modal__actions {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  #save-category-btn {
+    width: 100%;
+    padding: var(--space-4, 1rem) var(--space-5, 1.25rem);
+    font-size: var(--font-size-base, 1rem);
+    min-height: 48px; /* Tamaño táctil mínimo */
+  }
+
+  #cancel-category-btn {
+    width: 100%;
+    padding: var(--space-4, 1rem) var(--space-5, 1.25rem);
+    font-size: var(--font-size-base, 1rem);
+    min-height: 48px;
+  }
+}
+
+/* Tablet: Botones más grandes pero en fila */
+@media (min-width: 640px) and (max-width: 1023px) {
+  #save-category-btn {
+    padding: var(--space-3, 0.75rem) var(--space-6, 1.5rem);
+    font-size: var(--font-size-base, 1rem);
+    min-width: 180px;
+  }
+
+  #cancel-category-btn {
+    padding: var(--space-3, 0.75rem) var(--space-6, 1.5rem);
+    font-size: var(--font-size-base, 1rem);
+    min-width: 140px;
+  }
+}
+
+/* Desktop: Tamaño estándar */
+@media (min-width: 1024px) {
+  #save-category-btn {
+    padding: var(--space-3, 0.75rem) var(--space-8, 2rem);
+    font-size: var(--font-size-base, 1rem);
+    min-width: 200px;
+  }
+
+  #cancel-category-btn {
+    padding: var(--space-3, 0.75rem) var(--space-6, 1.5rem);
+    font-size: var(--font-size-base, 1rem);
+    min-width: 120px;
+  }
+}
+
+/* ===== ESTILOS PARA USUARIOS EN ADMIN ===== */
+
+/* Item de usuario */
+.user-item {
+  background: var(--color-surface, #ffffff) !important;
+}
+
+/* Botones de acciones de usuario */
+.user-actions {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.user-actions .btn {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Móvil: Botones de usuario en columna y tamaño completo */
+@media (max-width: 639px) {
+  .user-item {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: var(--space-4);
+  }
+
+  .user-actions {
+    width: 100%;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .user-actions .btn {
+    width: 100%;
+    padding: var(--space-3, 0.75rem) var(--space-4, 1rem);
+    font-size: var(--font-size-sm, 0.875rem);
+    min-height: 44px; /* Tamaño táctil mínimo */
+    justify-content: center;
+  }
+
+  /* Ajustar espaciado del contenido del usuario en móvil */
+  .user-item > div:first-child {
+    margin-bottom: var(--space-2);
+  }
+}
+
+/* Tablet: Botones más compactos pero aún legibles */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .user-actions {
+    flex-wrap: wrap;
+  }
+
+  .user-actions .btn {
+    padding: var(--space-2, 0.5rem) var(--space-4, 1rem);
+    font-size: var(--font-size-sm, 0.875rem);
+    min-width: 100px;
+  }
+}
+
+/* Desktop: Tamaño estándar */
+@media (min-width: 1024px) {
+  .user-actions .btn {
+    padding: var(--space-2, 0.5rem) var(--space-4, 1rem);
+    font-size: var(--font-size-base, 1rem);
+    min-width: 100px;
+  }
+}
+
+/* Botones del modal de baneo responsive */
+@media (max-width: 639px) {
+  #confirm-ban-btn,
+  #cancel-ban-btn {
+    width: 100%;
+    padding: var(--space-4, 1rem) var(--space-5, 1.25rem);
+    font-size: var(--font-size-base, 1rem);
+    min-height: 48px;
+  }
+}
+
+/* ===== ESTILOS PARA CATEGORÍAS EN ADMIN ===== */
+
+/* Items de categorías */
+#section-categorias li {
+  background: var(--color-surface, #ffffff);
+  transition: box-shadow var(--transition-fast);
+}
+
+#section-categorias li:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Botones de categorías */
+#section-categorias .btn {
+  white-space: nowrap;
+}
+
+/* Móvil: Categorías responsive */
+@media (max-width: 639px) {
+  #section-categorias .section__title {
+    width: 100%;
+    margin-bottom: var(--space-3);
+  }
+
+  #new-category-btn {
+    width: 100%;
+    padding: var(--space-4, 1rem) var(--space-5, 1.25rem);
+    font-size: var(--font-size-base, 1rem);
+    min-height: 48px;
+  }
+
+  #section-categorias li {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: var(--space-3);
+    padding: var(--space-4) !important;
+  }
+
+  #section-categorias li > div:last-child {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  #section-categorias li .btn {
+    width: 100%;
+    padding: var(--space-3, 0.75rem) var(--space-4, 1rem);
+    font-size: var(--font-size-sm, 0.875rem);
+    min-height: 44px;
+    justify-content: center;
+  }
+
+  /* Stats grid en mobile */
+  #section-categorias .stats-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Tablet: Ajustes intermedios */
+@media (min-width: 640px) and (max-width: 1023px) {
+  #section-categorias li .btn {
+    padding: var(--space-2, 0.5rem) var(--space-4, 1rem);
+    font-size: var(--font-size-sm, 0.875rem);
+    min-width: 100px;
+  }
+}
+
+/* ===== ESTILOS PARA MUNDIALES EN ADMIN ===== */
+
+/* Items de mundiales */
+.worldcup-item {
+  transition: box-shadow var(--transition-fast);
+}
+
+.worldcup-item:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Contenedor de información del mundial */
+.worldcup-item > div:first-child {
+  flex: 1;
+  min-width: 0; /* Permite que se ajuste en mobile */
+}
+
+/* Imagen del mundial */
+.worldcup-item img {
+  flex-shrink: 0;
+}
+
+/* Botones de mundiales */
+.worldcup-item .btn {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Desktop: Cards de publicaciones en admin - Estirar y mostrar toda la info */
+@media (min-width: 1024px) {
+  #section-todas .card-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: var(--space-6);
+  }
+
+  #section-todas .card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 600px;
+  }
+
+  #section-todas .card__image {
+    flex-shrink: 0;
+    height: 280px;
+  }
+
+  #section-todas .card__image img {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  #section-todas .card__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-6);
+  }
+
+  #section-todas .card__title {
+    font-size: var(--font-size-2xl, 1.5rem);
+    margin-bottom: var(--space-3);
+    line-height: 1.3;
+  }
+
+  #section-todas .card__description {
+    flex: 1;
+    font-size: var(--font-size-base, 1rem);
+    line-height: 1.6;
+    margin-bottom: var(--space-4);
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  #section-todas .card__meta {
+    margin-top: auto;
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border);
+  }
+
+  #section-todas .card__stats {
+    padding: var(--space-4) var(--space-6);
+    border-top: var(--border-width) solid var(--color-border);
+  }
+
+  #section-todas .card__actions {
+    padding: var(--space-4) var(--space-6);
+    border-top: var(--border-width) solid var(--color-border);
+    display: flex;
+    gap: var(--space-3);
+    margin-top: auto;
+  }
+
+  #section-todas .card__actions .btn {
+    flex: 1;
+    padding: var(--space-3, 0.75rem) var(--space-5, 1.25rem);
+    font-size: var(--font-size-base, 1rem);
+    min-height: 44px;
+  }
+}
+
+/* Móvil: Cards de publicaciones en admin */
+@media (max-width: 639px) {
+  #section-todas .card-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  #section-todas .card__actions {
+    flex-direction: column;
+  }
+
+  #section-todas .card__actions .btn {
+    width: 100%;
+    padding: var(--space-3, 0.75rem) var(--space-4, 1rem);
+    font-size: var(--font-size-sm, 0.875rem);
+    min-height: 44px;
+    justify-content: center;
+  }
+
+  #section-todas .filter-bar {
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  #section-todas .filter-btn {
+    padding: var(--space-2, 0.5rem) var(--space-3, 0.75rem);
+    font-size: var(--font-size-sm, 0.875rem);
+    min-height: 40px;
+  }
+
+  /* Ajustar badges de estado en mobile */
+  #section-todas .card__status-badge {
+    font-size: 0.65rem;
+    padding: var(--space-1, 0.25rem) var(--space-2, 0.5rem);
+    top: var(--space-2, 0.5rem);
+    right: var(--space-2, 0.5rem);
+  }
+}
+
+/* Móvil: Mundiales responsive */
+@media (max-width: 639px) {
+  #section-mundiales .section__title {
+    width: 100%;
+    margin-bottom: var(--space-3);
+  }
+
+  #new-worldcup-btn {
+    width: 100%;
+    padding: var(--space-4, 1rem) var(--space-5, 1.25rem);
+    font-size: var(--font-size-base, 1rem);
+    min-height: 48px;
+  }
+
+  .worldcup-item {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: var(--space-4);
+    padding: var(--space-4) !important;
+  }
+
+  .worldcup-item > div:first-child {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  .worldcup-item img {
+    width: 64px !important;
+    height: 64px !important;
+    align-self: center;
+  }
+
+  .worldcup-item > div:last-child {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .worldcup-item .btn {
+    width: 100%;
+    padding: var(--space-3, 0.75rem) var(--space-4, 1rem);
+    font-size: var(--font-size-sm, 0.875rem);
+    min-height: 44px;
+    justify-content: center;
+  }
+}
+
+/* Tablet: Ajustes intermedios */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .worldcup-item {
+    flex-wrap: wrap;
+  }
+
+  .worldcup-item > div:last-child {
+    flex-wrap: wrap;
+  }
+
+  .worldcup-item .btn {
+    padding: var(--space-2, 0.5rem) var(--space-4, 1rem);
+    font-size: var(--font-size-sm, 0.875rem);
+    min-width: 100px;
+  }
 }
 
 /* Galería de medios mejorada */

@@ -148,6 +148,124 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* ===== ESTILOS PARA TABLAS PRINCIPALES ===== */
+/* Contenedor de tabla con scroll horizontal en móvil */
+.tabla-mundiales {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: var(--space-4, 1rem) 0;
+  position: relative;
+  /* Indicador visual de scroll en móvil */
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary, #0077cc) var(--color-bg, #f0f0f0);
+}
+
+/* Estilo de scrollbar para webkit (Chrome, Safari, Edge) */
+.tabla-mundiales::-webkit-scrollbar {
+  height: 8px;
+}
+
+.tabla-mundiales::-webkit-scrollbar-track {
+  background: var(--color-bg, #f0f0f0);
+  border-radius: var(--border-radius-full, 9999px);
+}
+
+.tabla-mundiales::-webkit-scrollbar-thumb {
+  background: var(--color-primary, #0077cc);
+  border-radius: var(--border-radius-full, 9999px);
+}
+
+.tabla-mundiales::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-dark, #0053aa);
+}
+
+/* Asegurar que las tablas no se compriman demasiado */
+.tabla-mundiales table {
+  min-width: 800px; /* Ancho mínimo para mantener legibilidad */
+  width: 100%;
+}
+
+/* Estilos para las tablas de estadísticas */
+#tbMundialesResumen,
+#tbPartidos {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-sm, 0.875rem);
+}
+
+#tbMundialesResumen th,
+#tbMundialesResumen td,
+#tbPartidos th,
+#tbPartidos td {
+  padding: var(--space-2, 0.5rem) var(--space-3, 0.75rem);
+  text-align: left;
+  border: 1px solid var(--color-border, #ddd);
+  white-space: nowrap; /* Evitar que el texto se divida en múltiples líneas */
+}
+
+/* Alineación específica para algunas columnas */
+#tbMundialesResumen th:nth-child(1),
+#tbMundialesResumen td:nth-child(1),
+#tbPartidos th:nth-child(1),
+#tbPartidos td:nth-child(1) {
+  text-align: center; /* Año/Fecha centrado */
+}
+
+#tbMundialesResumen th:nth-child(6),
+#tbMundialesResumen td:nth-child(6),
+#tbMundialesResumen th:nth-child(7),
+#tbMundialesResumen td:nth-child(7),
+#tbPartidos th:nth-child(4),
+#tbPartidos td:nth-child(4) {
+  text-align: center; /* Números centrados */
+}
+
+#tbMundialesResumen th,
+#tbPartidos th {
+  background: var(--tabla-fondo-header, #0077cc);
+  color: var(--tabla-texto-header, #ffffff);
+  font-weight: var(--font-weight-bold, 700);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+#tbMundialesResumen tbody tr:nth-child(even),
+#tbPartidos tbody tr:nth-child(even) {
+  background-color: var(--tabla-fondo-par, #f5f7fa);
+}
+
+#tbMundialesResumen tbody tr:hover,
+#tbPartidos tbody tr:hover {
+  background-color: var(--color-bg, #f0f0f0);
+}
+
+/* Enlaces en las tablas */
+.link-mundial {
+  color: var(--color-primary, #0077ff);
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color var(--transition-fast, 0.2s ease);
+}
+
+.link-mundial:hover {
+  color: var(--color-primary-dark, #0053aa);
+}
+
+/* Mensaje indicador de scroll en móvil */
+@media (max-width: 768px) {
+  .tabla-mundiales::after {
+    content: "← Desliza para ver más →";
+    display: block;
+    text-align: center;
+    font-size: var(--font-size-xs, 0.75rem);
+    color: var(--color-text-secondary, #666);
+    padding: var(--space-2, 0.5rem);
+    margin-top: var(--space-2, 0.5rem);
+    opacity: 0.7;
+  }
+}
+
 /* --- RESPONSIVO --- */
 @media (max-width: 768px) {
   #analisis-partido {
@@ -160,6 +278,66 @@
 
   #cancha {
     height: 360px;
+  }
+
+  /* Tablas más pequeñas en móvil */
+  #tbMundialesResumen,
+  #tbPartidos {
+    font-size: var(--font-size-xs, 0.75rem);
+  }
+
+  #tbMundialesResumen th,
+  #tbMundialesResumen td,
+  #tbPartidos th,
+  #tbPartidos td {
+    padding: var(--space-1, 0.25rem) var(--space-2, 0.5rem);
+  }
+
+  /* Permitir que algunas columnas se ajusten */
+  #tbMundialesResumen td:nth-child(9), /* Observaciones */
+  #tbPartidos td:nth-child(6), /* Goleadores A */
+  #tbPartidos td:nth-child(7) { /* Goleadores B */
+    white-space: normal;
+    max-width: 150px;
+    word-wrap: break-word;
+  }
+
+  /* Espaciado de secciones en móvil */
+  #resumen-general,
+  #partidos-mundial {
+    margin-bottom: var(--space-8, 2rem);
+  }
+
+  #resumen-general h2,
+  #partidos-mundial h2 {
+    font-size: var(--font-size-xl, 1.25rem);
+    margin-bottom: var(--space-4, 1rem);
+  }
+}
+
+/* Tablet: ajustes intermedios */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .tabla-mundiales table {
+    min-width: 900px;
+  }
+}
+
+/* Desktop: tablas completas */
+@media (min-width: 1024px) {
+  .tabla-mundiales table {
+    min-width: 100%;
+  }
+
+  #tbMundialesResumen,
+  #tbPartidos {
+    font-size: var(--font-size-base, 1rem);
+  }
+
+  #tbMundialesResumen th,
+  #tbMundialesResumen td,
+  #tbPartidos th,
+  #tbPartidos td {
+    padding: var(--space-3, 0.75rem) var(--space-4, 1rem);
   }
 }
 

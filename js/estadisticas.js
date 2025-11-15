@@ -12,13 +12,7 @@ const mundiales = [
     mejorJugador: "Lionel Messi",
     observaciones: "Primera Copa Mundial realizada en Medio Oriente. Argentina se consagra campeona después de 36 años.",
     imagenes: [
-      "assets/imagenes/mesiCopa.jpg",
-      "assets/imagenes/promocional.jpg",
-      "assets/imagenes/mexico-1.jpg",
-      "assets/imagenes/trofeo.jpg",
-      "assets/imagenes/seleccionCatar.jpg",
-      "assets/imagenes/estadio-final.jpg",
-      "assets/imagenes/al_wakrah_stadium0.jpg"
+      
     ],
     partidosDetalles: [
       {
@@ -99,9 +93,6 @@ const mundiales = [
     mejorJugador: "Luka Modrić",
     observaciones: "Francia gana su segundo título mundial. Croacia logra su mejor desempeño histórico.",
     imagenes: [
-      "assets/imagenes/rusia-final.jpg",
-      "assets/imagenes/rusia-campeon.jpg",
-      "assets/imagenes/rusia-trofeo.jpg"
     ],
     partidosDetalles: [
       {
@@ -127,7 +118,16 @@ const mundiales = [
 // ----- Renderiza el resumen general -----
 function renderResumen(data) {
   const tbody = document.querySelector("#tbMundialesResumen tbody");
+  if (!tbody) return;
+  
   tbody.innerHTML = "";
+
+  if (data.length === 0) {
+    const tabla = document.querySelector("#tbMundialesResumen");
+    const columnas = tabla ? tabla.querySelectorAll("thead th").length : 9;
+    tbody.innerHTML = `<tr><td colspan='${columnas}' style='text-align:center;padding:2rem;color:var(--color-text-secondary,#666);'>No se encontraron resultados que coincidan con los filtros</td></tr>`;
+    return;
+  }
 
   data.forEach(m => {
     const fila = document.createElement("tr");
@@ -150,7 +150,16 @@ function renderResumen(data) {
 // ----- Renderiza los partidos del mundial seleccionado -----
 function renderPartidos(partidos) {
   const tbody = document.querySelector("#tbPartidos tbody");
+  if (!tbody) return;
+  
   tbody.innerHTML = "";
+
+  if (!partidos || partidos.length === 0) {
+    const tabla = document.querySelector("#tbPartidos");
+    const columnas = tabla ? tabla.querySelectorAll("thead th").length : 9;
+    tbody.innerHTML = `<tr><td colspan='${columnas}' style='text-align:center;padding:2rem;color:var(--color-text-secondary,#666);'>No hay partidos disponibles para este mundial</td></tr>`;
+    return;
+  }
 
   partidos.forEach(p => {
     const fila = document.createElement("tr");
@@ -160,10 +169,10 @@ function renderPartidos(partidos) {
       <td>${p.equipoA}</td>
       <td>${p.resultado}</td>
       <td>${p.equipoB}</td>
-      <td>${p.goleadoresA}</td>
-      <td>${p.goleadoresB}</td>
-      <td>${p.estadio}</td>
-      <td>${p.ciudad}</td>
+      <td>${p.goleadoresA || "-"}</td>
+      <td>${p.goleadoresB || "-"}</td>
+      <td>${p.estadio || "-"}</td>
+      <td>${p.ciudad || "-"}</td>
     `;
     tbody.appendChild(fila);
   });
@@ -200,15 +209,15 @@ document.querySelector("#tbMundialesResumen").addEventListener("click", e => {
 const searchInput = document.querySelector(".search-input");
 const selects = document.querySelectorAll(".filter-dropdown");
 const tablaPartidos = document.querySelector("#tbPartidos");
-const tbodyPartidos = tablaPartidos.querySelector("tbody");
+const tbodyPartidos = tablaPartidos ? tablaPartidos.querySelector("tbody") : null;
 const seccionAnalisis = document.querySelector("#analisis-partido");
 
 // ---- Función para aplicar filtros ----
 function aplicarFiltros() {
-  const mundialFiltro = selects[0].value;   // Mundial
-  const continenteFiltro = selects[1].value; // Continente
-  const ordenFiltro = selects[2].value;     // Orden
-  const texto = searchInput.value.toLowerCase();
+  const mundialFiltro = selects[0] ? selects[0].value : "";   // Mundial
+  const seleccionFiltro = selects[1] ? selects[1].value : ""; // Selección/Campeón
+  const ordenFiltro = selects[2] ? selects[2].value : "";     // Orden
+  const texto = searchInput ? searchInput.value.toLowerCase() : "";
 
   let filtrados = [...mundiales];
 
@@ -221,46 +230,73 @@ function aplicarFiltros() {
     }
   }
 
-  // Filtrar por texto
+  // Filtrar por selección/campeón
+  if (seleccionFiltro) {
+    if (seleccionFiltro === "otros") {
+      // Filtrar campeones que no están en la lista específica
+      const campeonesListados = ["argentina", "francia", "brasil", "alemania", "italia", "españa"];
+      filtrados = filtrados.filter(m => 
+        !campeonesListados.includes(m.campeon.toLowerCase())
+      );
+    } else {
+      filtrados = filtrados.filter(m => 
+        m.campeon.toLowerCase() === seleccionFiltro
+      );
+    }
+  }
+
+  // Filtrar por texto de búsqueda
   if (texto) {
     filtrados = filtrados.filter(m =>
       m.sede.toLowerCase().includes(texto) ||
       m.campeon.toLowerCase().includes(texto) ||
       m.subcampeon.toLowerCase().includes(texto) ||
-      (m.mejorJugador && m.mejorJugador.toLowerCase().includes(texto))
-    );
-  }
-
-  // Filtrar por continente (ejemplo genérico)
-  if (continenteFiltro) {
-    filtrados = filtrados.filter(m =>
-      m.sede.toLowerCase().includes(continenteFiltro)
+      (m.mejorJugador && m.mejorJugador.toLowerCase().includes(texto)) ||
+      (m.goleador && m.goleador.toLowerCase().includes(texto))
     );
   }
 
   // Ordenar
-  if (ordenFiltro === "recent") filtrados.sort((a, b) => b.anio - a.anio);
-  if (ordenFiltro === "popular") filtrados.sort((a, b) => b.goles - a.goles);
-  if (ordenFiltro === "views") filtrados.sort((a, b) => b.partidos - a.partidos);
+  if (ordenFiltro === "recent") {
+    filtrados.sort((a, b) => b.anio - a.anio);
+  } else if (ordenFiltro === "popular") {
+    filtrados.sort((a, b) => b.goles - a.goles);
+  } else if (ordenFiltro === "views") {
+    filtrados.sort((a, b) => b.partidos - a.partidos);
+  }
 
   // Mostrar en tablas
   renderResumen(filtrados);
 
   if (filtrados.length > 0) {
     renderPartidos(filtrados[0].partidosDetalles);
-    tablaPartidos.classList.remove("bloqueada");
+    if (tablaPartidos) {
+      tablaPartidos.classList.remove("bloqueada");
+    }
   } else {
-    tbodyPartidos.innerHTML = "";
-    tablaPartidos.classList.add("bloqueada");
+    if (tbodyPartidos) {
+      // Contar columnas según la tabla
+      const columnas = tablaPartidos ? tablaPartidos.querySelectorAll("thead th").length : 9;
+      tbodyPartidos.innerHTML = `<tr><td colspan='${columnas}' style='text-align:center;padding:2rem;color:var(--color-text-secondary,#666);'>No se encontraron resultados que coincidan con los filtros</td></tr>`;
+    }
+    if (tablaPartidos) {
+      tablaPartidos.classList.add("bloqueada");
+    }
   }
 
   // Ocultar análisis si se cambia el filtro
-  seccionAnalisis.style.display = "none";
+  if (seccionAnalisis) {
+    seccionAnalisis.style.display = "none";
+  }
 }
 
-// Escuchar cambios
-selects.forEach(sel => sel.addEventListener("change", aplicarFiltros));
-searchInput.addEventListener("input", aplicarFiltros);
+// Escuchar cambios - solo si los elementos existen
+if (selects.length > 0) {
+  selects.forEach(sel => sel.addEventListener("change", aplicarFiltros));
+}
+if (searchInput) {
+  searchInput.addEventListener("input", aplicarFiltros);
+}
 
 
 // ======================================================

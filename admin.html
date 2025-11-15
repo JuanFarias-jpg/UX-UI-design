@@ -66,10 +66,7 @@
                     </p>
                 </div>
                 <div class="admin-actions">
-                    <button class="btn btn--primary" id="new-category-btn">
-                        + Nueva Categoría
-                    </button>
-                     <button class="btn btn--primary" id="new-worldcup-btn">+ Nuevo Mundial</button>
+                    <!-- Botones movidos a sus respectivas secciones -->
                 </div>
             </div>
 
@@ -80,7 +77,7 @@
                     <nav class="admin-menu" aria-label="Menú de administración">
                         <a href="#pendientes" class="admin-menu__item admin-menu__item--active" data-section="pendientes">
                             📋 Publicaciones Pendientes
-                            <span class="badge" style="margin-left: auto; background: var(--color-warning);">4</span>
+                            <span class="badge" id="pending-count" style="margin-left: auto; background: var(--color-warning);">0</span>
                         </a>
                         <a href="#todas" class="admin-menu__item" data-section="todas">
                             📄 Todas las Publicaciones
@@ -222,27 +219,243 @@
                         <h2 class="section__title">Todas las Publicaciones</h2>
                         
                         <div class="filter-bar" style="margin-bottom: var(--space-6);">
-                            <button class="filter-btn filter-btn--active">Todas</button>
-                            <button class="filter-btn">Aprobadas</button>
-                            <button class="filter-btn">Pendientes</button>
-                            <button class="filter-btn">Rechazadas</button>
+                            <button class="filter-btn filter-btn--active" data-filter="all">Todas</button>
+                            <button class="filter-btn" data-filter="approved">Aprobadas</button>
+                            <button class="filter-btn" data-filter="pending">Pendientes</button>
+                            <button class="filter-btn" data-filter="rejected">Rechazadas</button>
                         </div>
 
-                        <div class="card-grid">
-                            <article class="card">
+                        <div class="card-grid" id="all-posts-grid">
+                            <!-- Publicación 1 -->
+                            <article class="card" data-status="approved">
                                 <div class="card__image">
-                                    <img src="assets/images/post-1.jpg" alt="Publicación">
+                                    <img src="assets/images/gol-maradona.jpg" alt="Diego Maradona celebrando el gol contra Inglaterra en México 86">
                                     <span class="card__badge">Jugadas</span>
+                                    <span class="card__status-badge card__status-badge--approved">Aprobada</span>
                                 </div>
                                 <div class="card__content">
                                     <h3 class="card__title">El gol del siglo de Maradona</h3>
                                     <p class="card__description">
-                                        Por @historiadorfutbol
+                                        Revive la jugada más icónica del Mundial México 86, donde Maradona 
+                                        dejó atrás a medio equipo inglés en una jugada que quedó grabada 
+                                        en la historia del fútbol mundial.
                                     </p>
+                                    <div class="card__meta">
+                                        <span class="card__category">México 1986</span>
+                                        <time datetime="2025-09-10">10 Sep 2025</time>
+                                    </div>
                                 </div>
-                                <div style="padding: var(--space-3); display: flex; gap: var(--space-2);">
-                                    <button class="btn btn--outline" style="flex: 1;">Editar</button>
-                                    <button class="btn btn--outline" style="flex: 1; color: var(--color-error);">Eliminar</button>
+                                <div class="card__stats">
+                                    <span class="stat" aria-label="1200 me gusta">
+                                        <span class="stat__icon">❤️</span>
+                                        <span class="stat__count">1.2k</span>
+                                    </span>
+                                    <span class="stat" aria-label="150 comentarios">
+                                        <span class="stat__icon">💬</span>
+                                        <span class="stat__count">150</span>
+                                    </span>
+                                    <span class="stat" aria-label="3500 vistas">
+                                        <span class="stat__icon">👁️</span>
+                                        <span class="stat__count">3.5k</span>
+                                    </span>
+                                </div>
+                                <div class="card__actions" style="padding: var(--space-3); border-top: var(--border-width) solid var(--color-border); display: flex; gap: var(--space-2);">
+                                    <button class="btn btn--outline edit-post-btn" data-post-id="1" style="flex: 1;">EDITAR</button>
+                                    <button class="btn btn--outline delete-post-btn" data-post-id="1" style="flex: 1; color: var(--color-error);">ELIMINAR</button>
+                                </div>
+                            </article>
+
+                            <!-- Publicación 2 -->
+                            <article class="card" data-status="approved">
+                                <div class="card__image">
+                                    <img src="assets/images/post-7.jpg" alt="Roberto Baggio fallando el penal en la final de USA 94">
+                                    <span class="card__badge">Partidos</span>
+                                    <span class="card__status-badge card__status-badge--approved">Aprobada</span>
+                                </div>
+                                <div class="card__content">
+                                    <h3 class="card__title">USA 94: La final definida por penales</h3>
+                                    <p class="card__description">
+                                        La final más tensa de la historia, donde Brasil se coronó campeón 
+                                        tras una dramática tanda de penales. El error de Baggio marcó 
+                                        una de las imágenes más tristes del fútbol.
+                                    </p>
+                                    <div class="card__meta">
+                                        <span class="card__category">Estados Unidos 1994</span>
+                                        <time datetime="2025-09-08">8 Sep 2025</time>
+                                    </div>
+                                </div>
+                                <div class="card__stats">
+                                    <span class="stat" aria-label="890 me gusta">
+                                        <span class="stat__icon">❤️</span>
+                                        <span class="stat__count">890</span>
+                                    </span>
+                                    <span class="stat" aria-label="120 comentarios">
+                                        <span class="stat__icon">💬</span>
+                                        <span class="stat__count">120</span>
+                                    </span>
+                                    <span class="stat" aria-label="2100 vistas">
+                                        <span class="stat__icon">👁️</span>
+                                        <span class="stat__count">2.1k</span>
+                                    </span>
+                                </div>
+                                <div class="card__actions" style="padding: var(--space-3); border-top: var(--border-width) solid var(--color-border); display: flex; gap: var(--space-2);">
+                                    <button class="btn btn--outline edit-post-btn" data-post-id="2" style="flex: 1;">EDITAR</button>
+                                    <button class="btn btn--outline delete-post-btn" data-post-id="2" style="flex: 1; color: var(--color-error);">ELIMINAR</button>
+                                </div>
+                            </article>
+
+                            <!-- Publicación 3 -->
+                            <article class="card" data-status="approved">
+                                <div class="card__image">
+                                    <img src="assets/images/user-post-2.jpg" alt="Cuauhtémoc Blanco">
+                                    <span class="card__badge">Entrevistas</span>
+                                    <span class="card__status-badge card__status-badge--approved">Aprobada</span>
+                                </div>
+                                <div class="card__content">
+                                    <h3 class="card__title">Cuauhtémoc Blanco: Memorias del 98</h3>
+                                    <p class="card__description">
+                                        Entrevista exclusiva donde el Cuau recuerda su experiencia en 
+                                        Francia 1998 y ese memorable gol a Corea del Sur con su 
+                                        característico movimiento "Cuauhtemiña".
+                                    </p>
+                                    <div class="card__meta">
+                                        <span class="card__category">Francia 1998</span>
+                                        <time datetime="2025-09-05">5 Sep 2025</time>
+                                    </div>
+                                </div>
+                                <div class="card__stats">
+                                    <span class="stat" aria-label="650 me gusta">
+                                        <span class="stat__icon">❤️</span>
+                                        <span class="stat__count">650</span>
+                                    </span>
+                                    <span class="stat" aria-label="85 comentarios">
+                                        <span class="stat__icon">💬</span>
+                                        <span class="stat__count">85</span>
+                                    </span>
+                                    <span class="stat" aria-label="1800 vistas">
+                                        <span class="stat__icon">👁️</span>
+                                        <span class="stat__count">1.8k</span>
+                                    </span>
+                                </div>
+                                <div class="card__actions" style="padding: var(--space-3); border-top: var(--border-width) solid var(--color-border); display: flex; gap: var(--space-2);">
+                                    <button class="btn btn--outline edit-post-btn" data-post-id="3" style="flex: 1;">EDITAR</button>
+                                    <button class="btn btn--outline delete-post-btn" data-post-id="3" style="flex: 1; color: var(--color-error);">ELIMINAR</button>
+                                </div>
+                            </article>
+
+                            <!-- Publicación 4 -->
+                            <article class="card" data-status="approved">
+                                <div class="card__image">
+                                    <img src="assets/images/user-post-4.jpg" alt="Estadio Maracaná">
+                                    <span class="card__badge">Sedes</span>
+                                    <span class="card__status-badge card__status-badge--approved">Aprobada</span>
+                                </div>
+                                <div class="card__content">
+                                    <h3 class="card__title">El Maracaná: Templo del fútbol mundial</h3>
+                                    <p class="card__description">
+                                        Un recorrido por la historia del estadio más emblemático de Brasil, 
+                                        desde el Maracanazo de 1950 hasta la final de 2014.
+                                    </p>
+                                    <div class="card__meta">
+                                        <span class="card__category">Brasil 2014</span>
+                                        <time datetime="2025-09-03">3 Sep 2025</time>
+                                    </div>
+                                </div>
+                                <div class="card__stats">
+                                    <span class="stat" aria-label="520 me gusta">
+                                        <span class="stat__icon">❤️</span>
+                                        <span class="stat__count">520</span>
+                                    </span>
+                                    <span class="stat" aria-label="70 comentarios">
+                                        <span class="stat__icon">💬</span>
+                                        <span class="stat__count">70</span>
+                                    </span>
+                                    <span class="stat" aria-label="1500 vistas">
+                                        <span class="stat__icon">👁️</span>
+                                        <span class="stat__count">1.5k</span>
+                                    </span>
+                                </div>
+                                <div class="card__actions" style="padding: var(--space-3); border-top: var(--border-width) solid var(--color-border); display: flex; gap: var(--space-2);">
+                                    <button class="btn btn--outline edit-post-btn" data-post-id="4" style="flex: 1;">EDITAR</button>
+                                    <button class="btn btn--outline delete-post-btn" data-post-id="4" style="flex: 1; color: var(--color-error);">ELIMINAR</button>
+                                </div>
+                            </article>
+
+                            <!-- Publicación 5 - Pendiente -->
+                            <article class="card" data-status="pending">
+                                <div class="card__image">
+                                    <img src="assets/images/qatar.jpg" alt="Qatar 2022">
+                                    <span class="card__badge">Estadísticas</span>
+                                    <span class="card__status-badge card__status-badge--pending">Pendiente</span>
+                                </div>
+                                <div class="card__content">
+                                    <h3 class="card__title">Qatar 2022: Análisis de la final histórica</h3>
+                                    <p class="card__description">
+                                        Un análisis profundo de la final entre Argentina y Francia, 
+                                        considerada una de las mejores finales en la historia de los mundiales 
+                                        con un emocionante empate y definición por penales.
+                                    </p>
+                                    <div class="card__meta">
+                                        <span class="card__category">Qatar 2022</span>
+                                        <time datetime="2025-09-12">12 Sep 2025</time>
+                                    </div>
+                                </div>
+                                <div class="card__stats">
+                                    <span class="stat" aria-label="0 me gusta">
+                                        <span class="stat__icon">❤️</span>
+                                        <span class="stat__count">0</span>
+                                    </span>
+                                    <span class="stat" aria-label="0 comentarios">
+                                        <span class="stat__icon">💬</span>
+                                        <span class="stat__count">0</span>
+                                    </span>
+                                    <span class="stat" aria-label="0 vistas">
+                                        <span class="stat__icon">👁️</span>
+                                        <span class="stat__count">0</span>
+                                    </span>
+                                </div>
+                                <div class="card__actions" style="padding: var(--space-3); border-top: var(--border-width) solid var(--color-border); display: flex; gap: var(--space-2);">
+                                    <button class="btn btn--outline edit-post-btn" data-post-id="5" style="flex: 1;">EDITAR</button>
+                                    <button class="btn btn--outline delete-post-btn" data-post-id="5" style="flex: 1; color: var(--color-error);">ELIMINAR</button>
+                                </div>
+                            </article>
+
+                            <!-- Publicación 6 - Rechazada -->
+                            <article class="card" data-status="rejected">
+                                <div class="card__image">
+                                    <img src="assets/images/rusia.jpg" alt="Rusia 2018">
+                                    <span class="card__badge">Cultura</span>
+                                    <span class="card__status-badge card__status-badge--rejected">Rechazada</span>
+                                </div>
+                                <div class="card__content">
+                                    <h3 class="card__title">La cultura futbolística en Rusia 2018</h3>
+                                    <p class="card__description">
+                                        Explorando las tradiciones y la pasión del fútbol en Rusia durante 
+                                        el mundial, desde los fanáticos locales hasta las celebraciones 
+                                        de los equipos visitantes.
+                                    </p>
+                                    <div class="card__meta">
+                                        <span class="card__category">Rusia 2018</span>
+                                        <time datetime="2025-09-11">11 Sep 2025</time>
+                                    </div>
+                                </div>
+                                <div class="card__stats">
+                                    <span class="stat" aria-label="0 me gusta">
+                                        <span class="stat__icon">❤️</span>
+                                        <span class="stat__count">0</span>
+                                    </span>
+                                    <span class="stat" aria-label="0 comentarios">
+                                        <span class="stat__icon">💬</span>
+                                        <span class="stat__count">0</span>
+                                    </span>
+                                    <span class="stat" aria-label="0 vistas">
+                                        <span class="stat__icon">👁️</span>
+                                        <span class="stat__count">0</span>
+                                    </span>
+                                </div>
+                                <div class="card__actions" style="padding: var(--space-3); border-top: var(--border-width) solid var(--color-border); display: flex; gap: var(--space-2);">
+                                    <button class="btn btn--outline edit-post-btn" data-post-id="6" style="flex: 1;">EDITAR</button>
+                                    <button class="btn btn--outline delete-post-btn" data-post-id="6" style="flex: 1; color: var(--color-error);">ELIMINAR</button>
                                 </div>
                             </article>
                         </div>
@@ -250,7 +463,12 @@
 
                     <!-- Sección: Categorías -->
                     <section id="section-categorias" class="admin-section" hidden>
-                        <h2 class="section__title">Gestión de Categorías</h2>
+                        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-3); margin-bottom: var(--space-6);">
+                            <h2 class="section__title">Gestión de Categorías</h2>
+                            <button class="btn btn--primary" id="new-category-btn">
+                                + Nueva Categoría
+                            </button>
+                        </div>
                         
                         <div class="stats-grid" style="margin-bottom: var(--space-8);">
                             <div class="stat-card">
@@ -289,144 +507,12 @@
                     </section>
                     <!-- Sección: Mundiales -->
                      <section class="admin-section" id="section-mundiales" hidden>
-                        <h2 class="section__title">Gestión de Mundiales</h2>
-                        <ul style="display: flex; flex-direction: column; gap: var(--space-4); margin-top: var(--space-6);"></ul>
-                        <!-- Mundial 2026 -->
-                            <li style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-4); border: 1px solid var(--color-border); border-radius: var(--border-radius-md);">
-                            <div style="display: flex; align-items: center; gap: var(--space-4);">
-                                <img src="assets/images/eua_mex_can.jpg" 
-                                    alt="Mundial 2026" 
-                                    style="width: 48px; height: 48px; border-radius: 8px; object-fit: contain;">
-                                <div>
-                                <div style="font-weight: var(--font-weight-semibold);">2026 - México, Estados Unidos y Canadá</div>
-                                <div style="font-size: var(--font-size-sm); color: var(--color-text-secondary);">
-                                    🏟️ Estadio Azteca / MetLife Stadium / BMO Field
-                                </div>
-                                </div>
-                            </div>
-                            <div style="display: flex; gap: var(--space-2);">
-                                <button class="btn btn--outline edit-worldcup" data-id="2026">Editar</button>
-                                <button class="btn btn--outline delete-worldcup" data-id="2026" style="color: var(--color-error);">Eliminar</button>
-                            </div>
-                            </li>   
-                        <!-- Mundial 2022 -->
-                            <li style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-4); border: 1px solid var(--color-border); border-radius: var(--border-radius-md);">
-                            <div style="display: flex; align-items: center; gap: var(--space-4);">
-                                <img src="assets/images/qatar.jpg" alt="Qatar 2022" style="width: 48px; height: 48px; border-radius: 8px; object-fit: contain;">
-                                <div>
-                                <div style="font-weight: var(--font-weight-semibold);">2022 - Qatar</div>
-                                <div style="font-size: var(--font-size-sm); color: var(--color-text-secondary);">🏟️ Lusail Stadium</div>
-                                </div>
-                            </div>
-                            <div style="display: flex; gap: var(--space-2);">
-                                 <button class="btn btn--outline edit-worldcup" data-id="2026">Editar</button>
-                                <button class="btn btn--outline delete-worldcup" data-id="2026" style="color: var(--color-error);">Eliminar</button>
-                            </div>
-                            </li>
-                         <!-- Mundial 2018 -->
-                            <li style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-4); border: 1px solid var(--color-border); border-radius: var(--border-radius-md);">
-                            <div style="display: flex; align-items: center; gap: var(--space-4);">
-                                <img src="assets/images/rusia.jpg" alt="Rusia 2018" style="width: 48px; height: 48px; border-radius: 8px; object-fit: contain;">
-                                <div>
-                                <div style="font-weight: var(--font-weight-semibold);">2018 - Rusia</div>
-                                <div style="font-size: var(--font-size-sm); color: var(--color-text-secondary);">🏟️ Luzhnikí Stadium</div>
-                                </div>
-                            </div>
-                            <div style="display: flex; gap: var(--space-2);">
-                                <button class="btn btn--outline edit-worldcup" data-id="2018">Editar</button>
-                                <button class="btn btn--outline delete-worldcup" data-id="2018" style="color: var(--color-error);">Eliminar</button>
-                            </div>
-                            </li>
-
-                        <!-- Mundial 2014 -->
-                            <li style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-4); border: 1px solid var(--color-border); border-radius: var(--border-radius-md);">
-                            <div style="display: flex; align-items: center; gap: var(--space-4);">
-                                <img src="assets/images/brazil.jpg" alt="Brasil 2014" style="width: 48px; height: 48px; border-radius: 8px; object-fit: contain;">
-                                <div>
-                                <div style="font-weight: var(--font-weight-semibold);">2014 - Brasil</div>
-                                <div style="font-size: var(--font-size-sm); color: var(--color-text-secondary);">🏟️ Maracaná</div>
-                                </div>
-                            </div>
-                            <div style="display: flex; gap: var(--space-2);">
-                                <button class="btn btn--outline edit-worldcup" data-id="2014">Editar</button>
-                                <button class="btn btn--outline delete-worldcup" data-id="2014" style="color: var(--color-error);">Eliminar</button>
-                            </div>
-                            </li>
-
-                        <!-- Mundial 2010 -->
-                            <li style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-4); border: 1px solid var(--color-border); border-radius: var(--border-radius-md);">
-                            <div style="display: flex; align-items: center; gap: var(--space-4);">
-                                <img src="assets/images/sudafrica.jpg" alt="Sudáfrica 2010" style="width: 48px; height: 48px; border-radius: 8px; object-fit: contain;">
-                                <div>
-                                <div style="font-weight: var(--font-weight-semibold);">2010 - Sudáfrica</div>
-                                <div style="font-size: var(--font-size-sm); color: var(--color-text-secondary);">🏟️ Soccer City</div>
-                                </div>
-                            </div>
-                            <div style="display: flex; gap: var(--space-2);">
-                                <button class="btn btn--outline edit-worldcup" data-id="2010">Editar</button>
-                                <button class="btn btn--outline delete-worldcup" data-id="2010" style="color: var(--color-error);">Eliminar</button>
-                            </div>
-                            </li>
-
-                        <!-- Mundial 2006 -->
-                            <li style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-4); border: 1px solid var(--color-border); border-radius: var(--border-radius-md);">
-                            <div style="display: flex; align-items: center; gap: var(--space-4);">
-                                <img src="assets/images/alemania.jpg" alt="Alemania 2006" style="width: 48px; height: 48px; border-radius: 8px; object-fit: contain;">
-                                <div>
-                                <div style="font-weight: var(--font-weight-semibold);">2006 - Alemania</div>
-                                <div style="font-size: var(--font-size-sm); color: var(--color-text-secondary);">🏟️ Olympiastadion</div>
-                                </div>
-                            </div>
-                            <div style="display: flex; gap: var(--space-2);">
-                                <button class="btn btn--outline edit-worldcup" data-id="2006">Editar</button>
-                                <button class="btn btn--outline delete-worldcup" data-id="2006" style="color: var(--color-error);">Eliminar</button>
-                            </div>
-                            </li>
-
-                        <!-- Mundial 2002 -->
-                            <li style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-4); border: 1px solid var(--color-border); border-radius: var(--border-radius-md);">
-                            <div style="display: flex; align-items: center; gap: var(--space-4);">
-                                <img src="assets/images/corea_japon.jpg" alt="Corea-Japón 2002" style="width: 48px; height: 48px; border-radius: 8px; object-fit: contain;">
-                                <div>
-                                <div style="font-weight: var(--font-weight-semibold);">2002 - Corea / Japón</div>
-                                <div style="font-size: var(--font-size-sm); color: var(--color-text-secondary);">🏟️ Yokohama Stadium</div>
-                                </div>
-                            </div>
-                            <div style="display: flex; gap: var(--space-2);">
-                                <button class="btn btn--outline edit-worldcup" data-id="2002">Editar</button>
-                                <button class="btn btn--outline delete-worldcup" data-id="2002" style="color: var(--color-error);">Eliminar</button>
-                            </div>
-                            </li>
-
-                        <!-- Mundial 1998 -->
-                            <li style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-4); border: 1px solid var(--color-border); border-radius: var(--border-radius-md);">
-                            <div style="display: flex; align-items: center; gap: var(--space-4);">
-                                <img src="assets/images/francia.jpg" alt="Francia 1998" style="width: 48px; height: 48px; border-radius: 8px; object-fit: contain;">
-                                <div>
-                                <div style="font-weight: var(--font-weight-semibold);">1998 - Francia</div>
-                                <div style="font-size: var(--font-size-sm); color: var(--color-text-secondary);">🏟️ Stade de France</div>
-                                </div>
-                            </div>
-                            <div style="display: flex; gap: var(--space-2);">
-                                <button class="btn btn--outline edit-worldcup" data-id="1998">Editar</button>
-                                <button class="btn btn--outline delete-worldcup" data-id="1998" style="color: var(--color-error);">Eliminar</button>
-                            </div>
-                            </li>
-
-                        <!-- Mundial 1994 -->
-                            <li style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-4); border: 1px solid var(--color-border); border-radius: var(--border-radius-md);">
-                            <div style="display: flex; align-items: center; gap: var(--space-4);">
-                                <img src="assets/images/eua.jpg" alt="EE.UU. 1994" style="width: 48px; height: 48px; border-radius: 8px; object-fit: contain;">
-                                <div>
-                                <div style="font-weight: var(--font-weight-semibold);">1994 - Estados Unidos</div>
-                                <div style="font-size: var(--font-size-sm); color: var(--color-text-secondary);">🏟️ Rose Bowl</div>
-                                </div>
-                            </div>
-                            <div style="display: flex; gap: var(--space-2);">
-                                <button class="btn btn--outline edit-worldcup" data-id="1994">Editar</button>
-                                <button class="btn btn--outline delete-worldcup" data-id="1994" style="color: var(--color-error);">Eliminar</button>
-                            </div>
-                            </li>
+                        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-3); margin-bottom: var(--space-6);">
+                            <h2 class="section__title">Gestión de Mundiales</h2>
+                            <button class="btn btn--primary" id="new-worldcup-btn">+ Nuevo Mundial</button>
+                        </div>
+                        <ul id="worldcup-list" style="display: flex; flex-direction: column; gap: var(--space-4);">
+                            <!-- Los mundiales se cargan dinámicamente desde localStorage -->
                         </ul>
                     </section>
 
