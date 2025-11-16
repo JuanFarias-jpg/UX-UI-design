@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/pages.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="css/onboarding.css">
 </head>
 <body>
     <!-- HEADER STICKY: Se queda fijo al hacer scroll -->
@@ -50,7 +51,7 @@
                     <button class="theme-toggle" 
                             aria-label="Cambiar tema claro/oscuro"
                             title="Cambiar tema">
-                        <span class="theme-toggle__icon">🌙</span>
+                        <span class="theme-toggle__icon">☀️</span>
                     </button>
 
                     <!-- Botón de login -->
@@ -107,18 +108,20 @@
 
                     <!-- Controles del carrusel -->
                     <button class="carousel__control carousel__control--prev" 
-                            aria-label="Noticia anterior">
-                        ‹
+                            aria-label="Noticia anterior"
+                            type="button">
+                        <span aria-hidden="true">‹</span>
                     </button>
                     <button class="carousel__control carousel__control--next" 
-                            aria-label="Siguiente noticia">
-                        ›
+                            aria-label="Siguiente noticia"
+                            type="button">
+                        <span aria-hidden="true">›</span>
                     </button>
 
                     <!-- Indicadores -->
                     <div class="carousel__indicators" role="tablist" aria-label="Indicadores de noticias">
-                        <button role="tab" aria-selected="true" aria-label="Noticia 1"></button>
-                        <button role="tab" aria-selected="false" aria-label="Noticia 2"></button>
+                        <button role="tab" aria-selected="true" aria-label="Noticia 1" aria-controls="carousel-item-1" type="button"></button>
+                        <button role="tab" aria-selected="false" aria-label="Noticia 2" aria-controls="carousel-item-2" type="button"></button>
                     </div>
                 </div>
             </div>
@@ -259,12 +262,12 @@
                 </div>
 
                 <!-- Filtro rápido -->
-                <div class="filter-bar">
-                    <button class="filter-btn filter-btn--active">Todos</button>
-                    <button class="filter-btn">América</button>
-                    <button class="filter-btn">Europa</button>
-                    <button class="filter-btn">Asia</button>
-                    <button class="filter-btn">África</button>
+                <div class="filter-bar" role="group" aria-label="Filtros por continente">
+                    <button class="filter-btn filter-btn--active" aria-label="Mostrar todos los mundiales" aria-pressed="true">Todos</button>
+                    <button class="filter-btn" aria-label="Filtrar mundiales de América" aria-pressed="false">América</button>
+                    <button class="filter-btn" aria-label="Filtrar mundiales de Europa" aria-pressed="false">Europa</button>
+                    <button class="filter-btn" aria-label="Filtrar mundiales de Asia" aria-pressed="false">Asia</button>
+                    <button class="filter-btn" aria-label="Filtrar mundiales de África" aria-pressed="false">África</button>
                 </div>
 
                 <!-- Grid de mundiales -->
@@ -356,5 +359,6 @@
     <script src="js/navigation.js"></script>
     <script src="js/animations.js"></script>
     <script src="js/accessibility.js"></script>
+    <script src="js/onboarding.js"></script>
 </body>
 </html>

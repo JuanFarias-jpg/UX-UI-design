@@ -395,3 +395,325 @@
 .opciones-formacion input[type="checkbox"]:hover {
   box-shadow: 0 0 0 3px var(--checkbox-hover-shadow, rgba(0, 119, 204, 0.2));
 }
+
+/* ========================================================= */
+/* ===== CARDS DE ESTADÍSTICAS (NUEVO) ===== */
+/* ========================================================= */
+
+.estadisticas-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: var(--space-6);
+  padding: var(--space-6) 0;
+  margin-top: var(--space-6);
+}
+
+.estadistica-card {
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base) var(--ease-out);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.estadistica-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-primary);
+}
+
+.estadistica-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-3);
+  border-bottom: 2px solid var(--color-border);
+}
+
+.estadistica-card__year {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.estadistica-card__sede {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
+.estadistica-card__body {
+  flex: 1;
+  margin-bottom: var(--space-4);
+}
+
+.estadistica-card__champion,
+.estadistica-card__subchampion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-3);
+  margin-bottom: var(--space-3);
+  background: var(--color-bg);
+  border-radius: var(--border-radius-md);
+}
+
+.estadistica-card__label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
+.estadistica-card__value {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.estadistica-card__stats {
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+.estadistica-card__stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-2) 0;
+  font-size: var(--font-size-sm);
+}
+
+.estadistica-card__stat-label {
+  color: var(--color-text-secondary);
+}
+
+.estadistica-card__stat-value {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.estadistica-card__stat-row {
+  display: flex;
+  gap: var(--space-4);
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+.estadistica-card__stat-item {
+  flex: 1;
+  text-align: center;
+  padding: var(--space-3);
+  background: var(--color-bg);
+  border-radius: var(--border-radius-md);
+}
+
+.estadistica-card__stat-number {
+  display: block;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin-bottom: var(--space-1);
+}
+
+.estadistica-card__stat-label-small {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.estadistica-card__observations {
+  margin-top: var(--space-4);
+  padding: var(--space-3);
+  background: var(--color-bg);
+  border-radius: var(--border-radius-md);
+  border-left: 3px solid var(--color-primary);
+}
+
+.estadistica-card__text {
+  margin-top: var(--space-2);
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  line-height: var(--line-height-relaxed);
+}
+
+.estadistica-card__footer {
+  margin-top: auto;
+  padding-top: var(--space-4);
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+/* ========================================================= */
+/* ===== CARDS DE PARTIDOS ===== */
+/* ========================================================= */
+
+.partidos-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-5);
+  padding: var(--space-6) 0;
+  margin-top: var(--space-6);
+}
+
+.partido-card {
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base) var(--ease-out);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.partido-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-primary);
+}
+
+.partido-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-3);
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
+.partido-card__fase {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  background: var(--color-bg);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--border-radius-full);
+}
+
+.partido-card__fecha {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.partido-card__body {
+  flex: 1;
+  margin-bottom: var(--space-4);
+}
+
+.partido-card__teams {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.partido-card__team {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.partido-card__team-name {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.partido-card__scorers {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  padding-left: var(--space-2);
+}
+
+.partido-card__score {
+  text-align: center;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  padding: var(--space-2) 0;
+  margin: var(--space-2) 0;
+  border-top: var(--border-width) solid var(--color-border);
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
+.partido-card__venue {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: var(--color-bg);
+  border-radius: var(--border-radius-md);
+}
+
+.partido-card__venue-icon {
+  font-size: var(--font-size-xl);
+}
+
+.partido-card__venue-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  flex: 1;
+}
+
+.partido-card__venue-name {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.partido-card__venue-city {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.partido-card__footer {
+  margin-top: auto;
+  padding-top: var(--space-4);
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+/* Responsive para cards de estadísticas */
+@media (max-width: 768px) {
+  .estadisticas-cards-grid,
+  .partidos-cards-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    padding: var(--space-4) 0;
+  }
+
+  .estadistica-card,
+  .partido-card {
+    padding: var(--space-4);
+  }
+
+  .estadistica-card__year {
+    font-size: var(--font-size-xl);
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .estadisticas-cards-grid,
+  .partidos-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1025px) {
+  .estadisticas-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .partidos-cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

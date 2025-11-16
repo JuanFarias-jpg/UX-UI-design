@@ -320,3 +320,332 @@
   .comentario-like i {
     margin-right: 6px;
   }
+
+/* ====================== SECCIÓN RECOMENDADOS ====================== */
+.recomendados-section {
+  margin-top: var(--space-16, 4rem);
+  margin-bottom: var(--space-12, 3rem);
+  padding: var(--space-12, 3rem) 0;
+  background: var(--color-bg, #dddddd);
+  position: relative;
+}
+
+.recomendados-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden; /* Prevenir desbordamiento horizontal */
+}
+
+/* Header de la sección */
+.recomendados-header {
+  text-align: center;
+  margin-bottom: var(--space-10, 2.5rem);
+  padding: 0 var(--space-4);
+}
+
+.recomendados-title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: var(--font-weight-bold, 700);
+  color: var(--color-text, #212529);
+  margin-bottom: var(--space-2);
+  letter-spacing: -0.02em;
+}
+
+.recomendados-subtitle {
+  font-size: var(--font-size-lg, 1.125rem);
+  color: var(--color-text-secondary, #6C757D);
+  margin: 0;
+}
+
+/* Grid de cards */
+.recomendados-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  gap: var(--space-6);
+  justify-content: center;
+  align-items: start;
+  padding: 0 var(--space-2);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Enlaces de cards */
+.recomendados-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  min-width: 0; /* Permitir que se reduzca si es necesario */
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.recomendados-card-link:hover {
+  transform: translateY(-4px);
+}
+
+.recomendados-card-link:focus {
+  outline: 2px solid var(--color-primary, #1B998B);
+  outline-offset: 4px;
+  border-radius: var(--border-radius-lg, 12px);
+}
+
+/* Cards */
+.recomendados-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface, #ffffff);
+  border-radius: var(--border-radius-lg, 12px);
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  height: 100%;
+  cursor: pointer;
+  min-width: 0; /* Permitir que se reduzca si es necesario */
+  max-width: 100%;
+  box-sizing: border-box;
+  word-wrap: break-word; /* Romper palabras largas */
+  overflow-wrap: break-word; /* Romper palabras largas */
+}
+
+.recomendados-card-link:hover .recomendados-card {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Imagen de la card */
+.recomendados-card__image-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* Aspect ratio 16:9 */
+  overflow: hidden;
+  background: var(--color-border, #a2b3c4);
+}
+
+.recomendados-card__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.recomendados-card-link:hover .recomendados-card__image {
+  transform: scale(1.05);
+}
+
+.recomendados-card__badge {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  background: var(--color-primary, #1B998B);
+  color: white;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--border-radius-full, 9999px);
+  font-size: var(--font-size-xs, 0.75rem);
+  font-weight: var(--font-weight-semibold, 600);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Contenido de la card */
+.recomendados-card__content {
+  padding: var(--space-5);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0; /* Permitir que se reduzca si es necesario */
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden; /* Prevenir desbordamiento */
+}
+
+.recomendados-card__title {
+  font-size: var(--font-size-xl, 1.25rem);
+  font-weight: var(--font-weight-semibold, 600);
+  color: var(--color-text, #212529);
+  margin: 0 0 var(--space-3) 0;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  min-width: 0; /* Permitir que se reduzca si es necesario */
+  max-width: 100%;
+}
+
+.recomendados-card__description {
+  font-size: var(--font-size-base, 1rem);
+  color: var(--color-text-secondary, #6C757D);
+  line-height: 1.6;
+  margin: 0 0 var(--space-4) 0;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  min-width: 0; /* Permitir que se reduzca si es necesario */
+  max-width: 100%;
+}
+
+.recomendados-card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  font-size: var(--font-size-sm, 0.875rem);
+  margin-top: auto;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border, #a2b3c4);
+  min-width: 0; /* Permitir que se reduzca si es necesario */
+  max-width: 100%;
+  flex-wrap: wrap; /* Permitir que se envuelva si es necesario */
+}
+
+.recomendados-card__mundial {
+  color: var(--color-primary, #1B998B);
+  font-weight: var(--font-weight-medium, 500);
+}
+
+.recomendados-card__date {
+  color: var(--color-text-secondary, #6C757D);
+}
+
+/* Estadísticas */
+.recomendados-card__stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-5);
+  background: var(--color-bg, #dddddd);
+  border-top: 1px solid var(--color-border, #a2b3c4);
+  min-width: 0; /* Permitir que se reduzca si es necesario */
+  max-width: 100%;
+  box-sizing: border-box;
+  flex-wrap: wrap; /* Permitir que se envuelva si es necesario */
+}
+
+.recomendados-stat {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--font-size-sm, 0.875rem);
+  color: var(--color-text-secondary, #6C757D);
+}
+
+.recomendados-stat__icon {
+  font-size: 1.1em;
+  display: inline-block;
+}
+
+.recomendados-stat__count {
+  font-weight: var(--font-weight-medium, 500);
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .recomendados-section {
+    margin-top: var(--space-12, 3rem);
+    padding: var(--space-8, 2rem) 0;
+    overflow-x: hidden; /* Prevenir desbordamiento horizontal */
+  }
+
+  .recomendados-container {
+    padding: 0 var(--space-4);
+    overflow-x: hidden; /* Prevenir desbordamiento horizontal */
+  }
+
+  .recomendados-header {
+    margin-bottom: var(--space-8, 2rem);
+    padding: 0;
+    overflow-x: hidden; /* Prevenir desbordamiento horizontal */
+  }
+
+  .recomendados-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+    padding: 0;
+    max-width: 100%;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .recomendados-card__content {
+    padding: var(--space-4);
+  }
+
+  .recomendados-card__stats {
+    padding: var(--space-3) var(--space-4);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .recomendados-section {
+    overflow-x: hidden; /* Prevenir desbordamiento horizontal */
+  }
+
+  .recomendados-container {
+    overflow-x: hidden; /* Prevenir desbordamiento horizontal */
+  }
+
+  .recomendados-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    max-width: 100%;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .recomendados-section {
+    overflow-x: hidden; /* Prevenir desbordamiento horizontal */
+  }
+
+  .recomendados-container {
+    overflow-x: hidden; /* Prevenir desbordamiento horizontal */
+  }
+
+  .recomendados-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    gap: var(--space-6);
+    max-width: 100%;
+  }
+
+  .recomendados-card-link {
+    max-width: 100%;
+  }
+}
+
+/* Modo oscuro */
+.dark-mode .recomendados-section {
+  background: var(--color-surface, #071025);
+}
+
+.dark-mode .recomendados-card {
+  background: var(--color-surface, #1E1E1E);
+  border: 1px solid var(--color-border, rgba(255, 255, 255, 0.06));
+}
+
+.dark-mode .recomendados-card__stats {
+  background: var(--color-bg, #0b1220);
+  border-top-color: var(--color-border, rgba(255, 255, 255, 0.06));
+}
+
+.dark-mode .recomendados-card__meta {
+  border-top-color: var(--color-border, rgba(255, 255, 255, 0.06));
+}

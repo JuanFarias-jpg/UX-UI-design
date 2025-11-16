@@ -1,34 +1,282 @@
 // ======================================================
-// ===== FILTROS Y BÚSQUEDA DE TABLA DE MUNDIALES =====
+// ===== DATOS DE TODOS LOS MUNDIALES =====
+// ======================================================
+
+const todosLosMundiales = [
+  { anio: 1930, sede: "Uruguay", imagen: "assets/images/trofeo.jpg", bracket: [{ type: "final", matches: ["🏆 Uruguay 4–2 Argentina"] }] },
+  { anio: 1934, sede: "Italia", imagen: "assets/images/trofeo.jpg", bracket: [{ type: "semifinal", matches: ["🇮🇹 Italia 1–0 Austria", "🇨🇿 Checoslovaquia 3–1 Alemania"] }, { type: "final", matches: ["🏆 Italia 2–1 Checoslovaquia (t.s.)"] }] },
+  { anio: 1938, sede: "Francia", imagen: "assets/images/trofeo.jpg", bracket: [{ type: "semifinal", matches: ["🇮🇹 Italia 2–1 Brasil", "🇭🇺 Hungría 5–1 Suecia"] }, { type: "final", matches: ["🏆 Italia 4–2 Hungría"] }] },
+  { anio: 1950, sede: "Brasil", imagen: "assets/images/trofeo.jpg", bracket: [{ type: "final", matches: ["🏆 Uruguay 2–1 Brasil (Grupo final)"] }] },
+  { anio: 1954, sede: "Suiza", imagen: "assets/images/trofeo.jpg", bracket: [{ type: "semifinal", matches: ["🇩🇪 Alemania 6–1 Austria", "🇭🇺 Hungría 4–2 Uruguay"] }, { type: "final", matches: ["🏆 Alemania 3–2 Hungría"] }] },
+  { anio: 1958, sede: "Suecia", imagen: "assets/images/trofeo.jpg", bracket: [{ type: "semifinal", matches: ["🇸🇪 Suecia 3–1 Alemania", "🇧🇷 Brasil 5–2 Francia"] }, { type: "final", matches: ["🏆 Brasil 5–2 Suecia"] }] },
+  { anio: 1962, sede: "Chile", imagen: "assets/images/trofeo.jpg", bracket: [{ type: "semifinal", matches: ["🇧🇷 Brasil 4–2 Chile", "🇨🇿 Checoslovaquia 3–1 Yugoslavia"] }, { type: "final", matches: ["🏆 Brasil 3–1 Checoslovaquia"] }] },
+  { anio: 1966, sede: "Inglaterra", imagen: "assets/images/trofeo.jpg", bracket: [{ type: "semifinal", matches: ["🏴 Inglaterra 2–1 Portugal", "🇩🇪 Alemania 2–1 URSS"] }, { type: "final", matches: ["🏆 Inglaterra 4–2 Alemania (t.s.)"] }] },
+  { anio: 1970, sede: "México", imagen: "assets/images/trofeo.jpg", bracket: [{ type: "semifinal", matches: ["🇧🇷 Brasil 3–1 Uruguay", "🇮🇹 Italia 4–3 Alemania (t.s.)"] }, { type: "final", matches: ["🏆 Brasil 4–1 Italia"] }] },
+  { anio: 1974, sede: "Alemania Federal", imagen: "assets/images/trofeo.jpg", bracket: [{ type: "semifinal", matches: ["🇩🇪 RFA 1–0 Polonia", "🇳🇱 Países Bajos 2–0 Brasil"] }, { type: "final", matches: ["🏆 RFA 2–1 Países Bajos"] }] },
+  { anio: 1978, sede: "Argentina", imagen: "assets/images/trofeo.jpg", bracket: [{ type: "final", matches: ["🏆 Argentina 3–1 Países Bajos (t.s.)"] }] },
+  { anio: 1982, sede: "España", imagen: "assets/images/trofeo.jpg", bracket: [{ type: "semifinal", matches: ["🇮🇹 Italia 2–0 Polonia", "🇩🇪 Alemania 3–3 Francia (5–4 pen.)"] }, { type: "final", matches: ["🏆 Italia 3–1 Alemania"] }] },
+  { anio: 1986, sede: "México", imagen: "assets/images/trofeo.jpg", bracket: [{ type: "semifinal", matches: ["🇩🇪 Alemania 2–0 Francia", "🇦🇷 Argentina 2–0 Bélgica"] }, { type: "final", matches: ["🏆 Argentina 3–2 Alemania"] }] },
+  { anio: 1990, sede: "Italia", imagen: "assets/images/trofeo.jpg", bracket: [{ type: "semifinal", matches: ["🇩🇪 Alemania 1–1 Inglaterra (4–3 pen.)", "🇦🇷 Argentina 1–1 Italia (4–3 pen.)"] }, { type: "final", matches: ["🏆 Alemania 1–0 Argentina"] }] },
+  { anio: 1994, sede: "EE.UU.", imagen: "assets/images/trofeo.jpg", bracket: [{ type: "semifinal", matches: ["🇧🇷 Brasil 1–0 Suecia", "🇮🇹 Italia 2–1 Bulgaria"] }, { type: "final", matches: ["🏆 Brasil 0–0 Italia (3–2 pen.)"] }] },
+  { anio: 1998, sede: "Francia", imagen: "assets/images/trofeo.jpg", bracket: [{ type: "semifinal", matches: ["🇫🇷 Francia 2–1 Croacia", "🇧🇷 Brasil 2–1 Países Bajos (pen.)"] }, { type: "final", matches: ["🏆 Francia 3–0 Brasil"] }] },
+  { anio: 2002, sede: "Corea / Japón", imagen: "assets/images/trofeo.jpg", bracket: [{ type: "semifinal", matches: ["🇩🇪 Alemania 1–0 Corea del Sur", "🇧🇷 Brasil 1–0 Turquía"] }, { type: "final", matches: ["🏆 Brasil 2–0 Alemania"] }] },
+  { anio: 2006, sede: "Alemania", imagen: "assets/images/trofeo.jpg", bracket: [{ type: "semifinal", matches: ["🇮🇹 Italia 2–0 Alemania", "🇫🇷 Francia 1–0 Portugal"] }, { type: "final", matches: ["🏆 Italia 1–1 Francia (5–3 pen.)"] }] },
+  { anio: 2010, sede: "Sudáfrica", imagen: "assets/images/trofeo.jpg", bracket: [{ type: "semifinal", matches: ["🇳🇱 Países Bajos 3–2 Uruguay", "🇪🇸 España 1–0 Alemania"] }, { type: "final", matches: ["🏆 España 1–0 Países Bajos (t.s.)"] }] },
+  { anio: 2014, sede: "Brasil", imagen: "assets/images/trofeo.jpg", bracket: [{ type: "semifinal", matches: ["🇩🇪 Alemania 7–1 Brasil", "🇦🇷 Argentina 0–0 Países Bajos (4–2 pen.)"] }, { type: "final", matches: ["🏆 Alemania 1–0 Argentina (t.s.)"] }] },
+  { anio: 2018, sede: "Rusia", imagen: "assets/images/trofeo.jpg", bracket: [{ type: "semifinal", matches: ["🇫🇷 Francia 1–0 Bélgica", "🏴 Inglaterra 1–2 Croacia (t.s.)"] }, { type: "final", matches: ["🏆 Francia 4–2 Croacia"] }] },
+  { anio: 2022, sede: "Qatar", imagen: "assets/images/messiCopa.jpg", bracket: [{ type: "semifinal", matches: ["🇦🇷 Argentina 3–0 Croacia", "🇫🇷 Francia 2–0 Marruecos"] }, { type: "final", matches: ["🏆 Argentina 3–3 Francia (4–2 pen.)"] }] }
+];
+
+// ======================================================
+// ===== VARIABLES PARA CARRUSEL DE MUNDIALES =====
+// ======================================================
+
+let currentMundialIndex = 0;
+let mundialesFiltrados = [];
+
+// ======================================================
+// ===== RENDERIZAR CARDS DE MUNDIALES (CARRUSEL) =====
+// ======================================================
+
+function renderMundialesCards(mundialesData) {
+  const container = document.getElementById("mundiales-cards-container");
+  const indicatorsContainer = document.getElementById("mundiales-carousel-indicators");
+  
+  if (!container) return;
+
+  mundialesFiltrados = mundialesData;
+
+  if (mundialesData.length === 0) {
+    container.innerHTML = `
+      <div class="empty-state" style="min-width: 100%; text-align: center; padding: 3rem; color: var(--color-text-secondary);">
+        <p style="font-size: 1.2rem; margin-bottom: 0.5rem;">No se encontraron mundiales</p>
+        <p>Intenta con otros filtros de búsqueda</p>
+      </div>
+    `;
+    if (indicatorsContainer) indicatorsContainer.innerHTML = '';
+    return;
+  }
+
+  // Resetear índice si es necesario
+  if (currentMundialIndex >= mundialesData.length) {
+    currentMundialIndex = 0;
+  }
+
+  // Renderizar cards
+  container.innerHTML = mundialesData.map(m => {
+    const finalMatch = m.bracket.find(b => b.type === "final");
+    const imagen = m.imagen || "assets/images/trofeo.jpg";
+    
+    return `
+      <article class="mundial-card" data-anio="${m.anio}" data-sede="${m.sede.toLowerCase()}">
+        <div class="mundial-card__header">
+          <h3 class="mundial-card__year">${m.anio}</h3>
+          <span class="mundial-card__sede">${m.sede}</span>
+        </div>
+        <div class="mundial-card__body">
+          <div class="mundial-card__image">
+            <img src="${imagen}" alt="Mundial ${m.anio} - ${m.sede}" loading="lazy">
+          </div>
+          <div class="mundial-card__final-match">
+            ${finalMatch ? finalMatch.matches[0] : "Sin datos"}
+          </div>
+        </div>
+        <div class="mundial-card__footer">
+          <a href="#detalle-mundial" class="link-mundial btn btn--outline" data-anio="${m.anio}">
+            Ver detalles
+          </a>
+        </div>
+      </article>
+    `;
+  }).join('');
+
+  // Renderizar indicadores (solo 3 que se mueven dinámicamente)
+  updateCarouselIndicators();
+
+  // Usar requestAnimationFrame para asegurar que el DOM se haya actualizado antes de calcular posiciones
+  requestAnimationFrame(() => {
+    // Doble requestAnimationFrame para asegurar que el layout esté completamente renderizado
+    requestAnimationFrame(() => {
+      updateMundialesCarouselPosition();
+    });
+  });
+}
+
+// ======================================================
+// ===== ACTUALIZAR INDICADORES DEL CARRUSEL (3 INDICADORES DINÁMICOS) =====
+// ======================================================
+
+function updateCarouselIndicators() {
+  const indicatorsContainer = document.getElementById("mundiales-carousel-indicators");
+  if (!indicatorsContainer || mundialesFiltrados.length === 0) return;
+
+  // Determinar qué 3 indicadores mostrar
+  let startIndex = 0;
+  
+  if (mundialesFiltrados.length <= 3) {
+    // Si hay 3 o menos mundiales, mostrar todos
+    startIndex = 0;
+  } else {
+    // Calcular el índice de inicio para mostrar 3 indicadores alrededor del actual
+    if (currentMundialIndex === 0) {
+      startIndex = 0;
+    } else if (currentMundialIndex === mundialesFiltrados.length - 1) {
+      // Si estamos en el último, mostrar los últimos 3
+      startIndex = mundialesFiltrados.length - 3;
+    } else {
+      // Mostrar el anterior, el actual y el siguiente
+      startIndex = currentMundialIndex - 1;
+    }
+  }
+
+  const endIndex = Math.min(startIndex + 3, mundialesFiltrados.length);
+  
+  indicatorsContainer.innerHTML = '';
+  for (let i = startIndex; i < endIndex; i++) {
+    const indicator = document.createElement('button');
+    indicator.className = `mundiales-carousel-indicator ${i === currentMundialIndex ? 'active' : ''}`;
+    indicator.setAttribute('data-index', i);
+    indicator.setAttribute('aria-label', `Ir a mundial ${i + 1}`);
+    indicatorsContainer.appendChild(indicator);
+  }
+}
+
+// ======================================================
+// ===== FILTROS Y BÚSQUEDA =====
 // ======================================================
 
 const searchbar = document.getElementById("searchbar");
 const categoria = document.getElementById("categoria");
-const tbMundial = document.getElementById("tbMundiales");
 
-function Search() {
-  const rows = tbMundial.querySelectorAll("tr");
-  const catNum = Number(categoria.value) - 1;
+function aplicarFiltros() {
   const searchText = searchbar.value.toLowerCase();
+  const catNum = Number(categoria.value) - 1; // 0 = año, 1 = sede
+  
+  let filtrados = [...todosLosMundiales];
 
-  // Si no se selecciona categoría o el texto está vacío, mostrar todo
-  if (catNum < 0 || searchText.length === 0) {
-    rows.forEach(row => row.style.display = "");
-    return;
+  if (searchText.length > 0 && catNum >= 0) {
+    filtrados = filtrados.filter(m => {
+      if (catNum === 0) { // Filtrar por año
+        return m.anio.toString().includes(searchText);
+      } else if (catNum === 1) { // Filtrar por sede
+        return m.sede.toLowerCase().includes(searchText);
+      }
+      return true;
+    });
   }
 
-  rows.forEach(row => {
-    const cellText = row.children[catNum]?.innerText.toLowerCase() || "";
-    row.style.display = cellText.includes(searchText) ? "" : "none";
-  });
+  // Si hay resultados filtrados, mover al primer resultado
+  if (filtrados.length > 0 && searchText.length > 0) {
+    currentMundialIndex = 0; // Mostrar el primer resultado filtrado
+  } else if (filtrados.length === 0) {
+    // Si no hay resultados, mantener el índice en 0
+    currentMundialIndex = 0;
+  } else {
+    // Si no hay búsqueda, resetear al inicio
+    currentMundialIndex = 0;
+  }
+
+  renderMundialesCards(filtrados);
 }
 
-searchbar.addEventListener("input", Search);
-categoria.addEventListener("change", Search);
+// ======================================================
+// ===== NAVEGACIÓN DEL CARRUSEL =====
+// ======================================================
+
+function updateMundialesCarouselPosition() {
+  const container = document.getElementById("mundiales-cards-container");
+  const containerWrapper = document.getElementById("mundiales-carousel-container");
+  
+  if (!container || !containerWrapper || mundialesFiltrados.length === 0) return;
+
+  // Forzar un reflow para asegurar que el DOM esté actualizado
+  void containerWrapper.offsetWidth;
+  
+  // Calcular el ancho del contenedor para un desplazamiento preciso
+  // Usar getBoundingClientRect para obtener el ancho exacto
+  const containerRect = containerWrapper.getBoundingClientRect();
+  const containerWidth = containerRect.width;
+  
+  // Agregar animación de fade out antes de cambiar
+  const cards = container.querySelectorAll('.mundial-card');
+  if (cards.length > 0) {
+    cards.forEach(card => {
+      card.style.opacity = '0.5';
+      card.style.transform = 'scale(0.95)';
+    });
+  }
+  
+  // Aplicar transformación después de un breve delay para la animación
+  requestAnimationFrame(() => {
+    const translateX = -currentMundialIndex * containerWidth;
+    container.style.transform = `translateX(${translateX}px)`;
+    container.style.willChange = 'transform';
+    
+    // Animar las cards de vuelta a su estado normal
+    setTimeout(() => {
+      cards.forEach(card => {
+        card.style.opacity = '1';
+        card.style.transform = 'scale(1)';
+      });
+    }, 100);
+  });
+
+  // Actualizar indicadores dinámicos (solo 3)
+  updateCarouselIndicators();
+}
+
+function nextMundial() {
+  if (mundialesFiltrados.length === 0) return;
+  currentMundialIndex = (currentMundialIndex + 1) % mundialesFiltrados.length;
+  updateMundialesCarouselPosition();
+}
+
+function prevMundial() {
+  if (mundialesFiltrados.length === 0) return;
+  currentMundialIndex = (currentMundialIndex - 1 + mundialesFiltrados.length) % mundialesFiltrados.length;
+  updateMundialesCarouselPosition();
+}
+
+// Event listeners para navegación del carrusel
+document.addEventListener('DOMContentLoaded', () => {
+  const prevBtn = document.getElementById('mundiales-carousel-prev');
+  const nextBtn = document.getElementById('mundiales-carousel-next');
+
+  if (prevBtn) prevBtn.addEventListener('click', prevMundial);
+  if (nextBtn) nextBtn.addEventListener('click', nextMundial);
+
+  // Event listener para indicadores (delegación de eventos)
+  document.addEventListener('click', (e) => {
+    const indicator = e.target.closest('.mundiales-carousel-indicator');
+    if (indicator && indicator.hasAttribute('data-index')) {
+      currentMundialIndex = parseInt(indicator.getAttribute('data-index'));
+      updateMundialesCarouselPosition();
+    }
+  });
+
+  // Recalcular posición cuando se redimensiona la ventana
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      // Forzar recálculo después del resize
+      requestAnimationFrame(() => {
+        updateMundialesCarouselPosition();
+      });
+    }, 250);
+  });
+});
+
+if (searchbar) searchbar.addEventListener("input", aplicarFiltros);
+if (categoria) categoria.addEventListener("change", aplicarFiltros);
 
 window.addEventListener('DOMContentLoaded', () => {
   const container = document.querySelector('.filtros-container');
-  container.classList.add('start-animation');
+  if (container) container.classList.add('start-animation');
+  
+  // Renderizar cards iniciales
+  mundialesFiltrados = [...todosLosMundiales];
+  renderMundialesCards(todosLosMundiales);
 });
 
 // ======================================================
@@ -154,17 +402,19 @@ const detalleTitulo = document.getElementById("detalle-titulo");
 const detalleSede = document.getElementById("detalle-sede");
 const detalleResumen = document.getElementById("detalle-resumen");
 const detalleBracket = document.getElementById("detalle-bracket");
-const detallePartidos = document.getElementById("detalle-partidos");
-const detalleGoles = document.getElementById("detalle-goles");
-const detalleAsistencias = document.getElementById("detalle-asistencias");
-const detallePromedio = document.getElementById("detalle-promedio");
 const detalleGaleria = document.getElementById("detalle-galeria");
+const estadisticasCarousel = document.getElementById("estadisticas-carousel");
+const carouselIndicators = document.getElementById("carousel-indicators");
 
-// Detectar clic en año de la tabla
-tbMundial.addEventListener("click", (e) => {
-  const target = e.target;
-  if (target.classList.contains("link-mundial")) {
-    const anio = parseInt(target.innerText);
+// Variables para el carrusel
+let currentCarouselIndex = 0;
+let estadisticasData = [];
+
+// Detectar clic en card de mundial
+document.addEventListener("click", (e) => {
+  const target = e.target.closest(".link-mundial");
+  if (target) {
+    const anio = parseInt(target.getAttribute("data-anio") || target.textContent);
     const mundial = mundiales.find(m => m.anio === anio);
     if (mundial) mostrarDetalleMundial(mundial);
   }
@@ -176,21 +426,30 @@ function mostrarDetalleMundial(m) {
   detalleSede.textContent = `Sede: ${m.sede}`;
   detalleResumen.innerHTML = m.resumen.replace(/\n/g, '<br>');
 
-  detallePartidos.textContent = m.partidos;
-  detalleGoles.textContent = m.goles;
-  detalleAsistencias.textContent = m.asistencias;
-  detallePromedio.textContent = m.promedio;
-
-  // Bracket
+  // Bracket - poner final arriba
+  const finalMatch = m.bracket[1] ? m.bracket[1][0] : '';
+  const semifinalMatches = m.bracket[0] || [];
+  
   detalleBracket.innerHTML = `
+    <div class="stage final" style="order: -1;">
+      <div class="match winner">${finalMatch}</div>
+    </div>
+    ${semifinalMatches.length > 0 ? `
     <div class="stage semifinal">
-      <div class="match">${m.bracket[0][0]}</div>
-      <div class="match">${m.bracket[0][1]}</div>
+      ${semifinalMatches.map(match => `<div class="match">${match}</div>`).join('')}
     </div>
-    <div class="stage final">
-      <div class="match winner">${m.bracket[1][0]}</div>
-    </div>
+    ` : ''}
   `;
+
+  // Estadísticas para el carrusel
+  estadisticasData = [
+    { label: "Partidos", value: m.partidos, icon: "⚽" },
+    { label: "Goles", value: m.goles, icon: "🥅" },
+    { label: "Asistencias", value: m.asistencias, icon: "🎯" },
+    { label: "Promedio Goles/Partido", value: m.promedio, icon: "📊" }
+  ];
+  
+  renderCarousel();
 
   // Galería
   detalleGaleria.innerHTML = m.imagenes
@@ -198,11 +457,95 @@ function mostrarDetalleMundial(m) {
     .join("");
 
   // Mostrar sección
-  detalleSeccion.classList.remove("oculto");
+  detalleSeccion.style.display = "block";
 
   // Animación de entrada
   detalleSeccion.style.animation = "fadeIn 0.6s ease-out";
 
   // Scroll suave hacia la sección
-  detalleSeccion.scrollIntoView({ behavior: "smooth" });
+  setTimeout(() => {
+    detalleSeccion.scrollIntoView({ behavior: "smooth" });
+  }, 100);
 }
+
+// ======================================================
+// ===== CARRUSEL DE ESTADÍSTICAS =====
+// ======================================================
+
+function renderCarousel() {
+  if (!estadisticasCarousel || !estadisticasData.length) return;
+
+  // Resetear índice al inicio
+  currentCarouselIndex = 0;
+
+  // Renderizar cards
+  estadisticasCarousel.innerHTML = estadisticasData.map((stat, index) => `
+    <div class="estadistica-card-item ${index === 0 ? 'active' : ''}" data-index="${index}">
+      <div class="estadistica-card-item__icon">${stat.icon}</div>
+      <div class="estadistica-card-item__label">${stat.label}</div>
+      <div class="estadistica-card-item__value">${stat.value}</div>
+    </div>
+  `).join('');
+
+  // Renderizar indicadores
+  if (carouselIndicators) {
+    carouselIndicators.innerHTML = estadisticasData.map((_, index) => `
+      <button class="carousel-indicator ${index === 0 ? 'active' : ''}" 
+              data-index="${index}" 
+              aria-label="Ir a estadística ${index + 1}"></button>
+    `).join('');
+  }
+
+  updateCarouselPosition();
+}
+
+function updateCarouselPosition() {
+  const cards = estadisticasCarousel.querySelectorAll('.estadistica-card-item');
+  cards.forEach((card, index) => {
+    card.classList.toggle('active', index === currentCarouselIndex);
+  });
+
+  const indicators = carouselIndicators?.querySelectorAll('.carousel-indicator');
+  indicators?.forEach((indicator, index) => {
+    indicator.classList.toggle('active', index === currentCarouselIndex);
+  });
+
+  // Actualizar posición del carrusel
+  if (estadisticasCarousel) {
+    const translateX = -currentCarouselIndex * 100;
+    estadisticasCarousel.style.transform = `translateX(${translateX}%)`;
+  }
+}
+
+function nextCarousel() {
+  currentCarouselIndex = (currentCarouselIndex + 1) % estadisticasData.length;
+  updateCarouselPosition();
+}
+
+function prevCarousel() {
+  currentCarouselIndex = (currentCarouselIndex - 1 + estadisticasData.length) % estadisticasData.length;
+  updateCarouselPosition();
+}
+
+// Event listeners para el carrusel (usar delegación para elementos dinámicos)
+document.addEventListener('DOMContentLoaded', () => {
+  const prevBtn = document.getElementById('carousel-prev');
+  const nextBtn = document.getElementById('carousel-next');
+
+  if (prevBtn) prevBtn.addEventListener('click', prevCarousel);
+  if (nextBtn) nextBtn.addEventListener('click', nextCarousel);
+});
+
+// Event listener para indicadores (delegación de eventos para elementos dinámicos)
+document.addEventListener('click', (e) => {
+  const indicator = e.target.closest('.carousel-indicator');
+  if (indicator && carouselIndicators && carouselIndicators.contains(indicator)) {
+    currentCarouselIndex = parseInt(indicator.getAttribute('data-index'));
+    updateCarouselPosition();
+  }
+});
+
+// Auto-play opcional (descomentar si se desea)
+// setInterval(() => {
+//   if (estadisticasData.length > 0) nextCarousel();
+// }, 5000);

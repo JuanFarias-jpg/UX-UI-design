@@ -43,23 +43,25 @@
               box-shadow var(--transition-base) var(--ease-out);
 }
 
-/* Efecto cuando se hace scroll (revissar) */
+/* Efecto cuando se hace scroll */
 .header--scrolled {
   box-shadow: var(--shadow-md);
 }
 
 /* ===== NAVBAR ===== */
 .navbar {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  justify-content: space-between;
   height: var(--header-height);
   gap: var(--space-4);
+  width: 100%;
 }
 
 /* Logo */
 .navbar__brand {
   flex-shrink: 0;
+  justify-self: start;
 }
 
 .logo {
@@ -84,6 +86,8 @@
   justify-content: center;
   border-radius: var(--border-radius-sm);
   transition: background-color var(--transition-fast);
+  justify-self: end; /* Alinear hamburguesa a la derecha en mobile */
+  grid-column: 3; /* Posicionar en la tercera columna del grid */
 }
 
 .navbar__toggle:hover {
@@ -141,8 +145,12 @@
 .navbar__menu {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: var(--space-6);
   list-style: none;
+  margin: 0;
+  padding: 0;
+  justify-self: center; /* Centrar el menú en el grid */
 }
 
 .navbar__link {
@@ -178,6 +186,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-3);
+  justify-self: end; /* Alinear controles a la derecha */
 }
 
 /* Ocultar controles en móvil (aparecerán en el menú) */
@@ -267,7 +276,7 @@
   background-color: var(--color-surface);
   border-top: var(--border-width) solid var(--color-border);
   padding: var(--space-16) 0 var(--space-8);
-  margin-top: var(--space-20);
+  margin-top: var(--space-8);
 }
 
 .footer__content {

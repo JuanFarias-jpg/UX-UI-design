@@ -578,13 +578,11 @@ loadDrafts();
 
   // ===== INICIALIZACIÓN =====
   if (checkAuthentication()) {
-  const mainProfile = document.querySelector('.main.profile-page');
-  if (mainProfile) mainProfile.style.display = 'block'; // ← mostrar contenido
-  loadUserData();
-  loadTabFromURL();
-}
-  loadUserData();
-  loadTabFromURL();
+    const mainProfile = document.querySelector('.main.profile-page');
+    if (mainProfile) mainProfile.style.display = 'block'; // ← mostrar contenido
+    loadUserData();
+    loadTabFromURL();
+  }
 
   // ===== GESTIÓN DE FOTO DE PERFIL Y HEADER =====
   

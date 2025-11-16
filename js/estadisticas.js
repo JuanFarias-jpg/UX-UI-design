@@ -115,67 +115,141 @@ const mundiales = [
 // ===== FUNCIONES PARA MOSTRAR LOS DATOS =====
 // =========================================================
 
-// ----- Renderiza el resumen general -----
+// ----- Renderiza el resumen general como cards -----
 function renderResumen(data) {
-  const tbody = document.querySelector("#tbMundialesResumen tbody");
-  if (!tbody) return;
+  const container = document.getElementById("estadisticas-cards-container");
+  if (!container) return;
   
-  tbody.innerHTML = "";
+  container.innerHTML = "";
 
   if (data.length === 0) {
-    const tabla = document.querySelector("#tbMundialesResumen");
-    const columnas = tabla ? tabla.querySelectorAll("thead th").length : 9;
-    tbody.innerHTML = `<tr><td colspan='${columnas}' style='text-align:center;padding:2rem;color:var(--color-text-secondary,#666);'>No se encontraron resultados que coincidan con los filtros</td></tr>`;
+    container.innerHTML = `
+      <div class="empty-state" style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--color-text-secondary);">
+        <p style="font-size: 1.2rem; margin-bottom: 0.5rem;">No se encontraron resultados</p>
+        <p>Intenta con otros filtros de búsqueda</p>
+      </div>
+    `;
     return;
   }
 
-  data.forEach(m => {
-    const fila = document.createElement("tr");
-    fila.innerHTML = `
-      <td><span class="link-mundial" style="color:#007bff;cursor:pointer;text-decoration:underline;">${m.anio}</span></td>
-      <td>${m.sede}</td>
-      <td>${m.campeon}</td>
-      <td>${m.subcampeon}</td>
-      <td>${m.goleador}</td>
-      <td>${m.partidos}</td>
-      <td>${m.goles}</td>
-      <td>${m.mejorJugador}</td>
-      <td>${m.observaciones}</td>
-    `;
-    tbody.appendChild(fila);
-  });
+  container.innerHTML = data.map(m => `
+    <article class="estadistica-card" data-anio="${m.anio}">
+      <div class="estadistica-card__header">
+        <h3 class="estadistica-card__year">${m.anio}</h3>
+        <span class="estadistica-card__sede">${m.sede}</span>
+      </div>
+      <div class="estadistica-card__body">
+        <div class="estadistica-card__champion">
+          <span class="estadistica-card__label">🏆 Campeón:</span>
+          <span class="estadistica-card__value">${m.campeon}</span>
+        </div>
+        <div class="estadistica-card__subchampion">
+          <span class="estadistica-card__label">🥈 Subcampeón:</span>
+          <span class="estadistica-card__value">${m.subcampeon}</span>
+        </div>
+        <div class="estadistica-card__stats">
+          <div class="estadistica-card__stat">
+            <span class="estadistica-card__stat-label">⚽ Goleador:</span>
+            <span class="estadistica-card__stat-value">${m.goleador || "N/A"}</span>
+          </div>
+          <div class="estadistica-card__stat">
+            <span class="estadistica-card__stat-label">👤 Mejor Jugador:</span>
+            <span class="estadistica-card__stat-value">${m.mejorJugador || "N/A"}</span>
+          </div>
+          <div class="estadistica-card__stat-row">
+            <div class="estadistica-card__stat-item">
+              <span class="estadistica-card__stat-number">${m.partidos || 0}</span>
+              <span class="estadistica-card__stat-label-small">Partidos</span>
+            </div>
+            <div class="estadistica-card__stat-item">
+              <span class="estadistica-card__stat-number">${m.goles || 0}</span>
+              <span class="estadistica-card__stat-label-small">Goles</span>
+            </div>
+          </div>
+        </div>
+        ${m.observaciones ? `
+          <div class="estadistica-card__observations">
+            <span class="estadistica-card__label">📝 Observaciones:</span>
+            <p class="estadistica-card__text">${m.observaciones}</p>
+          </div>
+        ` : ''}
+      </div>
+      <div class="estadistica-card__footer">
+        <button class="link-mundial btn btn--outline" data-anio="${m.anio}" style="width: 100%;">
+          Ver partidos
+        </button>
+      </div>
+    </article>
+  `).join('');
+
+  // Agregar animación de entrada
+  setTimeout(() => {
+    document.querySelectorAll('.estadistica-card').forEach((card, index) => {
+      card.style.animation = `fadeIn 0.3s ease-out ${index * 0.05}s both`;
+    });
+  }, 10);
 }
 
 
-// ----- Renderiza los partidos del mundial seleccionado -----
+// ----- Renderiza los partidos del mundial seleccionado como cards -----
 function renderPartidos(partidos) {
-  const tbody = document.querySelector("#tbPartidos tbody");
-  if (!tbody) return;
+  const container = document.getElementById("partidos-cards-container");
+  if (!container) return;
   
-  tbody.innerHTML = "";
+  container.innerHTML = "";
 
   if (!partidos || partidos.length === 0) {
-    const tabla = document.querySelector("#tbPartidos");
-    const columnas = tabla ? tabla.querySelectorAll("thead th").length : 9;
-    tbody.innerHTML = `<tr><td colspan='${columnas}' style='text-align:center;padding:2rem;color:var(--color-text-secondary,#666);'>No hay partidos disponibles para este mundial</td></tr>`;
+    container.innerHTML = `
+      <div class="empty-state" style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--color-text-secondary);">
+        <p style="font-size: 1.2rem; margin-bottom: 0.5rem;">No hay partidos disponibles</p>
+        <p>Selecciona un mundial para ver sus partidos</p>
+      </div>
+    `;
     return;
   }
 
-  partidos.forEach(p => {
-    const fila = document.createElement("tr");
-    fila.innerHTML = `
-      <td><a href="#analisis-partido">${p.fecha}</a></td>
-      <td>${p.fase}</td>
-      <td>${p.equipoA}</td>
-      <td>${p.resultado}</td>
-      <td>${p.equipoB}</td>
-      <td>${p.goleadoresA || "-"}</td>
-      <td>${p.goleadoresB || "-"}</td>
-      <td>${p.estadio || "-"}</td>
-      <td>${p.ciudad || "-"}</td>
-    `;
-    tbody.appendChild(fila);
-  });
+  container.innerHTML = partidos.map(p => `
+    <article class="partido-card" data-fecha="${p.fecha}" data-equipo-a="${p.equipoA}" data-equipo-b="${p.equipoB}">
+      <div class="partido-card__header">
+        <span class="partido-card__fase">${p.fase}</span>
+        <time class="partido-card__fecha">${p.fecha}</time>
+      </div>
+      <div class="partido-card__body">
+        <div class="partido-card__teams">
+          <div class="partido-card__team">
+            <span class="partido-card__team-name">${p.equipoA}</span>
+            ${p.goleadoresA ? `<span class="partido-card__scorers">⚽ ${p.goleadoresA}</span>` : ''}
+          </div>
+          <div class="partido-card__score">${p.resultado}</div>
+          <div class="partido-card__team">
+            <span class="partido-card__team-name">${p.equipoB}</span>
+            ${p.goleadoresB ? `<span class="partido-card__scorers">⚽ ${p.goleadoresB}</span>` : ''}
+          </div>
+        </div>
+        <div class="partido-card__venue">
+          <span class="partido-card__venue-icon">🏟️</span>
+          <div class="partido-card__venue-info">
+            <span class="partido-card__venue-name">${p.estadio || "N/A"}</span>
+            <span class="partido-card__venue-city">${p.ciudad || ""}</span>
+          </div>
+        </div>
+      </div>
+      ${p.analisisTecnico ? `
+        <div class="partido-card__footer">
+          <a href="#analisis-partido" class="btn btn--primary" style="width: 100%; text-align: center;">
+            Ver análisis técnico
+          </a>
+        </div>
+      ` : ''}
+    </article>
+  `).join('');
+
+  // Agregar animación de entrada
+  setTimeout(() => {
+    document.querySelectorAll('.partido-card').forEach((card, index) => {
+      card.style.animation = `fadeIn 0.3s ease-out ${index * 0.05}s both`;
+    });
+  }, 10);
 }
 
 
@@ -194,11 +268,14 @@ document.addEventListener("DOMContentLoaded", () => {
 // =========================================================
 // ===== INTERACCIÓN: CAMBIAR PARTIDOS SEGÚN EL AÑO =====
 // =========================================================
-document.querySelector("#tbMundialesResumen").addEventListener("click", e => {
-  if (e.target.classList.contains("link-mundial")) {
-    const anio = parseInt(e.target.textContent);
+document.addEventListener("click", e => {
+  const target = e.target.closest(".link-mundial");
+  if (target) {
+    const anio = parseInt(target.getAttribute("data-anio") || target.textContent);
     const mundial = mundiales.find(m => m.anio === anio);
-    renderPartidos(mundial.partidosDetalles);
+    if (mundial) {
+      renderPartidos(mundial.partidosDetalles);
+    }
   }
 });
 
@@ -208,16 +285,13 @@ document.querySelector("#tbMundialesResumen").addEventListener("click", e => {
 
 const searchInput = document.querySelector(".search-input");
 const selects = document.querySelectorAll(".filter-dropdown");
-const tablaPartidos = document.querySelector("#tbPartidos");
-const tbodyPartidos = tablaPartidos ? tablaPartidos.querySelector("tbody") : null;
 const seccionAnalisis = document.querySelector("#analisis-partido");
 
 // ---- Función para aplicar filtros ----
 function aplicarFiltros() {
   const mundialFiltro = selects[0] ? selects[0].value : "";   // Mundial
   const seleccionFiltro = selects[1] ? selects[1].value : ""; // Selección/Campeón
-  const ordenFiltro = selects[2] ? selects[2].value : "";     // Orden
-  const texto = searchInput ? searchInput.value.toLowerCase() : "";
+  const texto = searchInput ? searchInput.value.trim() : "";
 
   let filtrados = [...mundiales];
 
@@ -245,43 +319,27 @@ function aplicarFiltros() {
     }
   }
 
-  // Filtrar por texto de búsqueda
+  // Filtrar por texto de búsqueda: año específico o nombre de mundial (sede)
   if (texto) {
-    filtrados = filtrados.filter(m =>
-      m.sede.toLowerCase().includes(texto) ||
-      m.campeon.toLowerCase().includes(texto) ||
-      m.subcampeon.toLowerCase().includes(texto) ||
-      (m.mejorJugador && m.mejorJugador.toLowerCase().includes(texto)) ||
-      (m.goleador && m.goleador.toLowerCase().includes(texto))
-    );
+    const textoLower = texto.toLowerCase();
+    filtrados = filtrados.filter(m => {
+      // Buscar por año específico
+      const coincideAnio = m.anio.toString().includes(textoLower);
+      
+      // Buscar por nombre de mundial (sede)
+      const coincideSede = m.sede.toLowerCase().includes(textoLower);
+      
+      return coincideAnio || coincideSede;
+    });
   }
 
-  // Ordenar
-  if (ordenFiltro === "recent") {
-    filtrados.sort((a, b) => b.anio - a.anio);
-  } else if (ordenFiltro === "popular") {
-    filtrados.sort((a, b) => b.goles - a.goles);
-  } else if (ordenFiltro === "views") {
-    filtrados.sort((a, b) => b.partidos - a.partidos);
-  }
-
-  // Mostrar en tablas
+  // Mostrar en cards
   renderResumen(filtrados);
 
   if (filtrados.length > 0) {
     renderPartidos(filtrados[0].partidosDetalles);
-    if (tablaPartidos) {
-      tablaPartidos.classList.remove("bloqueada");
-    }
   } else {
-    if (tbodyPartidos) {
-      // Contar columnas según la tabla
-      const columnas = tablaPartidos ? tablaPartidos.querySelectorAll("thead th").length : 9;
-      tbodyPartidos.innerHTML = `<tr><td colspan='${columnas}' style='text-align:center;padding:2rem;color:var(--color-text-secondary,#666);'>No se encontraron resultados que coincidan con los filtros</td></tr>`;
-    }
-    if (tablaPartidos) {
-      tablaPartidos.classList.add("bloqueada");
-    }
+    renderPartidos([]);
   }
 
   // Ocultar análisis si se cambia el filtro
@@ -302,27 +360,24 @@ if (searchInput) {
 // ======================================================
 // ===== INTERACCIÓN: MOSTRAR PARTIDOS POR MUNDIAL =====
 // ======================================================
-document.querySelector("#tbMundialesResumen").addEventListener("click", e => {
-  if (e.target.classList.contains("link-mundial")) {
-    const anio = parseInt(e.target.textContent);
-    const mundial = mundiales.find(m => m.anio === anio);
-    renderPartidos(mundial.partidosDetalles);
-    tablaPartidos.classList.remove("bloqueada");
-    seccionAnalisis.style.display = "none";
-  }
-});
+// Ya manejado por el event listener general más arriba
 
 
 // ======================================================
 // ===== INTERACCIÓN: MOSTRAR ANÁLISIS DE PARTIDO =====
 // ======================================================
-tablaPartidos.addEventListener("click", e => {
-  const fila = e.target.closest("tr");
-  if (!fila) return;
+document.addEventListener("click", e => {
+  // Verificar si se hizo clic en el botón de análisis técnico
+  const btnAnalisis = e.target.closest('a[href="#analisis-partido"]');
+  if (!btnAnalisis) return;
 
-  const celdas = fila.querySelectorAll("td");
-  const equipoA = celdas[2].textContent;
-  const equipoB = celdas[4].textContent;
+  e.preventDefault();
+  
+  const card = btnAnalisis.closest(".partido-card");
+  if (!card) return;
+
+  const equipoA = card.getAttribute("data-equipo-a");
+  const equipoB = card.getAttribute("data-equipo-b");
 
   let partidoConAnalisis = null;
 
@@ -339,6 +394,8 @@ tablaPartidos.addEventListener("click", e => {
 
   if (partidoConAnalisis) {
     mostrarAnalisis(partidoConAnalisis);
+    // Scroll suave hacia la sección de análisis
+    seccionAnalisis.scrollIntoView({ behavior: "smooth" });
   } else {
     alert("Este partido no tiene análisis técnico disponible.");
   }

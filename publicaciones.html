@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/pages.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="css/onboarding.css">
 </head>
 <body>
     <!-- HEADER STICKY -->
@@ -44,7 +45,7 @@
                     <button class="theme-toggle" 
                             aria-label="Cambiar tema claro/oscuro"
                             title="Cambiar tema">
-                        <span class="theme-toggle__icon">🌙</span>
+                        <span class="theme-toggle__icon">☀️</span>
                     </button>
                     <a href="login.html" class="btn btn--primary">Iniciar Sesión</a>
                 </div>
@@ -62,83 +63,70 @@
                     Descubre historias, análisis y contenido creado por fanáticos del fútbol
                 </p>
 
-                <!-- Barra de búsqueda -->
-                <div class="search-bar">
-                    <span class="search-icon" aria-hidden="true">🔍</span>
-                    <input 
-                        type="search" 
-                        class="search-input" 
-                        placeholder="Buscar publicaciones, equipos, jugadores..."
-                        aria-label="Buscar publicaciones">
-                </div>
-            </header>
+                <!-- Contenedor de búsqueda y filtros -->
+                <div class="search-filters-container">
+                    <!-- Barra de búsqueda -->
+                    <div class="search-bar">
+                        <input 
+                            type="search" 
+                            class="search-input" 
+                            placeholder="Buscar publicaciones, equipos, jugadores..."
+                            aria-label="Buscar publicaciones">
+                    </div>
 
-            <!-- Sección de filtros -->
-            <section class="filters-section" aria-labelledby="filters-title">
-                <h2 id="filters-title" class="sr-only">Filtros de búsqueda</h2>
-                
+                    <!-- Filtros avanzados -->
+                    <div class="filters-grid" aria-labelledby="filters-title">
+                        <h2 id="filters-title" class="sr-only">Filtros de búsqueda</h2>
+                        <select class="filter-dropdown" aria-label="Filtrar publicaciones por mundial" id="filter-mundial">
+                            <option value="">Todos los mundiales</option>
+                            <option value="2026">Mundial 2026</option>
+                            <option value="2022">Qatar 2022</option>
+                            <option value="2018">Rusia 2018</option>
+                            <option value="2014">Brasil 2014</option>
+                            <option value="2010">Sudáfrica 2010</option>
+                            <option value="2006">Alemania 2006</option>
+                            <option value="otros">Mundiales anteriores</option>
+                        </select>
+
+                        <select class="filter-dropdown" aria-label="Ordenar publicaciones por" id="filter-sort">
+                            <option value="recent">Más recientes</option>
+                            <option value="popular">Más populares</option>
+                            <option value="views">Más vistas</option>
+                            <option value="comments">Más comentadas</option>
+                        </select>
+                    </div>
+                </div>
+
                 <!-- Botones de filtro rápido -->
                 <div class="filter-bar">
-                    <button class="filter-btn filter-btn--active" data-filter="all">
+                    <button class="filter-btn filter-btn--active" data-filter="all" aria-label="Mostrar todas las categorías" aria-pressed="true">
                         Todas
                     </button>
-                    <button class="filter-btn" data-filter="jugadas">
+                    <button class="filter-btn" data-filter="jugadas" aria-label="Filtrar por categoría Jugadas" aria-pressed="false">
                         Jugadas
                     </button>
-                    <button class="filter-btn" data-filter="entrevistas">
+                    <button class="filter-btn" data-filter="entrevistas" aria-label="Filtrar por categoría Entrevistas" aria-pressed="false">
                         Entrevistas
                     </button>
-                    <button class="filter-btn" data-filter="partidos">
+                    <button class="filter-btn" data-filter="partidos" aria-label="Filtrar por categoría Partidos" aria-pressed="false">
                         Partidos
                     </button>
-                    <button class="filter-btn" data-filter="estadisticas">
+                    <button class="filter-btn" data-filter="estadisticas" aria-label="Filtrar por categoría Estadísticas" aria-pressed="false">
                         Estadísticas
                     </button>
-                    <button class="filter-btn" data-filter="sedes">
+                    <button class="filter-btn" data-filter="sedes" aria-label="Filtrar por categoría Sedes" aria-pressed="false">
                         Sedes
                     </button>
-                    <button class="filter-btn" data-filter="cultura">
+                    <button class="filter-btn" data-filter="cultura" aria-label="Filtrar por categoría Cultura" aria-pressed="false">
                         Cultura
                     </button>
-                </div>
-
-                <!-- Filtros avanzados -->
-                <div class="filters-grid">
-                    <select class="filter-dropdown" aria-label="Filtrar por mundial">
-                        <option value="">Todos los mundiales</option>
-                        <option value="2026">Mundial 2026</option>
-                        <option value="2022">Qatar 2022</option>
-                        <option value="2018">Rusia 2018</option>
-                        <option value="2014">Brasil 2014</option>
-                        <option value="2010">Sudáfrica 2010</option>
-                        <option value="2006">Alemania 2006</option>
-                        <option value="otros">Mundiales anteriores</option>
-                    </select>
-
-                    <select class="filter-dropdown" aria-label="Filtrar por selección">
-                        <option value="">Todas las selecciones</option>
-                        <option value="argentina">Argentina</option>
-                        <option value="brasil">Brasil</option>
-                        <option value="alemania">Alemania</option>
-                        <option value="francia">Francia</option>
-                        <option value="españa">España</option>
-                        <option value="mexico">México</option>
-                        <option value="otros">Otras selecciones</option>
-                    </select>
-
-                    <select class="filter-dropdown" aria-label="Ordenar por">
-                        <option value="recent">Más recientes</option>
-                        <option value="popular">Más populares</option>
-                        <option value="views">Más vistas</option>
-                        <option value="comments">Más comentadas</option>
-                    </select>
                 </div>
 
                 <!-- Filtros activos -->
                 <div class="active-filters" id="active-filters" hidden>
                     <!-- Se llenan dinámicamente con JavaScript -->
                 </div>
-            </section>
+            </header>
 
             <!-- Grid de publicaciones -->
             <section class="section" aria-labelledby="posts-title">
@@ -146,7 +134,13 @@
 
                 <div class="card-grid" id="publications-grid">
                     <!-- Publicación 1 -->
-                    <article class="card" tabindex="0">
+                    <article class="card" tabindex="0" 
+                             data-category="jugadas" 
+                             data-mundial="1986" 
+                             data-likes="1200" 
+                             data-views="3500" 
+                             data-comments="150" 
+                             data-date="2025-09-10">
                         <div class="card__image">
                             <img src="assets/images/gol-maradona.jpg" 
                                  alt="Diego Maradona celebrando el gol contra Inglaterra en México 86">
@@ -181,7 +175,13 @@
                     </article>
 
                     <!-- Publicación 2 -->
-                    <article class="card" tabindex="0">
+                    <article class="card" tabindex="0" 
+                             data-category="partidos" 
+                             data-mundial="1994" 
+                             data-likes="980" 
+                             data-views="2800" 
+                             data-comments="203" 
+                             data-date="2025-09-08">
                         <div class="card__image">
                             <img src="assets/images/post-7.jpg" 
                                  alt="Roberto Baggio fallando el penal en la final de USA 94">
@@ -216,7 +216,13 @@
                     </article>
 
                     <!-- Publicación 3 -->
-                    <article class="card" tabindex="0">
+                    <article class="card" tabindex="0" 
+                             data-category="sedes" 
+                             data-mundial="1986,1970" 
+                             data-likes="756" 
+                             data-views="1900" 
+                             data-comments="89" 
+                             data-date="2025-09-05">
                         <div class="card__image">
                             <img src="assets/images/post-8.png" 
                                  alt="Vista panorámica del Estadio Azteca lleno">
@@ -251,7 +257,13 @@
                     </article>
 
                     <!-- Publicación 4 -->
-                    <article class="card" tabindex="0">
+                    <article class="card" tabindex="0" 
+                             data-category="polémicas" 
+                             data-mundial="2006" 
+                             data-likes="1500" 
+                             data-views="4200" 
+                             data-comments="340" 
+                             data-date="2025-09-03">
                         <div class="card__image">
                             <img src="assets/images/post-9.jpg" 
                                  alt="Zinedine Zidane siendo expulsado en la final de 2006">
@@ -286,7 +298,13 @@
                     </article>
 
                     <!-- Publicación 5 -->
-                    <article class="card" tabindex="0">
+                    <article class="card" tabindex="0" 
+                             data-category="estadisticas" 
+                             data-mundial="1958,1962,1970" 
+                             data-likes="2100" 
+                             data-views="5300" 
+                             data-comments="178" 
+                             data-date="2025-09-01">
                         <div class="card__image">
                             <img src="assets/images/post-5.jpg" 
                                  alt="Pelé levantando la Copa del Mundo en México 1970">
@@ -321,7 +339,13 @@
                     </article>
 
                     <!-- Publicación 6 -->
-                    <article class="card" tabindex="0">
+                    <article class="card" tabindex="0" 
+                             data-category="entrevistas" 
+                             data-mundial="2022" 
+                             data-likes="3800" 
+                             data-views="8900" 
+                             data-comments="567" 
+                             data-date="2025-08-28">
                         <div class="card__image">
                             <img src="assets/images/messiCopa.jpg" 
                                  alt="Lionel Messi levantando la Copa del Mundo en Qatar 2022">
@@ -358,7 +382,7 @@
 
                 <!-- Botón cargar más -->
                 <div class="section__footer">
-                    <button class="btn btn--outline" id="load-more">
+                    <button class="btn btn--outline" id="load-more" aria-label="Cargar más publicaciones">
                         Cargar más publicaciones
                     </button>
                 </div>
@@ -435,6 +459,101 @@
     <script src="js/navigation.js"></script>
     <script src="js/animations.js"></script>
     <script src="js/accessibility.js"></script>
-    <script src="js/filters.js"></script>
+    <script src="js/onboarding.js"></script>
+    <script src="js/filter.js"></script>
+    <script>
+        // Función para manejar el clic en las cards
+        document.addEventListener('DOMContentLoaded', () => {
+            // Usar delegación de eventos para manejar cards presentes y futuras
+            const publicationsGrid = document.getElementById('publications-grid');
+            if (!publicationsGrid) return;
+            
+            // Agregar cursor pointer a todas las cards al cargar
+            const allCards = publicationsGrid.querySelectorAll('.card');
+            allCards.forEach(c => {
+                c.style.cursor = 'pointer';
+            });
+            
+            // Delegación de eventos para manejar clics en cualquier card dentro del contenedor
+            publicationsGrid.addEventListener('click', (e) => {
+                const card = e.target.closest('.card');
+                if (!card) return;
+                
+                // Prevenir el clic si se hace clic en un botón o enlace dentro de la card
+                if (e.target.tagName === 'BUTTON' || e.target.closest('button')) {
+                    return;
+                }
+                
+                // Extraer datos de la card
+                const title = card.querySelector('.card__title')?.textContent.trim() || '';
+                const description = card.querySelector('.card__description')?.textContent.trim() || '';
+                const category = card.querySelector('.card__badge')?.textContent.trim() || '';
+                const imageSrc = card.querySelector('.card__image img')?.src || '';
+                const imageAlt = card.querySelector('.card__image img')?.alt || '';
+                const mundial = card.querySelector('.card__category')?.textContent.trim() || '';
+                const date = card.querySelector('time')?.getAttribute('datetime') || '';
+                
+                // Extraer estadísticas
+                const likesText = card.querySelector('.stat:nth-child(1) .stat__count')?.textContent.trim() || '0';
+                const commentsText = card.querySelector('.stat:nth-child(2) .stat__count')?.textContent.trim() || '0';
+                const viewsText = card.querySelector('.stat:nth-child(3) .stat__count')?.textContent.trim() || '0';
+                
+                // Extraer datos de atributos data
+                const dataCategory = card.getAttribute('data-category') || category.toLowerCase();
+                const dataMundial = card.getAttribute('data-mundial') || '';
+                const dataLikes = card.getAttribute('data-likes') || likesText;
+                const dataViews = card.getAttribute('data-views') || viewsText;
+                const dataComments = card.getAttribute('data-comments') || commentsText;
+                const dataDate = card.getAttribute('data-date') || date;
+                
+                // Convertir texto con "k" a números para estadísticas
+                const parseNumber = (text) => {
+                    if (!text) return 0;
+                    const numStr = text.toString().replace(/[^\d.]/g, '');
+                    if (text.toLowerCase().includes('k')) {
+                        return Math.round(parseFloat(numStr || 0) * 1000);
+                    }
+                    return parseInt(numStr || 0, 10);
+                };
+                
+                // Crear contenido completo (puede expandirse con más detalles)
+                const fullContent = description + '\n\n' + 
+                    'Esta publicación forma parte de nuestro archivo histórico de los mundiales de fútbol. ' +
+                    'Comparte tus recuerdos y opiniones en los comentarios.';
+                
+                // Preparar datos para guardar en localStorage
+                const postData = {
+                    title: title,
+                    content: fullContent,
+                    description: description,
+                    media: [imageSrc], // Puede expandirse para incluir más medios
+                    category: category,
+                    mundial: mundial,
+                    date: dataDate,
+                    likes: parseNumber(dataLikes),
+                    comments: parseNumber(dataComments),
+                    views: parseNumber(dataViews),
+                    imageAlt: imageAlt
+                };
+                
+                // Guardar en localStorage
+                localStorage.setItem('currentPost', JSON.stringify(postData));
+                
+                // Redirigir a la página de detalle
+                window.location.href = 'publicacion.html';
+            });
+            
+            // Agregar soporte para Enter/Space en cards con tabindex
+            publicationsGrid.addEventListener('keydown', (e) => {
+                const card = e.target.closest('.card');
+                if (!card) return;
+                
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    card.click();
+                }
+            });
+        });
+    </script>
 </body>
 </html>

@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/pages.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="css/onboarding.css">
     <link rel="stylesheet" href="css/publicacion.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
    
@@ -48,7 +49,7 @@
                     <li><a href="index.html" class="navbar__link">Inicio</a></li>
                     <li><a href="mundiales.html" class="navbar__link">Mundiales</a></li>
                     <li><a href="estadisticas.html" class="navbar__link">Estadísticas</a></li>
-                    <li><a href="publicaciones.html" class="navbar__link navbar__link--activ">Publicaciones</a></li>
+                    <li><a href="publicaciones.html" class="navbar__link navbar__link--active">Publicaciones</a></li>
                     <li><a href="perfil.html" class="navbar__link">Mi Perfil</a></li>
                 </ul>
 
@@ -58,7 +59,7 @@
                     <button class="theme-toggle" 
                             aria-label="Cambiar tema claro/oscuro"
                             title="Cambiar tema">
-                        <span class="theme-toggle__icon">🌙</span>
+                        <span class="theme-toggle__icon">☀️</span>
                     </button>
 
                     <!-- Botón de login -->
@@ -84,16 +85,16 @@
                 <img src="assets/images/gol-maradona.jpg" alt="Celebración del equipo campeón">
             </div>
             <div class="swiper-slide">
-                <video controls>
+                <video controls aria-label="Video del gol de Maradona en México 1986">
                 <source src="assets/videos/gol-maradona.mp4" type="video/mp4">
                 Tu navegador no soporta videos.
                 </video>
             </div>
             </div>
             <!-- Controles -->
-            <div class="swiper-pagination"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
+            <div class="swiper-pagination" role="tablist" aria-label="Indicadores del carrusel de medios"></div>
+            <div class="swiper-button-prev" aria-label="Imagen anterior"></div>
+            <div class="swiper-button-next" aria-label="Siguiente imagen"></div>
         </div>
 
             <span style="  top: var(--space-3);
@@ -120,19 +121,25 @@
             <!-- Bloque de estadísticas -->
             <div class="publicacion-estadisticas">
             <div class="estadistica">
-                <i class="fa-regular fa-heart icon icon-like"></i> 
-                <span class="contador">1.2k</span>
+                <button type="button" class="icon icon-like" aria-label="Me gusta (1.2k)">
+                    <i class="fa-regular fa-heart"></i> 
+                    <span class="contador">1.2k</span>
+                </button>
             </div>
             <div class="estadistica">
-                <i class="fa-regular fa-comment icon icon-comment"></i> 
-                <span class="contador">345</span>
+                <button type="button" class="icon icon-comment" aria-label="Ver comentarios (345)">
+                    <i class="fa-regular fa-comment"></i> 
+                    <span class="contador">345</span>
+                </button>
             </div>
-            <div class="estadistica">
-                <i class="fa-regular fa-eye icon"></i> 
+            <div class="estadistica" aria-label="7.8k vistas">
+                <i class="fa-regular fa-eye icon" aria-hidden="true"></i> 
                 <span class="contador">7.8k</span>
             </div>
             <div class="estadistica">
-                <i class="fa-regular fa-star icon icon-fav" title="Añadir a favoritos"></i>
+                <button type="button" class="icon icon-fav" aria-label="Añadir a favoritos" title="Añadir a favoritos">
+                    <i class="fa-regular fa-star"></i>
+                </button>
             </div>
         </div>
 
@@ -153,10 +160,10 @@
             </div>
             <p class="comentario-texto">Qué torneo tan increíble, el mejor final que he visto ❤️</p>
             <div class="comentario-footer">
-                <button class="comentario-like">
-                <i class="fa-regular fa-thumbs-up"></i> <span class="like-count">154</span>
+                <button class="comentario-like" aria-label="Me gusta este comentario (154)">
+                    <i class="fa-regular fa-thumbs-up" aria-hidden="true"></i> <span class="like-count">154</span>
                 </button>
-                <button class="comentario-reply">Responder</button>
+                <button class="comentario-reply" aria-label="Responder a este comentario">Responder</button>
             </div>
             </div>
         </div>
@@ -196,8 +203,7 @@
         </div>
         </section>
 
-        <p class="ver-mas">Ver más comentarios ↓</p>
-        </section>
+        <button type="button" class="ver-mas" aria-label="Cargar más comentarios">Ver más comentarios ↓</button>
         <!-- Caja para dejar un nuevo comentario -->
         <div class="comentario-nuevo">
         <img src="assets/images/default-avatar.jpg" alt="Tu avatar" class="comentario-avatar">
@@ -207,143 +213,186 @@
             placeholder="Deja un comentario..." 
             class="comentario-input" 
             rows="1"
+            aria-label="Escribe tu comentario"
+            aria-required="false"
             ></textarea>
 
             <div class="comentario-actions">
-            <button class="comentario-clip" title="Adjuntar archivo">
-                <i class="fa-solid fa-paperclip"></i>
+            <button class="comentario-clip" title="Adjuntar archivo" aria-label="Adjuntar archivo al comentario">
+                <i class="fa-solid fa-paperclip" aria-hidden="true"></i>
             </button>
-            <button class="comentario-enviar" title="Enviar comentario">
-                <i class="fa-solid fa-paper-plane"></i>
+            <button class="comentario-enviar" title="Enviar comentario" aria-label="Enviar comentario" type="submit">
+                <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
             </button>
             </div>
         </div>
         </div>
 
 
-        <br>
-        
-        <!-- PUBLICACIONES POPULARES -->
-        <section class="section" aria-labelledby="popular-title">
-            <div class="container">
-                <div class="section__header">
-                    <h3 id="popular-title" class="section__title">Recomendados</h3>
-                    <p class="section__subtitle">Las publicaciones más vistas de la comunidad</p>
+        <!-- SECCIÓN RECOMENDADOS -->
+        <section class="recomendados-section" aria-labelledby="recomendados-title">
+            <div class="recomendados-container">
+                <div class="recomendados-header">
+                    <h2 id="recomendados-title" class="recomendados-title">Recomendados para ti</h2>
+                    <p class="recomendados-subtitle">Las publicaciones más vistas de la comunidad</p>
                 </div>
 
-                <!-- Grid de cards -->
-                <div class="card-grid">
+                <div class="recomendados-grid">
                     <!-- Card 1 -->
-                    <a href="publicacion.html" class="card-link">
-                    <article class="card" tabindex="0">
-                        <div class="card__image">
-                            <img src="assets/images/post-1.jpg" 
-                                 alt="Gol de Maradona contra Inglaterra 1986">
-                            <span class="card__badge">Jugadas</span>
-                        </div>
-                        <div class="card__content">
-                            <h3 class="card__title">El gol del siglo de Maradona</h3>
-                            <p class="card__description">
-                                Revive la jugada más icónica del Mundial México 86, 
-                                donde Maradona dejó atrás a medio equipo inglés.
-                            </p>
-                            <div class="card__meta">
-                                <span class="card__category">México 1986</span>
-                                <time datetime="2025-09-10">10 Sep 2025</time>
+                    <a href="publicacion.html" class="recomendados-card-link" tabindex="0">
+                        <article class="recomendados-card">
+                            <div class="recomendados-card__image-wrapper">
+                                <img src="assets/images/post-1.jpg" 
+                                     alt="Gol de Maradona contra Inglaterra 1986"
+                                     class="recomendados-card__image"
+                                     loading="lazy">
+                                <div class="recomendados-card__badge">Jugadas</div>
                             </div>
-                        </div>
-                        <div class="card__stats">
-                            <span class="stat" aria-label="Me gusta">
-                                <span class="stat__icon">❤️</span>
-                                <span class="stat__count">1.2k</span>
-                            </span>
-                            <span class="stat" aria-label="Comentarios">
-                                <span class="stat__icon">💬</span>
-                                <span class="stat__count">150</span>
-                            </span>
-                            <span class="stat" aria-label="Vistas">
-                                <span class="stat__icon">👁️</span>
-                                <span class="stat__count">3.5k</span>
-                            </span>
-                        </div>
-                    </article>
+                            <div class="recomendados-card__content">
+                                <h3 class="recomendados-card__title">El gol del siglo de Maradona</h3>
+                                <p class="recomendados-card__description">
+                                    Revive la jugada más icónica del Mundial México 86, 
+                                    donde Maradona dejó atrás a medio equipo inglés.
+                                </p>
+                                <div class="recomendados-card__meta">
+                                    <span class="recomendados-card__mundial">México 1986</span>
+                                    <time datetime="2025-09-10" class="recomendados-card__date">10 Sep 2025</time>
+                                </div>
+                            </div>
+                            <div class="recomendados-card__stats">
+                                <div class="recomendados-stat" aria-label="1.2k me gusta">
+                                    <span class="recomendados-stat__icon">❤️</span>
+                                    <span class="recomendados-stat__count">1.2k</span>
+                                </div>
+                                <div class="recomendados-stat" aria-label="150 comentarios">
+                                    <span class="recomendados-stat__icon">💬</span>
+                                    <span class="recomendados-stat__count">150</span>
+                                </div>
+                                <div class="recomendados-stat" aria-label="3.5k vistas">
+                                    <span class="recomendados-stat__icon">👁️</span>
+                                    <span class="recomendados-stat__count">3.5k</span>
+                                </div>
+                            </div>
+                        </article>
                     </a>
 
                     <!-- Card 2 -->
-                    <a href="publicacion.html" class="card-link">
-                    <article class="card" tabindex="0">
-                        <div class="card__image">
-                            <img src="assets/images/post-2.jpg" 
-                                 alt="Final Brasil vs Italia 1994">
-                            <span class="card__badge">Partidos</span>
-                        </div>
-                        <div class="card__content">
-                            <h3 class="card__title">USA 94: La final definida por penales</h3>
-                            <p class="card__description">
-                                La final más tensa de la historia, donde Brasil se coronó 
-                                campeón tras una dramática tanda de penales.
-                            </p>
-                            <div class="card__meta">
-                                <span class="card__category">Estados Unidos 1994</span>
-                                <time datetime="2025-09-08">08 Sep 2025</time>
+                    <a href="publicacion.html" class="recomendados-card-link" tabindex="0">
+                        <article class="recomendados-card">
+                            <div class="recomendados-card__image-wrapper">
+                                <img src="assets/images/post-2.jpg" 
+                                     alt="Final Brasil vs Italia 1994"
+                                     class="recomendados-card__image"
+                                     loading="lazy">
+                                <div class="recomendados-card__badge">Partidos</div>
                             </div>
-                        </div>
-                        <div class="card__stats">
-                            <span class="stat">
-                                <span class="stat__icon">❤️</span>
-                                <span class="stat__count">980</span>
-                            </span>
-                            <span class="stat">
-                                <span class="stat__icon">💬</span>
-                                <span class="stat__count">203</span>
-                            </span>
-                            <span class="stat">
-                                <span class="stat__icon">👁️</span>
-                                <span class="stat__count">2.8k</span>
-                            </span>
-                        </div>
-                    </article>
+                            <div class="recomendados-card__content">
+                                <h3 class="recomendados-card__title">USA 94: La final definida por penales</h3>
+                                <p class="recomendados-card__description">
+                                    La final más tensa de la historia, donde Brasil se coronó 
+                                    campeón tras una dramática tanda de penales.
+                                </p>
+                                <div class="recomendados-card__meta">
+                                    <span class="recomendados-card__mundial">Estados Unidos 1994</span>
+                                    <time datetime="2025-09-08" class="recomendados-card__date">08 Sep 2025</time>
+                                </div>
+                            </div>
+                            <div class="recomendados-card__stats">
+                                <div class="recomendados-stat" aria-label="980 me gusta">
+                                    <span class="recomendados-stat__icon">❤️</span>
+                                    <span class="recomendados-stat__count">980</span>
+                                </div>
+                                <div class="recomendados-stat" aria-label="203 comentarios">
+                                    <span class="recomendados-stat__icon">💬</span>
+                                    <span class="recomendados-stat__count">203</span>
+                                </div>
+                                <div class="recomendados-stat" aria-label="2.8k vistas">
+                                    <span class="recomendados-stat__icon">👁️</span>
+                                    <span class="recomendados-stat__count">2.8k</span>
+                                </div>
+                            </div>
+                        </article>
                     </a>
 
                     <!-- Card 3 -->
-                    <a href="publicacion.html" class="card-link">
-                    <article class="card" tabindex="0">
-                        <div class="card__image">
-                            <img src="assets/images/post-3.jpg" 
-                                 alt="Estadio Azteca lleno de aficionados">
-                            <span class="card__badge">Sedes</span>
-                        </div>
-                        <div class="card__content">
-                            <h3 class="card__title">El Estadio Azteca y su historia mundialista</h3>
-                            <p class="card__description">
-                                El único estadio en albergar dos finales de Copa del Mundo 
-                                se prepara para recibir el Mundial 2026.
-                            </p>
-                            <div class="card__meta">
-                                <span class="card__category">Cultura</span>
-                                <time datetime="2025-09-05">05 Sep 2025</time>
+                    <a href="publicacion.html" class="recomendados-card-link" tabindex="0">
+                        <article class="recomendados-card">
+                            <div class="recomendados-card__image-wrapper">
+                                <img src="assets/images/post-3.jpg" 
+                                     alt="Estadio Azteca lleno de aficionados"
+                                     class="recomendados-card__image"
+                                     loading="lazy">
+                                <div class="recomendados-card__badge">Sedes</div>
                             </div>
-                        </div>
-                        <div class="card__stats">
-                            <span class="stat">
-                                <span class="stat__icon">❤️</span>
-                                <span class="stat__count">756</span>
-                            </span>
-                            <span class="stat">
-                                <span class="stat__icon">💬</span>
-                                <span class="stat__count">89</span>
-                            </span>
-                            <span class="stat">
-                                <span class="stat__icon">👁️</span>
-                                <span class="stat__count">1.9k</span>
-                            </span>
-                        </div>
-                    </article>
+                            <div class="recomendados-card__content">
+                                <h3 class="recomendados-card__title">El Estadio Azteca y su historia mundialista</h3>
+                                <p class="recomendados-card__description">
+                                    El único estadio en albergar dos finales de Copa del Mundo 
+                                    se prepara para recibir el Mundial 2026.
+                                </p>
+                                <div class="recomendados-card__meta">
+                                    <span class="recomendados-card__mundial">Cultura</span>
+                                    <time datetime="2025-09-05" class="recomendados-card__date">05 Sep 2025</time>
+                                </div>
+                            </div>
+                            <div class="recomendados-card__stats">
+                                <div class="recomendados-stat" aria-label="756 me gusta">
+                                    <span class="recomendados-stat__icon">❤️</span>
+                                    <span class="recomendados-stat__count">756</span>
+                                </div>
+                                <div class="recomendados-stat" aria-label="89 comentarios">
+                                    <span class="recomendados-stat__icon">💬</span>
+                                    <span class="recomendados-stat__count">89</span>
+                                </div>
+                                <div class="recomendados-stat" aria-label="1.9k vistas">
+                                    <span class="recomendados-stat__icon">👁️</span>
+                                    <span class="recomendados-stat__count">1.9k</span>
+                                </div>
+                            </div>
+                        </article>
+                    </a>
+
+                    <!-- Card 4 -->
+                    <a href="publicacion.html" class="recomendados-card-link" tabindex="0">
+                        <article class="recomendados-card">
+                            <div class="recomendados-card__image-wrapper">
+                                <img src="assets/images/post-5.jpg" 
+                                     alt="Pelé levantando la Copa del Mundo"
+                                     class="recomendados-card__image"
+                                     loading="lazy">
+                                <div class="recomendados-card__badge">Estadísticas</div>
+                            </div>
+                            <div class="recomendados-card__content">
+                                <h3 class="recomendados-card__title">Pelé: El único tricampeón mundial</h3>
+                                <p class="recomendados-card__description">
+                                    Un análisis estadístico del jugador que ganó tres Copas del 
+                                    Mundo. Números que demuestran por qué es considerado uno de los más grandes.
+                                </p>
+                                <div class="recomendados-card__meta">
+                                    <span class="recomendados-card__mundial">Brasil 1958-1970</span>
+                                    <time datetime="2025-09-01" class="recomendados-card__date">01 Sep 2025</time>
+                                </div>
+                            </div>
+                            <div class="recomendados-card__stats">
+                                <div class="recomendados-stat" aria-label="2.1k me gusta">
+                                    <span class="recomendados-stat__icon">❤️</span>
+                                    <span class="recomendados-stat__count">2.1k</span>
+                                </div>
+                                <div class="recomendados-stat" aria-label="178 comentarios">
+                                    <span class="recomendados-stat__icon">💬</span>
+                                    <span class="recomendados-stat__count">178</span>
+                                </div>
+                                <div class="recomendados-stat" aria-label="5.3k vistas">
+                                    <span class="recomendados-stat__icon">👁️</span>
+                                    <span class="recomendados-stat__count">5.3k</span>
+                                </div>
+                            </div>
+                        </article>
                     </a>
                 </div>
             </div>
         </section>
-        <br>
+
         <div class="container">
             <!-- CTA para usuarios no registrados -->
             <section>
@@ -417,6 +466,7 @@
     <script src="js/navigation.js"></script>
     <script src="js/animations.js"></script>
     <script src="js/accessibility.js"></script>
+    <script src="js/onboarding.js"></script>
     <script src="js/publicacion.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {

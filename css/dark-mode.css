@@ -128,13 +128,9 @@ body,
 }
 
 /* ===== ICONO DEL TOGGLE TEMA ===== */
-/* Cambiar el icono dependiendo del tema activo */
-.dark-mode .theme-toggle__icon::before {
-  content: '☀️'; /* Sol en modo oscuro */
-}
-
-.theme-toggle__icon::before {
-  content: '🌙'; /* Luna en modo claro (default) */
+/* Los emojis se cambian desde JS: sol (☀️) en modo claro, luna (🌙) en modo oscuro */
+.theme-toggle__icon {
+  transition: transform var(--transition-base);
 }
 
 /* Animación de rotación al cambiar */

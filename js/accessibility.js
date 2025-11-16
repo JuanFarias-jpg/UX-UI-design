@@ -42,6 +42,7 @@
       link.href = '#main';
       link.className = 'skip-link';
       link.textContent = 'Saltar al contenido principal';
+      link.setAttribute('aria-label', 'Saltar al contenido principal, omitir navegación');
       
       document.body.insertBefore(link, document.body.firstChild);
 
@@ -49,19 +50,25 @@
       style.textContent = `
         .skip-link {
           position: absolute;
-          top: -40px;
+          top: -9999px;
           left: 0;
           background: var(--color-primary);
           color: white;
-          padding: var(--space-2) var(--space-4);
+          padding: 8px 16px;
           text-decoration: none;
           z-index: 9999;
           transition: top 0.3s ease;
           font-weight: 600;
+          font-size: 14px !important; /* Tamaño fijo que no se ve afectado por zoom de fuente */
+          line-height: 1.5;
+          /* Asegurar que esté completamente oculto */
+          clip-path: polygon(0 0, 0 0, 0 0);
+          overflow: hidden;
         }
         
         .skip-link:focus {
           top: 0;
+          clip-path: none; /* Mostrar solo cuando tiene focus */
         }
       `;
       document.head.appendChild(style);
@@ -218,29 +225,35 @@
                   <path d="M13.76 17.5a5 5 0 0 0-6.88-6"/>
             </svg>
           </button>
-        </button>
-        <div class="accessibility-menu" hidden>
+        <div class="accessibility-menu" hidden role="menu" aria-labelledby="accessibility-menu-title">
           <div class="accessibility-menu__header">
-            <h3>⚙️ Accesibilidad</h3>
-            <button class="accessibility-menu__close" aria-label="Cerrar panel">✕</button>
+            <h3 id="accessibility-menu-title">⚙️ Accesibilidad</h3>
+            <button class="accessibility-menu__close" aria-label="Cerrar panel de accesibilidad">✕</button>
           </div>
           
           <div class="accessibility-menu__content">
+            <!-- Guía de bienvenida -->
+            <div class="control-section">
+              <button class="btn-onboarding" id="show-onboarding" role="menuitem" aria-label="Abrir guía de bienvenida para conocer las funciones del sitio" style="width: 100%; padding: 12px; margin-bottom: 12px;">
+                <span aria-hidden="true">💡</span> Ver guía de bienvenida
+              </button>
+            </div>
+
             <!-- Tamaño de texto -->
             <div class="control-section">
               <h4 class="control-section__title">
                 <span class="control-icon">🔤</span>
                 Tamaño de texto
               </h4>
-              <div class="control-buttons">
-                <button data-font-size="normal" aria-pressed="true" title="Tamaño normal">
-                  <span class="btn-label">A</span>
+              <div class="control-buttons" role="group" aria-label="Opciones de tamaño de texto">
+                <button data-font-size="normal" aria-pressed="true" role="button" aria-label="Tamaño de texto normal">
+                  <span class="btn-label" aria-hidden="true">A</span>
                 </button>
-                <button data-font-size="large" aria-pressed="false" title="Tamaño grande">
-                  <span class="btn-label" style="font-size: 1.2em;">A</span>
+                <button data-font-size="large" aria-pressed="false" role="button" aria-label="Tamaño de texto grande">
+                  <span class="btn-label" style="font-size: 1.2em;" aria-hidden="true">A</span>
                 </button>
-                <button data-font-size="xlarge" aria-pressed="false" title="Tamaño muy grande">
-                  <span class="btn-label" style="font-size: 1.4em;">A</span>
+                <button data-font-size="xlarge" aria-pressed="false" role="button" aria-label="Tamaño de texto muy grande">
+                  <span class="btn-label" style="font-size: 1.4em;" aria-hidden="true">A</span>
                 </button>
               </div>
             </div>
@@ -251,29 +264,29 @@
                 <span class="control-icon">🎨</span>
                 Modo de color
               </h4>
-              <div class="control-grid">
-                <button data-color-mode="default" aria-pressed="true" class="color-btn">
-                  <span class="color-preview color-preview--default"></span>
+              <div class="control-grid" role="group" aria-label="Opciones de modo de color">
+                <button data-color-mode="default" aria-pressed="true" class="color-btn" aria-label="Modo de color normal">
+                  <span class="color-preview color-preview--default" aria-hidden="true"></span>
                   <span class="color-label">Normal</span>
                 </button>
-                <button data-color-mode="protanopia" aria-pressed="false" class="color-btn">
-                  <span class="color-preview color-preview--protanopia"></span>
+                <button data-color-mode="protanopia" aria-pressed="false" class="color-btn" aria-label="Modo de color Protanopia para usuarios con dificultad para distinguir rojo-verde">
+                  <span class="color-preview color-preview--protanopia" aria-hidden="true"></span>
                   <span class="color-label">Protanopia</span>
                 </button>
-                <button data-color-mode="deuteranopia" aria-pressed="false" class="color-btn">
-                  <span class="color-preview color-preview--deuteranopia"></span>
+                <button data-color-mode="deuteranopia" aria-pressed="false" class="color-btn" aria-label="Modo de color Deuteranopia para usuarios con dificultad para distinguir verde-rojo">
+                  <span class="color-preview color-preview--deuteranopia" aria-hidden="true"></span>
                   <span class="color-label">Deuteranopia</span>
                 </button>
-                <button data-color-mode="tritanopia" aria-pressed="false" class="color-btn">
-                  <span class="color-preview color-preview--tritanopia"></span>
+                <button data-color-mode="tritanopia" aria-pressed="false" class="color-btn" aria-label="Modo de color Tritanopia para usuarios con dificultad para distinguir azul-amarillo">
+                  <span class="color-preview color-preview--tritanopia" aria-hidden="true"></span>
                   <span class="color-label">Tritanopia</span>
                 </button>
-                <button data-color-mode="highContrast" aria-pressed="false" class="color-btn">
-                  <span class="color-preview color-preview--contrast"></span>
+                <button data-color-mode="highContrast" aria-pressed="false" class="color-btn" aria-label="Modo de alto contraste para mejor visibilidad">
+                  <span class="color-preview color-preview--contrast" aria-hidden="true"></span>
                   <span class="color-label">Alto Contraste</span>
                 </button>
-                <button data-color-mode="monochrome" aria-pressed="false" class="color-btn">
-                  <span class="color-preview color-preview--mono"></span>
+                <button data-color-mode="monochrome" aria-pressed="false" class="color-btn" aria-label="Modo monocromático en escala de grises">
+                  <span class="color-preview color-preview--mono" aria-hidden="true"></span>
                   <span class="color-label">Monocromático</span>
                 </button>
               </div>
@@ -281,8 +294,8 @@
 
             <!-- Botón de reset -->
             <div class="control-section">
-              <button class="btn-reset" id="reset-accessibility">
-                <span>🔄</span> Restaurar valores predeterminados
+              <button class="btn-reset" id="reset-accessibility" role="menuitem" aria-label="Restaurar todas las configuraciones de accesibilidad a sus valores predeterminados">
+                <span aria-hidden="true">🔄</span> Restaurar valores predeterminados
               </button>
             </div>
           </div>
@@ -527,6 +540,30 @@
           text-align: center;
         }
         
+        /* Botón de onboarding */
+        .btn-onboarding {
+          width: 100%;
+          padding: 12px;
+          background: var(--color-primary, #1B998B);
+          color: white;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+          font-size: 14px;
+          font-weight: 600;
+          transition: all 0.2s;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+        }
+        
+        .btn-onboarding:hover {
+          background: var(--color-primary-dark, #147a6f);
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(27, 153, 139, 0.3);
+        }
+        
         /* Botón de reset */
         .btn-reset {
           width: 100%;
@@ -678,6 +715,29 @@
           colorMode.apply(mode);
         });
       });
+
+      // Botón de onboarding
+      const onboardingBtn = container.querySelector('#show-onboarding');
+      if (onboardingBtn) {
+        onboardingBtn.addEventListener('click', () => {
+          // Cerrar el panel de accesibilidad
+          toggleMenu();
+          
+          // Función para mostrar onboarding con retry si no está disponible aún
+          const showOnboardingWithRetry = (retries = 5) => {
+            if (window.WCAOnboarding && typeof window.WCAOnboarding.show === 'function') {
+              window.WCAOnboarding.show();
+            } else if (retries > 0) {
+              // Esperar un poco y volver a intentar
+              setTimeout(() => showOnboardingWithRetry(retries - 1), 100);
+            } else {
+              console.warn('Onboarding no disponible después de varios intentos');
+            }
+          };
+          
+          showOnboardingWithRetry();
+        });
+      }
 
       // Botón de reset
       container.querySelector('#reset-accessibility').addEventListener('click', () => {

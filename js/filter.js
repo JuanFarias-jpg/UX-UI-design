@@ -24,7 +24,6 @@
   let currentFilters = {
     category: 'all',
     mundial: '',
-    seleccion: '',
     sort: 'recent',
     search: ''
   };
@@ -42,25 +41,121 @@
    * Verificar si una card coincide con los filtros actuales
    */
   function cardMatchesFilters(card) {
-    const category = card.querySelector('.card__badge')?.textContent.toLowerCase().trim();
-    const mundial = card.querySelector('.card__category')?.textContent.toLowerCase();
-    const title = card.querySelector('.card__title')?.textContent.toLowerCase();
-    const description = card.querySelector('.card__description')?.textContent.toLowerCase();
+    // Usar atributos data-* si están disponibles, si no, usar el texto como fallback
+    const category = card.getAttribute('data-category') || 
+                     card.querySelector('.card__badge')?.textContent.toLowerCase().trim() || '';
+    const mundialData = card.getAttribute('data-mundial') || '';
+    const mundialText = card.querySelector('.card__category')?.textContent.toLowerCase() || '';
+    const title = card.querySelector('.card__title')?.textContent.toLowerCase() || '';
+    const description = card.querySelector('.card__description')?.textContent.toLowerCase() || '';
 
-    // Filtro de categoría
-    if (currentFilters.category !== 'all' && category !== currentFilters.category) {
-      return false;
+    // Filtro de categoría (usar data-category o badge)
+    if (currentFilters.category !== 'all') {
+      const categoryLower = category.toLowerCase();
+      const filterLower = currentFilters.category.toLowerCase();
+      
+      // Mapear nombres de botones a valores data-category
+      const categoryMap = {
+        'all': 'all',
+        'jugadas': 'jugadas',
+        'entrevistas': 'entrevistas',
+        'partidos': 'partidos',
+        'estadisticas': 'estadisticas',
+        'estadísticas': 'estadisticas',
+        'sedes': 'sedes',
+        'polémicas': 'polémicas',
+        'polemicas': 'polémicas',
+        'cultura': 'cultura'
+      };
+      
+      const mappedCategory = categoryMap[filterLower] || filterLower;
+      
+      // Comparar sin acentos y en minúsculas
+      const normalizeCategory = (cat) => cat.toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '') // Remover acentos
+        .replace(/[^a-z0-9]/g, ''); // Remover caracteres especiales
+      
+      const normalizedCardCategory = normalizeCategory(category);
+      const normalizedFilterCategory = normalizeCategory(mappedCategory);
+      
+      if (normalizedCardCategory !== normalizedFilterCategory) {
+        return false;
+      }
     }
 
-    // Filtro de mundial
-    if (currentFilters.mundial && !mundial?.includes(currentFilters.mundial)) {
-      return false;
+    // Filtro de mundial (usar data-mundial o texto)
+    if (currentFilters.mundial) {
+      if (currentFilters.mundial === 'otros') {
+        // Mundiales anteriores a 2006
+        let tieneMundialAnterior = false;
+        
+        // Primero verificar en data-mundial
+        if (mundialData && mundialData.trim()) {
+          // Obtener todos los años del data-mundial (puede tener múltiples separados por coma)
+          const anos = mundialData.split(',').map(a => parseInt(a.trim())).filter(a => !isNaN(a));
+          // Verificar si todos los años son menores a 2006
+          if (anos.length > 0) {
+            tieneMundialAnterior = anos.every(año => año < 2006);
+          }
+        }
+        
+        // Si no se encontró en data-mundial, buscar en el texto (fallback)
+        if (!tieneMundialAnterior && mundialText) {
+          // Extraer años del texto (buscar números de 4 dígitos entre 1930-2005)
+          // También buscar años escritos como 1958-1970 o 1958-62
+          const añoMatches = mundialText.match(/\b(19[3-9]\d|200[0-5])\b/g);
+          if (añoMatches && añoMatches.length > 0) {
+            // Verificar que al menos un año sea menor a 2006
+            // (si tiene múltiples años, al menos uno debe ser anterior)
+            tieneMundialAnterior = añoMatches.some(año => parseInt(año) < 2006);
+            
+            // Si tiene años mayores o iguales a 2006, verificar que no sean los únicos
+            const anosEnTexto = añoMatches.map(a => parseInt(a));
+            const anosMenores = anosEnTexto.filter(a => a < 2006);
+            const anosMayores = anosEnTexto.filter(a => a >= 2006);
+            
+            // Si tiene años menores, incluir la card
+            if (anosMenores.length > 0) {
+              tieneMundialAnterior = true;
+            }
+          }
+        }
+        
+        // Si no tiene ningún mundial anterior a 2006, ocultar la card
+        if (!tieneMundialAnterior) {
+          return false;
+        }
+      } else {
+        // Filtro por año específico
+        const mundialToMatch = currentFilters.mundial.toString();
+        const mundialDataLower = mundialData ? mundialData.toLowerCase() : '';
+        const mundialTextLower = mundialText ? mundialText.toLowerCase() : '';
+        
+        let coincide = false;
+        
+        // Verificar en data-mundial (puede tener múltiples años separados por coma)
+        if (mundialData && mundialDataLower.includes(mundialToMatch)) {
+          coincide = true;
+        }
+        
+        // Si no coincide en data-mundial, verificar en el texto como fallback
+        if (!coincide && mundialTextLower) {
+          if (mundialTextLower.includes(mundialToMatch) || mundialTextLower.includes(mundialToMatch.slice(-2))) {
+            coincide = true;
+          }
+        }
+        
+        if (!coincide) {
+          return false;
+        }
+      }
     }
 
     // Filtro de búsqueda
     if (currentFilters.search) {
       const searchLower = currentFilters.search.toLowerCase();
-      if (!title?.includes(searchLower) && !description?.includes(searchLower)) {
+      if (!title.includes(searchLower) && !description.includes(searchLower)) {
         return false;
       }
     }
@@ -103,26 +198,78 @@
   }
 
   /**
+   * Convertir número con formato "k" a número entero
+   */
+  function parseNumber(value) {
+    if (!value) return 0;
+    const str = value.toString().toLowerCase().trim();
+    if (str.includes('k')) {
+      return Math.round(parseFloat(str.replace('k', '')) * 1000);
+    }
+    return parseInt(str) || 0;
+  }
+
+  /**
    * Ordenar las cards según el criterio seleccionado
    */
   function sortCards(sortBy) {
     const cards = getAllCards().filter(card => card.style.display !== 'none');
     
     cards.sort((a, b) => {
-      if (sortBy === 'popular') {
-        const likesA = parseInt(a.querySelector('.stat__count')?.textContent.replace('k', '000') || 0);
-        const likesB = parseInt(b.querySelector('.stat__count')?.textContent.replace('k', '000') || 0);
+      if (sortBy === 'recent') {
+        // Ordenar por fecha (más reciente primero)
+        const dateA = a.getAttribute('data-date') || '';
+        const dateB = b.getAttribute('data-date') || '';
+        if (dateA && dateB) {
+          return new Date(dateB) - new Date(dateA);
+        }
+        // Si no hay fecha, mantener orden original
+        return 0;
+      } else if (sortBy === 'popular') {
+        // Ordenar por likes (más populares primero)
+        const likesA = parseInt(a.getAttribute('data-likes') || 0);
+        const likesB = parseInt(b.getAttribute('data-likes') || 0);
+        // Si no hay data-likes, intentar parsear del texto
+        if (likesA === 0 || likesB === 0) {
+          const textLikesA = a.querySelector('.stat__count')?.textContent || '0';
+          const textLikesB = b.querySelector('.stat__count')?.textContent || '0';
+          const parsedA = likesA || parseNumber(textLikesA);
+          const parsedB = likesB || parseNumber(textLikesB);
+          return parsedB - parsedA;
+        }
         return likesB - likesA;
       } else if (sortBy === 'views') {
-        const viewsA = parseInt(a.querySelectorAll('.stat')[2]?.querySelector('.stat__count')?.textContent.replace('k', '000') || 0);
-        const viewsB = parseInt(b.querySelectorAll('.stat')[2]?.querySelector('.stat__count')?.textContent.replace('k', '000') || 0);
+        // Ordenar por vistas (más vistas primero)
+        const viewsA = parseInt(a.getAttribute('data-views') || 0);
+        const viewsB = parseInt(b.getAttribute('data-views') || 0);
+        // Si no hay data-views, intentar parsear del texto (tercer stat)
+        if (viewsA === 0 || viewsB === 0) {
+          const statsA = a.querySelectorAll('.stat');
+          const statsB = b.querySelectorAll('.stat');
+          const textViewsA = statsA[2]?.querySelector('.stat__count')?.textContent || '0';
+          const textViewsB = statsB[2]?.querySelector('.stat__count')?.textContent || '0';
+          const parsedA = viewsA || parseNumber(textViewsA);
+          const parsedB = viewsB || parseNumber(textViewsB);
+          return parsedB - parsedA;
+        }
         return viewsB - viewsA;
       } else if (sortBy === 'comments') {
-        const commentsA = parseInt(a.querySelectorAll('.stat')[1]?.querySelector('.stat__count')?.textContent || 0);
-        const commentsB = parseInt(b.querySelectorAll('.stat')[1]?.querySelector('.stat__count')?.textContent || 0);
+        // Ordenar por comentarios (más comentadas primero)
+        const commentsA = parseInt(a.getAttribute('data-comments') || 0);
+        const commentsB = parseInt(b.getAttribute('data-comments') || 0);
+        // Si no hay data-comments, intentar parsear del texto (segundo stat)
+        if (commentsA === 0 || commentsB === 0) {
+          const statsA = a.querySelectorAll('.stat');
+          const statsB = b.querySelectorAll('.stat');
+          const textCommentsA = statsA[1]?.querySelector('.stat__count')?.textContent || '0';
+          const textCommentsB = statsB[1]?.querySelector('.stat__count')?.textContent || '0';
+          const parsedA = commentsA || parseInt(textCommentsA) || 0;
+          const parsedB = commentsB || parseInt(textCommentsB) || 0;
+          return parsedB - parsedA;
+        }
         return commentsB - commentsA;
       }
-      return 0; // 'recent' - mantener orden original
+      return 0;
     });
 
     // Reordenar en el DOM
@@ -177,13 +324,6 @@
       activeTags.push({
         label: `Mundial ${currentFilters.mundial}`,
         type: 'mundial'
-      });
-    }
-
-    if (currentFilters.seleccion) {
-      activeTags.push({
-        label: currentFilters.seleccion,
-        type: 'seleccion'
       });
     }
 
@@ -246,11 +386,8 @@
         break;
       case 'mundial':
         currentFilters.mundial = '';
-        document.querySelector('.filter-dropdown[aria-label*="mundial"]').value = '';
-        break;
-      case 'seleccion':
-        currentFilters.seleccion = '';
-        document.querySelector('.filter-dropdown[aria-label*="selección"]').value = '';
+        const mundialDropdown = document.querySelector('.filter-dropdown[aria-label*="mundial"]');
+        if (mundialDropdown) mundialDropdown.value = '';
         break;
       case 'search':
         currentFilters.search = '';
@@ -289,8 +426,6 @@
 
       if (label.includes('mundial')) {
         currentFilters.mundial = value;
-      } else if (label.includes('selección')) {
-        currentFilters.seleccion = value;
       } else if (label.includes('Ordenar')) {
         currentFilters.sort = value;
       }
@@ -364,7 +499,6 @@
       currentFilters = {
         category: 'all',
         mundial: '',
-        seleccion: '',
         sort: 'recent',
         search: ''
       };

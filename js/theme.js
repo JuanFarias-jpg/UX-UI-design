@@ -67,10 +67,10 @@
     htmlElement.classList.add(DARK_CLASS);
     themeToggle?.setAttribute('aria-label', 'Cambiar a modo claro');
     
-    // Cambiar el icono (ya está en CSS, pero podríamos hacerlo aquí también)
+    // Mostrar luna en modo oscuro
     const icon = themeToggle?.querySelector('.theme-toggle__icon');
     if (icon) {
-      icon.textContent = '☀️';
+      icon.textContent = '🌙';
     }
   }
 
@@ -81,9 +81,10 @@
     htmlElement.classList.remove(DARK_CLASS);
     themeToggle?.setAttribute('aria-label', 'Cambiar a modo oscuro');
     
+    // Mostrar sol en modo claro
     const icon = themeToggle?.querySelector('.theme-toggle__icon');
     if (icon) {
-      icon.textContent = '🌙';
+      icon.textContent = '☀️';
     }
   }
 

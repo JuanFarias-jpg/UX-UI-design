@@ -191,6 +191,15 @@
   animation: fadeIn 0.6s ease-out forwards;
 }
 
+.detalle-mundial[style*="display: none"] {
+  display: none !important;
+  margin-top: 0 !important;
+  padding: 0 !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+
 .detalle-mundial h2 {
   font-size: 2rem;
   color: var(--color-texto);
@@ -218,27 +227,185 @@
   border-radius: 8px;
   margin-bottom: 25px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
 }
 
-/* --- Tabla de estadísticas --- */
-.tabla-estadisticas {
-  border-collapse: collapse;
+.bracket-section .stage.final {
+  order: -1;
+}
+
+.bracket-section .stage.final .match.winner {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  color: #fff;
+  font-weight: bold;
+  border: 2px solid #16a34a;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+}
+
+/* ========================================================= */
+/* ===== CARRUSEL DE ESTADÍSTICAS ===== */
+/* ========================================================= */
+
+.estadisticas-carousel-container {
+  position: relative;
   width: 100%;
-  box-shadow: 0 2px 10px var(--color-sombra);
-  border-radius: 8px;
+  max-width: 600px;
+  margin: var(--space-6) auto;
   overflow: hidden;
+  border-radius: var(--border-radius-lg);
 }
 
-.tabla-estadisticas th,
-.tabla-estadisticas td {
-  border: 1px solid var(--color-border);
-  padding: 10px;
+.estadisticas-carousel {
+  display: flex;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.estadistica-card-item {
+  min-width: 100%;
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-md);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  opacity: 0.6;
+  transform: scale(0.95);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.tabla-estadisticas th {
-  background: var(--color-encabezado);
-  color: var(--color-texto-encabezado);
+.estadistica-card-item.active {
+  opacity: 1;
+  transform: scale(1);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-lg);
+}
+
+.estadistica-card-item__icon {
+  font-size: 3.5rem;
+  line-height: 1;
+}
+
+.estadistica-card-item__label {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.estadistica-card-item__value {
+  font-size: 3rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all var(--transition-base) var(--ease-out);
+  font-size: 1.5rem;
+  color: var(--color-text);
+  box-shadow: var(--shadow-md);
+}
+
+.carousel-btn:hover {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: var(--shadow-lg);
+}
+
+.carousel-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.carousel-btn--prev {
+  left: var(--space-4);
+}
+
+.carousel-btn--next {
+  right: var(--space-4);
+}
+
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-top: var(--space-6);
+  padding: var(--space-2);
+}
+
+.carousel-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--color-border);
+  background: transparent;
+  cursor: pointer;
+  transition: all var(--transition-base) var(--ease-out);
+  padding: 0;
+}
+
+.carousel-indicator:hover {
+  border-color: var(--color-primary);
+  transform: scale(1.2);
+}
+
+.carousel-indicator.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  width: 32px;
+  border-radius: 6px;
+}
+
+/* Responsive para carrusel */
+@media (max-width: 768px) {
+  .estadistica-card-item {
+    padding: 10px;
+  }
+
+  .estadistica-card-item__icon {
+    font-size: 2.5rem;
+  }
+
+  .estadistica-card-item__value {
+    font-size: 2.5rem;
+  }
+
+  .carousel-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
+  }
+
+  .carousel-btn--prev {
+    left: var(--space-2);
+  }
+
+  .carousel-btn--next {
+    right: var(--space-2);
+  }
 }
 
 /* --- Galería --- */
@@ -288,6 +455,419 @@
 /* ========================================================= */
 /* ===== RESPONSIVE ===== */
 /* ========================================================= */
+
+/* ========================================================= */
+/* ===== CARRUSEL DE MUNDIALES ===== */
+/* ========================================================= */
+
+/* ===== AJUSTAR AQUÍ: Dimensiones del carrusel y espaciado ===== */
+.mundiales-carousel-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 900px; /* ⬅️ AJUSTA ESTE VALOR: ancho máximo del carrusel */
+  margin: var(--space-4) auto var(--space-2) auto; /* ⬅️ AJUSTA: margin-bottom para acercar al footer */
+  padding: 0 var(--space-10); /* ⬅️ AJUSTA: padding lateral del carrusel */
+}
+
+.mundiales-carousel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--border-radius-lg);
+  /* Forzar el cálculo preciso del ancho */
+  box-sizing: border-box;
+}
+
+.mundiales-carousel {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+  align-items: stretch;
+  /* Asegurar que no haya espacios entre cards */
+  gap: 0;
+}
+
+/* ===== AJUSTAR AQUÍ: Dimensiones de las cards ===== */
+.mundial-card {
+  min-width: 100%;
+  max-width: 100%;
+  width: 100%;
+  flex-shrink: 0;
+  flex-grow: 0;
+  background: var(--color-surface);
+  box-sizing: border-box;
+  /* Asegurar que la card ocupe exactamente el ancho del contenedor */
+  margin: 0;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  padding: var(--space-6); /* ⬅️ AJUSTA ESTE VALOR: padding interno de la card */
+  box-shadow: var(--shadow-md);
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  animation: fadeIn 0.4s ease-out forwards;
+  /* ⬅️ AJUSTA: min-height para controlar altura mínima de la card */
+  min-height: auto;
+}
+
+.mundial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-primary);
+}
+
+.mundial-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-5);
+  padding-bottom: var(--space-4);
+  border-bottom: 2px solid var(--color-border);
+}
+
+.mundial-card__year {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.mundial-card__sede {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
+.mundial-card__body {
+  flex: 1;
+  margin-bottom: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.mundial-card__image {
+  width: 100%;
+  height: 250px;
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  background: var(--color-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.mundial-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.mundial-card:hover .mundial-card__image img {
+  transform: scale(1.05);
+}
+
+.mundial-card__final-match {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: #fff;
+  padding: var(--space-4);
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  border-radius: var(--border-radius-md);
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+  border: 2px solid #16a34a;
+  transition: all var(--transition-base) var(--ease-out);
+}
+
+.mundial-card__final-match:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(34, 197, 94, 0.4);
+}
+
+.mundial-card__footer {
+  margin-top: auto;
+  padding-top: var(--space-4);
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+.mundial-card__footer .btn {
+  width: 100%;
+  text-align: center;
+}
+
+/* Botones de navegación del carrusel */
+.mundiales-carousel-btn {
+  position: absolute;
+  top: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 2rem;
+  color: var(--color-text);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  font-weight: bold;
+  transform: translateY(-50%);
+}
+
+.mundiales-carousel-btn:hover {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.mundiales-carousel-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.mundiales-carousel-btn--prev {
+  left: -20px;
+}
+
+.mundiales-carousel-btn--next {
+  right: -20px;
+}
+
+/* Indicadores del carrusel */
+/* ===== AJUSTAR AQUÍ: Espacio entre indicadores y footer ===== */
+/* Reduce margin-bottom para acercar las cards al footer */
+.mundiales-carousel-indicators {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-2); /* ⬅️ AJUSTA ESTE VALOR: reduce para acercar al footer */
+  padding: var(--space-2);
+  min-height: 20px;
+}
+
+.mundiales-carousel-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--color-border);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.mundiales-carousel-indicator:hover {
+  border-color: var(--color-primary);
+  transform: scale(1.3);
+  background: var(--color-primary);
+  opacity: 0.5;
+}
+
+.mundiales-carousel-indicator.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  width: 28px;
+  height: 10px;
+  border-radius: 5px;
+  transform: scale(1);
+}
+
+.mundiales-carousel-indicator.active:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* Responsive para carrusel */
+@media (max-width: 768px) {
+  .mundiales-carousel-wrapper {
+    padding: 0 var(--space-8);
+    margin: var(--space-6) auto var(--space-4) auto;
+  }
+
+  .mundiales-carousel-container {
+    padding: 0;
+    /* Asegurar que el contenedor tenga el ancho exacto */
+    width: calc(100% - 0px);
+  }
+
+  .mundial-card {
+    padding: var(--space-4);
+    margin: 0;
+    /* Asegurar que la card ocupe exactamente el 100% del contenedor */
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  .detalle-mundial {
+    margin-top: var(--space-6);
+    padding: var(--space-4);
+  }
+
+  .mundial-card__header {
+    margin-bottom: var(--space-3);
+    padding-bottom: var(--space-3);
+  }
+
+  .mundial-card__image {
+    height: 180px;
+  }
+
+  .mundial-card__year {
+    font-size: var(--font-size-xl);
+  }
+
+  .mundial-card__sede {
+    font-size: var(--font-size-sm);
+  }
+
+  .mundial-card__final-match {
+    font-size: var(--font-size-base);
+    padding: var(--space-3);
+  }
+
+  .mundiales-carousel-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+    border-width: 1px;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  }
+
+  .mundiales-carousel-btn--prev {
+    left: -15px;
+  }
+
+  .mundiales-carousel-btn--next {
+    right: -15px;
+  }
+
+  .mundiales-carousel-indicators {
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-2);
+  }
+
+  .mundiales-carousel-indicator {
+    width: 8px;
+    height: 8px;
+    border-width: 1.5px;
+  }
+
+  .mundiales-carousel-indicator.active {
+    width: 24px;
+    height: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mundiales-carousel-wrapper {
+    padding: 0 var(--space-4);
+    margin: var(--space-4) auto var(--space-2) auto;
+  }
+
+  .mundiales-carousel-container {
+    padding: 0;
+    width: 100%;
+    /* Asegurar que no haya padding que afecte el cálculo */
+    box-sizing: border-box;
+  }
+
+  .mundial-card {
+    padding: var(--space-3);
+    /* Asegurar que la card ocupe exactamente el 100% del contenedor */
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .detalle-mundial {
+    margin-top: var(--space-4);
+    padding: var(--space-3);
+  }
+
+  .detalle-mundial h2 {
+    font-size: 1.5rem;
+    padding: 0;
+  }
+
+  .detalle-mundial h3 {
+    font-size: 1rem;
+    padding: 0;
+  }
+
+  .detalle-mundial .resumen {
+    padding: 0;
+    margin-bottom: var(--space-4);
+  }
+
+  .mundial-card__image {
+    height: 150px;
+  }
+
+  .mundial-card__year {
+    font-size: var(--font-size-lg);
+  }
+
+  .mundial-card__final-match {
+    font-size: var(--font-size-sm);
+    padding: var(--space-2);
+  }
+
+  .mundiales-carousel-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 1.25rem;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .mundiales-carousel-btn:hover {
+    transform: translateY(-50%) scale(1.05);
+  }
+
+  .mundiales-carousel-btn--prev {
+    left: -8px;
+  }
+
+  .mundiales-carousel-btn--next {
+    right: -8px;
+  }
+
+  .mundiales-carousel-indicators {
+    gap: var(--space-1);
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-2);
+    padding: var(--space-1);
+  }
+
+  .mundiales-carousel-indicator {
+    width: 7px;
+    height: 7px;
+  }
+
+  .mundiales-carousel-indicator.active {
+    width: 20px;
+    height: 7px;
+  }
+}
+
 
 @media (max-width: 700px) {
   .tabla-mundiales .bracket {

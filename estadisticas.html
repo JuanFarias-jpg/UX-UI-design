@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/pages.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="css/onboarding.css">
     <link rel="stylesheet" href="css/estadisticas.css">
     <link rel="stylesheet" href="css/mundiales.css">
 
@@ -54,7 +55,7 @@
                     <button class="theme-toggle" 
                             aria-label="Cambiar tema claro/oscuro"
                             title="Cambiar tema">
-                        <span class="theme-toggle__icon">🌙</span>
+                        <span class="theme-toggle__icon">☀️</span>
                     </button>
 
                     <!-- Botón de login -->
@@ -74,74 +75,52 @@
                 Records y estadisticas de los mundiales
             </p>
 
-            <!-- Barra de búsqueda -->
-            <div class="search-bar">
-                <span class="search-icon" aria-hidden="true">🔍</span>
-                <input 
-                  type="search" 
-                  class="search-input" 
-                  placeholder="Buscar mundiales, equipos, jugadores..."
-                  aria-label="Buscar publicaciones">
+            <!-- Contenedor de búsqueda y filtros -->
+            <div class="search-filters-container">
+              <!-- Barra de búsqueda -->
+              <div class="search-bar">
+                  <input 
+                    type="search" 
+                    class="search-input" 
+                    placeholder="Buscar por año o nombre de mundial..."
+                    aria-label="Buscar estadísticas por año o nombre de mundial"
+                    aria-describedby="search-stats-hint">
+                  <span id="search-stats-hint" class="sr-only">Escribe el año o nombre del mundial para buscar sus estadísticas</span>
+              </div>
+
+              <!-- Filtros avanzados -->
+              <div class="filters-grid" aria-labelledby="filters-title">
+                <h2 id="filters-title" class="sr-only">Filtros de búsqueda</h2>
+                <select class="filter-dropdown" aria-label="Filtrar estadísticas por mundial" id="filter-mundial-stats">
+                  <option value="">Todos los mundiales</option>
+                  <option value="2026">Mundial 2026</option>
+                  <option value="2022">Qatar 2022</option>
+                  <option value="2018">Rusia 2018</option>
+                  <option value="2014">Brasil 2014</option>
+                  <option value="2010">Sudáfrica 2010</option>
+                  <option value="2006">Alemania 2006</option>
+                  <option value="otros">Mundiales anteriores</option>
+                </select>
+
+                <select class="filter-dropdown" aria-label="Filtrar estadísticas por selección campeona" id="filter-seleccion-stats">
+                  <option value="">Todos los campeones</option>
+                  <option value="argentina">Argentina</option>
+                  <option value="francia">Francia</option>
+                  <option value="brasil">Brasil</option>
+                  <option value="alemania">Alemania</option>
+                  <option value="italia">Italia</option>
+                  <option value="españa">España</option>
+                  <option value="otros">Otros campeones</option>
+                </select>
+              </div>
             </div>
           </header>
-
-        <!-- Sección de filtros -->
-        <section class="filters-section" aria-labelledby="filters-title">
-          <h2 id="filters-title" class="sr-only">Filtros de búsqueda</h2>
-
-        <!-- Filtros avanzados -->
-          <div class="filters-grid">
-            <select class="filter-dropdown" aria-label="Filtrar por mundial">
-              <option value="">Todos los mundiales</option>
-              <option value="2026">Mundial 2026</option>
-              <option value="2022">Qatar 2022</option>
-              <option value="2018">Rusia 2018</option>
-              <option value="2014">Brasil 2014</option>
-              <option value="2010">Sudáfrica 2010</option>
-              <option value="2006">Alemania 2006</option>
-              <option value="otros">Mundiales anteriores</option>
-            </select>
-
-            <select class="filter-dropdown" aria-label="Filtrar por selección">
-              <option value="">Todos los campeones</option>
-              <option value="argentina">Argentina</option>
-              <option value="francia">Francia</option>
-              <option value="brasil">Brasil</option>
-              <option value="alemania">Alemania</option>
-              <option value="italia">Italia</option>
-              <option value="españa">España</option>
-              <option value="otros">Otros campeones</option>
-            </select>
-
-            <select class="filter-dropdown" aria-label="Ordenar por">
-              <option value="recent">Año</option>
-              <option value="popular">Goles</option>
-              <option value="views">Cantidad de espectadores</option>
-              <option value="comments">Otras opciones</option>
-            </select>
-          </div>
-      </section>
 
     <!-- ====================== RESUMEN GENERAL ====================== -->
     <section id="resumen-general">
       <h2>Resumen General</h2>
-      <div class="tabla-mundiales">
-        <table id="tbMundialesResumen">
-          <thead>
-            <tr>
-              <th>Año</th>
-              <th>Sede</th>
-              <th>Campeón</th>
-              <th>Subcampeón</th>
-              <th>Goleador</th>
-              <th>Partidos</th>
-              <th>Goles</th>
-              <th>Mejor Jugador</th>
-              <th>Observaciones</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
+      <div class="estadisticas-cards-grid" id="estadisticas-cards-container">
+        <!-- Las cards se generan dinámicamente con JavaScript -->
       </div>
     </section>
 
@@ -150,23 +129,8 @@
     <section id="partidos-mundial">
       <br>
       <h2>Partidos por Mundial</h2>
-      <div class="tabla-mundiales">
-        <table id="tbPartidos">
-          <thead>
-            <tr>
-              <th>Fecha</th>
-              <th>Fase</th>
-              <th>Seleccion A</th>
-              <th>Resultado</th>
-              <th>Seleccion B</th>
-              <th>Goleadores A</th>
-              <th>Goleadores B</th>
-              <th>Estadio</th>
-              <th>Ciudad</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
+      <div class="partidos-cards-grid" id="partidos-cards-container">
+        <!-- Las cards de partidos se generan dinámicamente con JavaScript -->
       </div>
     </section>
 
@@ -248,6 +212,7 @@
     <script src="js/navigation.js"></script>
     <script src="js/animations.js"></script>
     <script src="js/accessibility.js"></script>
+    <script src="js/onboarding.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/mundiales.js"></script>
 

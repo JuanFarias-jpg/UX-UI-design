@@ -77,12 +77,18 @@
   /* ===== NAVBAR DESKTOP ===== */
   /* Mostrar menú completo en desktop */
   .navbar__menu {
-    display: flex; /* Ya está en flex por defecto */
+    display: flex !important; /* Ya está en flex por defecto */
+    justify-self: center; /* Asegurar que esté centrado */
   }
 
   /* Ocultar hamburguesa en desktop */
   .navbar__toggle {
-    display: none;
+    display: none !important;
+  }
+  
+  /* Asegurar que el grid funcione correctamente en desktop */
+  .navbar {
+    grid-template-columns: auto 1fr auto;
   }
 
   /* ===== GRID: 3 COLUMNAS ===== */
@@ -145,9 +151,16 @@
 
 /* Mobile: Menú oculto por defecto */
 @media (max-width: 1023px) {
+  /* Asegurar que el grid funcione en mobile */
+  .navbar {
+    grid-template-columns: auto 1fr auto;
+  }
+
   /* Mostrar hamburguesa solo en móvil */
   .navbar__toggle {
     display: flex;
+    grid-column: 3; /* Posicionar en tercera columna */
+    justify-self: end; /* Alinear a la derecha */
   }
 
   /* Ocultar controles en la navbar en móvil
@@ -165,6 +178,7 @@
     bottom: 0;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: flex-start;
     gap: 0;
     padding: var(--space-6);
     background-color: var(--color-surface);
@@ -181,6 +195,9 @@
     
     /* Sobreponer otros elementos */
     z-index: var(--z-dropdown);
+    
+    /* En mobile el menú no está centrado, está en overlay */
+    justify-self: auto;
   }
 
   /* Menú abierto */

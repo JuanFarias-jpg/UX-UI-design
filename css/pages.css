@@ -270,32 +270,95 @@ main.publications-page,
 
 .publications-header {
   text-align: center;
-  margin-bottom: var(--space-20);
+  margin-bottom: var(--space-8);
+}
+
+/* Contenedor de búsqueda y filtros */
+.search-filters-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 var(--space-4);
+  align-items: center; /* Centrar elementos en móvil */
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* Desktop: búsqueda y filtros lado a lado */
+@media (min-width: 768px) {
+  .search-filters-container {
+    flex-direction: row;
+    align-items: center; /* Centrar verticalmente */
+    justify-content: center; /* Centrar horizontalmente los tres objetos */
+    gap: var(--space-4);
+    width: 100%;
+  }
+
+  .search-bar {
+    flex: 0 0 auto; /* No crecer ni encogerse, tamaño automático */
+    width: auto;
+    min-width: 400px;
+    max-width: 500px; /* Limitar ancho máximo */
+    margin: 0;
+    padding: 0;
+  }
+
+  .filters-grid {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-3);
+    margin: 0;
+    align-items: center; /* Centrar los filtros verticalmente */
+    justify-content: center; /* Centrar los filtros horizontalmente */
+  }
+
+  .filter-dropdown {
+    min-width: 150px;
+    max-width: 180px;
+  }
 }
 
 .search-bar {
-  max-width: 600px;
-  margin: 0 auto var(--space-6);
   position: relative;
   width: 100%;
-  padding: 0 var(--space-4);
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .search-bar {
+    width: auto;
+  }
 }
 
 /* Ajustes para móvil */
 @media (max-width: 639px) {
   .search-bar {
     padding: 0;
+    min-width: 100%;
+  }
+
+  .search-input {
+    padding: var(--space-3) var(--space-6);
+    font-size: var(--font-size-base);
   }
 }
 
 .search-input {
   width: 100%;
-  padding: var(--space-3) var(--space-6) var(--space-3) var(--space-12);
-  font-size: var(--font-size-base);
+  min-width: 100%;
+  padding: var(--space-4) var(--space-8); /* Aumentar padding para mayor tamaño */
+  font-size: var(--font-size-lg, 1.125rem); /* Aumentar tamaño de fuente */
   border: var(--border-width-thick) solid var(--color-border);
   border-radius: var(--border-radius-full);
   background-color: var(--color-surface);
   transition: all var(--transition-fast);
+  min-height: 48px; /* Altura mínima para mejor visibilidad */
 }
 
 .search-input:focus {
@@ -313,28 +376,43 @@ main.publications-page,
   pointer-events: none;
 }
 
-.filters-section {
-  margin-bottom: var(--space-8);
-}
-
+/* Mobile: filtros en columna debajo de la búsqueda */
 .filters-grid {
   display: grid;
   grid-template-columns: 1fr; /* Una columna en móvil */
-  gap: var(--space-4);
-  margin-top: var(--space-4);
+  gap: var(--space-3);
 }
 
-/* Tablet: 2 columnas */
-@media (min-width: 640px) {
+/* Tablet: 2 columnas para los filtros */
+@media (min-width: 640px) and (max-width: 767px) {
   .filters-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Desktop: 3 columnas */
-@media (min-width: 1024px) {
-  .filters-grid {
-    grid-template-columns: repeat(3, 1fr);
+/* Desktop: filtros en horizontal cuando están al lado de la búsqueda */
+@media (min-width: 768px) {
+  .search-filters-container {
+    padding-right: 0 var(--space-6); /* Padding lateral para evitar que se salga */
+    justify-content: center; /* Asegurar que estén centrados */
+    align-items: center; /* Centrar verticalmente */
+  }
+
+  .search-filters-container .filters-grid {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-2);
+    grid-template-columns: none; /* Anular grid en desktop cuando está en search-filters-container */
+    flex-shrink: 0;
+    align-items: center; /* Centrar los filtros verticalmente */
+    justify-content: center; /* Centrar los filtros horizontalmente */
+  }
+  
+  .search-filters-container .filter-dropdown {
+    min-width: 150px; /* Hacer más pequeños los filtros */
+    max-width: 180px;
+    font-size: var(--font-size-sm); /* Tamaño de fuente más pequeño */
+    padding: var(--space-2) ; /* Padding más compacto */
   }
 }
 
@@ -741,8 +819,9 @@ main.publications-page,
     text-align: left;
   }
   
-  .filters-grid {
-    grid-template-columns: repeat(3, 1fr);
+  /* Solo aplicar grid de 3 columnas si NO está dentro de search-filters-container */
+  .filters-section .filters-grid:not(.search-filters-container .filters-grid) {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 

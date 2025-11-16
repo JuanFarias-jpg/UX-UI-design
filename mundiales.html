@@ -6,7 +6,6 @@
     <meta name="description" content="World Cup Archive - Historia completa de los mundiales de fútbol">
     <title>World Cup Archive - Mundiales</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- CSS en orden: primero variables, luego reset, luego layout, etc. -->
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/reset.css">
@@ -15,6 +14,7 @@
     <link rel="stylesheet" href="css/pages.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="css/onboarding.css">
 
     <!-- estilos específicos para esta página -->
     <link rel="stylesheet" href="css/mundiales.css" />
@@ -55,7 +55,7 @@
                     <button class="theme-toggle" 
                             aria-label="Cambiar tema claro/oscuro"
                             title="Cambiar tema">
-                        <span class="theme-toggle__icon">🌙</span>
+                        <span class="theme-toggle__icon">☀️</span>
                     </button>
 
                     <!-- Botón de login -->
@@ -70,396 +70,40 @@
         <!--Tabla con filtros 
         ms margin start 
         mt margin top -->
-        <form class="filtros-form">
-            <div class="filtros-container anime-filters">
-                <input type="text" id="searchbar" placeholder="Busca aquí">
-                <select id="categoria">
-                    <option value="0" selected hidden>Seleccionar filtro</option>
-                    <option value="1">Año</option>
-                    <option value="2">Sede</option>
-                </select>
+        <div class="container">
+            <form class="filtros-form">
+                <div class="filtros-container anime-filters">
+                    <input type="text" id="searchbar" placeholder="Buscar por año o sede..." aria-label="Buscar mundial por año o sede" aria-describedby="searchbar-hint">
+                    <span id="searchbar-hint" class="sr-only">Escribe el año o nombre de la sede del mundial que deseas buscar</span>
+                    <select id="categoria" aria-label="Tipo de filtro de búsqueda">
+                        <option value="0" selected hidden>Seleccionar filtro</option>
+                        <option value="1">Año</option>
+                        <option value="2">Sede</option>
+                    </select>
+                </div>
+            </form>
+            
+            <!-- Carrusel de Cards de Mundiales -->
+            <div class="mundiales-carousel-wrapper">
+                <button class="mundiales-carousel-btn mundiales-carousel-btn--prev" aria-label="Mundial anterior" id="mundiales-carousel-prev" type="button">
+                    <span aria-hidden="true">‹</span>
+                </button>
+                <div class="mundiales-carousel-container" id="mundiales-carousel-container">
+                    <div class="mundiales-carousel" id="mundiales-cards-container">
+                        <!-- Las cards se generan dinámicamente con JavaScript -->
+                    </div>
+                </div>
+                <button class="mundiales-carousel-btn mundiales-carousel-btn--next" aria-label="Mundial siguiente" id="mundiales-carousel-next" type="button">
+                    <span aria-hidden="true">›</span>
+                </button>
             </div>
-        </form>
-        <div class="tabla-mundiales"> 
-            <table id="tMundiales"> 
-                <thead>
-                    <tr>
-                        <th>Año</th>
-                        <th>Sede</th>
-                        <th>Campeón</th>
-                    </tr>
-                </thead>
+            <div class="mundiales-carousel-indicators" id="mundiales-carousel-indicators"></div>
 
-                <tbody id="tbMundiales">
-                    <tr>
-                    <td><a href="#detalle-mundial">1930</a></td>
-                    <td>Uruguay</td>
-                    <td>
-                        <div class="bracket">
-                        <div class="stage final">
-                            <div class="match winner">🏆 Uruguay 4–2 Argentina</div>
-                        </div>
-                        </div>
-                    </td>
-                    </tr>
+            <!-- ========================================================= -->
+            <!-- ===== SECCIÓN DETALLE DE MUNDIAL SELECCIONADO ===== -->
+            <!-- ========================================================= -->
 
-                    <!-- 1934 -->
-                    <tr>
-                    <td><a href="#detalle-mundial">1934</a></td>
-                    <td>Italia</td>
-                    <td>
-                        <div class="bracket">
-                        <div class="stage semifinal">
-                            <div class="match">🇮🇹 Italia 1–0 Austria</div>
-                            <div class="match">🇨🇿 Checoslovaquia 3–1 Alemania</div>
-                        </div>
-                        <div class="stage final">
-                            <div class="match winner">🏆 Italia 2–1 Checoslovaquia (t.s.)</div>
-                        </div>
-                        </div>
-                    </td>
-                    </tr>
-
-                    <!-- 1938 -->
-                    <tr>
-                    <td><a href="#detalle-mundial" class="link-mundial">1938</a></td>
-                    <td>Francia</td>
-                    <td>
-                        <div class="bracket">
-                        <div class="stage semifinal">
-                            <div class="match">🇮🇹 Italia 2–1 Brasil</div>
-                            <div class="match">🇭🇺 Hungría 5–1 Suecia</div>
-                        </div>
-                        <div class="stage final">
-                            <div class="match winner">🏆 Italia 4–2 Hungría</div>
-                        </div>
-                        </div>
-                    </td>
-                    </tr>
-
-                    <!-- 1950 -->
-                    <tr>
-                    <td><a href="#detalle-mundial" class="link-mundial">1950</a></td>
-                    <td>Brasil</td>
-                    <td>
-                        <div class="bracket">
-                        <div class="stage final">
-                            <div class="match winner">🏆 Uruguay 2–1 Brasil (Grupo final)</div>
-                        </div>
-                        </div>
-                    </td>
-                    </tr>
-
-                    <!-- 1954 -->
-                    <tr>
-                    <td><a href="#detalle-mundial" class="link-mundial">1954</a></td>
-                    <td>Suiza</td>
-                    <td>
-                        <div class="bracket">
-                        <div class="stage semifinal">
-                            <div class="match">🇩🇪 Alemania 6–1 Austria</div>
-                            <div class="match">🇭🇺 Hungría 4–2 Uruguay</div>
-                        </div>
-                        <div class="stage final">
-                            <div class="match winner">🏆 Alemania 3–2 Hungría</div>
-                        </div>
-                        </div>
-                    </td>
-                    </tr>
-
-                    <!-- 1958 -->
-                    <tr>
-                    <td><a href="#detalle-mundial" class="link-mundial">1958</a></td>
-                    <td>Suecia</td>
-                    <td>
-                        <div class="bracket">
-                        <div class="stage semifinal">
-                            <div class="match">🇸🇪 Suecia 3–1 Alemania</div>
-                            <div class="match">🇧🇷 Brasil 5–2 Francia</div>
-                        </div>
-                        <div class="stage final">
-                            <div class="match winner">🏆 Brasil 5–2 Suecia</div>
-                        </div>
-                        </div>
-                    </td>
-                    </tr>
-
-                    <!-- 1962 -->
-                    <tr>
-                    <td><a href="#detalle-mundial" class="link-mundial">1962</a></td>
-                    <td>Chile</td>
-                    <td>
-                        <div class="bracket">
-                        <div class="stage semifinal">
-                            <div class="match">🇧🇷 Brasil 4–2 Chile</div>
-                            <div class="match">🇨🇿 Checoslovaquia 3–1 Yugoslavia</div>
-                        </div>
-                        <div class="stage final">
-                            <div class="match winner">🏆 Brasil 3–1 Checoslovaquia</div>
-                        </div>
-                        </div>
-                    </td>
-                    </tr>
-
-                    <!-- 1966 -->
-                    <tr>
-                    <td><a href="#detalle-mundial" class="link-mundial">1966</a></td>
-                    <td>Inglaterra</td>
-                    <td>
-                        <div class="bracket">
-                        <div class="stage semifinal">
-                            <div class="match">🏴 Inglaterra 2–1 Portugal</div>
-                            <div class="match">🇩🇪 Alemania 2–1 URSS</div>
-                        </div>
-                        <div class="stage final">
-                            <div class="match winner">🏆 Inglaterra 4–2 Alemania (t.s.)</div>
-                        </div>
-                        </div>
-                    </td>
-                    </tr>
-
-                    <!-- 1970 -->
-                    <tr>
-                    <td><a href="#detalle-mundial" class="link-mundial">1970</a></td>
-                    <td>México</td>
-                    <td>
-                        <div class="bracket">
-                        <div class="stage semifinal">
-                            <div class="match">🇧🇷 Brasil 3–1 Uruguay</div>
-                            <div class="match">🇮🇹 Italia 4–3 Alemania (t.s.)</div>
-                        </div>
-                        <div class="stage final">
-                            <div class="match winner">🏆 Brasil 4–1 Italia</div>
-                        </div>
-                        </div>
-                    </td>
-                    </tr>
-
-                    <!-- 1974 -->
-                    <tr>
-                    <td><a href="#detalle-mundial" class="link-mundial">1974</a></td>
-                    <td>Alemania Federal</td>
-                    <td>
-                        <div class="bracket">
-                        <div class="stage semifinal">
-                            <div class="match">🇩🇪 RFA 1–0 Polonia</div>
-                            <div class="match">🇳🇱 Países Bajos 2–0 Brasil</div>
-                        </div>
-                        <div class="stage final">
-                            <div class="match winner">🏆 RFA 2–1 Países Bajos</div>
-                        </div>
-                        </div>
-                    </td>
-                    </tr>
-
-                    <!-- 1978 -->
-                    <tr>
-                    <td><a href="#detalle-mundial" class="link-mundial">1978</a></td>
-                    <td>Argentina</td>
-                    <td>
-                        <div class="bracket">
-                        <div class="stage final">
-                            <div class="match winner">🏆 Argentina 3–1 Países Bajos (t.s.)</div>
-                        </div>
-                        </div>
-                    </td>
-                    </tr>
-
-                    <!-- 1982 -->
-                    <tr>
-                    <td><a href="#detalle-mundial" class="link-mundial">1982</a></td>
-                    <td>España</td>
-                    <td>
-                        <div class="bracket">
-                        <div class="stage semifinal">
-                            <div class="match">🇮🇹 Italia 2–0 Polonia</div>
-                            <div class="match">🇩🇪 Alemania 3–3 Francia (5–4 pen.)</div>
-                        </div>
-                        <div class="stage final">
-                            <div class="match winner">🏆 Italia 3–1 Alemania</div>
-                        </div>
-                        </div>
-                    </td>
-                    </tr>
-
-                    <!-- 1986 -->
-                    <tr>
-                    <td><a href="#detalle-mundial" class="link-mundial">1986</a></td>
-                    <td>México</td>
-                    <td>
-                        <div class="bracket">
-                        <div class="stage semifinal">
-                            <div class="match">🇩🇪 Alemania 2–0 Francia</div>
-                            <div class="match">🇦🇷 Argentina 2–0 Bélgica</div>
-                        </div>
-                        <div class="stage final">
-                            <div class="match winner">🏆 Argentina 3–2 Alemania</div>
-                        </div>
-                        </div>
-                    </td>
-                    </tr>
-
-                    <!-- 1990 -->
-                    <tr>
-                    <td><a href="#detalle-mundial" class="link-mundial">1990</a></td>
-                    <td>Italia</td>
-                    <td>
-                        <div class="bracket">
-                        <div class="stage semifinal">
-                            <div class="match">🇩🇪 Alemania 1–1 Inglaterra (4–3 pen.)</div>
-                            <div class="match">🇦🇷 Argentina 1–1 Italia (4–3 pen.)</div>
-                        </div>
-                        <div class="stage final">
-                            <div class="match winner">🏆 Alemania 1–0 Argentina</div>
-                        </div>
-                        </div>
-                    </td>
-                    </tr>
-
-                    <!-- 1994 -->
-                    <tr>
-                    <td><a href="#detalle-mundial" class="link-mundial">1994</a></td>
-                    <td>EE.UU.</td>
-                    <td>
-                        <div class="bracket">
-                        <div class="stage semifinal">
-                            <div class="match">🇧🇷 Brasil 1–0 Suecia</div>
-                            <div class="match">🇮🇹 Italia 2–1 Bulgaria</div>
-                        </div>
-                        <div class="stage final">
-                            <div class="match winner">🏆 Brasil 0–0 Italia (3–2 pen.)</div>
-                        </div>
-                        </div>
-                    </td>
-                    </tr>
-
-                    <!-- 1998 -->
-                    <tr>
-                    <td><a href="#detalle-mundial" class="link-mundial">1998</a></td>
-                    <td>Francia</td>
-                    <td>
-                        <div class="bracket">
-                        <div class="stage semifinal">
-                            <div class="match">🇫🇷 Francia 2–1 Croacia</div>
-                            <div class="match">🇧🇷 Brasil 2–1 Países Bajos (pen.)</div>
-                        </div>
-                        <div class="stage final">
-                            <div class="match winner">🏆 Francia 3–0 Brasil</div>
-                        </div>
-                        </div>
-                    </td>
-                    </tr>
-
-                    <!-- 2002 -->
-                    <tr>
-                    <td><a href="#detalle-mundial" class="link-mundial">2002</a></td>
-                    <td>Corea / Japón</td>
-                    <td>
-                        <div class="bracket">
-                        <div class="stage semifinal">
-                            <div class="match">🇩🇪 Alemania 1–0 Corea del Sur</div>
-                            <div class="match">🇧🇷 Brasil 1–0 Turquía</div>
-                        </div>
-                        <div class="stage final">
-                            <div class="match winner">🏆 Brasil 2–0 Alemania</div>
-                        </div>
-                        </div>
-                    </td>
-                    </tr>
-
-                    <!-- 2006 -->
-                    <tr>
-                    <td><a href="#detalle-mundial" class="link-mundial">2006</a></td>
-                    <td>Alemania</td>
-                    <td>
-                        <div class="bracket">
-                        <div class="stage semifinal">
-                            <div class="match">🇮🇹 Italia 2–0 Alemania</div>
-                            <div class="match">🇫🇷 Francia 1–0 Portugal</div>
-                        </div>
-                        <div class="stage final">
-                            <div class="match winner">🏆 Italia 1–1 Francia (5–3 pen.)</div>
-                        </div>
-                        </div>
-                    </td>
-                    </tr>
-
-                    <!-- 2010 -->
-                    <tr>
-                    <td><a href="#detalle-mundial" class="link-mundial">2010</a></td>
-                    <td>Sudáfrica</td>
-                    <td>
-                        <div class="bracket">
-                        <div class="stage semifinal">
-                            <div class="match">🇳🇱 Países Bajos 3–2 Uruguay</div>
-                            <div class="match">🇪🇸 España 1–0 Alemania</div>
-                        </div>
-                        <div class="stage final">
-                            <div class="match winner">🏆 España 1–0 Países Bajos (t.s.)</div>
-                        </div>
-                        </div>
-                    </td>
-                    </tr>
-
-                    <!-- 2014 -->
-                    <tr>
-                    <td><a href="#detalle-mundial" class="link-mundial">2014</a></td>
-                    <td>Brasil</td>
-                    <td>
-                        <div class="bracket">
-                        <div class="stage semifinal">
-                            <div class="match">🇩🇪 Alemania 7–1 Brasil</div>
-                            <div class="match">🇦🇷 Argentina 0–0 Países Bajos (4–2 pen.)</div>
-                        </div>
-                        <div class="stage final">
-                            <div class="match winner">🏆 Alemania 1–0 Argentina (t.s.)</div>
-                        </div>
-                        </div>
-                    </td>
-                    </tr>
-
-                    <!-- 2018 -->
-                    <tr>
-                    <td><a href="#detalle-mundial" class="link-mundial">2018</a></td>
-                    <td>Rusia</td>
-                    <td>
-                        <div class="bracket">
-                        <div class="stage semifinal">
-                            <div class="match">🇫🇷 Francia 1–0 Bélgica</div>
-                            <div class="match">🏴 Inglaterra 1–2 Croacia (t.s.)</div>
-                        </div>
-                        <div class="stage final">
-                            <div class="match winner">🏆 Francia 4–2 Croacia</div>
-                        </div>
-                        </div>
-                    </td>
-                    </tr>
-
-                    <!-- 2022 -->
-                    <tr>
-                    <td><a href="#detalle-mundial" class="link-mundial">2022</a></td>
-                    <td>Quatar</td>
-                    <td>
-                        <div class="bracket">
-                        <div class="stage semifinal">
-                            <div class="match">🇦🇷 Argentina 3–0 Croacia</div>
-                            <div class="match">🇫🇷 Francia 2–0 Marruecos</div>
-                        </div>
-                        <div class="stage final">
-                            <div class="match winner">🏆 Argentina 3–3 Francia (4–2 pen.)</div>
-                        </div>
-                        </div>
-                    </td>
-                    </tr>
-
-                </tbody>
-            </table>
-        </div>
-        <!-- ========================================================= -->
-        <!-- ===== SECCIÓN DETALLE DE MUNDIAL SELECCIONADO ===== -->
-        <!-- ========================================================= -->
-
-        <section id="detalle-mundial" class="detalle-mundial">
+            <section id="detalle-mundial" class="detalle-mundial" style="display: none;">
             <h2 id="detalle-titulo">Mundial 2022 – Qatar</h2>
             <h3 id="detalle-sede">Sede: Qatar</h3>
 
@@ -483,26 +127,20 @@
                 </div>
             </div>
 
-            <!-- Tabla de estadísticas -->
+            <!-- Carrusel de estadísticas -->
             <h3>Estadísticas del torneo</h3>
-            <table class="tabla-estadisticas">
-                <thead>
-                <tr>
-                    <th>Partidos</th>
-                    <th>Goles</th>
-                    <th>Partidos Jugados</th>
-                    <th>Promedio Goles/Partido</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td id="detalle-partidos">64</td>
-                    <td id="detalle-goles">172</td>
-                    <td id="detalle-asistencias">110</td>
-                    <td id="detalle-promedio">2.69</td>
-                </tr>
-                </tbody>
-            </table>
+            <div class="estadisticas-carousel-container">
+                <button class="carousel-btn carousel-btn--prev" aria-label="Estadística anterior" id="carousel-prev" type="button">
+                    <span aria-hidden="true">‹</span>
+                </button>
+                <div class="estadisticas-carousel" id="estadisticas-carousel" role="region" aria-label="Carrusel de estadísticas del mundial">
+                    <!-- Las cards de estadísticas se generan dinámicamente con JavaScript -->
+                </div>
+                <button class="carousel-btn carousel-btn--next" aria-label="Siguiente estadística" id="carousel-next" type="button">
+                    <span aria-hidden="true">›</span>
+                </button>
+            </div>
+            <div class="carousel-indicators" id="carousel-indicators"></div>
 
             <br>
             <!-- Galería -->
@@ -518,9 +156,8 @@
             </div>
 
             <p class="ver-mas">Ver más imágenes ↓</p>
-        </section>
-
-
+            </section>
+        </div>
     </main>
 
     <!-- FOOTER -->
@@ -578,6 +215,7 @@
     <script src="js/navigation.js"></script>
     <script src="js/animations.js"></script>
     <script src="js/accessibility.js"></script>
+    <script src="js/onboarding.js"></script>
     <!-- Script de esta página -->
     <script src="js/mundiales.js"></script>
 </body>

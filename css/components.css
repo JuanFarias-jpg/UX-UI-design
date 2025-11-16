@@ -379,9 +379,14 @@
 .filter-bar {
   display: flex;
   gap: var(--space-3);
+  margin-top: var(--space-6);
   margin-bottom: var(--space-8);
   overflow-x: auto;
   padding-bottom: var(--space-2);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-4);
+  padding-right: var(--space-4);
   
   /* Ocultar scrollbar pero mantener funcionalidad */
   scrollbar-width: none;
