@@ -460,13 +460,13 @@
 /* ===== CARRUSEL DE MUNDIALES ===== */
 /* ========================================================= */
 
-/* ===== AJUSTAR AQUÍ: Dimensiones del carrusel y espaciado ===== */
+/* ===== Dimensiones del carrusel y espaciado ===== */
 .mundiales-carousel-wrapper {
   position: relative;
   width: 100%;
-  max-width: 900px; /* ⬅️ AJUSTA ESTE VALOR: ancho máximo del carrusel */
-  margin: var(--space-4) auto var(--space-2) auto; /* ⬅️ AJUSTA: margin-bottom para acercar al footer */
-  padding: 0 var(--space-10); /* ⬅️ AJUSTA: padding lateral del carrusel */
+  max-width: 900px; /*ancho máximo del carrusel */
+  margin: var(--space-4) auto var(--space-2) auto; /*margin-bottom para acercar al footer */
+  padding: 0 var(--space-10); /* padding lateral del carrusel */
 }
 
 .mundiales-carousel-container {
@@ -487,7 +487,7 @@
   gap: 0;
 }
 
-/* ===== AJUSTAR AQUÍ: Dimensiones de las cards ===== */
+/* ===== Dimensiones de las cards ===== */
 .mundial-card {
   min-width: 100%;
   max-width: 100%;
@@ -500,7 +500,7 @@
   margin: 0;
   border: var(--border-width) solid var(--color-border);
   border-radius: var(--border-radius-lg);
-  padding: var(--space-6); /* ⬅️ AJUSTA ESTE VALOR: padding interno de la card */
+  padding: var(--space-6); /* padding interno de la card */
   box-shadow: var(--shadow-md);
   transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
               transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
@@ -509,7 +509,7 @@
   flex-direction: column;
   opacity: 0;
   animation: fadeIn 0.4s ease-out forwards;
-  /* ⬅️ AJUSTA: min-height para controlar altura mínima de la card */
+  /* min-height para controlar altura mínima de la card */
   min-height: auto;
 }
 
@@ -645,15 +645,15 @@
 }
 
 /* Indicadores del carrusel */
-/* ===== AJUSTAR AQUÍ: Espacio entre indicadores y footer ===== */
-/* Reduce margin-bottom para acercar las cards al footer */
+/* Espacio entre indicadores y footer ===== */
+/* ReducIR margin-bottom para acercar las cards al footer */
 .mundiales-carousel-indicators {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: var(--space-3);
   margin-top: var(--space-2);
-  margin-bottom: var(--space-2); /* ⬅️ AJUSTA ESTE VALOR: reduce para acercar al footer */
+  margin-bottom: var(--space-2); /* reduce para acercar al footer */
   padding: var(--space-2);
   min-height: 20px;
 }
