@@ -50,6 +50,19 @@
   color: white;
 }
 
+/* Botones del carrusel de mundiales en modo oscuro */
+.dark-mode .mundiales-carousel-wrapper .carousel__control {
+  background-color: rgba(30, 30, 30, 0.95);
+  color: var(--color-text);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .mundiales-carousel-wrapper .carousel__control:hover {
+  background-color: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
 .dark-mode .hero {
   /* Gradiente ajustado para modo oscuro */
   background: linear-gradient(135deg, 
@@ -61,12 +74,27 @@
 .dark-mode .btn--outline {
   background-color: transparent;
   border-color: var(--color-primary);
-  color: var(--color-primary);
+  color: var(--color-primary-light, #2dbba8); /* Versión más clara en modo oscuro para mejor contraste */
 }
 
 .dark-mode .btn--outline:hover {
   background-color: var(--color-primary);
   color: var(--color-text);
+}
+
+/* ===== ENLACES EN MODO OSCURO ===== */
+.dark-mode .link-mundial {
+  color: var(--color-primary-light, #2dbba8); /* Versión más clara en modo oscuro para mejor contraste */
+}
+
+.dark-mode .link-mundial:hover {
+  color: var(--color-primary-light, #2dbba8);
+  text-decoration-thickness: 2px;
+}
+
+/* ===== CARDS DE MUNDIALES EN MODO OSCURO ===== */
+.dark-mode .mundial-card__year {
+  color: var(--color-primary-light, #2dbba8); /* Versión más clara en modo oscuro para mejor contraste */
 }
 
 /* ===== INPUTS Y FORMS EN MODO OSCURO ===== */

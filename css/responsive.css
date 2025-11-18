@@ -77,8 +77,8 @@
   /* ===== NAVBAR DESKTOP ===== */
   /* Mostrar menú completo en desktop */
   .navbar__menu {
-    display: flex !important; /* Ya está en flex por defecto */
-    justify-self: center; /* Asegurar que esté centrado */
+    display: flex !important; 
+    justify-self: center; 
   }
 
   /* Ocultar hamburguesa en desktop */

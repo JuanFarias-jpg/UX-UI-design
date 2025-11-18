@@ -62,7 +62,7 @@
     </header>
 
     <!-- MAIN CONTENT -->
-    <main class="main">
+    <main class="main" id="main">
         <!-- HERO SECTION: Noticias destacadas en carrusel -->
         <section class="hero" aria-labelledby="hero-title">
             <div class="container">
@@ -72,7 +72,7 @@
                 <div class="carousel" role="region" aria-label="Carrusel de noticias destacadas">
                     <div class="carousel__track">
                         <!-- Noticia 1 -->
-                        <article class="carousel__item carousel__item--active">
+                        <article id="carousel-item-1" class="carousel__item carousel__item--active" aria-hidden="false">
                             <div class="carousel__image">
                                 <img src="assets/images/news-1.jpg" 
                                      alt="Mundial 2026 en México, Estados Unidos y Canadá">
@@ -89,7 +89,7 @@
                         </article>
 
                         <!-- Noticia 2 -->
-                        <article class="carousel__item">
+                        <article id="carousel-item-2" class="carousel__item" aria-hidden="true">
                             <div class="carousel__image">
                                 <img src="assets/images/news-2.jpeg" 
                                      alt="Estadísticas históricas de los mundiales">
@@ -119,9 +119,9 @@
                     </button>
 
                     <!-- Indicadores -->
-                    <div class="carousel__indicators" role="tablist" aria-label="Indicadores de noticias">
-                        <button role="tab" aria-selected="true" aria-label="Noticia 1" aria-controls="carousel-item-1" type="button"></button>
-                        <button role="tab" aria-selected="false" aria-label="Noticia 2" aria-controls="carousel-item-2" type="button"></button>
+                    <div class="carousel__indicators" role="group" aria-label="Indicadores de noticias">
+                        <button type="button" aria-label="Noticia 1" aria-controls="carousel-item-1" aria-current="true"></button>
+                        <button type="button" aria-label="Noticia 2" aria-controls="carousel-item-2" aria-current="false"></button>
                     </div>
                 </div>
             </div>
@@ -271,29 +271,77 @@
                 </div>
 
                 <!-- Grid de mundiales -->
-                <div class="world-cup-grid">
-                    <a href="mundiales.html" class="world-cup-card">
+                <div class="world-cup-grid" id="mundiales-grid">
+                    <a href="mundiales.html" class="world-cup-card" data-continente="américa">
                         <div class="world-cup-card__year">2026</div>
                         <div class="world-cup-card__name">México, USA, Canadá</div>
                         <div class="world-cup-card__status">Próximo</div>
                     </a>
 
-                    <a href="mundiales.html" class="world-cup-card">
+                    <a href="mundiales.html" class="world-cup-card" data-continente="asia">
                         <div class="world-cup-card__year">2022</div>
                         <div class="world-cup-card__name">Qatar</div>
                         <div class="world-cup-card__champion">🏆 Argentina</div>
                     </a>
 
-                    <a href="mundiales.html" class="world-cup-card">
+                    <a href="mundiales.html" class="world-cup-card" data-continente="europa">
                         <div class="world-cup-card__year">2018</div>
                         <div class="world-cup-card__name">Rusia</div>
                         <div class="world-cup-card__champion">🏆 Francia</div>
                     </a>
 
-                    <a href="mundiales.html" class="world-cup-card">
+                    <a href="mundiales.html" class="world-cup-card" data-continente="américa">
                         <div class="world-cup-card__year">2014</div>
                         <div class="world-cup-card__name">Brasil</div>
                         <div class="world-cup-card__champion">🏆 Alemania</div>
+                    </a>
+
+                    <a href="mundiales.html" class="world-cup-card" data-continente="áfrica">
+                        <div class="world-cup-card__year">2010</div>
+                        <div class="world-cup-card__name">Sudáfrica</div>
+                        <div class="world-cup-card__champion">🏆 España</div>
+                    </a>
+
+                    <a href="mundiales.html" class="world-cup-card" data-continente="europa">
+                        <div class="world-cup-card__year">2006</div>
+                        <div class="world-cup-card__name">Alemania</div>
+                        <div class="world-cup-card__champion">🏆 Italia</div>
+                    </a>
+
+                    <a href="mundiales.html" class="world-cup-card" data-continente="asia">
+                        <div class="world-cup-card__year">2002</div>
+                        <div class="world-cup-card__name">Corea / Japón</div>
+                        <div class="world-cup-card__champion">🏆 Brasil</div>
+                    </a>
+
+                    <a href="mundiales.html" class="world-cup-card" data-continente="europa">
+                        <div class="world-cup-card__year">1998</div>
+                        <div class="world-cup-card__name">Francia</div>
+                        <div class="world-cup-card__champion">🏆 Francia</div>
+                    </a>
+
+                    <a href="mundiales.html" class="world-cup-card" data-continente="américa">
+                        <div class="world-cup-card__year">1994</div>
+                        <div class="world-cup-card__name">EE.UU.</div>
+                        <div class="world-cup-card__champion">🏆 Brasil</div>
+                    </a>
+
+                    <a href="mundiales.html" class="world-cup-card" data-continente="europa">
+                        <div class="world-cup-card__year">1990</div>
+                        <div class="world-cup-card__name">Italia</div>
+                        <div class="world-cup-card__champion">🏆 Alemania</div>
+                    </a>
+
+                    <a href="mundiales.html" class="world-cup-card" data-continente="américa">
+                        <div class="world-cup-card__year">1986</div>
+                        <div class="world-cup-card__name">México</div>
+                        <div class="world-cup-card__champion">🏆 Argentina</div>
+                    </a>
+
+                    <a href="mundiales.html" class="world-cup-card" data-continente="europa">
+                        <div class="world-cup-card__year">1982</div>
+                        <div class="world-cup-card__name">España</div>
+                        <div class="world-cup-card__champion">🏆 Italia</div>
                     </a>
                 </div>
 
@@ -359,6 +407,7 @@
     <script src="js/navigation.js"></script>
     <script src="js/animations.js"></script>
     <script src="js/accessibility.js"></script>
+    <script src="js/filter.js"></script>
     <script src="js/onboarding.js"></script>
 </body>
 </html>

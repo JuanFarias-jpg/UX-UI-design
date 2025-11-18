@@ -531,7 +531,7 @@
 .mundial-card__year {
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-bold);
-  color: var(--color-primary);
+  color: var(--color-primary-dark, #147a6f); /* Cambiar a versión oscura para mejor contraste */
   margin: 0;
 }
 
@@ -644,6 +644,42 @@
   right: -20px;
 }
 
+/* Estilos para los botones del carrusel dentro de mundiales-carousel-wrapper */
+.mundiales-carousel-wrapper .carousel__control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: var(--border-radius-full);
+  font-size: var(--font-size-2xl);
+  color: var(--color-text);
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+  z-index: 10;
+}
+
+.mundiales-carousel-wrapper:hover .carousel__control {
+  opacity: 1;
+}
+
+.mundiales-carousel-wrapper .carousel__control:hover {
+  transform: translateY(-50%) scale(1.1);
+}
+
+.mundiales-carousel-wrapper .carousel__control--prev {
+  left: var(--space-4);
+}
+
+.mundiales-carousel-wrapper .carousel__control--next {
+  right: var(--space-4);
+}
+
 /* Indicadores del carrusel */
 /* Espacio entre indicadores y footer ===== */
 /* ReducIR margin-bottom para acercar las cards al footer */
@@ -740,6 +776,17 @@
     padding: var(--space-3);
   }
 
+  .mundiales-carousel-wrapper .carousel__control {
+    opacity: 0.7 !important;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+  
+  .mundiales-carousel-wrapper:hover .carousel__control {
+    opacity: 0.9 !important;
+  }
+
   .mundiales-carousel-btn {
     width: 40px;
     height: 40px;
@@ -828,6 +875,17 @@
   .mundial-card__final-match {
     font-size: var(--font-size-sm);
     padding: var(--space-2);
+  }
+
+  .mundiales-carousel-wrapper .carousel__control {
+    opacity: 0.7 !important;
+    width: 36px;
+    height: 36px;
+    font-size: 1.25rem;
+  }
+  
+  .mundiales-carousel-wrapper:hover .carousel__control {
+    opacity: 0.9 !important;
   }
 
   .mundiales-carousel-btn {

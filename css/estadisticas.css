@@ -242,14 +242,15 @@
 
 /* Enlaces en las tablas */
 .link-mundial {
-  color: var(--color-primary, #0077ff);
+  color: var(--color-primary-dark, #147a6f); /* Usar versión más oscura para mejor contraste */
   cursor: pointer;
   text-decoration: underline;
   transition: color var(--transition-fast, 0.2s ease);
 }
 
 .link-mundial:hover {
-  color: var(--color-primary-dark, #0053aa);
+  color: var(--color-primary-dark, #147a6f);
+  text-decoration-thickness: 2px; /* Hacer el subrayado más visible */
 }
 
 /* Mensaje indicador de scroll en móvil */

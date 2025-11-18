@@ -21,6 +21,20 @@
     currentIndex: 0,
     autoplayInterval: null,
     autoplayDelay: 5000, // 5 segundos
+    containerWidth: null, // Guardar el ancho del contenedor
+
+    /**
+     * Calcular y guardar el ancho del contenedor
+     */
+    calculateContainerWidth() {
+      const container = this.track?.closest('.carousel');
+      if (!container) return 0;
+      
+      // Forzar un reflow para obtener el ancho real
+      void container.offsetWidth;
+      const containerRect = container.getBoundingClientRect();
+      return containerRect.width;
+    },
 
     /**
      * Mostrar un slide específico
@@ -35,21 +49,62 @@
         this.currentIndex = index;
       }
 
-      // Ocultar todos los slides
-      this.items.forEach(item => {
-        item.classList.remove('carousel__item--active');
+      if (!this.track) return;
+
+      // Calcular el ancho solo si no está guardado o si es necesario recalcular
+      if (!this.containerWidth) {
+        this.containerWidth = this.calculateContainerWidth();
+      }
+      
+      // Aplicar transformación usando el ancho guardado
+      const translateX = -this.currentIndex * this.containerWidth;
+      this.track.style.transform = `translateX(${translateX}px)`;
+      this.track.style.willChange = 'transform';
+
+      // Actualizar atributos ARIA para accesibilidad
+      this.items.forEach((item, i) => {
+        const isActive = i === this.currentIndex;
+        item.setAttribute('aria-hidden', !isActive);
+        
+        // Buscar todos los elementos enfocables dentro del item
+        const focusableElements = item.querySelectorAll(
+          'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        );
+        
+        // Si el item está oculto, remover del tab order
+        // Si está visible, restaurar el tab order
+        focusableElements.forEach(element => {
+          if (!isActive) {
+            // Guardar el tabindex original si existe
+            if (!element.hasAttribute('data-original-tabindex')) {
+              const originalTabindex = element.getAttribute('tabindex');
+              if (originalTabindex !== null) {
+                element.setAttribute('data-original-tabindex', originalTabindex);
+              } else {
+                element.setAttribute('data-original-tabindex', '');
+              }
+            }
+            // Remover del tab order
+            element.setAttribute('tabindex', '-1');
+          } else {
+            // Restaurar el tabindex original
+            const originalTabindex = element.getAttribute('data-original-tabindex');
+            if (originalTabindex !== null) {
+              if (originalTabindex === '') {
+                element.removeAttribute('tabindex');
+              } else {
+                element.setAttribute('tabindex', originalTabindex);
+              }
+              element.removeAttribute('data-original-tabindex');
+            }
+          }
+        });
       });
 
-      // Mostrar el slide actual
-      this.items[this.currentIndex]?.classList.add('carousel__item--active');
-
-      // Actualizar indicadores
+      // Actualizar indicadores ARIA
       this.indicators.forEach((indicator, i) => {
-        if (i === this.currentIndex) {
-          indicator.setAttribute('aria-selected', 'true');
-        } else {
-          indicator.setAttribute('aria-selected', 'false');
-        }
+        const isActive = i === this.currentIndex;
+        indicator.setAttribute('aria-current', isActive ? 'true' : 'false');
       });
     },
 
@@ -102,6 +157,19 @@
     init() {
       if (!this.track || this.items.length === 0) return;
 
+      // Calcular y guardar el ancho del contenedor al inicializar
+      this.containerWidth = this.calculateContainerWidth();
+      
+      // Asegurar que todos los items tengan el ancho correcto
+      this.items.forEach(item => {
+        item.style.width = `${this.containerWidth}px`;
+        item.style.minWidth = `${this.containerWidth}px`;
+        item.style.maxWidth = `${this.containerWidth}px`;
+      });
+
+      // Inicializar posición inicial (mostrar el primer slide)
+      this.showSlide(0);
+
       // Botón anterior
       this.prevBtn?.addEventListener('click', () => this.prev());
 
@@ -125,6 +193,25 @@
       // Pausar al hacer hover (buena práctica de UX)
       this.track.addEventListener('mouseenter', () => this.stopAutoplay());
       this.track.addEventListener('mouseleave', () => this.startAutoplay());
+
+      // Recalcular posición cuando se redimensiona la ventana
+      let resizeTimeout;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+          // Recalcular ancho y actualizar items
+          this.containerWidth = this.calculateContainerWidth();
+          this.items.forEach(item => {
+            item.style.width = `${this.containerWidth}px`;
+            item.style.minWidth = `${this.containerWidth}px`;
+            item.style.maxWidth = `${this.containerWidth}px`;
+          });
+          // Recalcular posición después del resize
+          requestAnimationFrame(() => {
+            this.showSlide(this.currentIndex);
+          });
+        }, 250);
+      });
 
       // Pausar si el usuario prefiere menos movimiento
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {

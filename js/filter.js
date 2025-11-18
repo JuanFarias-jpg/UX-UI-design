@@ -405,11 +405,20 @@
    */
   filterButtons.forEach(btn => {
     btn.addEventListener('click', () => {
+      // Ignorar si el botón está en la sección de mundiales
+      if (document.querySelector('#mundiales')?.contains(btn)) {
+        return; // Los filtros de mundiales se manejan por separado
+      }
+
       const filter = btn.getAttribute('data-filter');
       currentFilters.category = filter;
 
-      // Actualizar estado visual de los botones
-      filterButtons.forEach(b => b.classList.remove('filter-btn--active'));
+      // Actualizar estado visual de los botones (solo los que NO están en mundiales)
+      filterButtons.forEach(b => {
+        if (!document.querySelector('#mundiales')?.contains(b)) {
+          b.classList.remove('filter-btn--active');
+        }
+      });
       btn.classList.add('filter-btn--active');
 
       applyFilters();
@@ -488,13 +497,192 @@
   `;
   document.head.appendChild(style);
 
+  // ===== FILTROS DE MUNDIALES (INDEX.HTML) =====
+  
+  // Mapeo de países/regiones a continentes
+  const continenteMap = {
+    'méxico': 'américa',
+    'mexico': 'américa',
+    'usa': 'américa',
+    'ee.uu.': 'américa',
+    'eeuu': 'américa',
+    'canadá': 'américa',
+    'canada': 'américa',
+    'brasil': 'américa',
+    'argentina': 'américa',
+    'uruguay': 'américa',
+    'chile': 'américa',
+    'qatar': 'asia',
+    'corea': 'asia',
+    'japón': 'asia',
+    'japon': 'asia',
+    'rusia': 'europa',
+    'alemania': 'europa',
+    'italia': 'europa',
+    'francia': 'europa',
+    'españa': 'europa',
+    'espana': 'europa',
+    'inglaterra': 'europa',
+    'suiza': 'europa',
+    'suecia': 'europa',
+    'sudáfrica': 'áfrica',
+    'sudafrica': 'áfrica'
+  };
+
+  /**
+   * Obtener el continente de una card de mundial
+   */
+  function getContinenteFromCard(card) {
+    // Primero verificar data-continente
+    const dataContinente = card.getAttribute('data-continente');
+    if (dataContinente) {
+      return dataContinente.toLowerCase();
+    }
+
+    // Si no, buscar en el nombre
+    const nameElement = card.querySelector('.world-cup-card__name');
+    if (!nameElement) return null;
+    
+    const name = nameElement.textContent.toLowerCase().trim();
+    
+    // Buscar en el mapeo
+    for (const [pais, continente] of Object.entries(continenteMap)) {
+      if (name.includes(pais)) {
+        return continente;
+      }
+    }
+    
+    return null;
+  }
+
+  /**
+   * Aplicar filtros de mundiales
+   */
+  function aplicarFiltrosMundiales() {
+    const mundialesSection = document.querySelector('#mundiales');
+    if (!mundialesSection) return;
+
+    const filterButtons = mundialesSection.querySelectorAll('.filter-btn');
+    const cards = mundialesSection.querySelectorAll('.world-cup-card');
+    const grid = document.querySelector('#mundiales-grid');
+    
+    if (!filterButtons.length || !cards.length || !grid) return;
+
+    // Encontrar el filtro activo
+    let filtroActivo = 'todos';
+    filterButtons.forEach(btn => {
+      if (btn.classList.contains('filter-btn--active')) {
+        const texto = btn.textContent.trim().toLowerCase();
+        filtroActivo = texto === 'todos' ? 'todos' : texto;
+      }
+    });
+
+    let visibleCount = 0;
+
+    // Remover todas las clases de animación primero
+    cards.forEach(card => {
+      card.classList.remove('fade-in');
+    });
+
+    // Aplicar filtros con animación
+    cards.forEach((card, index) => {
+      if (filtroActivo === 'todos') {
+        card.style.display = '';
+        card.style.opacity = '1';
+        setTimeout(() => {
+          card.style.animationDelay = `${index * 0.05}s`;
+          card.classList.add('fade-in');
+        }, 10);
+        visibleCount++;
+      } else {
+        const continente = getContinenteFromCard(card);
+        if (continente === filtroActivo) {
+          card.style.display = '';
+          card.style.opacity = '1';
+          setTimeout(() => {
+            card.style.animationDelay = `${visibleCount * 0.05}s`;
+            card.classList.add('fade-in');
+          }, 10);
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+          card.style.opacity = '0';
+        }
+      }
+    });
+
+    // Mostrar mensaje si no hay resultados
+    mostrarMensajeSinResultadosMundiales(visibleCount === 0);
+
+    // Anunciar resultado para lectores de pantalla
+    if (window.WCAAccessibility) {
+      window.WCAAccessibility.announce(
+        `${visibleCount} mundial${visibleCount !== 1 ? 'es' : ''} encontrado${visibleCount !== 1 ? 's' : ''}`
+      );
+    }
+  }
+
+  /**
+   * Mostrar mensaje cuando no hay resultados en mundiales
+   */
+  function mostrarMensajeSinResultadosMundiales(mostrar) {
+    const grid = document.querySelector('#mundiales-grid');
+    if (!grid) return;
+
+    let mensaje = grid.parentElement.querySelector('.no-results-mundiales');
+    
+    if (mostrar && !mensaje) {
+      mensaje = document.createElement('div');
+      mensaje.className = 'no-results-mundiales';
+      mensaje.style.cssText = 'grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--color-text-secondary);';
+      mensaje.innerHTML = `
+        <p style="font-size: 1.2rem; margin-bottom: 0.5rem;">😕 No se encontraron mundiales</p>
+        <p>Intenta seleccionar otro continente</p>
+      `;
+      grid.appendChild(mensaje);
+    } else if (!mostrar && mensaje) {
+      mensaje.remove();
+    }
+  }
+
+  // ===== EVENT LISTENERS PARA MUNDIALES =====
+  // Detectar si estamos en la sección de mundiales
+  const mundialesSection = document.querySelector('#mundiales');
+  if (mundialesSection) {
+    const mundialesFilterButtons = mundialesSection.querySelectorAll('.filter-btn');
+    
+    mundialesFilterButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        // Solo procesar si el botón está dentro de #mundiales
+        if (!mundialesSection.contains(btn)) return;
+        
+        // Remover clase activa de todos los botones en esta sección
+        mundialesFilterButtons.forEach(b => {
+          b.classList.remove('filter-btn--active');
+          b.setAttribute('aria-pressed', 'false');
+        });
+        
+        // Agregar clase activa al botón clickeado
+        btn.classList.add('filter-btn--active');
+        btn.setAttribute('aria-pressed', 'true');
+        
+        // Aplicar filtros de mundiales
+        aplicarFiltrosMundiales();
+      });
+    });
+
+    // Aplicar filtros iniciales de mundiales
+    aplicarFiltrosMundiales();
+  }
+
   // ===== INICIALIZACIÓN =====
-  // Aplicar filtros iniciales al cargar la página
+  // Aplicar filtros iniciales al cargar la página (solo para publicaciones)
   applyFilters();
 
   // ===== API PÚBLICA =====
   window.WCAFilters = {
     applyFilters,
+    aplicarFiltrosMundiales,
     resetFilters: () => {
       currentFilters = {
         category: 'all',
@@ -503,11 +691,13 @@
         search: ''
       };
       
-      // Resetear UI
+      // Resetear UI (solo botones que NO están en mundiales)
       filterButtons.forEach(btn => {
-        btn.classList.remove('filter-btn--active');
-        if (btn.getAttribute('data-filter') === 'all') {
-          btn.classList.add('filter-btn--active');
+        if (!document.querySelector('#mundiales')?.contains(btn)) {
+          btn.classList.remove('filter-btn--active');
+          if (btn.getAttribute('data-filter') === 'all') {
+            btn.classList.add('filter-btn--active');
+          }
         }
       });
       

@@ -54,21 +54,27 @@
           left: 0;
           background: var(--color-primary);
           color: white;
-          padding: 8px 16px;
+          padding: 12px 24px;
           text-decoration: none;
-          z-index: 9999;
+          z-index: 10000;
           transition: top 0.3s ease;
           font-weight: 600;
-          font-size: 14px !important; /* Tamaño fijo que no se ve afectado por zoom de fuente */
+          font-size: 16px;
           line-height: 1.5;
-          /* Asegurar que esté completamente oculto */
-          clip-path: polygon(0 0, 0 0, 0 0);
-          overflow: hidden;
+          border-radius: 0 0 4px 0;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          display: block;
+          width: auto;
         }
         
         .skip-link:focus {
           top: 0;
-          clip-path: none; /* Mostrar solo cuando tiene focus */
+          outline: 3px solid white;
+          outline-offset: 2px;
+        }
+        
+        .skip-link:hover {
+          background: var(--color-primary-dark, #147a6f);
         }
       `;
       document.head.appendChild(style);

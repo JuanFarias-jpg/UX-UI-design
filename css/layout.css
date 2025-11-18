@@ -230,7 +230,7 @@
 
 /* Sección con fondo alternativo */
 .section--alt {
-  background-color: var(--color-surface);
+  background-color: var(--color-bg);
 }
 
 .section__header {
@@ -349,6 +349,7 @@
   background-color: var(--color-bg);
   border: var(--border-width) solid var(--color-border);
   transition: all var(--transition-fast);
+  color: var(--color-text); /* Añadir color explícito para mejor contraste */
 }
 
 .social-link:hover {

@@ -23,7 +23,7 @@ const todosLosMundiales = [
   { anio: 2006, sede: "Alemania", imagen: "assets/images/trofeo.jpg", bracket: [{ type: "semifinal", matches: ["🇮🇹 Italia 2–0 Alemania", "🇫🇷 Francia 1–0 Portugal"] }, { type: "final", matches: ["🏆 Italia 1–1 Francia (5–3 pen.)"] }] },
   { anio: 2010, sede: "Sudáfrica", imagen: "assets/images/trofeo.jpg", bracket: [{ type: "semifinal", matches: ["🇳🇱 Países Bajos 3–2 Uruguay", "🇪🇸 España 1–0 Alemania"] }, { type: "final", matches: ["🏆 España 1–0 Países Bajos (t.s.)"] }] },
   { anio: 2014, sede: "Brasil", imagen: "assets/images/trofeo.jpg", bracket: [{ type: "semifinal", matches: ["🇩🇪 Alemania 7–1 Brasil", "🇦🇷 Argentina 0–0 Países Bajos (4–2 pen.)"] }, { type: "final", matches: ["🏆 Alemania 1–0 Argentina (t.s.)"] }] },
-  { anio: 2018, sede: "Rusia", imagen: "assets/images/trofeo.jpg", bracket: [{ type: "semifinal", matches: ["🇫🇷 Francia 1–0 Bélgica", "🏴 Inglaterra 1–2 Croacia (t.s.)"] }, { type: "final", matches: ["🏆 Francia 4–2 Croacia"] }] },
+  { anio: 2018, sede: "Rusia", imagen: "assets/images/worldcup2018.jpg", bracket: [{ type: "semifinal", matches: ["🇫🇷 Francia 1–0 Bélgica", "🏴 Inglaterra 1–2 Croacia (t.s.)"] }, { type: "final", matches: ["🏆 Francia 4–2 Croacia"] }] },
   { anio: 2022, sede: "Qatar", imagen: "assets/images/messiCopa.jpg", bracket: [{ type: "semifinal", matches: ["🇦🇷 Argentina 3–0 Croacia", "🇫🇷 Francia 2–0 Marruecos"] }, { type: "final", matches: ["🏆 Argentina 3–3 Francia (4–2 pen.)"] }] }
 ];
 
@@ -389,6 +389,69 @@ const mundiales = [
     imagenes: [
       "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Italy_World_Cup_2006_team.jpg/400px-Italy_World_Cup_2006_team.jpg",
       "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Berlin_Olympiastadion_2006_final.jpg/400px-Berlin_Olympiastadion_2006_final.jpg",
+    ],
+  },
+  {
+    anio: 2002,
+    sede: "Corea / Japón",
+    campeon: "Brasil",
+    subcampeon: "Alemania",
+    resumen:
+      "La Copa Mundial de la FIFA Corea-Japón 2002 fue la decimoséptima edición de la Copa Mundial de Fútbol y la primera organizada en Asia, así como la primera (y hasta ahora única) organizada por dos países. Se disputó del 31 de mayo al 30 de junio de 2002.\n\nEste mundial marcó varios hitos históricos: fue el primero en celebrarse fuera de Europa y América, y contó con la participación de 32 equipos tras la expansión del formato en 1998. El torneo se caracterizó por sorpresas notables, como la eliminación temprana de Francia (campeona vigente) y Argentina en la fase de grupos, así como el impresionante desempeño de Corea del Sur, que llegó hasta las semifinales bajo la dirección de Guus Hiddink.\n\nBrasil, liderado por el tridente ofensivo formado por Ronaldo, Rivaldo y Ronaldinho, demostró su dominio absoluto durante todo el torneo. Ronaldo, quien había regresado de una grave lesión, se convirtió en la gran figura del mundial, anotando 8 goles y siendo clave en la conquista del pentacampeonato.\n\nLa final enfrentó a Brasil contra Alemania en el Estadio Internacional de Yokohama. Ronaldo anotó los dos goles del partido (2-0), convirtiéndose en el máximo goleador del torneo y llevando a Brasil a su quinto título mundial, consolidando su estatus como la selección más exitosa en la historia de los mundiales.\n\nEl mundial también destacó por la organización impecable de ambos países anfitriones, que construyeron estadios modernos y establecieron un nuevo estándar para futuros eventos. Corea del Sur logró el mejor resultado de un equipo asiático en la historia de los mundiales al alcanzar el cuarto lugar.",
+    partidos: 64,
+    goles: 161,
+    asistencias: 102,
+    promedio: 2.52,
+    bracket: [
+      ["Alemania 1 - 0 Corea del Sur", "Brasil 1 - 0 Turquía"],
+      ["Brasil 2 - 0 Alemania"],
+    ],
+    imagenes: [
+      "assets/images/corea_japon.jpg",
+      "assets/images/trofeo.jpg",
+      "assets/images/brazil.jpg",
+    ],
+  },
+  {
+    anio: 1998,
+    sede: "Francia",
+    campeon: "Francia",
+    subcampeon: "Brasil",
+    resumen:
+      "La Copa Mundial de la FIFA Francia 1998 fue la decimosexta edición de la Copa Mundial de Fútbol y se disputó del 10 de junio al 12 de julio de 1998. Fue el primer mundial con 32 equipos participantes, expandiéndose desde los 24 de ediciones anteriores.\n\nFrancia, como país anfitrión, logró su primer título mundial en una de las finales más recordadas de la historia. El equipo francés, liderado por Zinedine Zidane, Didier Deschamps y una defensa sólida, demostró un fútbol táctico y disciplinado que los llevó a la gloria.\n\nLa final enfrentó a Francia contra Brasil, el vigente campeón. En un partido que sorprendió a muchos, Francia dominó completamente el encuentro y venció 3-0. Zidane anotó dos goles de cabeza en la primera mitad, y Emmanuel Petit selló la victoria en el minuto 90. Esta victoria marcó el inicio de una era dorada para el fútbol francés.\n\nEl mundial también fue memorable por el desempeño de otras selecciones. Croacia, en su primera participación como nación independiente, logró un histórico tercer lugar. Davor Šuker se convirtió en el máximo goleador del torneo con 6 goles.\n\nEl torneo se caracterizó por la calidad del fútbol mostrado y por ser el último mundial del siglo XX. Francia demostró que un equipo bien organizado y con talento local puede competir y vencer a las grandes potencias del fútbol mundial. Este triunfo sentó las bases para el éxito continuo de la selección francesa en las décadas siguientes.",
+    partidos: 64,
+    goles: 171,
+    asistencias: 115,
+    promedio: 2.67,
+    bracket: [
+      ["Francia 2 - 1 Croacia", "Brasil 2 - 1 Países Bajos (pen.)"],
+      ["Francia 3 - 0 Brasil"],
+    ],
+    imagenes: [
+      "assets/images/francia.jpg",
+      "assets/images/trofeo.jpg",
+      "assets/images/brazil.jpg",
+    ],
+  },
+  {
+    anio: 1994,
+    sede: "EE.UU.",
+    campeon: "Brasil",
+    subcampeon: "Italia",
+    resumen:
+      "La Copa Mundial de la FIFA Estados Unidos 1994 fue la decimoquinta edición de la Copa Mundial de Fútbol y se disputó del 17 de junio al 17 de julio de 1994. Fue el primer mundial organizado en Estados Unidos y marcó un hito importante para el crecimiento del fútbol en Norteamérica.\n\nEste mundial fue histórico por ser el primero en decidirse mediante tiros desde el punto penal en la final, ya que Brasil e Italia empataron 0-0 después de 120 minutos de juego. Brasil finalmente se impuso 3-2 en la tanda de penales, conquistando su cuarto título mundial y consolidándose como la selección más exitosa hasta ese momento.\n\nEl torneo se caracterizó por un fútbol más defensivo y táctico, reflejado en el bajo promedio de goles (2.71 por partido). Sin embargo, también fue memorable por momentos icónicos como el gol de Diego Maradona contra Grecia (su último gol en mundiales), la celebración de Bebeto tras anotar contra Holanda, y el desempeño de jugadores como Romário, Roberto Baggio y Hristo Stoichkov.\n\nEstados Unidos logró un desempeño respetable como anfitrión, llegando a octavos de final y demostrando que el fútbol podía tener éxito en un país tradicionalmente dominado por otros deportes. El mundial estableció récords de asistencia, con más de 3.5 millones de espectadores en los estadios.\n\nLa final en el Rose Bowl de Pasadena fue la primera final sin goles en el tiempo reglamentario y prórroga. Roberto Baggio, estrella italiana, falló el último penal que le dio el título a Brasil, creando una de las imágenes más icónicas y trágicas del fútbol mundial.",
+    partidos: 52,
+    goles: 141,
+    asistencias: 95,
+    promedio: 2.71,
+    bracket: [
+      ["Brasil 1 - 0 Suecia", "Italia 2 - 1 Bulgaria"],
+      ["Brasil 0 (3) - (2) 0 Italia"],
+    ],
+    imagenes: [
+      "assets/images/eua.jpg",
+      "assets/images/trofeo.jpg",
+      "assets/images/brazil.jpg",
     ],
   },
 ];
