@@ -524,7 +524,7 @@
           onboardingOverlay.classList.add('active');
           document.body.style.overflow = 'hidden'; // Prevenir scroll
         }
-      }, 100);
+      }, 50);
     } else {
       onboardingModal.classList.add('active');
       onboardingOverlay.classList.add('active');
@@ -578,10 +578,10 @@
       // Esperar a que el contenido se cargue
       if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => {
-          setTimeout(showOnboarding, 500); // Pequeño delay para mejor UX
+          setTimeout(showOnboarding, 200); // Pequeño delay para mejor UX
         });
       } else {
-        setTimeout(showOnboarding, 500);
+        setTimeout(showOnboarding, 200);
       }
     }
   }

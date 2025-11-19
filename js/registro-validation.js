@@ -477,7 +477,7 @@
 
       try {
         // Simular delay de registro
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        await new Promise(resolve => setTimeout(resolve, 800));
 
         // Registrar usuario
         const userData = await registerUser();
@@ -491,7 +491,7 @@
         // Redirigir al perfil
         setTimeout(() => {
           window.location.href = 'perfil.html';
-        }, 1000);
+        }, 500);
 
       } catch (error) {
         setLoadingState(false);

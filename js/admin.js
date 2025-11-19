@@ -144,7 +144,7 @@
           checkEmptyState();
         }, 300);
       }
-    }, 1000);
+    }, 500);
   }
 
   /**
@@ -182,7 +182,7 @@
           checkEmptyState();
         }, 300);
       }
-    }, 1000);
+    }, 500);
   }
 
   /**
@@ -758,10 +758,10 @@ const categoryModal = {
       nameInput.focus();
       nameInput.style.borderColor = 'var(--color-error, #dc2626)';
       
-      // Quitar el resaltado después de 3 segundos
+      // Quitar el resaltado después de 2 segundos
       setTimeout(() => {
         nameInput.style.borderColor = '';
-      }, 3000);
+      }, 2000);
       
       return;
     }

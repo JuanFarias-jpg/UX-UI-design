@@ -1,12 +1,11 @@
 /* ==========================================
    DARK-MODE.CSS - Tema Oscuro
    ==========================================
-   Este archivo contiene ajustes específicos para el modo oscuro
-   que no se pueden resolver solo con variables.
+  Ajustes para modo oscuro 
    
    FUNCION:
-   1. Las variables ya cambian automáticamente (ver variables.css)
-   2. Aquí agregamos ajustes finos de opacidad, sombras, etc.
+   1. Las variables ya cambian automáticamente 
+   2. Agregamos ajustes finos de opacidad, sombras, etc.
 ========================================== */
 
 /* ===== AJUSTES GENERALES MODO OSCURO ===== */
@@ -19,7 +18,7 @@
   --color-border: rgba(255, 255, 255, 0.06);
   --color-primary: #1B998B;
 
- /* Indicar al navegador que es modo oscuro */
+ /* Indica al navegador que es modo oscuro */
   color-scheme: dark;
 }
 
@@ -74,7 +73,7 @@
 .dark-mode .btn--outline {
   background-color: transparent;
   border-color: var(--color-primary);
-  color: var(--color-primary-light, #2dbba8); /* Versión más clara en modo oscuro para mejor contraste */
+  color: var(--color-primary-light, #2dbba8); 
 }
 
 .dark-mode .btn--outline:hover {
@@ -84,7 +83,7 @@
 
 /* ===== ENLACES EN MODO OSCURO ===== */
 .dark-mode .link-mundial {
-  color: var(--color-primary-light, #2dbba8); /* Versión más clara en modo oscuro para mejor contraste */
+  color: var(--color-primary-light, #2dbba8); 
 }
 
 .dark-mode .link-mundial:hover {
@@ -94,7 +93,7 @@
 
 /* ===== CARDS DE MUNDIALES EN MODO OSCURO ===== */
 .dark-mode .mundial-card__year {
-  color: var(--color-primary-light, #2dbba8); /* Versión más clara en modo oscuro para mejor contraste */
+  color: var(--color-primary-light, #2dbba8); 
 }
 
 /* ===== INPUTS Y FORMS EN MODO OSCURO ===== */
@@ -156,7 +155,7 @@ body,
 }
 
 /* ===== ICONO DEL TOGGLE TEMA ===== */
-/* Los emojis se cambian desde JS: sol (☀️) en modo claro, luna (🌙) en modo oscuro */
+/* Los emojis se cambian desde JS*/
 .theme-toggle__icon {
   transition: transform var(--transition-base);
 }

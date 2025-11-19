@@ -171,7 +171,7 @@
         } else {
           reject({ message: 'Usuario o contraseña incorrectos' });
         }
-      }, 1500);
+      }, 800);
     });
   }
 
@@ -308,7 +308,7 @@
           } else {
             window.location.href = 'perfil.html';
           }
-        }, 1000);
+        }, 500);
 
       } catch (error) {
         // Error - mostrar mensaje

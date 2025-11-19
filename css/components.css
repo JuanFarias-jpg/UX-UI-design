@@ -68,9 +68,9 @@
 /* Botón outline (solo borde) */
 .btn--outline {
   background-color: transparent;
-  color: var(--color-primary-dark, #147a6f); /* Usar versión más oscura para mejor contraste */
+  color: var(--color-primary-dark, #147a6f); 
   border-color: var(--color-primary);
-  border-width: 2px; /* Hacer el borde más visible */
+  border-width: 2px; 
 }
 
 .btn--outline:hover {
@@ -117,7 +117,7 @@
 .card__image {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9; /* Proporción 16:9 */
+  aspect-ratio: 16 / 9; 
   overflow: hidden;
   background-color: var(--color-border);
 }
@@ -128,9 +128,9 @@
   object-fit: cover;
   transition: transform var(--transition-slow) var(--ease-out);
 }
-
+/* Efecto zoom en la imagen al hacer hover */
 .card:hover .card__image img {
-  transform: scale(1.05); /* Zoom suave al hacer hover */
+  transform: scale(1.05); 
 }
 
 /* Badge sobre la imagen */
@@ -202,13 +202,13 @@
   line-height: var(--line-height-relaxed);
   margin-bottom: var(--space-4);
   
-  /* Limitar a 3 líneas */
-  display: -webkit-box;               /* required for -webkit-line-clamp */
-  -webkit-box-orient: vertical;       /* required for -webkit-line-clamp */
+  /* Limitar a 3 líneas con webkit-line-clamp */
+  display: -webkit-box;               
+  -webkit-box-orient: vertical;      
   overflow: hidden;
   text-overflow: ellipsis;
 
-  line-clamp: 3;                      /* standard property (newer spec) */
+  line-clamp: 3;                      
   -webkit-line-clamp: 3;              /* WebKit/Blink fallback */
 }
 
@@ -392,7 +392,7 @@
   padding-left: var(--space-4);
   padding-right: var(--space-4);
   
-  /* Ocultar scrollbar pero mantener funcionalidad */
+  /* Oculta scrollbar pero manteniene funcionalidad */
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -406,7 +406,7 @@
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
   color: #ffffff;
-  background-color: rgba(0, 119, 204, 0.6); /* Color primario con opacidad para inactivo */
+  background-color: rgba(0, 119, 204, 0.6); 
   border: var(--border-width) solid var(--color-primary);
   border-radius: var(--border-radius-full);
   white-space: nowrap;
@@ -522,12 +522,12 @@
   animation: fadeInCard 0.4s ease-out forwards;
 }
 
-/* Utilidad para limitar texto a N líneas (ejemplo: 3 líneas) */
+/* Utilidad para limitar texto a N líneas*/
 .text--clamp-3 {
   display: -webkit-box;              
   -webkit-box-orient: vertical;       
-  overflow: hidden;                   /* esconder texto desbordado */
-  text-overflow: ellipsis;            /* muestra elipsis cuando hay texto desbordado */
+  overflow: hidden;                  
+  text-overflow: ellipsis;            
   line-clamp: 3;                      
   -webkit-line-clamp: 3;              
 }

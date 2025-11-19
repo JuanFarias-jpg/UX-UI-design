@@ -477,7 +477,7 @@
         
         loadMoreBtn.textContent = 'No hay más publicaciones';
         loadMoreBtn.disabled = true;
-      }, 1000);
+      }, 500);
     });
   }
 
